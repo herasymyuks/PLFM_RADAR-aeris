@@ -1,0 +1,35 @@
+# synth_yosys.ys - AERIS-10 beta FPGA, open-source synthesis estimate (Yosys, synth_xilinx xc7).
+# Run through run_synth.sh (cwd must be beta/fpga so that $readmemh("mem/...") resolves).
+# Synthesis view = build.sh step 2 file list (rtl/*.v, no -DSIM) minus:
+#   rtl/axis_fft_behav.v      simulation-only behavioural FFT (real arithmetic; unused when
+#                              SYNTHESIS is defined - xfft_32.v / FFT_enhanced.v `ifndef SYNTHESIS)
+#   rtl/sim/unisim_sim_models.v  replaced by the Yosys Xilinx cell library (cells_sim/cells_xtra)
+# The two missing FFT IP cores are declared (* blackbox *) in bb/fft_ip_blackbox.v.
+# Yosys defines SYNTHESIS by default for read_verilog, so the IP branches are selected.
+# The file list is injected by run_synth.sh via the script variable below (read_verilog lines).
+
+read_verilog -lib -specify +/xilinx/cells_sim.v
+read_verilog -lib +/xilinx/cells_xtra.v
+read_verilog -defer ../fpga_synth/bb/fft_ip_blackbox.v
+script ../fpga_synth/build/read_rtl.ys
+
+hierarchy -check -top radar_system_top
+# --- memories whose (* ram_style = "block" *) cannot be honoured (asynchronous read) ---
+# chirp_memory_loader_param.v:32-35: ROM read data goes through the long/short mux before the
+#   output register (lines 109-120) -> no registered read port -> no BRAM mapping possible.
+# doppler_processor.v:74-75: read data feeds the multiplier directly (lines 236-238) -> async read.
+# Yosys aborts ("no valid mapping found") on a forced block mapping; unsetting the attribute lets
+# memory_libmap choose LUTRAM / LUT-ROM, which is what any tool has to do with this coding.
+setattr -unset ram_style m:long_chirp_i m:long_chirp_q m:short_chirp_i m:short_chirp_q m:doppler_i_mem m:doppler_q_mem
+# --- pre-synthesis sanity checks (logged; latches / multi-driven nets are real problems) ---
+proc
+check
+tee -o ../fpga_synth/reports/yosys_latches.txt select -list t:$dlatch t:$adlatch t:$dlatchsr t:$sr
+
+# hierarchical stat before flattening (per-module breakdown, generic cells)
+# full Xilinx 7-series flow: DSP48E1, BRAM (RAMB18E1/RAMB36E1), LUTRAM, SRL, CARRY4, wide muxes, IO pads
+synth_xilinx -family xc7 -top radar_system_top -flatten -abc9
+tee -o ../fpga_synth/reports/yosys_stat.txt stat -tech xilinx
+tee -o ../fpga_synth/reports/yosys_check_post.txt check
+write_json ../fpga_synth/build/radar_system_top_beta.json
+write_verilog -noattr ../fpga_synth/build/radar_system_top_beta_netlist.v

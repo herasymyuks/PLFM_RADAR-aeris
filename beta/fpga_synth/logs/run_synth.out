@@ -1,0 +1,68 @@
+source: git 65cd160 (REV=HEAD), snapshot in build/src
+yosys: Yosys 0.69+post (git sha1 143eb14f9cc55d6f8927e68523b0c9d2166ed02c, Release, AppleClang clang++ 21.0.0.21000334)
+yosys exit=0 after 22 s (log: logs/yosys_synth.log)
+| Resource | Yosys count | XC7A50T budget | Utilisation |
+|---|---:|---:|---:|
+| LUT total (logic + distributed RAM + SRL) | 12793 | 32,600 | 39.2 % |
+|   of which logic LUT1..LUT6 | 9693 | - | - |
+|   of which distributed RAM (RAM64M/RAM32M x 4 LUTs) | 3100 | - | - |
+| INV cells (absorbed into LUTs by P&R, not counted) | 246 | - | - |
+|   of which shift register (SRL16E/SRLC32E) | 0 | - | - |
+| Flip-flops (FDRE/FDSE/FDCE/FDPE, incl. _1 falling-edge) | 4726 | 65,200 | 7.2 % |
+| Latches (LDCE/LDPE) | 0 | - | - |
+| DSP48E1 | 106 | 120 | 88.3 % |
+| RAMB36E1 | 0 | - | - |
+| RAMB18E1 | 2 | - | - |
+| BRAM in 36 kb equivalents (RAMB36 + RAMB18/2) | 1 | 75 | 1.3 % |
+| CARRY4 | 333 | 8,150 | 4.1 % |
+| MUXF7 / MUXF8 | 0 | - | - |
+| BUFG / BUFGCTRL | 4 | 32 | 12.5 % |
+| BUFIO / BUFR | 2 | - | - |
+| MMCME2_BASE/ADV, PLLE2 | 1 | 5 | 20.0 % |
+| IBUF / IBUFG / IBUFDS | 31 | - | - |
+| OBUF / OBUFT / IOBUF | 143 | - | - |
+| IDELAYE2 / IDELAYCTRL | 9 | - | - |
+| ISERDESE2 / IDDR | 8 | - | - |
+| FFT IP black boxes (not counted above) | 3 | - | - |
+
+All cell types (flat netlist):
+
+| Cell | Count |
+|---|---:|
+| `wires` | 26839 |
+| `cells` | 16121 |
+| `FDCE` | 3915 |
+| `LUT5` | 3721 |
+| `LUT2` | 2351 |
+| `LUT6` | 1424 |
+| `LUT4` | 1378 |
+| `LUT3` | 819 |
+| `RAM64M` | 768 |
+| `FDRE` | 715 |
+| `CARRY4` | 333 |
+| `INV` | 246 |
+| `OBUF` | 111 |
+| `DSP48E1` | 106 |
+| `ports` | 70 |
+| `FDPE` | 43 |
+| `$scopeinfo` | 38 |
+| `FDCE_1` | 35 |
+| `IOBUF` | 32 |
+| `IBUF` | 22 |
+| `FDPE_1` | 17 |
+| `IBUFDS` | 9 |
+| `IDELAYE2` | 8 |
+| `ISERDESE2` | 8 |
+| `RAM32M` | 7 |
+| `BUFG` | 4 |
+| `FFT_ENHANCED_IP_NOT_GENERATED__SEE_beta_fpga_ip_README` | 2 |
+| `RAMB18E1` | 2 |
+| `$print` | 1 |
+| `BUFIO` | 1 |
+| `BUFR` | 1 |
+| `FDRE_1` | 1 |
+| `IDELAYCTRL` | 1 |
+| `MMCME2_BASE` | 1 |
+| `XFFT_32_IP_NOT_GENERATED__SEE_beta_fpga_ip_README` | 1 |
+per-module breakdown: reports/yosys_stat_hier.txt
+DONE exit=0

@@ -1,0 +1,15 @@
+diff --git a/common/placer1.cc b/common/placer1.cc
+index c271991..80f6019 100644
+--- a/common/placer1.cc
++++ b/common/placer1.cc
+@@ -872,7 +872,10 @@ class SAPlacer
+             curr_loc.y = std::min(region_bounds[cell->region->name].y1, curr_loc.y);
+         }
+ 
++        int aeris_tries = 0; // AERIS-10 local patch: bound the retry loop (SA livelock with DSP chains)
+         while (true) {
++            if (++aeris_tries > 200000)
++                return BelId();
+             int nx = ctx->rng(2 * dx + 1) + std::max(curr_loc.x - dx, 0);
+             int ny = ctx->rng(2 * dy + 1) + std::max(curr_loc.y - dy, 0);
+             int beltype_idx, beltype_cnt;

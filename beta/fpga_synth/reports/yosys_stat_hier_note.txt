@@ -1,0 +1,1 @@
+flat netlist (synth_xilinx -flatten)

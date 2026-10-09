@@ -1,0 +1,11 @@
+# synth_yosys_hier.ys - same as synth_yosys.ys but keeps the hierarchy (-noflatten) to give a
+# per-module breakdown. Cross-boundary optimisation is lost, so totals are slightly higher than
+# the flat run; use the flat run (synth_yosys.ys) for the utilisation table.
+read_verilog -lib -specify +/xilinx/cells_sim.v
+read_verilog -lib +/xilinx/cells_xtra.v
+read_verilog -defer ../fpga_synth/bb/fft_ip_blackbox.v
+script ../fpga_synth/build/read_rtl.ys
+hierarchy -check -top radar_system_top
+setattr -unset ram_style m:long_chirp_i m:long_chirp_q m:short_chirp_i m:short_chirp_q m:doppler_i_mem m:doppler_q_mem
+synth_xilinx -family xc7 -top radar_system_top -abc9
+tee -o ../fpga_synth/reports/yosys_stat_hier.txt stat -tech xilinx

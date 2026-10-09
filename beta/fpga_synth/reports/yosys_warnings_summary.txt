@@ -1,0 +1,26 @@
+   8 rtl/adN_iserdes_capture.v:N: Warning: Replacing floating point parameter g_lane[N].u_idelay.REFCLK_FREQUENCY = N.N with string.
+   3 ABC: Warning: AIG with boxes has internal fanout in N complex flops and N carries.
+   2 Warning: Wire chirp_memory_loader_param.$time is used but has no driver.
+   1 Warnings: N unique messages, N total
+   1 Warning: Wire radar_system_top.$flatten\rx_inst.\chirp_mem.$time is used but has no driver.
+   1 Warning: Replacing memory \win_lo with list of registers. See rtl/adc_capture_calib.v:N
+   1 Warning: Replacing memory \win_hi with list of registers. See rtl/adc_capture_calib.v:N
+   1 Warning: Replacing memory \tap_sel with list of registers. See rtl/adc_capture_calib.v:N
+   1 Warning: Replacing memory \pass_mask with list of registers. See rtl/adc_capture_calib.v:N
+   1 Warning: Replacing memory \mq with list of registers. See rtl/ddc_Nx_Nm.v:N
+   1 Warning: Replacing memory \mi with list of registers. See rtl/ddc_Nx_Nm.v:N
+   1 Warning: Replacing memory \det_r with list of registers. See rtl/rd_map_packer.v:N
+   1 Warning: Replacing memory \det_m with list of registers. See rtl/rd_map_packer.v:N
+   1 Warning: Replacing memory \det_d with list of registers. See rtl/rd_map_packer.v:N
+   1 Warning: Replacing memory \delay_line with list of registers. See rtl/fir_lowpass.v:N
+   1 rtl/usb_data_interface.v:N: Warning: Yosys has only limited support for tri-state logic at the moment.
+   1 rtl/host_bridge_spi.v:N: Warning: Yosys has only limited support for tri-state logic at the moment.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.REF_JITTERN = N.N with string.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.CLKOUTN_PHASE = N.N with string.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.CLKOUTN_DUTY_CYCLE = N.N with string.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.CLKOUTN_DIVIDE_F = N.N with string.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.CLKINN_PERIOD = N.N with string.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.CLKFBOUT_PHASE = N.N with string.
+   1 rtl/clk_gen.v:N: Warning: Replacing floating point parameter u_mmcm.CLKFBOUT_MULT_F = N.N with string.
+   1 rtl/chirp_memory_loader_param.v:N: Warning: Identifier `$time' is implicitly declared.
+   1 ABC: Warning: The network is combinational.

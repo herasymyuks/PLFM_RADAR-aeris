@@ -1,0 +1,757 @@
+
+40. Printing statistics.
+
+=== $paramod$15d9e90dd1609220ae6ba987ee303093689c4e6d\async_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      116 wires
+      279 wire bits
+       25 public wires
+      142 public wire bits
+       12 ports
+       89 port bits
+      128 cells
+        8   CARRY4
+       88   FDCE
+        1   FDPE
+        3   INV
+       10   LUT2
+        5   LUT3
+        2   LUT4
+        3   LUT5
+        2   LUT6
+        6   RAM32M
+
+   Estimated number of LCs:         14
+
+=== $paramod$213ddda591ae7f741a488f63aff09a44ac7afe7e\doppler_processor_optimized ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      908 wires
+     3324 wire bits
+       34 public wires
+      213 public wire bits
+       12 ports
+       86 port bits
+     1172 cells
+       13   CARRY4
+        2   DSP48E1
+       53   FDCE
+       75   FDRE
+       15   INV
+      116   LUT2
+       20   LUT3
+       81   LUT4
+      214   LUT5
+      199   LUT6
+      384   RAM64M
+        1 submodules
+        1   xfft_32
+
+   Estimated number of LCs:        522
+
+=== $paramod$29b2541716e9712ab920906d713eb097542c5650\rd_map_packer ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      880 wires
+     2475 wire bits
+      127 public wires
+      814 public wire bits
+       20 ports
+      108 port bits
+     1461 cells
+       43   CARRY4
+      117   FDCE
+        1   FDPE
+      608   FDRE
+       44   INV
+       38   LUT1
+       38   LUT2
+       86   LUT3
+       85   LUT4
+      150   LUT5
+      213   LUT6
+       38   MUXF7
+
+   Estimated number of LCs:        534
+
+=== $paramod$6252bc8d9f6ef80053b3d60500d280d9d9e9f32e\radar_control_regs ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       78 wires
+      368 wire bits
+       34 public wires
+      214 public wire bits
+       25 ports
+      156 port bits
+      146 cells
+       44   FDCE
+       17   FDPE
+        1   INV
+       19   LUT2
+        6   LUT3
+       14   LUT4
+       32   LUT5
+       13   LUT6
+
+   Estimated number of LCs:         65
+
+=== $paramod$68131b61593972501fec1b3a14b13f7bbb10967f\adc_capture_calib ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1209 wires
+     3030 wire bits
+       36 public wires
+      233 public wire bits
+       26 ports
+      172 port bits
+     1583 cells
+       25   CARRY4
+      555   FDCE
+       17   FDPE
+       17   INV
+      130   LUT2
+       84   LUT3
+      413   LUT4
+      214   LUT5
+      120   LUT6
+        8   MUXF7
+
+   Estimated number of LCs:        831
+
+=== $paramod$c865497909747dde7bdddd729e51b5b463dfab50\ad9484_iserdes_capture ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       60 wires
+      365 wire bits
+       36 public wires
+      323 public wire bits
+       21 ports
+      189 port bits
+       81 cells
+        1   BUFIO
+        1   BUFR
+        2   CARRY4
+       38   FDCE
+        9   IBUFDS
+        1   IDELAYCTRL
+        8   IDELAYE2
+        6   INV
+        8   ISERDESE2
+        1   LUT2
+        2   LUT4
+        1   LUT5
+        3   LUT6
+        2 submodules
+        1   $paramod$15d9e90dd1609220ae6ba987ee303093689c4e6d\async_fifo
+        1   $paramod\reset_synchronizer\STAGES=s32'00000000000000000000000000000010
+
+   Estimated number of LCs:         19
+
+=== $paramod$e6347268a756ce47364a48948e55f1cebc77a660\range_bin_decimator ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      598 wires
+     1371 wire bits
+       14 public wires
+      110 public wire bits
+       11 ports
+       86 port bits
+      582 cells
+       31   CARRY4
+      180   FDCE
+       35   INV
+       49   LUT2
+       20   LUT3
+       40   LUT4
+       49   LUT5
+      160   LUT6
+       18   MUXF7
+
+   Estimated number of LCs:        269
+
+=== $paramod$f356f37d523a387a549d5184dacd4b5a2c5882fb\radar_receiver_final ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      108 wires
+      713 wire bits
+       87 public wires
+      689 public wire bits
+       38 ports
+      216 port bits
+       14 cells
+        2   CARRY4
+        7   FDCE
+        2   INV
+        2   LUT4
+        1   LUT5
+       12 submodules
+        1   $paramod$213ddda591ae7f741a488f63aff09a44ac7afe7e\doppler_processor_optimized
+        1   $paramod$68131b61593972501fec1b3a14b13f7bbb10967f\adc_capture_calib
+        1   $paramod$c865497909747dde7bdddd729e51b5b463dfab50\ad9484_iserdes_capture
+        1   $paramod$e6347268a756ce47364a48948e55f1cebc77a660\range_bin_decimator
+        1   chirp_memory_loader_param
+        1   clk_gen
+        1   ddc_4x_100m
+        1   ddc_input_interface
+        3   edge_detector_enhanced
+        1   matched_filter_multi_segment
+
+   Estimated number of LCs:       4307
+
+=== $paramod\fft_1024_forward_enhanced\SCALE_SCH=10'1001010101 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       50 wires
+      196 wire bits
+       19 public wires
+      156 public wire bits
+        8 ports
+       68 port bits
+       18 cells
+        3   CARRY4
+       10   FDCE
+        2   INV
+        1   LUT2
+        1   LUT4
+        1   LUT6
+        1 submodules
+        1   FFT_enhanced
+
+   Estimated number of LCs:          2
+
+=== $paramod\fft_1024_inverse_enhanced\SCALE_SCH=10'0101010101 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       50 wires
+      196 wire bits
+       19 public wires
+      156 public wire bits
+        8 ports
+       68 port bits
+       18 cells
+        3   CARRY4
+       10   FDCE
+        2   INV
+        1   LUT2
+        1   LUT4
+        1   LUT6
+        1 submodules
+        1   FFT_enhanced
+
+   Estimated number of LCs:          2
+
+=== $paramod\frequency_matched_filter\CONJUGATE_REF=s32'00000000000000000000000000000000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1140 wires
+     1477 wire bits
+       17 public wires
+      138 public wire bits
+       11 ports
+      102 port bits
+      460 cells
+       34   CARRY4
+        4   DSP48E1
+      292   FDCE
+        4   INV
+       74   LUT2
+       30   LUT3
+        4   LUT5
+       18   LUT6
+
+   Estimated number of LCs:         74
+
+=== $paramod\reset_synchronizer\STAGES=s32'00000000000000000000000000000010 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+        6 wire bits
+        4 public wires
+        5 public wire bits
+        3 ports
+        3 port bits
+        3 cells
+        2   FDCE
+        1   INV
+
+   Estimated number of LCs:          0
+
+=== FFT_enhanced ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       12 wires
+       89 wire bits
+       12 public wires
+       89 public wire bits
+       12 ports
+       89 port bits
+        1 cells
+        1   FFT_ENHANCED_IP_NOT_GENERATED__SEE_beta_fpga_ip_README
+
+   Estimated number of LCs:          0
+
+=== chirp_memory_loader_param ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1144 wires
+     3627 wire bits
+       11 public wires
+       93 public wire bits
+        9 ports
+       49 port bits
+     2163 cells
+       33   FDCE
+        1   INV
+        1   LUT1
+      101   LUT2
+       47   LUT3
+      165   LUT4
+      450   LUT5
+     1083   LUT6
+      245   MUXF7
+       37   MUXF8
+
+   Estimated number of LCs:       1745
+
+=== clk_gen ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        7 wires
+        7 wire bits
+        6 public wires
+        6 public wire bits
+        4 ports
+        4 port bits
+        3 cells
+        1   BUFG
+        1   INV
+        1   MMCME2_BASE
+
+   Estimated number of LCs:          0
+
+=== dac_interface_enhanced ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       16 wires
+       30 wire bits
+        7 public wires
+       21 public wire bits
+        7 ports
+       21 port bits
+       17 cells
+        7   FDCE
+        1   FDPE
+        1   INV
+        8   LUT2
+
+   Estimated number of LCs:          4
+
+=== ddc_4x_100m ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     7254 wires
+     9890 wire bits
+       96 public wires
+     1554 public wire bits
+       13 ports
+      112 port bits
+     2222 cells
+      102   CARRY4
+       36   DSP48E1
+     1109   FDCE
+        9   FDPE
+       77   INV
+      340   LUT2
+       91   LUT3
+       67   LUT4
+      298   LUT5
+       93   LUT6
+        2 submodules
+        2   fir_lowpass_parallel_enhanced
+
+   Estimated number of LCs:        833
+
+=== ddc_input_interface ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       50 wires
+      145 wire bits
+       11 public wires
+       75 public wire bits
+       10 ports
+       74 port bits
+       49 cells
+        8   CARRY4
+        4   FDCE
+       32   FDRE
+        1   INV
+        4   LUT2
+
+   Estimated number of LCs:          2
+
+=== edge_detector_enhanced ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        8 wires
+        9 wire bits
+        6 public wires
+        6 public wire bits
+        4 ports
+        4 port bits
+        5 cells
+        3   FDCE
+        1   INV
+        1   LUT2
+
+   Estimated number of LCs:          1
+
+=== fir_lowpass_parallel_enhanced ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     5042 wires
+     6006 wire bits
+       40 public wires
+      636 public wire bits
+        8 ports
+       42 port bits
+      785 cells
+        9   CARRY4
+       32   DSP48E1
+      614   FDCE
+        1   INV
+       19   LUT2
+       40   LUT3
+        6   LUT4
+       28   LUT5
+       36   LUT6
+
+   Estimated number of LCs:        110
+
+=== host_bridge_spi ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      851 wires
+     3524 wire bits
+       26 public wires
+      103 public wire bits
+       16 ports
+       45 port bits
+     1289 cells
+        1   $_TBUF_
+        5   CARRY4
+       29   FDCE
+       37   FDCE_1
+        1   FDPE
+       17   FDPE_1
+        1   FDRE_1
+        5   INV
+      172   LUT2
+       32   LUT3
+      100   LUT4
+      362   LUT5
+      143   LUT6
+      384   RAM64M
+
+   Estimated number of LCs:        657
+
+=== level_shifter_interface ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       15 wires
+       15 wire bits
+       14 public wires
+       14 public wire bits
+       10 ports
+       10 port bits
+        5 cells
+        3   FDCE
+        1   FDPE
+        1   INV
+
+   Estimated number of LCs:          0
+
+=== matched_filter_multi_segment ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      444 wires
+     1001 wire bits
+       37 public wires
+      301 public wire bits
+       22 ports
+      164 port bits
+      296 cells
+       30   CARRY4
+       75   FDCE
+        1   FDPE
+       11   INV
+      114   LUT2
+        9   LUT3
+       11   LUT4
+       14   LUT5
+       29   LUT6
+        2   RAMB18E1
+        1 submodules
+        1   matched_filter_processing_chain
+
+   Estimated number of LCs:        211
+
+=== matched_filter_processing_chain ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       80 wires
+      386 wire bits
+       32 public wires
+      303 public wire bits
+       18 ports
+      158 port bits
+      108 cells
+        6   CARRY4
+       57   FDCE
+        3   INV
+        2   LUT2
+       32   LUT3
+        2   LUT4
+        2   LUT5
+        3   LUT6
+        1   RAM32M
+        3 submodules
+        1   $paramod\fft_1024_forward_enhanced\SCALE_SCH=10'1001010101
+        1   $paramod\fft_1024_inverse_enhanced\SCALE_SCH=10'0101010101
+        1   $paramod\frequency_matched_filter\CONJUGATE_REF=s32'00000000000000000000000000000000
+
+   Estimated number of LCs:        101
+
+=== plfm_chirp_controller_enhanced ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1084 wires
+     4425 wire bits
+       32 public wires
+       54 public wire bits
+       29 ports
+       51 port bits
+     2385 cells
+       15   CARRY4
+       48   FDCE
+        4   FDPE
+        7   INV
+      162   LUT2
+       99   LUT3
+      528   LUT4
+     1033   LUT5
+      465   LUT6
+       24   MUXF7
+
+   Estimated number of LCs:       2125
+
+=== radar_system_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      449 wires
+     1147 wire bits
+      142 public wires
+      648 public wire bits
+       70 ports
+      183 port bits
+      382 cells
+        3   BUFG
+       18   CARRY4
+       98   FDCE
+       22   IBUF
+       35   INV
+       32   IOBUF
+        5   LUT2
+       19   LUT3
+       12   LUT4
+       13   LUT5
+       14   LUT6
+      111   OBUF
+        6 submodules
+        1   $paramod$29b2541716e9712ab920906d713eb097542c5650\rd_map_packer
+        1   $paramod$6252bc8d9f6ef80053b3d60500d280d9d9e9f32e\radar_control_regs
+        1   $paramod$f356f37d523a387a549d5184dacd4b5a2c5882fb\radar_receiver_final
+        1   host_bridge_spi
+        1   radar_transmitter
+        1   usb_data_interface
+
+   Estimated number of LCs:       7780
+
+=== radar_transmitter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       57 wires
+       86 wire bits
+       57 public wires
+       86 public wire bits
+       44 ports
+       66 port bits
+        6 cells
+        6   LUT2
+        9 submodules
+        1   dac_interface_enhanced
+        3   edge_detector_enhanced
+        4   level_shifter_interface
+        1   plfm_chirp_controller_enhanced
+
+   Estimated number of LCs:       2125
+
+=== usb_data_interface ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      142 wires
+      439 wire bits
+       26 public wires
+      154 public wire bits
+       23 ports
+      118 port bits
+      221 cells
+       32   $_TBUF_
+        3   CARRY4
+      116   FDCE
+        2   FDPE
+        4   INV
+        7   LUT2
+        4   LUT3
+       23   LUT4
+        5   LUT5
+       22   LUT6
+        3   MUXF7
+
+   Estimated number of LCs:         54
+
+=== xfft_32 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       13 wires
+       82 wire bits
+       13 public wires
+       82 public wire bits
+       13 ports
+       82 port bits
+        1 cells
+        1   XFFT_32_IP_NOT_GENERATED__SEE_beta_fpga_ip_README
+
+   Estimated number of LCs:          0
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+    16430 radar_system_top
+     1461 $paramod$29b2541716e9712ab920906d713eb097542c5650\rd_map_packer
+      146 $paramod$6252bc8d9f6ef80053b3d60500d280d9d9e9f32e\radar_control_regs
+       14 $paramod$f356f37d523a387a549d5184dacd4b5a2c5882fb\radar_receiver_final
+     1172   $paramod$213ddda591ae7f741a488f63aff09a44ac7afe7e\doppler_processor_optimized
+        1     xfft_32
+     1583   $paramod$68131b61593972501fec1b3a14b13f7bbb10967f\adc_capture_calib
+       81   $paramod$c865497909747dde7bdddd729e51b5b463dfab50\ad9484_iserdes_capture
+      128     $paramod$15d9e90dd1609220ae6ba987ee303093689c4e6d\async_fifo
+        3     $paramod\reset_synchronizer\STAGES=s32'00000000000000000000000000000010
+      582   $paramod$e6347268a756ce47364a48948e55f1cebc77a660\range_bin_decimator
+     2163   chirp_memory_loader_param
+        3   clk_gen
+     2222   ddc_4x_100m
+      785     fir_lowpass_parallel_enhanced
+       49   ddc_input_interface
+        5   edge_detector_enhanced
+      296   matched_filter_multi_segment
+      108     matched_filter_processing_chain
+       18       $paramod\fft_1024_forward_enhanced\SCALE_SCH=10'1001010101
+        1         FFT_enhanced
+       18       $paramod\fft_1024_inverse_enhanced\SCALE_SCH=10'0101010101
+        1         FFT_enhanced
+      460       $paramod\frequency_matched_filter\CONJUGATE_REF=s32'00000000000000000000000000000000
+     1289 host_bridge_spi
+        6 radar_transmitter
+       17   dac_interface_enhanced
+        5   edge_detector_enhanced
+        5   level_shifter_interface
+     2385   plfm_chirp_controller_enhanced
+      221 usb_data_interface
+
+        +----------Count including submodules.
+        | 
+    27009 wires
+    50893 wire bits
+     1144 public wires
+     8215 public wire bits
+      577 ports
+     2796 port bits
+        - memories
+        - memory bits
+        - processes
+    16430 cells
+       33   $_TBUF_
+        4   BUFG
+        1   BUFIO
+        1   BUFR
+      369   CARRY4
+      106   DSP48E1
+     4230   FDCE
+       37   FDCE_1
+       58   FDPE
+       17   FDPE_1
+      715   FDRE
+        1   FDRE_1
+        2   FFT_ENHANCED_IP_NOT_GENERATED__SEE_beta_fpga_ip_README
+       22   IBUF
+        9   IBUFDS
+        1   IDELAYCTRL
+        8   IDELAYE2
+      290   INV
+       32   IOBUF
+        8   ISERDESE2
+       39   LUT1
+     1404   LUT2
+      664   LUT3
+     1561   LUT4
+     2901   LUT5
+     2654   LUT6
+        1   MMCME2_BASE
+      336   MUXF7
+       37   MUXF8
+      111   OBUF
+        7   RAM32M
+      768   RAM64M
+        2   RAMB18E1
+        1   XFFT_32_IP_NOT_GENERATED__SEE_beta_fpga_ip_README
+        6 submodules
+        1   $paramod$29b2541716e9712ab920906d713eb097542c5650\rd_map_packer
+        1   $paramod$6252bc8d9f6ef80053b3d60500d280d9d9e9f32e\radar_control_regs
+        1   $paramod$f356f37d523a387a549d5184dacd4b5a2c5882fb\radar_receiver_final
+        1   host_bridge_spi
+        1   radar_transmitter
+        1   usb_data_interface
+
+   Estimated number of LCs:       7780
+

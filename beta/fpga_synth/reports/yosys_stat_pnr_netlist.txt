@@ -1,0 +1,44 @@
+
+41. Printing statistics.
+
+=== radar_system_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    26652 wires
+    53107 wire bits
+     1006 public wires
+     7956 public wire bits
+       46 ports
+       67 port bits
+    15847 cells
+        4   BUFG
+        1   BUFIO
+        1   BUFR
+      320   CARRY4
+      106   DSP48E1
+     3758   FDCE
+       35   FDCE_1
+       41   FDPE
+       17   FDPE_1
+      815   FDRE
+        1   FDRE_1
+       15   IBUF
+        9   IBUFDS
+        1   IDELAYCTRL
+        8   IDELAYE2
+      248   INV
+        8   ISERDESE2
+     2322   LUT2
+      796   LUT3
+     1494   LUT4
+     3660   LUT5
+     1375   LUT6
+        1   MMCME2_BASE
+       34   OBUF
+        7   RAM32M
+      768   RAM64M
+        2   RAMB18E1
+
+   Estimated number of LCs:       7341
+
