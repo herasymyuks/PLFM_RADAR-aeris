@@ -90,9 +90,15 @@ endmodule
 //   IDELAYE2     : VAR_LOAD / FIXED / VARIABLE; tap x 1/(64*REFCLK) = 78.125 ps @ 200 MHz,
 //                  modelled as a delayed assignment (inertial; data period must exceed the delay)
 //   IDELAYCTRL   : RDY after 16 REFCLK cycles
-//   ISERDESE2    : SDR, DATA_WIDTH 2..8, NETWORKING; Q1 = FIRST (oldest) bit received,
-//                  BITSLIP rotates the word framing by one bit (UNVERIFIED against UG471 figures;
-//                  the RTL has a parameter to reverse the order). A data transition within
+//   ISERDESE2    : SDR, DATA_WIDTH 2..8, NETWORKING. Bit order per UG471 v1.10 "Registered Outputs
+//                  - Q1 to Q8": "The first data bit received appears on the highest order Q output."
+//                  (Fig. 3-3: bit A, first transmitted from OSERDESE2 D1, emerges on Q8), i.e. for
+//                  DATA_WIDTH = N: Q(N) = oldest bit, Q1 = newest. BITSLIP per UG471 "Bitslip
+//                  Operation": "In SDR mode, every Bitslip operation causes the output pattern to
+//                  shift left by one" in Q8..Q1 notation (Fig. 3-11: 10010011 -> 00100111), i.e. the
+//                  frame boundary moves one bit later in the serial stream ("adds one bit to the
+//                  input data stream and loses the nth bit"). Latency simplified (UG471: 2 CLKDIV).
+//                  A data transition within
 //                  T_SU before or T_H after the sampling CLK edge gives a RANDOM bit (metastable
 //                  window model, 0.20 ns each - representative, not a datasheet value), so that
 //                  the IDELAY calibration sees a real fail region in simulation.
@@ -224,12 +230,15 @@ module ISERDESE2 #(
     localparam real T_SU = 0.20, T_H = 0.20;   // ns, metastability window around the CLK edge
     real t_change = -1000.0, t_sample = -1000.0;
     reg  meta_pending = 0;
+    reg  [31:0] rnd;
+    reg  [7:0]  nxt;
     always @(din) begin
         t_change = $realtime;
         if (($realtime - t_sample) < T_H) meta_pending = 1'b1;   // hold violation on the last sample
     end
     reg [7:0] sr = 0;         // serial history, sr[0] = newest
-    reg [7:0] word = 0;       // latched word, word[0] = oldest bit of the frame
+    reg [7:0] word = 0;       // latched word, word[0] = NEWEST bit of the frame (-> Q1), word[N-1] = oldest (-> QN)
+    localparam [7:0] WMASK = (DATA_WIDTH >= 8) ? 8'hFF : ((8'h01 << DATA_WIDTH) - 8'h01);
     reg [7:0] q = 0;
     reg [2:0] cnt = 0;        // bit position within the frame
     reg [2:0] slip = 0;       // framing offset (BITSLIP)
@@ -239,24 +248,18 @@ module ISERDESE2 #(
         if (RST) begin sr <= 0; cnt <= 0; word <= 0; frame_end <= 0; end
         else if (CE1) begin
             t_sample = $realtime;
-            if (meta_pending) begin sr[0] <= $random; meta_pending = 1'b0; end   // corrupt previous bit (hold)
-            if (($realtime - t_change) < T_SU) sr <= {sr[6:0], $random};          // setup violation
-            else                                sr <= {sr[6:0], din};
-            if (((cnt + slip) % DATA_WIDTH) == DATA_WIDTH - 1) begin
+            /* verilator lint_off BLKSEQ */   // rnd/nxt are block-local temporaries (simulation model)
+            rnd = $random;
+            nxt = {sr[6:0], (($realtime - t_change) < T_SU) ? rnd[0] : din};      // setup violation: this bit random
+            /* verilator lint_on BLKSEQ */
+            if (meta_pending) begin nxt[1] = rnd[1]; meta_pending = 1'b0; end      // hold violation: previous bit random
+            sr <= nxt;   // (earlier revision assigned sr[0] and then all of sr: the hold-side corruption was overridden)
+            // frame boundary: each BITSLIP moves it one bit LATER in the stream (UG471 Fig. 3-11, SDR)
+            if (((cnt + DATA_WIDTH - slip) % DATA_WIDTH) == DATA_WIDTH - 1) begin
                 frame_end <= 1'b1;
             end else frame_end <= 1'b0;
             cnt <= (cnt == DATA_WIDTH - 1) ? 3'd0 : cnt + 3'd1;
-            if (frame_end) begin   // one CLK after the last bit: latch from sr (oldest bit first)
-                case (DATA_WIDTH)
-                    2: word <= {6'd0, sr[0], sr[1]};
-                    3: word <= {5'd0, sr[0], sr[1], sr[2]};
-                    4: word <= {4'd0, sr[0], sr[1], sr[2], sr[3]};
-                    5: word <= {3'd0, sr[0], sr[1], sr[2], sr[3], sr[4]};
-                    6: word <= {2'd0, sr[0], sr[1], sr[2], sr[3], sr[4], sr[5]};
-                    7: word <= {1'd0, sr[0], sr[1], sr[2], sr[3], sr[4], sr[5], sr[6]};
-                    default: word <= {sr[0], sr[1], sr[2], sr[3], sr[4], sr[5], sr[6], sr[7]};
-                endcase
-            end
+            if (frame_end) word <= sr & WMASK;   // one CLK after the last bit: sr[0] newest -> Q1, sr[N-1] oldest -> QN
         end
     end
     always @(posedge CLKDIV) begin
@@ -266,7 +269,7 @@ module ISERDESE2 #(
             if (BITSLIP) slip <= (slip == DATA_WIDTH - 1) ? 3'd0 : slip + 3'd1;
         end
     end
-    // Q1 = oldest bit of the frame ... Q(DATA_WIDTH) = newest  (UNVERIFIED ordering, see header)
+    // Q1 = newest bit of the frame ... Q(DATA_WIDTH) = oldest = first received (UG471 v1.10 p.146, Fig. 3-3)
     assign {Q8, Q7, Q6, Q5, Q4, Q3, Q2, Q1} = q;
     assign O = din;
     assign SHIFTOUT1 = 1'b0;

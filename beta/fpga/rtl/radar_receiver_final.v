@@ -71,10 +71,14 @@ module radar_receiver_final #(
     input  wire [1:0]  cal_bitslip,
     input  wire [7:0]  cal_pattern_a,
     input  wire [7:0]  cal_pattern_b,
+    input  wire        cal_blind,         // 1 = blind (CW tone) calibration method
+    input  wire [15:0] cal_blind_coef,    // signed Q1.14 cos(2*pi*f_IF/f_S)
+    input  wire [15:0] cal_blind_margin,
     output wire [15:0] cal_status,        // {fifo_ovf, 4'b0, align_fail, busy, done, lock[7:0]}
     output wire [15:0] cal_lane_info,     // {1'b0, win_hi, win_lo, tap}
     output wire [15:0] cal_err_count,
     output wire [7:0]  cal_undetermined,
+    output wire [15:0] cal_blind_min,     // minimum blind metric of cal_lane (>>4, saturated)
 
     // Status
     output wire [5:0]  rx_chirp_counter,
@@ -144,6 +148,7 @@ if (ADC_CAPTURE_MODE == 0) begin : g_legacy
     assign cal_lane_info    = 16'd0;
     assign cal_err_count    = 16'd0;
     assign cal_undetermined = 8'd0;
+    assign cal_blind_min    = 16'd0;
 end else begin : g_iserdes
     // ---- ISERDES 1:4 capture (regional clock) + polyphase DDC at 100 MHz ----
     wire        clk_200m_ref, ref_locked, idelay_rdy;
@@ -164,7 +169,7 @@ end else begin : g_iserdes
         .locked       (ref_locked)
     );
 
-    ad9484_iserdes_capture #(.DIFF_TERM("FALSE"), .Q1_IS_OLDEST(1)) adc (
+    ad9484_iserdes_capture #(.DIFF_TERM("FALSE"), .Q1_IS_OLDEST(0)) adc (   // UG471: first bit on the highest Q
         .adc_d_p(adc_d_p), .adc_d_n(adc_d_n), .adc_dco_p(adc_dco_p), .adc_dco_n(adc_dco_n),
         .reset_n(reset_n), .clk_200m_ref(clk_200m_ref), .ref_locked(ref_locked), .idelay_rdy(idelay_rdy),
         .clk_div(clk_div), .rst_n_div(rst_n_div),
@@ -182,10 +187,11 @@ end else begin : g_iserdes
         .ctrl_bitslip_load_t(cal_bitslip_load_t), .ctrl_check_en(cal_check_en),
         .ctrl_lane(cal_lane), .ctrl_tap(cal_tap), .ctrl_bitslip(cal_bitslip),
         .pattern_a(cal_pattern_a), .pattern_b(cal_pattern_b),
+        .ctrl_blind(cal_blind), .blind_coef(cal_blind_coef), .blind_margin(cal_blind_margin),
         .tap_ld(tap_ld), .tap_val(tap_val), .bitslip(bitslip),
         .cal_busy(cal_busy), .cal_done(cal_done), .lock(lock), .undetermined(undetermined), .align_fail(align_fail),
         .lane_tap(lane_tap), .lane_win_lo(lane_win_lo), .lane_win_hi(lane_win_hi),
-        .err_count(cal_err_count)
+        .err_count(cal_err_count), .lane_metric_min(cal_blind_min)
     );
     assign cal_status       = {fifo_ovf, 4'b0000, align_fail, cal_busy, cal_done, lock};
     assign cal_lane_info    = {1'b0, lane_win_hi, lane_win_lo, lane_tap};

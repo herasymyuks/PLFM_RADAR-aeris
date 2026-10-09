@@ -26,6 +26,11 @@
  *    shared STM32 SPI1 lines with three new ports (spi_bridge_cs_n = DIG_5, spi_bridge_drdy =
  *    DIG_6, spi_bridge_spare = DIG_7); the ADAR1000 pass-through is gated while the bridge CS is
  *    low. The FT601 path (usb_data_interface, option A) is unchanged.
+ *  - bridge command set v2 (HOST_LINK_DESIGN.md §7): the bridge's register port drives the
+ *    register map (0x02 write / 0x03 read, addr[4:0], data[15:0]); 0x04 status word assembled here:
+ *    bit0 frame ready (DRDY), bit1 ADAR CS conflict (sticky), bit2 capture FIFO overflow (sticky),
+ *    bit3 calibration lock (all 8 lanes), bit4 packer overflow (frame dropped), bits 5..15 = 0;
+ *    frames_produced = 16-bit count of completed packer frames.
  */
 
 module radar_system_top (
@@ -189,12 +194,18 @@ wire        ctl_usb_enable;
 wire [15:0] ctl_cfar_threshold;
 wire [1:0]  ctl_decimation_mode;
 wire [9:0]  ctl_start_bin;
-wire        cal_auto_start_t, cal_manual_load_t, cal_bitslip_load_t, cal_check_en;
+wire        cal_auto_start_t, cal_manual_load_t, cal_bitslip_load_t, cal_check_en, cal_blind;
 wire [2:0]  cal_lane;
 wire [4:0]  cal_tap;
 wire [1:0]  cal_bitslip;
 wire [7:0]  cal_pattern_a, cal_pattern_b, cal_undetermined;
-wire [15:0] cal_status, cal_lane_info, cal_err_count;
+wire [15:0] cal_status, cal_lane_info, cal_err_count, cal_blind_coef, cal_blind_margin, cal_blind_min;
+// Bridge register port (command set v2)
+wire        brg_reg_we;
+wire [15:0] brg_reg_addr;
+wire [31:0] brg_reg_wdata;
+wire [15:0] brg_reg_rdata16;
+reg  [15:0] frames_produced;
 
 // Data packing for USB
 wire [31:0] usb_range_profile;
@@ -318,10 +329,10 @@ radar_control_regs #(
 ) ctl_regs (
     .clk             (clk_100m_buf),
     .reset_n         (sys_reset_n),
-    .reg_we          (1'b0),            // no host write path on the board (README "Host path")
-    .reg_addr        (4'h0),
-    .reg_wdata       (16'h0000),
-    .reg_rdata       (),
+    .reg_we          (brg_reg_we),            // host_bridge_spi command 0x02 / 0x03 (v2)
+    .reg_addr        (brg_reg_addr[4:0]),
+    .reg_wdata       (brg_reg_wdata[15:0]),
+    .reg_rdata       (brg_reg_rdata16),
     .use_long_chirp  (ctl_use_long_chirp),
     .adc_pwdn        (ctl_adc_pwdn),
     .usb_enable      (ctl_usb_enable),
@@ -332,9 +343,13 @@ radar_control_regs #(
     .cal_bitslip_load_t(cal_bitslip_load_t), .cal_check_en(cal_check_en),
     .cal_lane(cal_lane), .cal_tap(cal_tap), .cal_bitslip(cal_bitslip),
     .cal_pattern_a(cal_pattern_a), .cal_pattern_b(cal_pattern_b),
+    .cal_blind(cal_blind), .cal_blind_coef(cal_blind_coef), .cal_blind_margin(cal_blind_margin),
     .cal_status(cal_status), .cal_lane_info(cal_lane_info),
-    .cal_err_count(cal_err_count), .cal_undetermined(cal_undetermined)
+    .cal_err_count(cal_err_count), .cal_undetermined(cal_undetermined), .cal_blind_min(cal_blind_min)
 );
+/* verilator lint_off UNUSEDSIGNAL */
+wire unused_bridge_reg = (|brg_reg_addr[15:5]) | (|brg_reg_wdata[31:16]);   // 5-bit map, 16-bit registers
+/* verilator lint_on UNUSEDSIGNAL */
 
 radar_receiver_final #(
     .CHIRPS_PER_FRAME(32),
@@ -376,8 +391,9 @@ radar_receiver_final #(
     .cal_bitslip_load_t(cal_bitslip_load_t), .cal_check_en(cal_check_en),
     .cal_lane(cal_lane), .cal_tap(cal_tap), .cal_bitslip(cal_bitslip),
     .cal_pattern_a(cal_pattern_a), .cal_pattern_b(cal_pattern_b),
+    .cal_blind(cal_blind), .cal_blind_coef(cal_blind_coef), .cal_blind_margin(cal_blind_margin),
     .cal_status(cal_status), .cal_lane_info(cal_lane_info),
-    .cal_err_count(cal_err_count), .cal_undetermined(cal_undetermined),
+    .cal_err_count(cal_err_count), .cal_undetermined(cal_undetermined), .cal_blind_min(cal_blind_min),
 
     // Status
     .rx_chirp_counter(rx_chirp_counter),
@@ -505,11 +521,32 @@ rd_map_packer #(.N_RANGE(64), .N_DOPPLER(32), .MAX_DET(32)) rd_packer (
     .overflow(pk_overflow), .consumed(pk_consumed)
 );
 
-host_bridge_spi host_bridge (
+// RTL check required by option_b_signal_map.csv: all ADAR1000 chip selects must be high
+// during a bridge transfer (sticky flag, exported in system_status[1] and status word bit1).
+reg bridge_cs_conflict;
+always @(posedge clk_100m_buf or negedge sys_reset_n) begin
+    if (!sys_reset_n) bridge_cs_conflict <= 1'b0;
+    else if (bridge_active && !(stm32_cs_adar1_3v3 & stm32_cs_adar2_3v3 & stm32_cs_adar3_3v3 & stm32_cs_adar4_3v3))
+        bridge_cs_conflict <= 1'b1;
+end
+
+// Status word for bridge command 0x04 and the frame counter (see header). cal_status[7:0] = lock
+// per lane (0 in ADC_CAPTURE_MODE 0), so bit3 is 0 for the legacy capture path.
+always @(posedge clk_100m_buf or negedge sys_reset_n) begin
+    if (!sys_reset_n) frames_produced <= 16'd0;
+    else if (pk_frame_done) frames_produced <= frames_produced + 16'd1;
+end
+wire [15:0] bridge_status = {11'd0, pk_overflow, (cal_status[7:0] == 8'hFF), rx_cdc_overflow,
+                             bridge_cs_conflict, spi_bridge_drdy};
+
+host_bridge_spi #(.RTL_VERSION(16'h0002)) host_bridge (
     .clk(clk_100m_buf), .rst_n(sys_reset_n),
     .wr_en(pk_wr_en), .wr_addr(pk_wr_addr), .wr_data(pk_wr_data), .wr_bank(pk_bank),
     .frame_bank(pk_frame_bank), .frame_done(pk_frame_done), .frame_len(pk_frame_len),
     .consumed(pk_consumed),
+    .reg_we(brg_reg_we), .reg_addr(brg_reg_addr), .reg_wdata(brg_reg_wdata),
+    .reg_rdata({16'h0000, brg_reg_rdata16}),
+    .status_in(bridge_status), .frames_produced(frames_produced),
     .sclk(stm32_sclk_3v3), .mosi(stm32_mosi_3v3), .miso(bridge_miso), .cs_n(spi_bridge_cs_n),
     .drdy(spi_bridge_drdy), .bridge_active(bridge_active)
 );
@@ -517,15 +554,6 @@ host_bridge_spi host_bridge (
 // Shared SPI1 MISO: bridge while its chip select is low, ADAR1000 pass-through otherwise.
 assign stm32_miso_3v3  = bridge_active ? bridge_miso : passthrough_miso_3v3;
 assign spi_bridge_spare = pk_overflow;
-
-// RTL check required by option_b_signal_map.csv: all ADAR1000 chip selects must be high
-// during a bridge transfer (sticky flag, exported in system_status[1]).
-reg bridge_cs_conflict;
-always @(posedge clk_100m_buf or negedge sys_reset_n) begin
-    if (!sys_reset_n) bridge_cs_conflict <= 1'b0;
-    else if (bridge_active && !(stm32_cs_adar1_3v3 & stm32_cs_adar2_3v3 & stm32_cs_adar3_3v3 & stm32_cs_adar4_3v3))
-        bridge_cs_conflict <= 1'b1;
-end
 
 /* verilator lint_off UNUSEDSIGNAL */
 wire unused_packer = (|dop_bin_d) | (|rng_bin_d) | frame_first_d;   // kept for waveform debugging

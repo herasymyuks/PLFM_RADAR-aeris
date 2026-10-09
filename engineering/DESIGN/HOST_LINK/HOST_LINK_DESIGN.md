@@ -67,16 +67,42 @@ Files: `rtl/host_bridge_spi.v` (SPI slave + frame FIFO, 1 BRAM), `rtl/rd_map_pac
 
 - Option A: Main Board rev. B schematic/layout (MDR-13), FT601 datasheet checks, FTDI D3XX host driver test; option B: bench test of the SPI timing (level shifter path is 3.3 V, no translation needed), CDC throughput measurement, firmware arbitration of SPI1 with the ADAR1000 writes.
 
-## 7. Bridge command set v2 (register access) — added 2026-10-09
+## 7. Bridge command set v2 (register access) — added 2026-10-09, RTL implemented 2026-10-09
 
-All transfers: `FPGA_CS_N` low, SPI mode 0, MSB first; first byte = command. Bytes marked ← are driven by the FPGA on MISO (the master clocks dummy 0x00).
+All transfers: `FPGA_CS_N` low, SPI mode 0, MSB first; first byte = command. Bytes marked ← are driven by the FPGA on MISO (the master clocks dummy 0x00). Implemented in `beta/fpga/rtl/host_bridge_spi.v` (copy in `rtl/`), firmware counterpart `beta/stm32/Core/Src/host_bridge_proto.c`, verified by `beta/fpga/tb/tb_host_bridge_top.v` (through `radar_system_top`) and `rtl/tb_host_bridge.v` (unit).
 
-| Cmd | Bytes after the command | Reply | Meaning |
-|---|---|---|---|
-| 0x01 | — | frame + CRC (as §5) | read the pending range-Doppler frame (unchanged) |
-| 0x02 | addr[7:0], addr[15:8], d[7:0], d[15:8], d[23:16], d[31:24] | ← 0xA2 (ack) after the last data byte | write 32-bit register `addr` (word address in the register map of `radar_control_regs.v`) |
-| 0x03 | addr[7:0], addr[15:8] | ← d[7:0], d[15:8], d[23:16], d[31:24] | read 32-bit register |
-| 0x04 | — | ← 8 bytes: status word (bit0 frame ready, bit1 ADAR CS conflict, bit2 FIFO overflow, bit3 calibration lock), fw/rtl version u16, frames produced u16, reserved | status without touching the frame |
-| other | — | ← 0xEE | unknown command (ignored) |
+| Cmd | Total bytes | Bytes after the command | Reply | Meaning |
+|---|---|---|---|---|
+| 0x01 | 1 + frame + 2 | — | frame + CRC (as §5); all zeros when no frame is pending (no sync word) | read the pending range-Doppler frame (unchanged) |
+| 0x02 | 8 | a0 = addr[7:0], a1 = addr[15:8], d0..d3 = data[7:0]..[31:24], xx | ← byte 7 = 0xA2 (ack = command accepted; the write commits in the clk domain within ~5 clk cycles) | write register word `addr` |
+| 0x03 | 7 | a0, a1, xx, xx, xx, xx | ← bytes 3..6 = d0 d1 d2 d3 (little-endian). No turnaround byte: the read is launched when a0 is complete; a1 is accepted but not decoded (the map has 5 address bits, so a1 must be 0) | read register word `addr` |
+| 0x04 | 9 | xx × 8 | ← bytes 1..8 = four little-endian u16: status word, RTL version (0x0002), frames produced, 0x0000 | status without touching the frame |
+| other (incl. 0x00) | any | — | ← 0xEE on every following byte | unknown command (ignored) |
 
-Register map (word addresses, from `beta/fpga/rtl/radar_control_regs.v` — the RTL owner keeps this table in sync): 0x0 control (bit0 run, bit1 long_chirp, bit2 mixers enable), 0x1 CFAR threshold, 0x2 NCO tuning word, 0x3 reserved, 0x4 ADC calibration control (bit0 auto, bit1 manual, bits 8..12 manual tap, bits 16..18 bitslip, bits 24..26 lane), 0x5 calibration status (ro), 0x6 pattern expected, 0x7 error counter (ro), 0x8..0xC calibration windows (ro). STM32 API: `HostBridge_WriteReg(addr, value)`, `HostBridge_ReadReg(addr, &value)`, `HostBridge_Status(&st)`; exposed to the GUI through the existing settings path as a text command `REG W <addr> <value>` / `REG R <addr>` → reply `REG <addr> <value>` in the status stream (ASCII, so the bridge-frame parser passes it through).
+Status word (assembled in `radar_system_top.v`): bit0 frame ready (= DRDY), bit1 ADAR CS conflict (sticky: an ADAR1000 CS was low while `FPGA_CS_N` was low), bit2 ADC capture FIFO overflow (sticky, `ADC_CAPTURE_MODE = 1`), bit3 calibration lock (all 8 lanes locked), bit4 packer overflow (a frame was dropped since reset), bits 5..15 = 0. The status is sampled when the command byte completes (quasi-static values; `frames produced` may be one behind).
+
+Register map — word addresses, **16-bit registers** (data[31:16] are ignored on write and read as 0). Source of truth: `beta/fpga/rtl/radar_control_regs.v` (address-map comment and the two `case` statements); this table is kept identical to it. `toggle` = write 1 to the bit to pulse the action, reads as 0; `level` = stored bit.
+
+| Addr | Name | Access | Reset | Bits |
+|---|---|---|---|---|
+| 0x00 | CONTROL | rw | 0x0005 | bit0 use_long_chirp, bit1 adc_pwdn, bit2 usb_enable |
+| 0x01 | CFAR_THR | rw | 10000 | [15:0] |I|+|Q| detection threshold |
+| 0x02 | DECIM | rw | 0x0001 | [1:0] range decimation mode (01 = peak) |
+| 0x03 | START_BIN | rw | 0 | [9:0] first range bin passed to the decimator |
+| 0x04 | CAL_CTRL | rw | 0 | bit0 start auto calibration (toggle), bit1 manual tap load (toggle), bit2 bitslip load (toggle), bit3 pattern-check enable (level), bit4 blind method (level: 0 = ADC test pattern, 1 = CW tone at the IF) |
+| 0x05 | CAL_LANE | rw | 0 | [2:0] lane for CAL_TAP / CAL_SLIP writes and CAL_LANE_INFO / CAL_BLIND_MIN reads |
+| 0x06 | CAL_TAP | rw | 16 | [4:0] manual IDELAY tap |
+| 0x07 | CAL_SLIP | rw | 0 | [1:0] BITSLIP pulses for a manual bitslip load |
+| 0x08 | CAL_PATT | rw | 0x55AA | {pattern_b[7:0], pattern_a[7:0]} expected alternating ADC test codes |
+| 0x09 | CAL_STAT | ro | — | {fifo_ovf, 4'b0, align_fail, busy, done, lock[7:0]} |
+| 0x0A | CAL_LANE_INFO | ro | — | {1'b0, win_hi[4:0], win_lo[4:0], tap[4:0]} of CAL_LANE |
+| 0x0B | CAL_ERR | ro | — | pattern-check error counter (saturating) |
+| 0x0C | CAL_UNDET | ro | — | {8'b0, undetermined[7:0]} |
+| 0x0D | CAL_BLIND_COEF | rw | 0xEC39 | signed Q1.14 cos(2π·f_IF/f_S) for the blind notch (0xEC39 = −5063 = 120 MHz at 400 MSPS) |
+| 0x0E | CAL_BLIND_MARGIN | rw | 0x0040 | absolute part of the blind pass margin (a tap passes when metric ≤ min + margin + min/16) |
+| 0x0F | ID | ro | 0xBE7A | beta build identifier |
+| 0x10 | CAL_BLIND_MIN | ro | — | minimum blind metric (Σ|r| over the window, >> 4, saturated) of CAL_LANE |
+
+Registers that earlier revisions of this section listed but that do **not** exist in the RTL (run bit, mixers enable, NCO tuning word) have been removed from the table; `use_long_chirp` is CONTROL bit0.
+
+STM32 API: `HostBridge_WriteReg(addr, value)`, `HostBridge_ReadReg(addr, &value)`, `HostBridge_Status(&st)`; exposed to the GUI through the existing settings path as a text command `REG W <addr> <value>` / `REG R <addr>` → reply `REG <addr> <value>` in the status stream (ASCII, so the bridge-frame parser passes it through).

@@ -1,13 +1,22 @@
-lane 0: lock=1 undetermined=0 tap=12 window 29..26
-lane 1: lock=1 undetermined=0 tap=12 window 29..26
-lane 2: lock=1 undetermined=0 tap=12 window 29..26
-lane 3: lock=1 undetermined=0 tap=12 window 29..26
-lane 4: lock=1 undetermined=0 tap=12 window 29..26
-lane 5: lock=1 undetermined=0 tap=4 window 22..18
-lane 6: lock=1 undetermined=0 tap=12 window 29..26
-lane 7: lock=1 undetermined=0 tap=12 window 29..26
+lane 0: lock=1 undetermined=0 tap=13 window 0..26
+lane 1: lock=1 undetermined=0 tap=13 window 0..26
+lane 2: lock=1 undetermined=0 tap=13 window 0..26
+lane 3: lock=1 undetermined=0 tap=13 window 0..26
+lane 4: lock=1 undetermined=0 tap=13 window 0..26
+lane 5: lock=1 undetermined=0 tap=5 window 24..18
+lane 6: lock=1 undetermined=0 tap=13 window 0..26
+lane 7: lock=1 undetermined=0 tap=13 window 0..26
 bitslip test: errors 0 (cal) / 1998 (1 slip) / 0 (4 slips)
 normal data: 5700 source samples, 1225 words captured, fifo_overflow=0
-sequence check: first word = source sample 768, 0 mismatching samples of 4000
-PASS tb_adc_iserdes_capture: 8 lanes locked (lane 5 skew compensated, 8 taps), bitslip/manual/auto ok, 4000 samples reproduced exactly
-tb/tb_adc_iserdes_capture.v:132: $finish called at 154548750 (1ps)
+sequence check (sine+ramp): first word = source sample 768, 0 mismatching samples of 4000
+blind lane 0: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 123
+blind lane 1: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 124
+blind lane 2: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 121
+blind lane 3: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 121
+blind lane 4: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 124
+blind lane 5: lock=1 undetermined=0 tap=5 (pattern 5, delta 0) run 0..18 min metric>>4 = 121
+blind lane 6: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 122
+blind lane 7: lock=1 undetermined=0 tap=13 (pattern 13, delta 0) run 0..26 min metric>>4 = 120
+sequence check (blind 120 MHz tone): first word = source sample 768, 0 mismatching samples of 4000
+PASS tb_adc_iserdes_capture: 8 lanes locked (lane 5 skew compensated, 8 taps), bitslip/manual/auto ok, 4000 samples reproduced exactly; blind calibration 8/8 lanes within +/-0 taps of the pattern centres, framing restored, tone reproduced exactly
+tb/tb_adc_iserdes_capture.v:175: $finish called at 3414928750 (1ps)

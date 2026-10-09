@@ -15,6 +15,14 @@
 //   Pass-through gating: during the read all four ADAR CS (1.8 V) stay high, SCLK/MOSI
 //   1.8 V stay idle and stm32_miso_3v3 equals the bridge MISO; after the read a CS1
 //   pass-through toggle reaches stm32_cs_adar1_1v8 and MISO follows stm32_miso_1v8.
+// Command set v2 (HOST_LINK_DESIGN.md §7, byte sequences as in beta/stm32 host_bridge_proto.c):
+//   before the chirps: 0x03 read of ID (0xF) = 0xBE7A and CFAR_THR (0x1) = 10000 (the DUT keeps
+//   the default CFAR_THRESHOLD_DEFAULT); 0x02 write CFAR_THR = 150 (ack 0xA2 in byte 7), write
+//   CAL_CTRL (0x4) = 0x18 (check enable + blind, levels), CAL_LANE (0x5) = 3, CAL_BLIND_COEF (0xD)
+//   = 0x1234; 0x03 read-back of all four (upper 16 bits = 0); 0x04 status = {0x0000, version 2,
+//   frames 0, 0}; unknown 0x7F -> 0xEE on every following byte; then the 9 chirps, 0x04 status
+//   again (bit0 frame ready, frames 1), and the 0x01 frame read as before; because the threshold
+//   now comes only from the register write, the frame must contain detections (n_det > 0).
 // ============================================================================
 module tb_host_bridge_top;
     localparam NUM_CHIRPS      = 9;
@@ -51,8 +59,9 @@ module tb_host_bridge_top;
     wire [3:0] system_status;
     reg  spi_bridge_cs_n = 1; wire spi_bridge_drdy, spi_bridge_spare;
 
-    // CFAR threshold lowered so that the detection list is exercised (default 10000 gives none)
-    radar_system_top #(.CFAR_THRESHOLD_DEFAULT(16'd150)) dut (
+    // CFAR threshold left at its reset default (10000 = no detections); the test lowers it to 150
+    // through the bridge write command so that the detection list is exercised
+    radar_system_top dut (
         .clk_100m(clk_100m), .clk_120m_dac(clk_120m), .ft601_clk_in(ft601_clk), .reset_n(reset_n),
         .dac_data(dac_data), .dac_clk(dac_clk), .dac_sleep(dac_sleep), .fpga_rf_switch(fpga_rf_switch),
         .rx_mixer_en(rx_mixer_en), .tx_mixer_en(tx_mixer_en),
@@ -160,8 +169,78 @@ module tb_host_bridge_top;
     reg [7:0] rx; reg [7:0] frame [0:2400];
     integer n, k, errors = 0, n_det, flen, det_i, cidx;
     reg [15:0] crc; reg [7:0] lm;
+
+    // ---------------- command set v2 helpers (byte layout = host_bridge_proto.c) ----------------
+    reg [7:0] rb [0:8];
+    task reg_write(input [15:0] addr, input [31:0] value);            // 02 a0 a1 d0 d1 d2 d3 00 -> rb[7] = 0xA2
+        begin
+            spi_bridge_cs_n = 0; #40;
+            spi_byte(8'h02, rb[0]); spi_byte(addr[7:0], rb[1]); spi_byte(addr[15:8], rb[2]);
+            spi_byte(value[7:0], rb[3]); spi_byte(value[15:8], rb[4]); spi_byte(value[23:16], rb[5]); spi_byte(value[31:24], rb[6]);
+            spi_byte(8'h00, rb[7]);
+            #40 spi_bridge_cs_n = 1; #200;
+            if (rb[7] !== 8'hA2) begin $display("FAIL write 0x%04x: ack %h != A2", addr, rb[7]); errors = errors + 1; end
+        end
+    endtask
+    task reg_read(input [15:0] addr, output [31:0] value);            // 03 a0 a1 xx xx xx xx -> rb[3..6]
+        begin
+            spi_bridge_cs_n = 0; #40;
+            spi_byte(8'h03, rb[0]); spi_byte(addr[7:0], rb[1]); spi_byte(addr[15:8], rb[2]);
+            spi_byte(8'h00, rb[3]); spi_byte(8'h00, rb[4]); spi_byte(8'h00, rb[5]); spi_byte(8'h00, rb[6]);
+            #40 spi_bridge_cs_n = 1; #200;
+            value = {rb[6], rb[5], rb[4], rb[3]};
+        end
+    endtask
+    task reg_status(output [15:0] st, output [15:0] ver, output [15:0] frames, output [15:0] resv);   // 04 + 8 x 00
+        begin
+            spi_bridge_cs_n = 0; #40;
+            spi_byte(8'h04, rb[0]); for (n = 1; n <= 8; n = n + 1) spi_byte(8'h00, rb[n]);
+            #40 spi_bridge_cs_n = 1; #200;
+            st = {rb[2], rb[1]}; ver = {rb[4], rb[3]}; frames = {rb[6], rb[5]}; resv = {rb[8], rb[7]};
+        end
+    endtask
+    task expect_read(input [15:0] addr, input [31:0] exp, input [255:0] label);
+        reg [31:0] v;
+        begin
+            reg_read(addr, v);
+            if (v !== exp) begin $display("FAIL read 0x%04x (%0s): %08x != %08x", addr, label, v, exp); errors = errors + 1; end
+            else $display("  read 0x%04x (%0s) = 0x%08x ok", addr, label, v);
+        end
+    endtask
+
+    reg [31:0] rv; reg [15:0] st_w, st_ver, st_frames, st_resv;
     initial begin
         #200; reset_n = 1; #500; stm32_mixers_enable = 1; #2000;
+        // ---- command set v2: register access before any frame exists ----
+        expect_read(16'h000F, 32'h0000BE7A, "ID");
+        expect_read(16'h0001, 32'd10000,    "CFAR_THR default");
+        reg_write(16'h0001, 32'd150);                         // CFAR threshold -> detections appear in the frame
+        reg_write(16'h0004, 32'h00000018);                    // CAL_CTRL: check enable + blind method (levels)
+        reg_write(16'h0005, 32'h00000003);                    // CAL_LANE = 3
+        reg_write(16'h000D, 32'hDEAD1234);                    // CAL_BLIND_COEF (upper 16 bits must be dropped)
+        expect_read(16'h0001, 32'd150,        "CFAR_THR");
+        expect_read(16'h0004, 32'h00000018,   "CAL_CTRL");
+        expect_read(16'h0005, 32'h00000003,   "CAL_LANE");
+        expect_read(16'h000D, 32'h00001234,   "CAL_BLIND_COEF");
+        expect_read(16'h000E, 32'h00000040,   "MARGIN default");
+        if (dut.ctl_cfar_threshold !== 16'd150 || dut.cal_blind !== 1'b1 || dut.cal_check_en !== 1'b1 || dut.cal_lane !== 3'd3) begin
+            $display("FAIL register outputs: thr=%0d blind=%b chk=%b lane=%0d", dut.ctl_cfar_threshold, dut.cal_blind, dut.cal_check_en, dut.cal_lane); errors = errors + 1; end
+        reg_write(16'h000D, 32'h0000EC39);                    // restore the default coefficient
+        reg_write(16'h0004, 32'h00000000);                    // levels back to 0 (no toggles written)
+        reg_status(st_w, st_ver, st_frames, st_resv);
+        $display("  status before frames: word %04x version %04x frames %0d reserved %04x", st_w, st_ver, st_frames, st_resv);
+        if (st_w !== 16'h0000 || st_ver !== 16'h0002 || st_frames !== 16'd0 || st_resv !== 16'h0000) begin
+            $display("FAIL status before frames"); errors = errors + 1; end
+        // unknown command: 0xEE on every following byte, frame RAM untouched, DRDY unaffected
+        spi_bridge_cs_n = 0; #40; spi_byte(8'h7F, rb[0]); spi_byte(8'h00, rb[1]); spi_byte(8'h00, rb[2]); spi_byte(8'h00, rb[3]); #40 spi_bridge_cs_n = 1; #200;
+        if (rb[1] !== 8'hEE || rb[2] !== 8'hEE || rb[3] !== 8'hEE) begin $display("FAIL unknown command reply %h %h %h", rb[1], rb[2], rb[3]); errors = errors + 1; end
+        // 0x01 without a frame: zeros, no sync word
+        spi_bridge_cs_n = 0; #40; spi_byte(8'h01, rb[0]); spi_byte(8'h00, rb[1]); spi_byte(8'h00, rb[2]); #40 spi_bridge_cs_n = 1; #200;
+        if (rb[1] !== 8'h00 || rb[2] !== 8'h00) begin $display("FAIL 0x01 without frame returned %h %h", rb[1], rb[2]); errors = errors + 1; end
+        if (spi_bridge_drdy) begin $display("FAIL DRDY set before any frame"); errors = errors + 1; end
+        if (gate_errors != 0) begin $display("FAIL ADAR pass-through not gated during register commands (%0d samples)", gate_errors); errors = errors + 1; end
+        $display("register commands done: %0d error(s)", errors);
+        #2000;
         for (k = 0; k < NUM_CHIRPS; k = k + 1) begin
             @(posedge clk_100m);
             chirp_idx = k; adc_n = 0; echo_start = 100 * 4;
@@ -186,6 +265,13 @@ module tb_host_bridge_top;
         end
         $display("DRDY high; %0d Doppler cells captured, %0d detections; az=%0d el=%0d", cap_n, cap_det_n, current_azimuth, current_elevation);
         #1000;
+        // ---- status with a frame pending ----
+        reg_status(st_w, st_ver, st_frames, st_resv);
+        $display("  status with frame pending: word %04x version %04x frames %0d reserved %04x", st_w, st_ver, st_frames, st_resv);
+        if (st_w !== 16'h0001 || st_ver !== 16'h0002 || st_frames !== 16'd1 || st_resv !== 16'h0000) begin
+            $display("FAIL status with frame pending (expected word 0001 = frame ready, frames 1)"); errors = errors + 1; end
+        if (spi_bridge_drdy !== 1'b1) begin $display("FAIL status command cleared DRDY"); errors = errors + 1; end
+        if (cap_det_n == 0) begin $display("FAIL no detections although CFAR_THR was written to 150"); errors = errors + 1; end
         // ---- read one frame ----
         spi_bridge_cs_n = 0; #40;
         spi_byte(8'h01, rx);
@@ -235,8 +321,13 @@ module tb_host_bridge_top;
         if (stm32_miso_3v3 !== 1'b1) begin $display("FAIL MISO pass-through after bridge transfer"); errors = errors + 1; end
         stm32_cs_adar1_3v3 = 1; stm32_miso_1v8 = 0; #60;
 
+        // ---- status after the read: frame consumed, counter unchanged ----
+        reg_status(st_w, st_ver, st_frames, st_resv);
+        if (st_w !== 16'h0000 || st_frames !== 16'd1) begin $display("FAIL status after read: word %04x frames %0d", st_w, st_frames); errors = errors + 1; end
+        expect_read(16'h0001, 32'd150, "CFAR_THR after frame");
+
         if (errors == 0) begin
-            $display("PASS tb_host_bridge_top: frame %0d bytes read over SPI1 (%0d detections), sync/dims/az-el/chirp-count/map/CRC ok, ADAR pass-through gated during the transfer",
+            $display("PASS tb_host_bridge_top: v2 register write/read/status/unknown ok (CFAR_THR 10000->150 via 0x02, 5 read-backs, status 0000/0001, 0xEE), frame %0d bytes read over SPI1 (%0d detections), sync/dims/az-el/chirp-count/map/CRC ok, ADAR pass-through gated during the transfer",
                      flen + 2, n_det);
             $finish;
         end else begin

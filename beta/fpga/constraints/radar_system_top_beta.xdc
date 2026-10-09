@@ -100,13 +100,36 @@ set_property BITSTREAM.CONFIG.UNUSEDPIN PULLDOWN [current_design]
 
 # --------------------------------------------------- pin assignments -------
 # Verbatim from the schematic-derived file, with these edits:
-#  * adc_d_*/adc_dco_*: bank 14 is 3.3 V on the schematic. LVDS_25 inputs in a 3.3 V HR
-#    bank are allowed only with DIFF_TERM = FALSE and an external 100 Ohm termination
-#    (UG471). This is a DESIGN CONFLICT to be resolved by the board designer:
-#      option A (active below): LVDS_25 + DIFF_TERM FALSE, external termination required;
-#      option B (commented):    change bank-14 VCCO to 2.5 V, then DIFF_TERM TRUE is legal
-#                                (requires a PCB change: bank 14 also carries the QSPI flash
-#                                and adc_pwdn at 3.3 V levels).
+#  * adc_d_*/adc_dco_*: bank 14 is 3.3 V on the schematic. UG471 (v1.10, "LVDS and LVDS_25 (Low
+#    Voltage Differential Signaling)", p. 92, checked 2026-10-09 against the pdftotext copy):
+#      "It is acceptable to have differential inputs such as LVDS and LVDS_25 in I/O banks that
+#       are powered at voltage levels other than the nominal voltages required for the outputs of
+#       those standards (1.8V for LVDS outputs, and 2.5V for LVDS_25 outputs). However, these
+#       criteria must be met:
+#       - The optional internal differential termination is not used (DIFF_TERM = FALSE, which is
+#         the default value).
+#       - The differential signals at the input pins meet the VIN requirements in the Recommended
+#         Operating Conditions table of the specific device family data sheet.
+#       - The differential signals at the input pins meet the VIDIFF (min) requirements in the
+#         corresponding LVDS or LVDS_25 DC specifications tables of the specific device family
+#         data sheet.
+#       - For HR I/O banks in bidirectional configuration, internal differential termination is
+#         always used."
+#      "RDIFF provides the 100 Ohm differential receiver termination because the internal DIFF_TERM
+#       is set to FALSE."  (Figure 1-72 text)
+#      Table 1-55 note 1a: "The optional internal differential termination is not used (DIFF_TERM =
+#       FALSE, which is the default value) unless the VCCO voltage is at the level required for
+#       outputs."; note 1c adds the VICM requirement.
+#      "Differential Termination Attribute" (p. 49): "The VCCO of the I/O bank must be connected to
+#       1.8V for LVDS, and 2.5V for the other differential I/O standards to provide 100 Ohm of
+#       effective differential termination. DIFF_TERM is only available for inputs and can only be
+#       used the appropriate VCCO voltage."
+#    Consequence for this board (option A, active below): IOSTANDARD LVDS_25 + DIFF_TERM FALSE on all
+#    nine pairs, an EXTERNAL 100 Ohm differential termination at the FPGA pins is REQUIRED (not
+#    present on the schematic - MAIN BOARD CHANGE), and the AD9484 LVDS output levels (VOD, VOCM) must
+#    be checked against the XC7A50T DS181 VIN / VIDIFF / VICM limits - REQUIRES VERIFICATION.
+#      option B (commented): change bank-14 VCCO to 2.5 V, then DIFF_TERM TRUE is legal (PCB change:
+#                            bank 14 also carries the QSPI flash and adc_pwdn at 3.3 V levels).
 
 
 set_property PACKAGE_PIN E12 [get_ports {clk_100m}]   ;# net FPGA_SYS_CLOCK, pin IO_L13P_T2_MRCC_15 [MEDIUM]
@@ -114,11 +137,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports {clk_100m}]   ;# bank 15 VCCO=+3V3_F
 set_property PACKAGE_PIN C13 [get_ports {clk_120m_dac}]   ;# net FPGA_DAC_CLOCK, pin IO_L12N_T1_MRCC_15 [MEDIUM]
 set_property IOSTANDARD LVCMOS33 [get_ports {clk_120m_dac}]   ;# bank 15 VCCO=+3V3_FPGA
 set_property PACKAGE_PIN N14 [get_ports {adc_dco_p}]   ;# net ADC_DCO_P, pin IO_L12P_T1_MRCC_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_dco_p}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_dco_p}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_dco_p}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_dco_p}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN P14 [get_ports {adc_dco_n}]   ;# net ADC_DCO_N, pin IO_L12N_T1_MRCC_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_dco_n}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_dco_n}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_dco_n}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_dco_n}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T5 [get_ports {adc_pwdn}]   ;# net ADC_PWRD, pin IO_L23N_T3_A02_D18_14 [HIGH]
@@ -154,67 +177,67 @@ set_property IOSTANDARD LVCMOS18 [get_ports {stm32_mosi_1v8}]   ;# bank 34 VCCO=
 set_property PACKAGE_PIN N3 [get_ports {stm32_miso_1v8}]   ;# net STM32_MISO_1V8, pin IO_L3P_T0_DQS_34 [HIGH]
 set_property IOSTANDARD LVCMOS18 [get_ports {stm32_miso_1v8}]   ;# bank 34 VCCO=+1V8_FPGA
 set_property PACKAGE_PIN P15 [get_ports {adc_d_p[0]}]   ;# net ADC_D0_P, pin IO_L8P_T1_D11_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[0]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[0]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[0]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[0]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R15 [get_ports {adc_d_p[1]}]   ;# net ADC_D1_P, pin IO_L9P_T1_DQS_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[1]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[1]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[1]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[1]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T14 [get_ports {adc_d_p[2]}]   ;# net ADC_D2_P, pin IO_L10P_T1_D14_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[2]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[2]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[2]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[2]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R13 [get_ports {adc_d_p[3]}]   ;# net ADC_D3_P, pin IO_L16P_T2_CSI_B_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[3]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[3]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[3]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[3]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R10 [get_ports {adc_d_p[4]}]   ;# net ADC_D4_P, pin IO_L17P_T2_A14_D30_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[4]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[4]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[4]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[4]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T9 [get_ports {adc_d_p[5]}]   ;# net ADC_D5_P, pin IO_L22P_T3_A05_D21_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[5]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[5]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[5]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[5]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T7 [get_ports {adc_d_p[6]}]   ;# net ADC_D6_P, pin IO_L21P_T3_DQS_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[6]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[6]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[6]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[6]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R6 [get_ports {adc_d_p[7]}]   ;# net ADC_D7_P, pin IO_L24P_T3_A01_D17_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[7]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_p[7]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_p[7]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_p[7]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN P16 [get_ports {adc_d_n[0]}]   ;# net ADC_D0_N, pin IO_L8N_T1_D12_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[0]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[0]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[0]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[0]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R16 [get_ports {adc_d_n[1]}]   ;# net ADC_D1_N, pin IO_L9N_T1_DQS_D13_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[1]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[1]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[1]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[1]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T15 [get_ports {adc_d_n[2]}]   ;# net ADC_D2_N, pin IO_L10N_T1_D15_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[2]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[2]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[2]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[2]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T13 [get_ports {adc_d_n[3]}]   ;# net ADC_D3_N, pin IO_L16N_T2_A15_D31_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[3]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[3]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[3]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[3]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R11 [get_ports {adc_d_n[4]}]   ;# net ADC_D4_N, pin IO_L17N_T2_A13_D29_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[4]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[4]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[4]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[4]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T10 [get_ports {adc_d_n[5]}]   ;# net ADC_D5_N, pin IO_L22N_T3_A04_D20_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[5]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[5]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[5]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[5]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN T8 [get_ports {adc_d_n[6]}]   ;# net ADC_D6_N, pin IO_L21N_T3_DQS_A06_D22_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[6]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[6]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[6]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[6]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN R7 [get_ports {adc_d_n[7]}]   ;# net ADC_D7_N, pin IO_L24N_T3_A00_D16_14 [HIGH]
-set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[7]}]   ;# option A - bank 14 VCCO=3.3V: external 100 Ohm termination REQUIRED (UG471) - REQUIRES VERIFICATION
+set_property IOSTANDARD LVDS_25 [get_ports {adc_d_n[7]}]   ;# option A - bank 14 VCCO=3.3V: UG471 p.92 criteria (DIFF_TERM FALSE, external 100 Ohm RDIFF, VIN/VIDIFF/VICM per DS181) - REQUIRES VERIFICATION
 set_property DIFF_TERM FALSE    [get_ports {adc_d_n[7]}]   ;# option A
 # set_property DIFF_TERM TRUE   [get_ports {adc_d_n[7]}]   ;# option B - only if bank 14 VCCO is changed to 2.5 V (board change)
 set_property PACKAGE_PIN A14 [get_ports {dac_data[0]}]   ;# net DAC_0, pin IO_L7N_T1_AD2N_15 [HIGH]

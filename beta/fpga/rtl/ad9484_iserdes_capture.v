@@ -18,10 +18,13 @@
 //   4 samples x 8 bit per clk_div cycle -> async_fifo (32 bit) -> clk_100m domain
 //
 // Word format: word[7:0] = oldest sample (s0), word[31:24] = newest (s3), with
-// Q1_IS_OLDEST = 1 (ISERDESE2 Q1 = first bit received). The Q ordering is
-// UNVERIFIED against UG471 Fig. 3-13; if hardware shows the reverse, set the
-// parameter to 0 (a wrong setting reverses the sample order inside every word,
-// which the PN9 test pattern on the ADC exposes - see README).
+// Q1_IS_OLDEST = 0: UG471 v1.10, "Registered Outputs - Q1 to Q8" (p.146): "The first
+// data bit received appears on the highest order Q output." and Fig. 3-3 (bit A, the
+// first bit transmitted from OSERDESE2 D1, emerges on Q8). For the 1:4 SDR
+// configuration the first (oldest) bit is therefore on Q4 and the newest on Q1;
+// rtl/sim/unisim_sim_models.v models this order. Q1_IS_OLDEST = 1 is kept only as
+// an escape hatch for hardware bring-up (a wrong setting reverses the sample order
+// inside every word, which the ADC PN9 test pattern exposes - see README).
 //
 // Clock assumption: clk_div (DCO/4) and clk_100m (AD9523 OUT6) are both 100 MHz
 // from the same AD9523, i.e. frequency-locked with unknown phase. The FIFO
@@ -31,7 +34,7 @@
 // ============================================================================
 module ad9484_iserdes_capture #(
     parameter DIFF_TERM    = "FALSE",   // bank 14 VCCO = 3.3 V: external 100 Ohm termination required
-    parameter Q1_IS_OLDEST = 1,
+    parameter Q1_IS_OLDEST = 0,        // UG471: first bit received on the highest Q (Q4 for 1:4)
     parameter VALID_DELAY  = 16
 ) (
     // LVDS pins

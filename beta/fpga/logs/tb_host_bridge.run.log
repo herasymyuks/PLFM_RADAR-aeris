@@ -1,2 +1,2 @@
-PASS tb_host_bridge: frame 2075 bytes, 3 detections, CRC ok
-tb/tb_host_bridge.v:68: $finish called at 686075000 (1ps)
+PASS tb_host_bridge: frame 2075 bytes (3 det) and 2162 bytes (32 det), CRC ok; v2 write/read/status/unknown ok
+tb/tb_host_bridge.v:130: $finish called at 1418305000 (1ps)
