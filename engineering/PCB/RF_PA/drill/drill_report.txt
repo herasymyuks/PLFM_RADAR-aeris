@@ -1,0 +1,30 @@
+Drill report for RF_PA.kicad_pcb
+Created on 2026-10-09T01:10:44
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  B.Cu                      back
+
+
+Drill file 'RF_PA-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.150mm  0.0059"  (103 holes))
+    T2  0.200mm  0.0079"  (24 holes))
+    T3  0.350mm  0.0138"  (215 holes))
+    T4  1.000mm  0.0394"  (5 holes))
+    T5  1.194mm  0.0470"  (8 holes))
+    T6  1.321mm  0.0520"  (2 holes))
+
+    Total plated holes count 357
+
+
+Drill file 'RF_PA-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  3.200mm  0.1260"  (7 holes))
+
+    Total unplated holes count 7

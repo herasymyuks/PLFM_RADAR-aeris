@@ -1,0 +1,14 @@
+{
+  "board": "POWER_SUPPLY",
+  "source": "4_Schematics and Boards Layout/4_6_Schematics/PowerBoard/PowerBoard.sch",
+  "sheets": [
+    {
+      "sheet": 1,
+      "file": "POWER_SUPPLY_schematic_sheet1.svg",
+      "parts": 598,
+      "nets": 156,
+      "width_mm": 875.2,
+      "height_mm": 619.7
+    }
+  ]
+}

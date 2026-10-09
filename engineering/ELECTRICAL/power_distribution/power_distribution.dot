@@ -1,0 +1,141 @@
+digraph aeris10_power_distribution {
+  // Every power rail of the Power Supply Board (PowerBoard.sch) with its regulator, source rail, output connector,
+  // destination connector and consumer, plus the STM32 enable signals (main.h) and the firmware enable order (main.cpp).
+  // Node border: solid = regulator/consumer and nets in a schematic; dashed = documented only; red = conflict / never enabled.
+  rankdir=LR; splines=true; nodesep=0.18; ranksep=0.7; newrank=true;
+  graph [label="AERIS-10 - Power distribution (rails, regulators, connectors, consumers, enables)\lDrawing ID: SYS-04 (ELEC-PWR-01)   Revision: A   Date: 2026-10-09   Status: SOURCE-DERIVED; voltages are net-name nominals (feedback divider values listed, not recomputed); currents UNKNOWN unless from the xlsx budget\lSource: PowerBoard.sch (U1..U34 pins, R1..R56 dividers, X1..X35, SV1); RADAR_Main_Board.sch (rail connectors, consumer pins); Clocks_Freq_Synth_board.sch (X10..X15, L9..L13); RF_PA.sch ('22V', X2, X3); main.h:94-123 (EN_P_* pins); main.cpp:1241-1276, 1485-1488, 1601 and ADAR1000_Manager.cpp:51-54 (enable order/delays); 3_Power Management/Power Management V6.xlsx (budget, column K/L)\lLegend: solid = in schematic | dashed = documented only | red = conflict / enable never asserted in firmware | edge label = connector pair (Power -> destination) | 'ALWAYS ON' = EN pin tied to VIN or own input\l", labelloc=t, labeljust=l, fontname="Helvetica", fontsize=11];
+  node [fontname="Helvetica", fontsize=8, shape=box, style="filled,rounded", fillcolor="#f4f6f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=7, color="#7f8c8d", fontcolor="#2c3e50"];
+
+  vin_src [label="External DC source\n12-17 V (silk 'Vin [12-17]V')\nsource: NOT SPECIFIED", style="filled,rounded,dashed"];
+  v22_src [label="External +22 V PA drain source\nxlsx row 59 (22 V, 2 A x16)\nNOT IN ANY CAD (K4)", style="filled,rounded,dashed", color="#c0392b", fontcolor="#c0392b"];
+
+  subgraph cluster_pwr {
+    label="Power Supply Board (PowerBoard.sch)"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    X1 [label="X1 AK300/2\nVIN / GND"];
+
+    subgraph cluster_buck_en { label="TPS562208DDCT bucks with STM32 enable (VIN input)"; style="rounded,dashed"; color="#5d6d7e"; fontsize=9;
+      U1  [label="U1 TPS562208 -> +1V0_FPGA\nR1 3.09k / R2 10k\nEN_+1V0_FPGA (PE7) seq F3"];
+      U2  [label="U2 TPS562208 -> +1V8_FPGA\nR3 13.7k / R4 10k\nEN_+1V8_FPGA (PE8) seq F4"];
+      U4  [label="U4 TPS562208 -> +3V3_FPGA\nR7 32.2k / R8 10k\nEN_+3V3_FPGA (PE9) seq F5"];
+      U6  [label="U6 TPS562208 -> +3V3_ADAR_12\nR11 32.2k / R12 10k\nEN_+3V3_ADAR12 (PE11) seq F6"];
+      U7  [label="U7 TPS562208 -> +3V3_ADAR_34\nR13 32.2k / R14 10k\nEN_+3V3_ADAR34 (PE12) seq F6"];
+      U8  [label="U8 TPS562208 -> +3V3_VDD_SW\nR15 32.2k / R16 10k\nEN_+3V3_VDD_SW (PE15) seq F8"];
+      U10 [label="U10 TPS562208 -> +3V3_SW\nR19 32.2k / R20 10k\nEN_+3V3_SW (PE14) seq F9"];
+      U13 [label="U13 TPS562208 -> +5V0_ADAR\nR25 56.2k / R26 10k\nEN_+5V0_ADAR (PE10) seq F7"];
+      U14 [label="U14 TPS562208 -> +5V0_PA_1\nR27 56.2k / R28 10k\nEN_+5V0_PA1 (PG0) NEVER SET HIGH", color="#c0392b", fontcolor="#c0392b"];
+      U15 [label="U15 TPS562208 -> +5V0_PA_2\nR29 56.2k / R30 10k\nEN_+5V0_PA2 (PG1) NEVER SET HIGH", color="#c0392b", fontcolor="#c0392b"];
+      U16 [label="U16 TPS562208 -> +5V0_PA_3\nR31 56.2k / R32 10k\nEN_+5V0_PA3 (PG2) NEVER SET HIGH", color="#c0392b", fontcolor="#c0392b"];
+      U17 [label="U17 TPS562208 -> +5V5_PA\nR33 61.9k / R34 10k\nEN_+5V5_PA (PG3) NEVER SET HIGH", color="#c0392b", fontcolor="#c0392b"];
+    }
+    subgraph cluster_buck_on { label="TPS562208DDCT bucks ALWAYS ON (EN = VIN)"; style="rounded,dashed"; color="#5d6d7e"; fontsize=9;
+      U3  [label="U3 -> +3V3\nR5 32.2k / R6 10k"];
+      U9  [label="U9 -> +5V0_1\nR17 56.2k / R18 10k"];
+      U11 [label="U11 -> +3V4\nR21 34.8k / R22 10k"];
+      U12 [label="U12 -> +5V0_0\nR23 56.2k / R24 10k"];
+      U24 [label="U24 -> +5V0_2\nR37 56.2k / R38 10k"];
+      U26 [label="U26 -> +5V0_3\nR41 56.2k / R42 10k"];
+      U28 [label="U28 -> +5V0_4\nR45 56.2k / R46 10k"];
+      U31 [label="U31 -> +5V0_ADTR\nR51 56.2k / R52 10k"];
+      U33 [label="U33 -> +5V0_5\nR55 56.2k / R56 10k"];
+    }
+    subgraph cluster_ldo { label="LDOs"; style="rounded,dashed"; color="#5d6d7e"; fontsize=9;
+      U5  [label="U5 ADM7151 -> +3V3_AN\nIN +5V0_0, EN = +5V0_0 (follows)"];
+      U23 [label="U23 ADM7151 -> +3V3_CLOCK\nIN +5V0_1\nEN_+3V3_CLOCK (PG5) seq F2"];
+      U25 [label="U25 ADM7151 -> +1V8_CLOCK\nIN +5V0_2\nEN_+1V8_CLOCK (PG4) seq F1"];
+      U27 [label="U27 ADM7151 -> +3V3_LO_1\nIN +5V0_3, EN = +5V0_3"];
+      U29 [label="U29 ADM7151 -> +3V3_LO_2\nIN +5V0_4, EN = +5V0_4"];
+      U30 [label="U30 ADM7151 -> +5V0_LO\nIN = VIN (12-17 V) directly, EN = VIN\nREQUIRES DESIGN REVIEW vs ADM7151.pdf input rating", color="#c0392b", fontcolor="#c0392b"];
+      U32 [label="U32 TPS7A8300 -> +3V3_ADTR\nIN +5V0_ADTR\nEN_+3V3_ADTR (PE13) NEVER SET HIGH", color="#c0392b", fontcolor="#c0392b"];
+      U34 [label="U34 TPS7A8300 -> +3V3_XO\nIN +5V0_5, EN = +5V0_5"];
+    }
+    subgraph cluster_inv { label="LM2662MX charge-pump inverters (no EN)"; style="rounded,dashed"; color="#5d6d7e"; fontsize=9;
+      U18 [label="U18 +3V3_SW -> -3V3_SW"];
+      U19 [label="U19 +3V4 -> -3V4"];
+      U20 [label="U20 +5V0_ADAR -> -5V0_ADAR12"];
+      U21 [label="U21 +5V0_ADAR -> -5V0_ADAR34"];
+      U22 [label="U22 +5V5_PA -> -5V5_PA"];
+    }
+    SV1P [label="SV1 MA10-2 (EN bus in)\n15x EN_* from Main SV1"];
+    spare [label="Outputs without a consumer in CAD:\nX2 +5V0_1, X9 +5V0_2, X17 +5V0_3, X25 +5V0_4, X28 +5V0_5,\nX13 +5V0_ADAR, X26 +5V0_ADTR, X29 +3V3_SW\n(intermediate rails, also used on-board)", style="filled,rounded,dashed"];
+  }
+
+  subgraph cluster_main {
+    label="Main Board consumers (RADAR_Main_Board.sch)"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    m_fpga_core [label="U42 XC7A50T VCCINT/VCCBRAM (+1V0_FPGA, X8)"];
+    m_fpga_aux  [label="U42 VCCAUX/VCCADC/VCCBATT/VCCO_34 + U1 AD9484 DRVDD\n(+1V8_FPGA, X10); pull-ups R154..R157 for ADAR CS 1.8 V"];
+    m_fpga_io   [label="U42 VCCO banks 14/15 + config pull-ups, U3 AD9708 DVDD,\nU9 flash, +3V3_FT (FT601, unrouted) (+3V3_FPGA, X16)"];
+    m_stm       [label="U2 STM32F746 VDD/VDDUSB, JP2/JP7/JP8/JP18 module supply\n(+3V3, X24)"];
+    m_an        [label="+3V3_AN (X9/X56) -> L15 +3V3_AN1_F U5 mixer, L16 +3V3_AN2_F U13 mixer,\nL17 +3V3_AN3_F DAC5578 U7/U69, L18 +3V3_AN4_F TMP37 headers + ADS7830,\nL21/L23 +3V3_AN5_F/+3V3_AN6_F INA241 U11,U73..U87, L6 DAC_AVDD (U3)"];
+    m_adcav     [label="+1V8_CLOCK (X17) -> L1 -> +1V8_CLOCK_F: U1 AD9484 AVDD, CSB"];
+    m_adar3v3   [label="+3V3_ADAR12 (X20) -> L11/L12 -> +3V3_ADAR1_F/2_F: ADAR1_/ADAR2_ AVDD3\n+3V3_ADAR34 (X21) -> ADAR3_/ADAR4_ AVDD3"];
+    m_adarneg   [label="-5V0_ADAR12 (X13): ADAR1_/ADAR2_ AVDD\n-5V0_ADAR34 (X15): ADAR3_/ADAR4_ AVDD"];
+    m_adtr      [label="+3V3_ADTR (X4): 16x ADTR1107 VDD_LNA\n+3V3_VDD_SW (X12): ADTR VDD_SW;  -3V3_SW (X6): ADTR VSS_SW"];
+    m_pa5       [label="+5V0_PA_1 (X14): ADTR 1,2,3,4,7 VDD_PA\n+5V0_PA_2 (X5): ADTR 5,6,8,10,12\n+5V0_PA_3 (X7): ADTR 9,11,13,14,15,16"];
+    m_sw        [label="+3V4 (X1/X54): 17x M3SWA2 VDD\n-3V4 (X11/X22): 17x M3SWA2 VEE"];
+    m_opa       [label="+5V5_PA (X55) / -5V5_PA (X19): 4x OPA4703 (VG drivers)"];
+    m_if        [label="+5V0_0 (X18): U4, U8 AD8352 VCC"];
+    m_sv1       [label="SV1 MA10-2 (EN bus out)\nU2 PE7..PE15, PG0..PG5"];
+  }
+
+  subgraph cluster_syn {
+    label="Frequency Synthesizer Board consumers (Clocks_Freq_Synth_board.sch)"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    s_xo   [label="X10 -> L9 -> +3V3_XO: X4 OCXO, X5/X6 VCXO VDD"];
+    s_clk3 [label="X11 -> L10 -> +3V3_CLOCK: IC1 AD9523 VDD3_*"];
+    s_clk1 [label="X12 -> L11 -> +1V8_CLOCK: IC1 AD9523 VDD1.8_*"];
+    s_lo1  [label="X13 -> L12 -> +3V3_LO_1: U1/U6 ADF4382 V3_LDO/LS/NDIV/PFD/REF/SYNC\n+ 200k pull-ups R24/R25/R37/R38 (CS, CE)"];
+    s_lo2  [label="X14 -> L13 -> +3V3_LO_2: U1/U6 V3_OUTDIV/RFOUT1/RFOUT2/VCOB\n(RFOUT bias chokes L1..L8 1.3 nH)"];
+    s_lo5  [label="X15 +5V0_LO -> FB1..FB4 -> ADF4382 5 V domains (V5_VCO/CAL/CP per xlsx)"];
+  }
+
+  subgraph cluster_pa {
+    label="RF PA board x16 (RF_PA.sch)"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    p_vd [label="'22V' AK300/2 -> VD -> R10 5 mR -> VIN_M -> U$1 QPA2962 VD1/VD2\nX3: VD / VIN_M / GND sense to Main INA241"];
+    p_vg [label="X2 VG <- Main X_n (OPA4703 output, DAC5578-set)\nxlsx: VG -4 ... -1.2 V"];
+  }
+
+  // ---------------- input distribution
+  vin_src -> X1 [style=dashed];
+  X1 -> U1; X1 -> U2; X1 -> U3; X1 -> U4; X1 -> U6; X1 -> U7; X1 -> U8; X1 -> U9; X1 -> U10; X1 -> U11; X1 -> U12; X1 -> U13; X1 -> U14; X1 -> U15; X1 -> U16; X1 -> U17; X1 -> U24; X1 -> U26; X1 -> U28; X1 -> U31; X1 -> U33;
+  X1 -> U30 [color="#c0392b"];
+  // ---------------- intermediate rails
+  U12 -> U5 [label="+5V0_0"]; U9 -> U23 [label="+5V0_1"]; U24 -> U25 [label="+5V0_2"]; U26 -> U27 [label="+5V0_3"]; U28 -> U29 [label="+5V0_4"]; U33 -> U34 [label="+5V0_5"]; U31 -> U32 [label="+5V0_ADTR"];
+  U10 -> U18 [label="+3V3_SW"]; U11 -> U19 [label="+3V4"]; U13 -> U20 [label="+5V0_ADAR"]; U13 -> U21 [label="+5V0_ADAR"]; U17 -> U22 [label="+5V5_PA"];
+  U9 -> spare [style=dashed]; U24 -> spare [style=dashed]; U26 -> spare [style=dashed]; U28 -> spare [style=dashed]; U33 -> spare [style=dashed]; U13 -> spare [style=dashed]; U31 -> spare [style=dashed]; U10 -> spare [style=dashed];
+  // ---------------- enables
+  m_sv1 -> SV1P [label="20-way ribbon, 15x EN_* (CBL-21)", color="#1f4e79", fontcolor="#1f4e79"];
+  SV1P -> U1 [color="#1f4e79"]; SV1P -> U2 [color="#1f4e79"]; SV1P -> U4 [color="#1f4e79"]; SV1P -> U6 [color="#1f4e79"]; SV1P -> U7 [color="#1f4e79"]; SV1P -> U8 [color="#1f4e79"]; SV1P -> U10 [color="#1f4e79"]; SV1P -> U13 [color="#1f4e79"]; SV1P -> U14 [color="#c0392b"]; SV1P -> U15 [color="#c0392b"]; SV1P -> U16 [color="#c0392b"]; SV1P -> U17 [color="#c0392b"]; SV1P -> U23 [color="#1f4e79"]; SV1P -> U25 [color="#1f4e79"]; SV1P -> U32 [color="#c0392b"];
+  // ---------------- rails to Main Board
+  U1 -> m_fpga_core [label="X4 -> X8"];
+  U2 -> m_fpga_aux [label="X5 -> X10"];
+  U4 -> m_fpga_io [label="X27 -> X16"];
+  U3 -> m_stm [label="X16 -> X24"];
+  U5 -> m_an [label="X12 -> X9 (X56)"];
+  U25 -> m_adcav [label="X10 -> X17", color="#c0392b", fontcolor="#c0392b"];
+  U6 -> m_adar3v3 [label="X14 -> X20"];
+  U7 -> m_adar3v3 [label="X15 -> X21"];
+  U20 -> m_adarneg [label="X21 -> X13"];
+  U21 -> m_adarneg [label="X20 -> X15"];
+  U32 -> m_adtr [label="X34 -> X4"];
+  U8 -> m_adtr [label="X30 -> X12"];
+  U18 -> m_adtr [label="X18 -> X6"];
+  U14 -> m_pa5 [label="X31 -> X14"];
+  U15 -> m_pa5 [label="X32 -> X5"];
+  U16 -> m_pa5 [label="X33 -> X7"];
+  U11 -> m_sw [label="X23 -> X1 (X54)"];
+  U19 -> m_sw [label="X24 -> X11 (X22)"];
+  U17 -> m_opa [label="X3 -> X55"];
+  U22 -> m_opa [label="X19 -> X19"];
+  U12 -> m_if [label="X22 -> X18"];
+  // ---------------- rails to Synth
+  U34 -> s_xo [label="X35 -> X10"];
+  U23 -> s_clk3 [label="X11 -> X11"];
+  U25 -> s_clk1 [label="X10 -> X12 (same PB X10 as Main X17: UNRESOLVED)", color="#c0392b", fontcolor="#c0392b"];
+  U27 -> s_lo1 [label="X8 -> X13"];
+  U29 -> s_lo2 [label="X7 -> X14"];
+  U30 -> s_lo5 [label="X6 -> X15"];
+  // ---------------- PA
+  v22_src -> p_vd [label="'22V' terminal, switched by EN/DIS_RFPA_VDD (PD6, JP10) - switch NOT IN CAD", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+  m_opa -> p_vg [label="X_1..X_16 -> X2 (VG_n)", color="#1f4e79", fontcolor="#1f4e79"];
+  m_an -> p_vd [label="X3/X38..X52 <- X3 shunt sense (INA241)", style=dashed, color="#1f4e79", fontcolor="#1f4e79", dir=back];
+}

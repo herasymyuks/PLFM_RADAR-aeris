@@ -1,0 +1,133 @@
+digraph aeris10_signal_and_data_flow {
+  // RF/IF signal path, clock tree and digital data path across the boards.
+  // Edge style: solid = path confirmed in schematic nets (and RTL/firmware where stated);
+  // dashed = unverified (documented or inferred, not fully traceable); dotted red = missing specification / no hardware.
+  rankdir=TB; splines=true; nodesep=0.25; ranksep=0.6; newrank=true;
+  graph [label="AERIS-10 - Signal and data flow (RF / IF / clock / digital)\lDrawing ID: SYS-03   Revision: A   Date: 2026-10-09   Status: SOURCE-DERIVED; frequencies are firmware-programmed values, not measurements\lSource: RADAR_Main_Board.sch (nets traced through passives), Clocks_Freq_Synth_board.sch, RF_PA.sch; main.cpp:190 (IF_freq 120 MHz), main.cpp:933-1072 (AD9523: VCXO 100 MHz, PLL2 3.6 GHz, channel dividers), adf4382a_manager.h:32-34 (REF 300 MHz, TX 10.5 GHz, RX 10.38 GHz); radar_system_top.v (ports, clk_100m, clk_120m_dac); docs/SYSTEM/BLOCK_DIAGRAM.md section 3\lLegend: solid = confirmed | dashed = unverified | dotted red = missing specification / no hardware | black = RF/IF | green = clock | blue = digital data/control | grey = node is off-board/no CAD\l", labelloc=t, labeljust=l, fontname="Helvetica", fontsize=11];
+  node [fontname="Helvetica", fontsize=8.5, shape=box, style="filled,rounded", fillcolor="#f4f6f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=7.5, color="#000000"];
+
+  // ---------------------------------------------------------------- Clock tree (Synth)
+  subgraph cluster_clk {
+    label="Frequency Synthesizer Board - reference and clock tree"; style="rounded"; color="#1e8449"; fontname="Helvetica"; fontsize=10; bgcolor="#f6fbf7";
+    osc_x4 [label="X4 ECOC-2522-100.000-3HC (OCXO)\nnet 10MHZ_OUT -> IC1.REFA\n(firmware: REFA = 10 MHz single-ended, main.cpp:934)", color="#c0392b"];
+    osc_x5 [label="X5 CVHD-950-50.000 (VCXO)\nnet 100MHZ_OUT -> IC1.REFB\n(firmware: REFB = 100 MHz, selected, main.cpp:935,1070)", color="#c0392b"];
+    osc_x6 [label="X6 CVHD-950-50.000 (VCXO)\nnet VCXO_OUT -> IC1.OSC_IN\n(firmware: vcxo_freq = 100 MHz, main.cpp:933)\nK7: part value 50 MHz vs net/firmware 100 MHz", color="#c0392b"];
+    ad9523 [label="IC1 AD9523BCPZ\nPLL1 (REFB, R=1) -> OSC_CTRL -> X6 VCXO\nPLL2: PFD 100 MHz, N=36 -> VCO 3.6 GHz (main.cpp:944-946)\nchannel dividers /12 /9 /36 /180 /60 /30 (main.cpp:970-1028)"];
+    out01 [label="OUT0 / OUT1: 300 MHz LVDS\n-> C12/C11, C69/C68 1 uF, R12/R1 100 R\n-> U1 REFP/N, U6 REFP/N"];
+    out89 [label="OUT8 / OUT9: 60 MHz LVDS SYNC\n-> C71/C70, C14/C13 -> U6 / U1 SYNCP/N"];
+    out4 [label="OUT4: 400 MHz LVDS -> J3 'ADC'"];
+    out5 [label="OUT5: 400 MHz LVDS -> J4 'FPGA=ADC'"];
+    out6 [label="OUT6: 100 MHz LVCMOS\n-> R39 22R, C15 10nF -> J7 'FPGA SYS. CLOCK'"];
+    out7 [label="OUT7: 20 MHz LVCMOS -> J8 'TEST'"];
+    out10 [label="OUT10: 120 MHz LVCMOS\n-> R40, C17 -> J5 'DAC'"];
+    out11 [label="OUT11: 120 MHz LVCMOS\n-> R41, C19 -> J6 'FPGA=DAC'"];
+    out23 [label="OUT2, OUT3: no connection\n(single-pin nets)", style="filled,rounded,dashed"];
+    lotx [label="U1 ADF4382ABCCZ TX LO\nf = 10.5 GHz (TX_FREQ_HZ), REF 300 MHz, ref_div 1\nRFOUT1 -> C64/C65 -> U2 MTX2-143+ -> U4 ATS1005 -3 dB -> J10 'LO TX'\nRFOUT2 -> U3 -> U5 -> J1 'AUX. LO TX'"];
+    lorx [label="U6 ADF4382ABCCZ RX LO\nf = 10.38 GHz (RX_FREQ_HZ) = 10.5 GHz - 120 MHz IF\nRFOUT1 -> C87/C88 -> U7 MTX2-143+ -> U8 ATS1005 -> J11 'LO RX'\nRFOUT2 -> U9 -> U10 -> J12"];
+  }
+
+  // ---------------------------------------------------------------- Main board TX chain
+  subgraph cluster_tx {
+    label="Main Board - transmit chain"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    fpga_tx [label="U42 FPGA - chirp generation\nplfm_chirp_controller / chirp_memory_loader_param (LUT .mem)\ndac_interface_enhanced -> dac_data[7:0], dac_sleep\n(radar_system_top.v:28-30; clock clk_120m_dac)"];
+    dac [label="U3 AD9708AR 8-bit DAC\nDB0..7 <- DAC_0..7 (R23..R30 series)\nCLOCK <- J20 DAC_CLOCK (120 MHz)\nIOUTA/IOUTB differential current out"];
+    dac_lc [label="Differential LC network\nC127 32.8 pF, L22/L25 107.3 nH, C141, L26/L27 107.3 nH, C59 32.8 pF\n(DAC_IOUT_P/N -> DAC_IOUT_F_P/N)"];
+    mixtx [label="U5 LTC5552 up-converting mixer\nIF+/IF- = DAC_IOUT_F_P/N (IF_freq = 120 MHz, main.cpp:190)\nLO = J23 -> C272 18 pF\nRF -> RF_TX;  EN = MIX_TX_EN (U42 IO_L11P_T1_SRCC_15)"];
+    bpf_tx [label="U$2 'BPF2' band-pass filter\nsymbol pins: IN = RF_TX_FIL (switch side), OUT = RF_TX (U5.RF side)\n(passive: pin naming does not define direction; part number NOT IDENTIFIED)", style="filled,rounded,dashed"];
+  }
+
+  // ---------------------------------------------------------------- Main board common RF and front end
+  subgraph cluster_fe {
+    label="Main Board - common port, beamformers, front ends"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    sw17 [label="U$1 M3SWA2-34DR+ SPDT\nRFOUT1 <-> C83 -> RF_TX_FIL (U$2.IN)\nRFOUT2 <-> C84 -> RF_RX_FIL (U$3.OUT)\nRFC <-> C85 -> RF_IO (U16 SUM_PORT)\nVCTRL = M3S_VCTRL (U42 IO_L24N_T3_RS0_15)"];
+    comb [label="U16 EP4RKU+ 4-way power combiner/divider\nSUM_PORT = RF_IO\nPORT_1..4 = RF_IO_1..RF_IO_4"];
+    adar [label="4x ADAR1000ACCZN (ADAR1_..ADAR4_)\nRF_IO <-> RF_IO_n (common port)\nTX1..TX4 -> ADTR TX_IN; RX1..RX4 <- ADTR RX_OUT\nTR / TX_LOAD / RX_LOAD / SPI from U42 bank 34 (1.8 V)\nTR_SW_POS_n -> ADTR CTRL_SW (4 per ADAR)"];
+    adtr [label="16x ADTR1107ACCZ (ADTR1107_1..16)\nTX_IN -> PA -> ANT ; ANT -> LNA -> RX_OUT\nANT -> C 1 pF -> RF_SW_n RFC\nVGG_PA = PA_BIAS2_n, VGG_LNA = LNA_BIAS_n (from ADAR)"];
+    sw16 [label="16x M3SWA2-34DR+ (RF_SW_1..16) SPDT at each ANT port\nRFOUT1 -> 1 pF -> SMA Ja;  RFOUT2 -> 1 pF -> SMA Jb\n(J27/J26, J29/J28, J25/J24, J31/J30, J35/J34, J37/J36, J33/J32, J39/J38,\nJ47/J46, J41/J40, J45/J44, J43/J42, J55/J54, J49/J48, J53/J52, J51/J50)\nVCTRL = M3S_VCTRL (common with U$1)"];
+  }
+
+  // ---------------------------------------------------------------- PA / antenna (off-board)
+  pa [label="RF PA board (x16): J1 RFIN -> U$1 QPA2962_B -> J2 RFOUT\n(RF_PA.sch; 10 W GaN; bias VG/VD from Main Board)", fillcolor="#eaeded", color="#7f8c8d"];
+  ant [label="Antenna array, 16 element feeds\n(README: 8x16 patch / 32x16 slotted waveguide; NO CAD)", fillcolor="#eaeded", color="#c0392b", fontcolor="#c0392b", style="filled,rounded,dashed"];
+
+  // ---------------------------------------------------------------- Main board RX chain
+  subgraph cluster_rx {
+    label="Main Board - receive chain"; style="rounded"; color="#2c3e50"; fontname="Helvetica"; fontsize=10; bgcolor="#fbfcfc";
+    bpf_rx [label="U$3 'BPF2' band-pass filter\nsymbol pins: IN = RF_RX (U13.RF side), OUT = RF_RX_FIL (switch side)\n(passive: pin naming does not define direction; part number NOT IDENTIFIED)", style="filled,rounded,dashed"];
+    mixrx [label="U13 LTC5552 down-converting mixer\nRF = RF_RX;  LO = J22 -> C274 18 pF (10.38 GHz)\nIF+/IF- = MIX_RX_P/N (120 MHz)\nEN = MIX_RX_EN (U42 IO_L14N_T2_SRCC_15)"];
+    if_lc [label="IF LC network\nC268/C270 25 pF, L24/L28 50 nH, C60 103 pF, C61/C62 7.8 pF,\nL3/L4 159 nH, C64/C65 25 pF, L9/L10 50 nH -> AMP_IN_P/N"];
+    amp1 [label="U8 AD8352 IF amplifier (stage 1)\nVIP/VIN <- R34/R35 0R <- C58/C57 <- AMP_IN_P/N\nVOP/VON -> C51/C52 -> AMP_IF_IN_P/N\nVCC +5V0_0; ENB = EN_OPAMP_IF_1 (floating)"];
+    amp2 [label="U4 AD8352 IF amplifier (stage 2)\nVIP/VIN <- R18/R19 0R <- C49/C48 <- AMP_IF_IN_P/N\nVOP/VON -> C44/C45 -> ADC_IF_IN_P/N\nENB = EN_OPAMP_IF_2 (floating)"];
+    adc [label="U1 AD9484BCPZ-500 8-bit ADC\nVIN+/VIN- <- R13/R1 24 R, C3 2.7 pF\nCLK+/- <- J21 -> C1/C2 0.1 uF, R173 100 R (400 MHz, OUT4)\nD0..7 +/-, DCO +/-, OR +/- LVDS (series R2..R12) -> U42 bank 14\n(bank 14 VCCO = +3V3_FPGA; XDC wants LVDS_25: docs/FPGA)"];
+    fpga_rx [label="U42 FPGA - receive DSP (radar_system_top.v)\nadc_d_p/n[7:0], adc_dco_p/n -> lvds_to_cmos_400m (missing module ad9484_lvds_to_cmos_400m)\n-> ddc_400m_enhanced (NCO) -> cic_decimator_4x -> fir_lowpass\n-> matched_filter_multi_segment -> doppler_processor\n-> usb_data_interface (packet 0xAA..0x55)"];
+    ft601 [label="U6 FT601 USB 3.0 FIFO\nRTL ports ft601_data[31:0], be, txe/rxf, wr/rd/oe (radar_system_top.v:79-97)\nSCHEMATIC: 0 of 77 pins connected", style="filled,rounded,dotted", color="#c0392b", fontcolor="#c0392b"];
+  }
+
+  // ---------------------------------------------------------------- Control / host
+  subgraph cluster_ctl {
+    label="Control and host data"; style="rounded"; color="#1f4e79"; fontname="Helvetica"; fontsize=10; bgcolor="#f5f8fc";
+    stm [label="U2 STM32F746ZGT7\nSPI4 (PE2/PE5/PE6) -> AD9523 + 2x ADF4382 (JP1, JP13)\nSPI1 (PA5/PA6/PA7) + CS PA0..PA3 -> U42 (3.3 V pass-through)\nDIG_0..7 (PD8..PD15) -> U42 handshake (stm32_new_chirp/elevation/azimuth, mixers_enable: bit map inferred)\nI2C1 PB6/PB7 -> DAC5578 x2 (PA gate bias); I2C2 PF0/PF1 -> ADS7830 x3 (Idq, temperatures)\nI2C3 PA8/PC9 -> IMU/baro; UART5 PC12/PD2 <- GPS; USART3 PB10/PB11 debug\nUSB OTG-FS PA11/PA12 -> X53 (CDC)"];
+    host [label="Host PC + Python GUI\nGUI_V5.py expects FT2232H-class link, GUI_V6.py expects FT601 (0x0403:0x6030/6031)\nfirmware offers USB CDC only  -> K3 / K5 (packet format mismatch)", fillcolor="#eaeded", color="#c0392b", fontcolor="#c0392b", style="filled,rounded,dashed"];
+    pabias [label="PA bias loop: U7/U69 DAC5578 -> OPA4703 -> VG_1..16 -> PA X2\nPA X3 shunt -> INA241A3 x16 -> ADS7830 (U10/U88/U89) -> I2C2\nEN/DIS_RFPA_VDD (PD6, JP10) -> 22 V drain switch (NOT IN CAD)"];
+  }
+
+  // ================================================================ Clock edges (green)
+  edge [color="#1e8449", fontcolor="#1e8449"];
+  osc_x4 -> ad9523 [label="REFA (10MHZ_OUT)", style=dashed];
+  osc_x5 -> ad9523 [label="REFB (100MHZ_OUT), selected", style=dashed];
+  osc_x6 -> ad9523 [label="OSC_IN (VCXO_OUT); OSC_CTRL -> R4 1k -> X6 VOLT_CONTROL", style=dashed];
+  ad9523 -> out01; ad9523 -> out89; ad9523 -> out4; ad9523 -> out5; ad9523 -> out6; ad9523 -> out7; ad9523 -> out10; ad9523 -> out11; ad9523 -> out23 [style=dashed];
+  out01 -> lotx [label="REF 300 MHz"]; out01 -> lorx [label="REF 300 MHz"];
+  out89 -> lotx [label="SYNC 60 MHz (OUT9)"]; out89 -> lorx [label="SYNC 60 MHz (OUT8)"];
+  out4 -> adc [label="J3 -> J21 twinax, 400 MHz LVDS (sample clock)"];
+  out5 -> fpga_rx [label="J4 -> J19 twinax, 400 MHz LVDS (FPGA_ADC_CLOCK, unused by RTL)", style=dashed];
+  out6 -> fpga_tx [label="J7 -> J1 coax, 100 MHz -> clk_100m"];
+  out6 -> fpga_rx [label="clk_100m (processing clock; no phase relation to ADC DCO)", style=dashed];
+  out7 -> fpga_tx [label="J8 -> JP20, 20 MHz FPGA_CLOCK_TEST", style=dashed];
+  out10 -> dac [label="J5 -> J20 coax, 120 MHz DAC_CLOCK"];
+  out11 -> fpga_tx [label="J6 -> J18 coax, 120 MHz -> clk_120m_dac"];
+
+  // ================================================================ RF / IF edges (black)
+  edge [color="#000000", fontcolor="#000000"];
+  fpga_tx -> dac [label="DAC_0..7 (bank 15), DAC_SLEEP", color="#1f4e79", fontcolor="#1f4e79"];
+  dac -> dac_lc [label="IOUTA/IOUTB"];
+  dac_lc -> mixtx [label="DAC_IOUT_F_P/N, IF 120 MHz"];
+  lotx -> mixtx [label="J10 'LO TX' -> coax -> J23 -> C272 -> LO, 10.5 GHz"];
+  mixtx -> bpf_tx [label="RF_TX  RF = LO +/- IF: 10.5 GHz +/- 120 MHz (sideband selection by U$2: UNVERIFIED)", style=dashed];
+  bpf_tx -> sw17 [label="RF_TX_FIL -> C83 -> RFOUT1", style=dashed];
+  sw17 -> comb [label="RFC -> C85 -> RF_IO (SUM_PORT)"];
+  comb -> adar [label="RF_IO_1..4 -> ADAR RF_IO"];
+  adar -> adtr [label="TXn_m -> TX_IN (16 ch, beam-weighted)"];
+  adtr -> adar [label="RX_OUT -> RXn_m (16 ch)"];
+  adtr -> sw16 [label="ANTn_m -> 1 pF -> RFC (16)"];
+  sw16 -> pa [label="SMA pair per element -> PA J1 RFIN (which of the pair: UNVERIFIED)", style=dashed];
+  pa -> ant [label="J2 RFOUT -> element (AERIS-10X)", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  sw16 -> ant [label="direct SMA -> element (AERIS-10N)", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  ant -> sw16 [label="echo return path", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  sw17 -> bpf_rx [label="RFOUT2 -> C84 -> RF_RX_FIL (U$3.OUT side)", style=dashed];
+  bpf_rx -> mixrx [label="RF_RX -> U13.RF", style=dashed];
+  lorx -> mixrx [label="J11 'LO RX' -> coax -> J22 -> C274 -> LO, 10.38 GHz"];
+  mixrx -> if_lc [label="MIX_RX_P/N, IF = 10.5 - 10.38 = 120 MHz (consistent with IF_freq)"];
+  if_lc -> amp1 [label="AMP_IN_P/N"];
+  amp1 -> amp2 [label="AMP_IF_IN_P/N"];
+  amp2 -> adc [label="ADC_IF_IN_P/N -> VIN+/VIN-"];
+  adc -> fpga_rx [label="LVDS D0..7, DCO (400 MHz), OR -> bank 14", color="#1f4e79", fontcolor="#1f4e79"];
+
+  // ================================================================ Digital / control edges (blue)
+  edge [color="#1f4e79", fontcolor="#1f4e79"];
+  stm -> ad9523 [label="SPI4 + PD/REF_SEL/SYNC/RESET/CS/STATUS/EEPROM_SEL via JP1<->JP1"];
+  stm -> lotx [label="SPI4 + TX_CS/CE/DELSTR/DELADJ/LKDET via JP13<->JP2 (K6 pin-macro conflict)", style=dashed];
+  stm -> lorx [label="SPI4 + RX_CS/CE/DELSTR/DELADJ/LKDET via JP13<->JP2", style=dashed];
+  stm -> fpga_tx [label="SPI1 3.3 V (stm32_sclk/mosi/miso_3v3, cs_adar1..4_3v3) + DIG_0..7"];
+  fpga_tx -> adar [label="STM32_SCLK/MOSI/MISO_1V8, ADAR_n_CS_1V8, ADAR_TR_n, ADAR_TX/RX_LOAD_n (bank 34, 1.8 V)\nRTL: level_shifter_interface not instantiated (radar_transmitter.v:59-71)", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  fpga_tx -> mixtx [label="MIX_TX_EN (tx_mixer_en)"];
+  fpga_rx -> mixrx [label="MIX_RX_EN (rx_mixer_en)"];
+  fpga_tx -> sw17 [label="M3S_VCTRL (fpga_rf_switch)"];
+  fpga_tx -> sw16 [label="M3S_VCTRL (same net, all 17 switches)"];
+  fpga_rx -> ft601 [label="32-bit FIFO bus - NO NETS IN SCHEMATIC", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  ft601 -> host [label="USB 3.0 - NO HARDWARE", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  stm -> host [label="USB 2.0 FS CDC via X53 (only wired host link; RX callback unbound: docs C4)", style=dashed];
+  stm -> pabias [label="I2C1 (0x48/0x49), I2C2, DAC_n_VG_CLR/LDAC, PD6"];
+  pabias -> pa [label="X_n -> PA X2 VG; PA X3 -> X3/X38..X52 shunt sense", style=dashed];
+}

@@ -1,0 +1,14 @@
+{
+  "board": "FREQUENCY_SYNTHESIZER",
+  "source": "4_Schematics and Boards Layout/4_6_Schematics/FrequencySynthesizerBoard/Clocks_Freq_Synth_board.sch",
+  "sheets": [
+    {
+      "sheet": 1,
+      "file": "FREQUENCY_SYNTHESIZER_schematic_sheet1.svg",
+      "parts": 325,
+      "nets": 139,
+      "width_mm": 1885.5,
+      "height_mm": 1905.9
+    }
+  ]
+}

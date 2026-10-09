@@ -1,0 +1,12 @@
+Import Report
+=============
+
+Source file: PowerBoard.brd
+Source format: Eagle
+Output file: POWER_SUPPLY.kicad_pcb
+
+Statistics:
+  Footprints: 320
+  Tracks: 570
+  Vias: 346
+  Zones: 69

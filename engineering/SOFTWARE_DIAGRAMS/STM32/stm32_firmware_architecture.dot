@@ -1,0 +1,132 @@
+digraph stm32_firmware_architecture {
+  rankdir=LR; splines=true; nodesep=0.2; ranksep=1.0; newrank=true;
+ graph [fontname="Helvetica", fontsize=11, labelloc=t, labeljust=l,
+ label="AERIS-10 - STM32F746 firmware layered architecture (hand-drawn from source)\lDrawing ID: SD-03 Revision: A Date: 2026-10-09 Status: PARTIAL - HAL/CubeMX/USB-middleware layer is absent from the repository (dashed red)\lSource: 9_Firmware/9_1_Microcontroller/9_1_3_C_Cpp_Code/main.cpp (2411 lines), main.h; 9_1_1_C_Cpp_Libraries/*.c|*.cpp|*.h (131 files: ADI no-OS, ST HAL glue, sensor drivers); docs/STM32/STM32_PROJECT_RECONSTRUCTION.md\lCODE = 9_1_3_C_Cpp_Code, LIB = 9_1_1_C_Cpp_Libraries. Every edge is an #include or a call found in the sources (file:line in the label).\l"];
+  node [fontname="Helvetica", fontsize=9, shape=box, style="filled,rounded", fillcolor="#eaf2f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=8, color="#2c3e50"];
+
+  /* ---------------- application ---------------- */
+  subgraph cluster_app {
+ label="APPLICATION (CODE/main.cpp, main.h)"; style="rounded"; color="#1f618d"; fontsize=10;
+    main   [label="main() CODE/main.cpp:1200-1800\nHAL_Init :1202, SystemClock_Config :1209 (HSE 25 MHz, PLL M25/N144/P2/Q3 :1821-1827)\nMX_GPIO/TIM1/I2C1/I2C2/I2C3/SPI1/SPI4/UART5/USART3_Init, MX_USB_DEVICE_Init :1220-1229\n180 s OCXO warm-up :1237; rail enables :1241-1275, 1485-1489; FPGA reset PD12 :1659-1662", fillcolor="#d6eaf8", penwidth=2];
+    seq    [label="systemPowerUpSequence() :341-410\nADTR1107 sequence, ADAR1000 init, calibration via adarManager"];
+    beam   [label="initializeBeamMatrices() :412-443\nbeam-steering loop :480-516 ->\nexecuteChirpSequence() :445-470\nPD8 toggle = new chirp :448,459; PD9 =\nelevation :484; PD10 = azimuth :514"];
+    clkcfg [label="AD9523 configuration :927-1058\nstruct ad9523_dev, init_param.spi_init.platform_ops=&stm32_spi_ops :1039, extra=&hspi4 :1040\nad9523_init :1046, ad9523_setup :1047/1058"];
+    locfg  [label="ADF4382 LO control via ADF4382A_Manager lo_manager :214\nADF4382A_Manager_Init :689, SetPhaseShift :1406, StrobePhaseShift :1409-1410,\nCheckLockStatus :831/1428, TriggerTimedSync :1445"];
+    pa     [label="PA bias / Idq loop :1563-1657\nDAC5578_Init(&hdac1,&hi2c1,0x48) :1563, (&hdac2,&hi2c1,0x49) :1570\nADS7830_Init(&hadc1,&hi2c2,0x48) :1605, (&hadc2,&hi2c2,0x4A) :1611\nEN_DIS_RFPA_VDD PD6 :1601"];
+    temps  [label="temperature monitor :840-847, 1670-1753\nADS7830_Init(&hadc3,&hi2c2,0x49) :1670; 8 channels x 0.64705"];
+    sens   [label="sensors: GY85_Init :1280, GY85_Update\n:623/1282; BMP180 myBMP :166\nGPS: HAL_UART_Receive(&huart5) :908 ->\ngps.encode() :909 (TinyGPSPlus gps\n:122)\ngps.location.lat/lng :1509-1510;\nGPS_SendBinaryToGUI :1531"];
+    step   [label="stepper bit-bang (no driver file)\nSTEPPER_CW_P PD4, STEPPER_CLK_P PD5 (main.h:134-137)\n:517-521, 1514-1521 with delay_us()"];
+    usbapp [label="USB CDC application\nUSBHandler usbHandler :128; CDC_Receive_FS() :331-338 (extern \"C\", never bound - see SD-04)\nwait loop :1534-1555; CDC_Transmit_FS(initial_status) :1692"];
+    timing [label="delay_us() :292-295 (TIM1 counter, PSC\n71 :2110)\ndelay_ns() :300-312 (DWT->CYCCNT)"];
+    main -> seq; main -> beam; main -> clkcfg; main -> locfg; main -> pa; main -> temps; main -> sens; main -> step; main -> usbapp; main -> timing;
+  }
+
+  /* ---------------- drivers ---------------- */
+  subgraph cluster_drv {
+ label="DRIVERS (LIB/)"; style="rounded"; color="#117a65"; fontsize=10;
+    adarmgr [label="ADAR1000_Manager.cpp/.h (C++)\nextern hspi1, huart3 (:8-9); HAL_SPI_Transmit(Receive)(&hspi1) :619-621\nCHIP_SELECTS PA0..PA3 :15-20, :629; rail GPIO EN_P_* :51-79, 332-370\npulseTXMode/pulseRXMode/setCustomBeamPattern16 (.h:53-59)"];
+    adar_noos [label="adar1000.c/.h (ADI no-OS driver)\nincluded by main.cpp:24; no adar1000_*\ncall site found in main.cpp or\nADAR1000_Manager.cpp\n-> UNVERIFIED whether used", fillcolor="#f2f3f4", style="filled,rounded,dotted"];
+    ad9523  [label="ad9523.c/.h (ADI no-OS clock driver)\nincludes no_os_spi.h, no_os_delay.h (ad9523.h:38-39)"];
+    adf_mgr [label="adf4382a_manager.c/.h\nincludes main.h, adf4382.h,\nno_os_spi.h (.h:4-6)\nspi_tx/rx_param.platform_ops = NULL\n(:42, :51) -> no_os_spi_init fails\n(DEFECT C3)\npin macros PG0..PG9 collide with rail\nenables (DEFECT C2, STM32 doc STM-T04)", fillcolor="#fdebd0", color="#ca6f1e"];
+    adf     [label="adf4382.c/.h (ADI no-OS PLL driver)\nincludes no_os_spi.h, no_os_util.h, no_os_units.h (adf4382.h:39-41)"];
+    dac5578 [label="DA5578.c / DAC5578.H\nHAL_I2C_Master_Transmit(hdac->hi2c)\n:69..368; LDAC/CLR GPIO :37-41\nincludes stm32f7xx_hal.h (.H:8)"];
+    ads7830 [label="ADS7830.c / ADS7830.H\nHAL_I2C_Master_Transmit/Receive(hadc->hi2c)\n:111-121, 180-190\nincludes stm32f7xx_hal.h (.H:8)"];
+    gy85    [label="GY_85_HAL.c/.h (ADXL345, HMC5883, ITG3200)\nHAL_I2C_Master_Transmit/Receive(&hi2c3) :35-116\nincludes stm32f7xx_hal.h (.h:4)"];
+    bmp180  [label="BMP180.cpp/.h\nHAL_I2C_Master_Transmit/Receive(&hi2c3) :405-409\nincludes stm32f7xx_hal.h (.h:50)"];
+    gpsh    [label="gps_handler.cpp/.h + TinyGPS++.cpp /\nTinyGPSPlus.h\ngps_handler.h includes main.h,\nusb_device.h, usbd_cdc_if.h (:5-7)\nGPS_SendToGUI ->\nHAL_UART_Transmit(gui_huart) :60;\nGPS_SendBinaryToGUI -> CDC_Transmit_FS\n:118\nGPS_Init() never called -> gui_huart\n== NULL guard :65-67 (DEFECT C6)", fillcolor="#fdebd0", color="#ca6f1e"];
+    usbh    [label="USBHandler.cpp/.h + RadarSettings.cpp/.h\nprocessUSBData :15-34, processStartFlag :36-57, processSettingsData :59-93\nRadarSettings::parseFromUSB (RadarSettings.h:12)"];
+    noos    [label="ADI no-OS core (LIB/no_os_*.c/.h, 60 files)\nno_os_spi.c, no_os_gpio.c, no_os_delay.h, no_os_alloc.c, no_os_util.c, ...\nincluded by main.cpp:29-37"];
+    platform[label="no-OS STM32 platform glue (LIB/)\nstm32_spi.c/.h (HAL_SPI_TransmitReceive :34; chip_select ignored :23-38),\nstm32_gpio.c, stm32_delay.c, stm32_uart.c (HAL_UART_* :49-276), stm32_i2c.c, stm32_timer.c,\nstm32_irq.c, stm32_gpio_irq.c, stm32_dma.c, stm32_pwm.c, platform_noos_stm32.c/.H"];
+  }
+
+  /* ---------------- HAL / CubeMX ---------------- */
+  subgraph cluster_hal {
+ label="HAL / CubeMX GENERATED LAYER"; style="rounded"; color="#7d3c98"; fontsize=10;
+    hal_present [label="PRESENT in LIB/:\nstm32f7xx_hal_conf.h (modules enabled\n:38-88, HSE_VALUE 25 MHz :97)\nstm32f7xx_hal_msp.c (I2C :86-190, SPI\n:277-324, UART :433-507 pin/AF setup)\nstm32f7xx_it.c (OTG_FS_IRQHandler\n:204-209 ->\nHAL_PCD_IRQHandler(&hpcd_USB_OTG_FS))\nsystem_stm32f7xx.c, syscalls.c,\nsysmem.c, errno.h"];
+    hal_missing [label="MISSING from repository:\nstm32f7xx_hal.h + STM32F7xx_HAL_Driver sources (STM32CubeF7 package)\nCMSIS device headers (stm32f746xx.h), startup_stm32f746xx.s, linker script (*.ld)\nusb_device.c/.h, usbd_cdc_if.c/.h, usbd_desc.c/.h, usbd_conf.c/.h (defines hpcd_USB_OTG_FS, PA11/PA12 AF10)\nSTM32_USB_Device_Library Core + Class/CDC\n.ioc CubeMX project", style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+  }
+
+  /* ---------------- peripherals ---------------- */
+  subgraph cluster_periph {
+ label="PERIPHERALS (handles CODE/main.cpp:108-118; pins LIB/stm32f7xx_hal_msp.c; GPIO CODE/main.h:62-165)"; style="rounded"; color="#935116"; fontsize=10;
+    node [fillcolor="#fdf2e9"];
+    i2c1 [label="I2C1 hi2c1\nPB6 SCL / PB7 SDA AF4 (msp:114-115)\nMX_I2C1_Init :1872"];
+    i2c2 [label="I2C2 hi2c2\nPF0 / PF1 AF4 (msp:147-148)\nMX_I2C2_Init :1920"];
+    i2c3 [label="I2C3 hi2c3\nPA8 SCL / PC9 SDA AF4 (msp:181-189)\nMX_I2C3_Init :1968"];
+    spi1 [label="SPI1 hspi1\nPA5/PA6/PA7 AF5 (msp:298-299)\nMX_SPI1_Init :2016, prescaler /2\nCS PA0..PA3 (main.h:78-85)"];
+    spi4 [label="SPI4 hspi4\nPE2/PE5/PE6 AF5 (msp:323-324)\nMX_SPI4_Init :2056\nCS: AD9523 PF7 (main.h:70), ADF4382 TX PG14 / RX PG10 (main.h:150,142)"];
+    uart5[label="UART5 huart5\nPC12 TX / PD2 RX AF8 (msp:465-473)\nMX_UART5_Init :2143 (9600)"];
+    usart3[label="USART3 huart3\nPB10 / PB11 AF7 (msp:506-507)\nMX_USART3_UART_Init :2178 (115200, debug text)"];
+    tim1 [label="TIM1 htim1\nMX_TIM1_Init :2096-2135 (PSC 71)\nHAL_TIM_Base_Start :1232"];
+    otg  [label="USB OTG_FS hpcd_USB_OTG_FS\nMX_USB_DEVICE_Init :1229 (definition\nmissing)\nPA11/PA12 - from schematic net\nSTM32_USB_FS_D_N/D_P, AF setup lives\nin missing usbd_conf.c -> UNVERIFIED\nin repo", style="filled,rounded,dashed", color="#c0392b"];
+    gpio [label="GPIO (MX_GPIO_Init :2213-2330)\nPD8..PD12 outputs -> FPGA DIG_0..4\n(:2306-2311)\nPD13..PD15 inputs DIG_5..7\n(:2313-2317, never read)\nEN_P_* rail enables PE7..PE15,\nPG0..PG5; AD9523 ctrl PF3..PF10;\nADF4382 ctrl PG6..PG15;\nDAC CLR/LDAC PB4/5/8/9; stepper\nPD4/PD5; PD6 RFPA VDD; PD7 cooling;\nLEDs PF12..PF15"];
+  }
+
+  /* ---------------- edges: application -> drivers ---------------- */
+  seq   -> adarmgr [label="adarManager.initializeADTR1107Sequence/initializeAllDevices/performSystemCalibration\n(main.cpp:346-365)"];
+  beam  -> adarmgr [label="pulseTXMode/pulseRXMode :449-451,\nsetCustomBeamPattern16 :486-487"];
+  clkcfg-> ad9523  [label="ad9523_init/ad9523_setup :1046-1058"];
+  clkcfg-> platform[label="&stm32_spi_ops, &hspi4 :1039-1040"];
+  locfg -> adf_mgr [label="ADF4382A_* :689, 831, 1406-1445"];
+  adf_mgr -> adf   [label="#include adf4382.h\n(adf4382a_manager.h:5)"];
+  pa    -> dac5578 [label="DAC5578_Init/SetClearCode/SetupLDAC/WriteAndUpdateChannelValue\n:1563-1652"];
+  pa    -> ads7830 [label="ADS7830_Init/Measure_SingleEnded\n:1605-1653"];
+  temps -> ads7830 [label="ADS7830_Measure_SingleEnded(&hadc3)\n:840-847, 1753"];
+  sens  -> gy85    [label="GY85_Init/GY85_Update :623, 1280-1282"];
+  sens  -> bmp180  [label="BMP180 myBMP(BMP180_ULTRAHIGHRES) :166"];
+  sens  -> gpsh    [label="gps.encode :909; GPS_SendBinaryToGUI\n:1531"];
+  usbapp-> usbh    [label="usbHandler.processUSBData :333;\nisStartFlagReceived/getState/getSettings\n:1535-1538"];
+  main  -> adar_noos [label="#include adar1000.h (:24)", style=dotted, color="#7f8c8d"];
+  ad9523 -> noos   [label="#include no_os_spi.h / no_os_delay.h"];
+  adf    -> noos   [label="#include no_os_spi.h"];
+  adf_mgr -> noos  [label="platform_ops = NULL (:42,:51) - NOT\nwired to stm32_spi_ops", style=dashed, color="#ca6f1e"];
+  noos  -> platform[label="platform_ops dispatch (no_os_spi.c ->\nstm32_spi_ops)"];
+
+  /* ---------------- edges: drivers -> HAL ---------------- */
+  adarmgr -> hal_missing [label="#include stm32f7xx_hal.h (.h:5);\nHAL_SPI_*, HAL_GPIO_*, HAL_UART_*"];
+  dac5578 -> hal_missing [label="#include stm32f7xx_hal.h (.H:8);\nHAL_I2C_*"];
+  ads7830 -> hal_missing [label="#include stm32f7xx_hal.h (.H:8);\nHAL_I2C_*"];
+  gy85    -> hal_missing [label="#include stm32f7xx_hal.h (.h:4);\nHAL_I2C_*"];
+  bmp180  -> hal_missing [label="#include stm32f7xx_hal.h (.h:50);\nHAL_I2C_*"];
+  platform-> hal_missing [label="#include stm32f7xx_hal.h\n(stm32_spi.h:5);\nHAL_SPI_TransmitReceive, HAL_UART_*"];
+  gpsh    -> hal_missing [label="#include usb_device.h, usbd_cdc_if.h\n(gps_handler.h:6-7); CDC_Transmit_FS\n:118"];
+  usbapp  -> hal_missing [label="#include usb_device.h :21,\nusbd_cdc_if.h :23;\nUSBD_CDC_SetRxBuffer/ReceivePacket\n:336-337; CDC_Transmit_FS :1692"];
+  main    -> hal_missing [label="#include stm32f7xx_hal.h (main.h:30,\nmain.cpp:68); HAL_Init, HAL_GPIO_*,\nHAL_Delay, MX_USB_DEVICE_Init"];
+  main    -> hal_present [label="MX_*_Init call HAL_*_Init ->\nHAL_*_MspInit (stm32f7xx_hal_msp.c);\nstm32f7xx_hal_conf.h selects HAL\nmodules"];
+  hal_present -> hal_missing [label="stm32f7xx_hal_conf.h includes\nstm32f7xx_hal_*.h; it.c :58 extern\nhpcd_USB_OTG_FS (defined in missing\nusbd_conf.c)", style=dashed, color="#c0392b"];
+
+  /* ---------------- edges: HAL -> peripherals ---------------- */
+  hal_present -> i2c1; hal_present -> i2c2; hal_present -> i2c3; hal_present -> spi1; hal_present -> spi4; hal_present -> uart5; hal_present -> usart3; hal_present -> tim1; hal_present -> gpio;
+  hal_missing -> otg [style=dashed, color="#c0392b"];
+  dac5578 -> i2c1 [label="hdac->hi2c = &hi2c1\n(main.cpp:1563,1570)", style=dotted];
+  ads7830 -> i2c2 [label="&hi2c2 (main.cpp:1605,1611,1670)", style=dotted];
+  gy85    -> i2c3 [label="&hi2c3 (GY_85_HAL.c:35)", style=dotted];
+  bmp180  -> i2c3 [label="&hi2c3 (BMP180.cpp:405)", style=dotted];
+  adarmgr -> spi1 [label="&hspi1 (ADAR1000_Manager.cpp:8,619)", style=dotted];
+  platform-> spi4 [label="extra=&hspi4 (main.cpp:1040;\nadf4382a_manager.c:43,52)", style=dotted];
+  sens    -> uart5 [label="HAL_UART_Receive(&huart5) :908", style=dotted];
+  adarmgr -> usart3 [label="HAL_UART_Transmit(&huart3) :48,60,68", style=dotted];
+  timing  -> tim1  [label="__HAL_TIM_GET/SET_COUNTER(&htim1)\n:284,293-294", style=dotted];
+  beam    -> gpio  [label="HAL_GPIO_TogglePin(GPIOD, PIN_8/9/10)\n:448,484,514", style=dotted];
+  step    -> gpio  [label="PD4/PD5 :1514-1521", style=dotted];
+  usbapp  -> otg   [label="via USBD stack (missing)", style=dashed, color="#c0392b"];
+
+  /* ---------------- external targets ---------------- */
+  subgraph cluster_ext {
+ label="external devices (schematic nets per docs/STM32/STM32_PROJECT_RECONSTRUCTION.md section 3.2-3.3)"; style="rounded,dashed"; color="#7f8c8d"; fontsize=9;
+    node [fillcolor="#f8f9f9"];
+    x_dac [label="2x DAC5578 @0x48/0x49 (PA gate bias)"];
+    x_adc [label="3x ADS7830 @0x48/0x4A (Idq), @0x49 (8x TMP37)"];
+    x_imu [label="GY-85 IMU + BMP180 (JP7/JP18)"];
+    x_adar[label="4x ADAR1000 via FPGA level shift (bank 34, 1.8 V)\nRTL pass-through undriven - see SD-02"];
+    x_syn [label="Frequency Synthesizer board: AD9523\n(JP1), ADF4382 TX/RX (JP13<->JP2)"];
+    x_gps [label="GPS module (JP8, NMEA 9600)"];
+    x_fpga[label="FPGA XC7A50T DIG_0..4 (F13/E16/D16/F15/E15, PIN_MAP:16-20)"];
+    x_host[label="Host PC (mini-USB X53, CDC)"];
+  }
+  i2c1 -> x_dac; i2c2 -> x_adc; i2c3 -> x_imu; spi1 -> x_adar; spi4 -> x_syn; uart5 -> x_gps; gpio -> x_fpga; otg -> x_host [style=dashed, color="#c0392b"];
+
+ legend [shape=note, fillcolor="#fbfcfc", color="#7f8c8d", fontsize=8, label="LEGEND / EVIDENCE\lblue = application code; green cluster = driver sources present in LIB/; purple = HAL layer (present vs MISSING);\lorange = present but with a documented defect; red dashed = absent from repository; grey dotted = included but no call site found (UNVERIFIED)\lsolid edge = #include or direct call (file:line); dotted edge = HAL handle passed/used; dashed red edge = depends on a missing file\lHandles: CODE/main.cpp:108-118 (hi2c1..3, hspi1, hspi4, htim1, huart5, huart3), :129 extern hUsbDeviceFS\lInit order: CODE/main.cpp:1202-1229\lHAL modules enabled: LIB/stm32f7xx_hal_conf.h:38-88 (HAL, SPI, TIM, UART, PCD, GPIO, EXTI, DMA, RCC, FLASH, PWR, I2C, CORTEX); no DMA handle is ever created\lKnown firmware defects C1-C7: docs/STM32/STM32_PROJECT_RECONSTRUCTION.md section STM-T04\lNOT VERIFIED: compilation (no toolchain/HAL in repo), USB VID/PID, interrupt priorities, I2C bus speeds, whether adar1000.c is linked\l"];
+  { rank=sink; legend; }
+}

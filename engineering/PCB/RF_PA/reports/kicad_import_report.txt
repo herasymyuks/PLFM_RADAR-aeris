@@ -1,0 +1,12 @@
+Import Report
+=============
+
+Source file: RF_PA.brd
+Source format: Eagle
+Output file: RF_PA.kicad_pcb
+
+Statistics:
+  Footprints: 32
+  Tracks: 77
+  Vias: 342
+  Zones: 14

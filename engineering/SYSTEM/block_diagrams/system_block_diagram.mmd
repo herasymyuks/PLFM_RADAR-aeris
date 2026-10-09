@@ -1,0 +1,137 @@
+%% AERIS-10 - System block diagram (Mermaid rendering of SYS-01)
+%% Drawing ID: SYS-01  Revision: A  Date: 2026-10-09  Status: SOURCE-DERIVED (antenna, host, 22 V supply CONCEPTUAL)
+%% Source: RADAR_Main_Board.sch, PowerBoard.sch, Clocks_Freq_Synth_board.sch, RF_PA.sch, main.h/main.cpp,
+%%         adf4382a_manager.h, radar_system_top.v, Power Management V6.xlsx, RADAR_V6.drawio, README.md
+%% Legend: solid box = confirmed in schematic; dashed box (class doc) = documented only; red (class conflict) = open conflict K1..K8
+flowchart TB
+  classDef doc stroke-dasharray: 5 5,stroke:#7f8c8d,fill:#f4f6f8,color:#2c3e50
+  classDef conflict stroke:#c0392b,color:#c0392b,fill:#fdecea
+  classDef docconflict stroke:#c0392b,color:#c0392b,fill:#fdecea,stroke-dasharray: 5 5
+
+  subgraph HOST["Host computer - no hardware spec in repository"]
+    host_pc["Host PC<br/>README.md: Python 3.8+"]:::doc
+    gui["Python GUI 9_Firmware/9_3_GUI<br/>GUI_V5.py hardware (FT2232H-class, K3)<br/>GUI_V6.py FT601 via pyftdi (GUI_V6.py:33-121)<br/>GUI_V6_Demo.py offline"]:::docconflict
+  end
+
+  subgraph PWR["Power Supply Board - PowerBoard.sch 9.6.2 / .brd 7.4.0, 280x300 mm, 2 Cu"]
+    pwr_x1["X1 AK300/2<br/>VIN 12-17 V (silk)"]
+    pwr_buck["21x TPS562208 buck U1-U4,U6-U17,U24,U26,U28,U31,U33"]
+    pwr_ldo["6x ADM7151 U5,U23,U25,U27,U29,U30<br/>2x TPS7A8300 U32,U34"]
+    pwr_inv["5x LM2662 U18-U22<br/>-3V3_SW,-3V4,-5V0_ADAR12/34,-5V5_PA"]
+    pwr_out["X2..X35 34x Molex 22-23-2021<br/>one rail each"]
+    pwr_sv1["SV1 MA10-2<br/>15x EN_* + 5 GND"]
+  end
+
+  subgraph SYN["Frequency Synthesizer Board - Clocks_Freq_Synth_board 9.6.2, 100x100 mm, 6 Cu, routed"]
+    syn_osc["X4 ECOC-2522-100.000 OCXO -> net 10MHZ_OUT -> REFA<br/>X5 CVHD-950-50.000 -> net 100MHZ_OUT -> REFB<br/>X6 CVHD-950-50.000 -> VCXO_OUT -> OSC_IN<br/>K7 conflict"]:::conflict
+    syn_ad9523["IC1 AD9523BCPZ<br/>PLL2 3.6 GHz; OUT0/1 300 MHz, OUT4/5 400 MHz,<br/>OUT6 100 MHz, OUT7 20 MHz, OUT8/9 60 MHz, OUT10/11 120 MHz<br/>(main.cpp:944-1028)"]
+    syn_lotx["U1 ADF4382 TX LO 10.5 GHz<br/>(adf4382a_manager.h:33)<br/>-> U2 MTX2-143+ -> U4 ATS1005 -> J10 LO TX<br/>-> U3 -> U5 -> J1 AUX. LO TX"]
+    syn_lorx["U6 ADF4382 RX LO 10.38 GHz<br/>(adf4382a_manager.h:34)<br/>-> U7 -> U8 -> J11 LO RX<br/>-> U9 -> U10 -> J12"]
+    syn_conn["JP1 2x6 AD9523 ctrl/SPI, JP2 2x7 ADF4382 ctrl/SPI<br/>J3/J4 CJT OUT4/OUT5, J5 DAC, J6 FPGA=DAC, J7 FPGA SYS. CLOCK, J8 TEST<br/>X10 +3V3_XO, X11 +3V3_CLOCK, X12 +1V8_CLOCK, X13 +3V3_LO_1, X14 +3V3_LO_2, X15 +5V0_LO"]
+  end
+
+  subgraph MAIN["Main Board - RADAR_Main_Board 7.4.0, 260x300 mm, 10 Cu, 2390 airwires"]
+    main_stm["U2 STM32F746ZGT7<br/>XTAL1 8 MHz HSE vs firmware 25 MHz (K2)<br/>SPI1->FPGA, SPI4->JP1/JP13, I2C1/2/3, UART5, USART3, USB-FS"]:::conflict
+    main_fpga["U42 XC7A50T-2FTG256I (schematic)<br/>README/XDC XC7A100T (K1)<br/>U9 MT25QL01G flash"]:::conflict
+    main_ft601["U6 FT601Q-B-T<br/>0 of 77 pins connected (K3)"]:::docconflict
+    main_usb["X53 mini-USB<br/>STM32 USB-FS PA11/PA12"]
+    main_dac["U3 AD9708 DAC<br/>CLOCK <- J20 (120 MHz)"]
+    main_mixtx["U5 LTC5552 TX mixer<br/>LO <- J23 (C272), EN = MIX_TX_EN"]
+    main_mixrx["U13 LTC5552 RX mixer<br/>LO <- J22 (C274), EN = MIX_RX_EN"]
+    main_bpf["U$2 / U$3 'BPF2'<br/>part NOT IDENTIFIED"]:::doc
+    main_ifamp["U8 -> U4 AD8352 IF amps<br/>VCC +5V0_0"]
+    main_adc["U1 AD9484 8-bit ADC<br/>CLK <- J21 (400 MHz)<br/>LVDS D0..7/DCO/OR -> FPGA bank 14"]
+    main_sw17["U$1 M3SWA2-34DR+ TX/RX switch<br/>RFC <-> U16 SUM"]
+    main_comb["U16 EP4RKU+ 4-way combiner"]
+    main_adar["4x ADAR1000 ADAR1_..ADAR4_<br/>SPI 1.8 V from FPGA bank 34"]
+    main_adtr["16x ADTR1107_1..16<br/>VDD_PA +5V0_PA_1/2/3"]
+    main_sw16["16x M3SWA2-34DR+ RF_SW_1..16<br/>VDD +3V4 / VEE -3V4"]
+    main_sma["J24..J55 32x SMA (2 per element)<br/>J22 RX LO in, J23 TX LO in<br/>J1/J18/J20 SMA, J19/J21 CJT clocks, JP20 test clock"]
+    main_pabias["U7,U69 DAC5578 -> OPA4703 -> VG_1..16 (X_1..X_16)<br/>16x INA241A3 <- X3,X38..X52<br/>U10,U88,U89 ADS7830"]
+    main_hdr["JP2 SWD, JP7/JP18 I2C3, JP8 UART5, JP9 stepper,<br/>JP4 cooling, JP10 PA VDD, JP5..JP19 8x analog, JP17 USART3"]
+    main_rails["Rail inputs X1,X4..X22,X24,X54..X56 (Molex 2-pin)<br/>SV1 MA10-2 EN bus"]
+  end
+
+  subgraph PA["RF PA Board x16 (README; CAD = 1) - RF_PA 9.6.2, 35x60 mm, 4 Cu"]
+    pa_qpa["U$1 QPA2962_B GaN PA<br/>J1 RFIN, J2 RFOUT, X2 VG, X3 VD/VIN_M/GND<br/>R10 5 mR shunt, '22V' AK300/2 drain input"]
+    pa_22v["+22 V drain supply (xlsx row 59)<br/>no 22 V rail on Power Board (K4)<br/>switch for EN/DIS_RFPA_VDD not in CAD"]:::docconflict
+  end
+
+  ant["Antenna array - 16 element feeds<br/>AERIS-10N 8x16 patch / AERIS-10X 32x16 slotted waveguide (README)<br/>NO CAD (K8)"]:::docconflict
+
+  subgraph PER["Off-board peripherals (xlsx / firmware part names only)"]
+    per_gps["GPS NEO-6M, UART5 via JP8"]:::doc
+    per_imu["GY-85 IMU + BMP180, I2C3 via JP7/JP18"]:::doc
+    per_temp["8x TMP37 via JP5,6,11,12,14,15,16,19"]:::doc
+    per_step["Stepper driver 'TBS6600' via JP9"]:::doc
+    per_fan["Cooling relay via JP4"]:::doc
+    per_dbg["SWD debugger via JP2"]:::doc
+  end
+
+  pwr_x1 --> pwr_buck
+  pwr_x1 -->|VIN -> U30| pwr_ldo
+  pwr_buck -->|+5V0_0..5, +5V0_ADTR| pwr_ldo
+  pwr_buck -->|+3V3_SW,+3V4,+5V0_ADAR,+5V5_PA| pwr_inv
+  pwr_buck --> pwr_out
+  pwr_ldo --> pwr_out
+  pwr_inv --> pwr_out
+  pwr_sv1 --> pwr_buck
+  pwr_sv1 --> pwr_ldo
+  pwr_out -->|20 rails, 2-pin Molex cables| main_rails
+  pwr_out -->|6 rails| syn_conn
+  main_stm -->|SV1<->SV1 15x EN_*| pwr_sv1
+  pa_22v -.->|22V terminal -> VD| pa_qpa
+
+  main_stm -->|SPI4 + ctrl JP1<->JP1| syn_ad9523
+  main_stm -->|SPI4 + ctrl JP13<->JP2| syn_lotx
+  main_stm -->|JP13<->JP2| syn_lorx
+  main_stm -->|SPI1 3.3 V, DIG_0..7| main_fpga
+  main_fpga -->|SPI 1.8 V, TR, LOAD - RTL level shifter missing| main_adar
+  main_fpga -->|DAC_0..7, DAC_SLEEP| main_dac
+  main_adc -->|LVDS D0..7, DCO| main_fpga
+  main_fpga -->|MIX_TX_EN| main_mixtx
+  main_fpga -->|MIX_RX_EN| main_mixrx
+  main_fpga -->|M3S_VCTRL| main_sw16
+  main_fpga -->|M3S_VCTRL| main_sw17
+  main_fpga -.->|no nets| main_ft601
+  main_ft601 -.->|USB 3.0 - NO HARDWARE PATH| gui
+  main_stm -->|USB OTG-FS| main_usb
+  main_usb -->|USB 2.0 FS CDC| host_pc
+  host_pc --> gui
+  main_stm -->|I2C1, I2C2| main_pabias
+  main_pabias -->|X_n -> X2 VG; X3/X38..X52 <- X3| pa_qpa
+  main_stm --> main_hdr
+  main_hdr --> per_gps
+  main_hdr --> per_imu
+  main_hdr --> per_temp
+  main_hdr --> per_step
+  main_hdr --> per_fan
+  main_hdr --> per_dbg
+  main_hdr -.->|JP10 EN/DIS_RFPA_VDD| pa_22v
+
+  syn_osc --> syn_ad9523
+  syn_ad9523 -->|OUT0 300 MHz, OUT9 60 MHz| syn_lotx
+  syn_ad9523 -->|OUT1 300 MHz, OUT8 60 MHz| syn_lorx
+  syn_ad9523 --> syn_conn
+  syn_lotx --> syn_conn
+  syn_lorx --> syn_conn
+  syn_conn -->|coax J7->J1, J4->J19, J3->J21, J5->J20, J6->J18, J8->JP20, J10->J23, J11->J22| main_sma
+  main_sma --> main_fpga
+  main_sma -->|J21| main_adc
+  main_sma -->|J20| main_dac
+  main_sma -->|J23| main_mixtx
+  main_sma -->|J22| main_mixrx
+  main_dac -->|IF 120 MHz| main_mixtx
+  main_mixtx -->|RF_TX| main_bpf
+  main_bpf --> main_sw17
+  main_bpf -->|RF_RX| main_mixrx
+  main_mixrx -->|MIX_RX -> LC -> AMP_IN| main_ifamp
+  main_ifamp -->|ADC_IF_IN| main_adc
+  main_sw17 -->|RF_IO| main_comb
+  main_comb -->|RF_IO_1..4| main_adar
+  main_adar -->|TX/RX 16 ch| main_adtr
+  main_adtr -->|ANT -> RFC| main_sw16
+  main_sw16 -->|RFOUT1/2| main_sma
+  main_sma -.->|16x coax to PA J1/J2 - TX/RX side UNVERIFIED| pa_qpa
+  pa_qpa -.->|AERIS-10X| ant
+  main_sma -.->|AERIS-10N direct| ant

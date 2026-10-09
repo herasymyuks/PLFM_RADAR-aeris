@@ -1,0 +1,118 @@
+digraph fpga_data_pipeline {
+  rankdir=TB; splines=true; nodesep=0.3; ranksep=0.45; newrank=true;
+ graph [fontname="Helvetica", fontsize=11, labelloc=t, labeljust=l,
+ label="AERIS-10 - FPGA signal-processing pipeline as written in the RTL (hand-drawn from source)\lDrawing ID: SD-02 Revision: A Date: 2026-10-09 Status: PARTIAL - the chain contains 5 instantiated-but-missing modules and several placeholders\lSource: 9_Firmware/9_2_FPGA/radar_system_top.v, radar_receiver_final.v, radar_transmitter.v, ddc_400m.v, usb_data_interface.v, lvds_to_cmos_400m.v, matched_filter_multi_segment.v, doppler_processor.v; 9_Firmware/9_2_FPGA/reconstructed/PIN_MAP_FROM_SCHEMATIC.md\lEvery box names its instance and file:line; the clock domain shown is the one the RTL connects, not a verified timing closure.\l"];
+  node [fontname="Helvetica", fontsize=9, shape=box, style="filled,rounded", fillcolor="#eaf2f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=8, color="#2c3e50"];
+
+  /* ---------- external pins ---------- */
+  subgraph cluster_pins_in {
+ label="FPGA input pins (radar_system_top.v:20-23, 62-65, 71-74)"; style="rounded,dashed"; color="#7f8c8d"; fontsize=9;
+    pin_adc   [label="adc_d_p/n[7:0], adc_dco_p/n\nAD9484 LVDS, 400 MSPS\n(top:62-65; board: bank 14 VCCO=+3V3_FPGA,\nRTL wants LVDS_25 - PIN_MAP:9-10 REQUIRES VERIFICATION)", fillcolor="#fdf2e9"];
+    pin_clk   [label="clk_100m / clk_120m_dac / ft601_clk_in\n/ reset_n\n(top:20-23) -> BUFG x3 (top:174-187)\nft601_clk_in: FT601 is not wired on\nthe board (PIN_MAP:77)"];
+    pin_stm   [label="stm32_new_chirp / _new_elevation / _new_azimuth / _mixers_enable\n(top:71-74) = STM32 PD8..PD11 DIG_0..3 (PIN_MAP:16-19, MEDIUM)"];
+  }
+
+  /* ---------- receiver ---------- */
+  subgraph cluster_rx {
+ label="radar_receiver_final rx_inst (radar_system_top.v:270-286) - clk = clk_100m_buf"; style="rounded"; color="#1f618d"; fontsize=10;
+
+    lvds_clk  [label="lvds_to_cmos_400m clk_400m_inst\n(radar_receiver_final.v:61-69)\nIBUFDS -> BUFG -> flop\n(lvds_to_cmos_400m.v:17-43)\nDEFECT: clk_400m is a flop re-sampling\nits own clock,\nnot a usable 400 MHz clock", fillcolor="#fdebd0", color="#ca6f1e"];
+    adc_if    [label="ad9484_lvds_to_cmos_400m adc\n(radar_receiver_final.v:82-92)\nMISSING: no definition in repo\n(ad9484_interface_400m.v exists: IBUFDS+IDDR, different ports, never instantiated)", style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+    cdc0      [label="cdc_adc_to_processing #(WIDTH=8,\nSTAGES=3) cdc\n(radar_receiver_final.v:94-105)\nadc_dco_cmos -> clk_400m domain"];
+
+    subgraph cluster_ddc {
+ label="ddc_400m_enhanced ddc (radar_receiver_final.v:114-127) connected with mixers_enable=1'b1, bypass_mode=1'b1 (:125-126)"; style="rounded"; color="#2874a6"; fontsize=9;
+      nco   [label="nco_400m_enhanced nco_core (ddc_400m.v:152-160)\n+ lfsr_dither_enhanced phase_dither_gen (ddc_400m.v:131-138)\nclk_400m; IF = 120 MHz @ 400 MSPS, PHASE_INC 32'h4CCCCCCD (:48-49, 70)"];
+      mixer [label="complex mixer (always @posedge\nclk_400m, ddc_400m.v:166-216)\nadc_signed x cos/sin ->\nmixed_i/q[33:0]"];
+      cic   [label="cic_decimator_4x_enhanced cic_i_inst / cic_q_inst\n(ddc_400m.v:223-240)  clk_400m, decimate by 4"];
+      cdc1  [label="cdc_adc_to_processing #(18,3)\nCDC_FIR_i / CDC_FIR_q\n(ddc_400m.v:243-268)  clk_400m ->\nclk_100m"];
+      fir   [label="fir_lowpass_parallel_enhanced fir_i_inst / fir_q_inst\n(ddc_400m.v:278-300)  clk_100m"];
+      ddcout[label="output stage (always @negedge clk_100m, ddc_400m.v:306)\nbaseband_i/q[17:0], baseband_valid_i/q"];
+      nco -> mixer; mixer -> cic [label="mixed_i[33:16], mixed_q[33:16]\n(ddc_400m.v:226,235)"]; cic -> cdc1; cdc1 -> fir; fir -> ddcout;
+    }
+
+    ddc_if    [label="ddc_input_interface ddc_if\n(radar_receiver_final.v:129-140)\nclk_100m\nddc_i/q[17:0] ->\nadc_i_scaled/adc_q_scaled[15:0]"];
+
+    chirpmem  [label="chirp_memory_loader_param chirp_mem\n(radar_receiver_final.v:144-154)  clk_100m\n$readmemh x10 from absolute Windows paths (chirp_memory_loader_param.v:3-12, 43-65);\nrepo has long_chirp_seg0..2_*.mem + short_chirp_*.mem; long_chirp_seg3_i/q.mem MISSING", fillcolor="#fdebd0", color="#ca6f1e"];
+    latbuf    [label="latency_buffer_2159 #(DATA_WIDTH=32, LATENCY=3187) ref_latency_buffer\n(radar_receiver_final.v:173-183)  clk_100m"];
+
+    mf        [label="matched_filter_multi_segment mf_dual\n(radar_receiver_final.v:198-222)\nclk_100m, overlap-save 1024-pt, 4\nsegments\nControl inputs use_long_chirp,\nchirp_counter, mc_new_* are UNDRIVEN\nwires\n(radar_receiver_final.v:21-22,\n204-208) -> filter never starts", fillcolor="#fdebd0", color="#ca6f1e"];
+    mfchain   [label="matched_filter_processing_chain m_f_p_c\n(matched_filter_multi_segment.v:361-386)\nMISSING: no definition in repo", style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+    orphans   [label="UNUSED orphan modules (never\ninstantiated):\nfft_1024_forward_enhanced\n(fft_1024_forward.v:3) -> FFT_enhanced\n[MISSING IP]\nfrequency_matched_filter\n(frequency_matched_filter.v:4)\nfft_1024_inverse_enhanced\n(fft_1024_inverse.v:3) -> FFT_enhanced\n[MISSING IP]\nINFERENCE (not design data): probable\ncontent of the missing chain", style="filled,rounded,dotted", fillcolor="#f2f3f4", color="#7f8c8d"];
+
+    rbdecim   [label="range_bin_decimator #(INPUT_BINS=1024, OUTPUT_BINS=64, DECIMATION_FACTOR=16) range_decim\n(radar_receiver_final.v:226-242)  decimation_mode=2'b01 (peak)\nMISSING: no definition in repo", style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+    framesync [label="frame-sync pulse from chirp_counter ==\n0 or 32\n(radar_receiver_final.v:248-283)\nclk_100m\nchirp_counter is undriven -> pulse\nnever fires", fillcolor="#fdebd0", color="#ca6f1e"];
+    doppler   [label="doppler_processor_optimized\n#(DOPPLER_FFT_SIZE=32, RANGE_BINS=64,\nCHIRPS_PER_FRAME=32) doppler_proc\n(radar_receiver_final.v:290-311)\nclk_100m\nframe buffer 64 range bins x 32 chirps\n-> doppler_output[31:0] = {Q,I},\ndoppler_bin[4:0]"];
+    xfft      [label="xfft_32 fft_inst (doppler_processor.v:283-296)\nAXI4-Stream 32-point FFT - MISSING: no definition in repo\n(port names indicate a Xilinx FFT IP core; no .xci in repository)", style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+  }
+
+  /* ---------- top-level glue ---------- */
+  subgraph cluster_top {
+ label="radar_system_top glue logic - clk_100m_buf"; style="rounded"; color="#1f618d"; fontsize=10;
+    cfar   [label="'CFAR' = fixed threshold |I|+|Q| > 10000 on doppler output\n(radar_system_top.v:298-323)  PLACEHOLDER per source comment :298-299", fillcolor="#fdebd0", color="#ca6f1e"];
+    pack   [label="USB data packing (radar_system_top.v:329-339)\nusb_range_profile = rx_doppler_output  <- PLACEHOLDER (comment :329-330)\nusb_doppler_real/imag = doppler_output[15:0]/[31:16] (:294-295)", fillcolor="#fdebd0", color="#ca6f1e"];
+    dbg    [label="dbg_doppler_data/valid/bin, dbg_range_bin, system_status[3:0]\n(radar_system_top.v:384-404) - output ports with NO board pin (PIN_MAP:78-79 / XDC)", fillcolor="#f2f3f4"];
+  }
+
+  /* ---------- host interface ---------- */
+  subgraph cluster_usb {
+ label="Host interface"; style="rounded"; color="#1f618d"; fontsize=10;
+    usb [label="usb_data_interface usb_inst\n(radar_system_top.v:345-373)\nFSM clocked by ft601_clk_in\n(usb_data_interface.v:65): IDLE ->\nHEADER 0xAA -> RANGE (4x32b) ->\nDOPPLER -> DETECTION -> FOOTER 0x55\n(:39-40, 80-170)\ninputs range_profile/doppler_*/cfar_*\nsampled from clk_100m without\nsynchroniser (:84-150)\nft601_clk_out toggled from clk\n(:176-182) and reset in the\nft601_clk_in block (:78) - two drivers", fillcolor="#fdebd0", color="#ca6f1e"];
+    ft601 [label="FT601 pins ft601_data[31:0], ft601_be, _txe_n, _rxf_n, _wr_n, _rd_n, _oe_n, _siwu_n, _srb, _swb, _clk_out\n(radar_system_top.v:79-97)\nNO HARDWARE: FT601 U6 has 0 of 77 pins connected on the Main Board schematic (PIN_MAP:77-78)", style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+  }
+
+  /* ---------- transmitter ---------- */
+  subgraph cluster_tx {
+ label="radar_transmitter tx_inst (radar_system_top.v:204-264)"; style="rounded"; color="#117a65"; fontsize=10;
+    edge3 [label="edge_detector_enhanced chirp_edge /\nelevation_edge / azimuth_edge\n(radar_transmitter.v:93-112)  clk_100m\ntoggle -> single-cycle pulse"];
+    plfm  [label="plfm_chirp_controller_enhanced plfm_chirp_inst\n(radar_transmitter.v:115-145)  clk_120m AND clk_100m (both connected :116-117)\nLUT-based PLFM chirp (plfm_chirp_controller.v:99-560), beam/elevation/azimuth/chirp counters,\nrf_switch_ctrl, rx/tx_mixer_en, adar_tx/rx_load_1..4, adar_tr_1..4"];
+    dac   [label="dac_interface_enhanced\ndac_interface_inst\n(radar_transmitter.v:148-156)\nclk_120m\n-> dac_data[7:0], dac_clk, dac_sleep\n(top:28-30)"];
+    lvl   [label="STM32 SPI pass-through 3V3 -> 1V8\nports\n(radar_transmitter.v:56-71; top:46-57)\nOUTPUTS NEVER DRIVEN:\nlevel_shifter_interface\n(level_shifter_interface.v:10) is not\ninstantiated\n-> ADAR1000 SPI cannot pass through\nthe FPGA", fillcolor="#fdebd0", color="#ca6f1e"];
+    edge3 -> plfm [label="new_chirp/_elevation/_azimuth pulses"];
+    plfm -> dac [label="chirp_data[7:0], chirp_valid\n(:124-125)"];
+  }
+
+  pin_out_tx [label="FPGA output pins: dac_data[7:0], dac_clk, dac_sleep, fpga_rf_switch, rx/tx_mixer_en,\nadar_tx/rx_load_1..4, adar_tr_1..4, stm32_*_1v8 (top:28-57)", fillcolor="#fdf2e9"];
+
+  /* ---------- edges: receive chain ---------- */
+  pin_adc -> lvds_clk [label="adc_dco_p/n (:63-64)"];
+  pin_adc -> adc_if   [label="adc_d_p/n, adc_dco_p/n (:83-86)", color="#c0392b", style=dashed];
+  lvds_clk -> cdc0    [label="clk_400m (dst_clk :99)"];
+  lvds_clk -> nco     [label="clk_400m (:115)"];
+  adc_if -> cdc0      [label="adc_data_cmos[7:0], adc_dco_cmos,\nadc_valid (:88-90)", color="#c0392b", style=dashed];
+  cdc0 -> mixer       [label="cdc_data_cmos[7:0], cdc_valid\n(:118-120)"];
+  ddcout -> ddc_if    [label="baseband_i/q[17:0], valid (:121-124)"];
+  ddc_if -> mf        [label="adc_i/q_scaled sign-extended to 18 b,\nadc_valid_sync (:201-203)"];
+  chirpmem -> latbuf  [label="ref_i/ref_q[15:0] (:179-181)"];
+  latbuf -> mf        [label="delayed_ref_i/q ->\nlong/short_chirp_real/imag (:209-212)"];
+  mf -> chirpmem      [label="segment_request, mem_request,\nsample_addr_out (:213-215)", dir=both];
+  mf -> mfchain       [label="fft_input_i/q, fft_input_valid\n(mf:365-367)", color="#c0392b", style=dashed];
+  mfchain -> mf       [label="range_profile_i/q, valid (mf:380-382)", color="#c0392b", style=dashed];
+  orphans -> mfchain  [style=dotted, color="#7f8c8d", label="inferred relation"];
+  mf -> rbdecim       [label="pc_i_w/pc_q_w[15:0], pc_valid_w ->\nrange_profile_i/q (:219-221, 233-235)", color="#c0392b", style=dashed];
+  rbdecim -> doppler  [label="{decimated_range_q, decimated_range_i}\n(:286-287, 297-298)", color="#c0392b", style=dashed];
+  framesync -> doppler[label="new_chirp_frame (:283, 299)"];
+  doppler -> xfft     [label="s_axis_data {Q,I}\n(doppler_processor.v:289-292)", color="#c0392b", style=dashed];
+  xfft -> doppler     [label="m_axis_data (:293-295)", color="#c0392b", style=dashed];
+  doppler -> cfar     [label="rx_doppler_output[31:0],\nrx_doppler_valid (top:282-283)"];
+  doppler -> pack     [label="rx_doppler_output (top:331-336)"];
+  doppler -> dbg      [label="top:384-387"];
+  cfar -> pack        [label="rx_cfar_detection/valid (top:338-339)"];
+  pack -> usb         [label="range_profile, doppler_real/imag,\ncfar_* (top:350-356)"];
+  usb -> ft601        [label="FT601 slave-FIFO signals (top:359-372)", color="#c0392b", style=dotted];
+  pin_clk -> usb      [label="ft601_clk_buf (top:372)"];
+
+  /* ---------- edges: transmit chain ---------- */
+  pin_stm -> edge3    [label="stm32_new_* (top:220-222 ->\ntx:96,103,110)"];
+  pin_stm -> plfm     [label="stm32_mixers_enable (tx:123)"];
+  pin_clk -> plfm     [label="clk_100m_buf, clk_120m_dac_buf\n(top:206-207)"];
+  dac -> pin_out_tx;
+  plfm -> pin_out_tx  [label="rf switch, mixer enables, ADAR load/TR\n(tx:127-141)"];
+  lvl -> pin_out_tx   [label="stm32_*_1v8 undriven", style=dashed, color="#ca6f1e"];
+  pin_clk -> lvds_clk [label="reset_n -> sys_reset_n (top:189-198)", style=dotted];
+
+  /* ---------- legend ---------- */
+ legend [shape=note, fillcolor="#fbfcfc", color="#7f8c8d", fontsize=8, label="LEGEND\lblue box = module defined in repo and instantiated (file:line = instantiation site)\lorange box = defined but contains a documented defect or source-commented placeholder\lred dashed box = instantiated but NO definition in repository (MISSING)\lgrey dotted box = defined but never instantiated (orphan)\lred dashed edge = data path through a missing module; red dotted edge = no hardware path\l\lEVIDENCE SUMMARY (all paths relative to 9_Firmware/9_2_FPGA/)\lTop and instantiations: radar_system_top.v:174-187 (BUFG), :204 (tx_inst), :270 (rx_inst), :345 (usb_inst)\lRX chain order: radar_receiver_final.v:61, 82, 94, 114, 129, 144, 173, 198, 226, 290\lDDC internals: ddc_400m.v:131, 152, 166-216, 223-240, 243-268, 278-300, 306\lMissing definitions: ad9484_lvds_to_cmos_400m (rrf:82), matched_filter_processing_chain (mfms:361), range_bin_decimator (rrf:226), xfft_32 (dp:283), FFT_enhanced (fft_1024_forward.v:102, fft_1024_inverse.v:78)\lUndriven control: radar_receiver_final.v:21-25 (declared, never assigned), :204-208 (mc_new_* implicit wires)\lPlaceholders: radar_system_top.v:298-299, 329-330 (source comments)\lClock defect: lvds_to_cmos_400m.v:35-43; 400 MHz capture via IDDR exists only in the unused ad9484_interface_400m.v:46-60\lBoard facts: reconstructed/PIN_MAP_FROM_SCHEMATIC.md:9-10 (LVDS bank voltage), :77-78 (FT601 unconnected)\lNOT VERIFIED: timing closure, bit widths beyond declarations, functional correctness of any stage (no simulation run)\l"];
+  { rank=sink; legend; }
+}

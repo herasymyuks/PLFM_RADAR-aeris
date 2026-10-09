@@ -1,0 +1,12 @@
+Import Report
+=============
+
+Source file: RADAR_Main_Board.brd
+Source format: Eagle
+Output file: MAIN_BOARD.kicad_pcb
+
+Statistics:
+  Footprints: 784
+  Tracks: 10219
+  Vias: 2893
+  Zones: 26

@@ -1,0 +1,16 @@
+# AERIS-10 Python GUI — runtime dependencies
+# Derived from `import` statements in GUI_V2..GUI_V6 (tools/check_python_imports.py).
+# "Tested with" versions were installed and import-checked on 2026-10-08 with CPython 3.14.7
+# (macOS arm64) in a clean venv. The GUI itself was NOT executed against hardware.
+# Lower bounds are the oldest releases known to support the APIs used; they are UNVERIFIED
+# below the tested version — pin to the tested version for a reproducible environment.
+numpy>=1.24,<3            # tested 2.5.3
+scipy>=1.10               # tested 1.18.1
+matplotlib>=3.7           # tested 3.11.2   (TkAgg backend -> needs Tk, see INSTALLATION.md)
+scikit-learn>=1.3         # tested 1.9.1    (DBSCAN clustering)
+filterpy>=1.4.5           # tested 1.4.5    (Kalman tracking; last release 2018 — UNVERIFIED on numpy 2 beyond import)
+crcmod>=1.7               # tested 1.7      (packet CRC)
+pyusb>=1.2                # tested 1.3.1    (import usb; needs libusb-1.0 system library)
+pyftdi>=0.55              # tested 0.57.2   (FTDI access; FT601 USB3 is NOT supported by pyftdi — see DEPENDENCIES.md)
+pandas>=2.0               # tested 3.0.6    (GUI_V4_2_CSV.py only)
+tkinterweb>=4.0           # tested 4.25.4   (GUI_V5_Demo.py only; embedded map view)

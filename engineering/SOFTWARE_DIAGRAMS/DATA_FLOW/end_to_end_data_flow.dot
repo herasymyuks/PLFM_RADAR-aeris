@@ -1,0 +1,94 @@
+digraph end_to_end_data_flow {
+  rankdir=TB; splines=true; nodesep=0.25; ranksep=0.6; newrank=true;
+ graph [fontname="Helvetica", fontsize=11, labelloc=t, labeljust=l,
+ label="AERIS-10 - end-to-end signal and control data flow (antenna -> RF -> ADC -> FPGA -> host; host -> STM32 -> clock/LO/beamformer -> FPGA)\lDrawing ID: SD-07 Revision: A Date: 2026-10-09 Status: PARTIAL - the FPGA-to-host data path has NO hardware (FT601 unwired) and several interfaces are unverified\lSource: docs/SYSTEM/BLOCK_DIAGRAM.md (EAGLE connector nets + firmware + RTL), docs/FPGA/FPGA_PROJECT_RECONSTRUCTION.md 6-7, docs/STM32/STM32_PROJECT_RECONSTRUCTION.md 3.2-3.3 and STM-T04, docs/GUI/DEPENDENCIES.md 4 and 6,\l 9_Firmware/9_2_FPGA/reconstructed/PIN_MAP_FROM_SCHEMATIC.md, 9_Firmware/9_2_FPGA/radar_system_top.v, 9_Firmware/9_1_Microcontroller/9_1_3_C_Cpp_Code/main.cpp, 9_Firmware/9_3_GUI/GUI_V5.py\lEdge styles: SOLID = confirmed by schematic net AND firmware/RTL reference; DASHED = interface exists in one source only or mapping unverified; DOTTED RED = missing specification / no hardware path\l"];
+  node [fontname="Helvetica", fontsize=9, shape=box, style="filled,rounded", fillcolor="#eaf2f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=8, color="#2c3e50"];
+
+  /* ---------------- RF front end ---------------- */
+  subgraph cluster_rf {
+ label="RF FRONT END"; style="rounded"; color="#935116"; fontsize=10;
+    ant  [label="Antenna array\nREADME: 8x16 patch or 32x16 slotted waveguide\nNO CAD, NO PART, two different simulations (BLOCK_DIAGRAM 1, K8)", style="filled,rounded,dotted", fillcolor="#fdecea", color="#c0392b"];
+    pa   [label="RF PA boards x16 (AERIS-10X)\nQPA2962 GaN 10 W, 35x60 mm 4L\nJ1 RFIN / J2 RFOUT; X3 VD,VIN_M; X2 VG"];
+    sw   [label="17x M3SWA2-34DR+ switches\n16+1 SMA pairs J22..J55 to PA boards\n17th pair UNRESOLVED (BLOCK_DIAGRAM 2.3)"];
+    adtr [label="16x ADTR1107 (T/R front end)"];
+    adar [label="4x ADAR1000 beamformers\n1.8 V SPI/TR/LOAD from FPGA bank 34\n(ADAR1000_Manager.cpp via hspi1 ->\nFPGA pass-through)"];
+    mix  [label="2x LTC5552 mixers U5, U13\nTX up-conversion / RX down-conversion"];
+  }
+
+  /* ---------------- mixed signal / digital (Main Board) ---------------- */
+  subgraph cluster_main {
+ label="MAIN BOARD 260x300 mm 10L (digital / mixed-signal)"; style="rounded"; color="#1f618d"; fontsize=10;
+    dac  [label="AD9708 DAC U3, 8 bit\nDAC_0..7 from FPGA bank 15; clock 120 MHz AD9523 OUT10 via J20"];
+    adc  [label="AD9484 ADC U1, 8 bit 400 MSPS\nclock 400 MHz AD9523 OUT4 (J3 -> J21)\nLVDS D0..7 + DCO to FPGA bank 14"];
+    fpga [label="FPGA XC7A50T-2FTG256I U42 (CAD) /\nXC7A100T (README+XDC) - conflict K1\nradar_system_top: TX chirp -> DAC; ADC\ncapture -> DDC -> matched filter ->\nDoppler -> packetizer\nRTL status: 5 missing modules, LVDS\ncapture not implemented (see\nSD-01/SD-02)", fillcolor="#d6eaf8", penwidth=2];
+    stm  [label="STM32F746ZGT7 U2\nmain.cpp: power sequencing, AD9523/ADF4382 config (SPI4), ADAR1000 (SPI1), PA bias (I2C1/I2C2),\nsensors (I2C3/UART5), stepper (PD4/PD5), FPGA handshake (PD8..PD12), USB CDC to host", fillcolor="#d6eaf8", penwidth=2];
+    ft601[label="FT601 USB 3.0 FIFO U6\nPLACED BUT 0 OF 77 PINS CONNECTED\n(PIN_MAP_FROM_SCHEMATIC.md:77; BLOCK_DIAGRAM 1)", style="filled,rounded,dotted", fillcolor="#fdecea", color="#c0392b"];
+    usbx [label="X53 mini-USB\nSTM32_USB_FS_D_P/D_N/ID (PA11/PA12/PA10)\nthe ONLY host data link in the CAD (BLOCK_DIAGRAM 2.4)"];
+    pabias [label="PA bias: 2x DAC5578 (I2C1 @0x48/0x49)\n-> 16x VG; 16x INA241A3 -> 2x ADS7830\n(I2C2 @0x48/0x4A) Idq\n8x TMP37 -> ADS7830 @0x49\n(main.cpp:1563-1657, 1670-1753)"];
+  }
+
+  /* ---------------- synthesizer board ---------------- */
+  subgraph cluster_syn {
+ label="FREQUENCY SYNTHESIZER BOARD 100x100 mm 6L"; style="rounded"; color="#117a65"; fontsize=10;
+    osc  [label="OCXO 100 MHz X4 / VCXO 50 MHz X5,X6 (schematic)\nvs xlsx VCXO 100 MHz / firmware vcxo_freq 100 MHz - conflict K7", fillcolor="#fdebd0", color="#ca6f1e"];
+    ad9523 [label="AD9523 clock generator IC1\nSPI4 + control via JP1<->JP1; CS PF7\nnever toggled (C7)\nOUT4 400 MHz ADC, OUT5 400 MHz FPGA\n(unused by RTL), OUT6 100 MHz FPGA\nsys, OUT7 20 MHz test, OUT10/11 120\nMHz DAC/FPGA"];
+    lotx [label="ADF4382 U1 - TX LO (10.5 GHz per adf4382a_manager.c:54)"];
+    lorx [label="ADF4382 U6 - RX LO"];
+  }
+
+  /* ---------------- power ---------------- */
+  pwr [label="POWER SUPPLY BOARD 280x300 mm 2L\nX1 VIN 12-17 V -> 34 rail outputs\nX2..X35; EN bus SV1 (16x EN_*)\nPA 22 V requirement (xlsx) has no rail\n- conflict K4", fillcolor="#f9ebea"];
+
+  /* ---------------- host and peripherals ---------------- */
+  host [label="Host PC - Python GUI\nGUI_V5.py: STM32 CDC (pyusb) + FTDI FT2232H (pyftdi) - no FT2232H exists on the board\nGUI_V6_Demo.py: offline simulator\nradar packet format A5C3+CRC16 (GUI) vs 0xAA..0x55 (RTL) - conflict K5", fillcolor="#e8f6f3"];
+  sens [label="Off-board modules (no part numbers): GPS (JP8, UART5 9600), GY-85 IMU + BMP180 (JP7/JP18, I2C3),\nstepper driver (JP9, PD4/PD5), fan relay (JP4, PD7), PA drain switch (JP10, PD6)"];
+
+  /* ================= SIGNAL PATH (receive / transmit) ================= */
+  ant  -> sw   [label="RF (antenna interface unspecified)", style=dotted, color="#c0392b", fontcolor="#c0392b", dir=both];
+  pa   -> sw   [label="SMA pairs J22..J55 (17 pairs, 16 PAs;\nmapping of the 17th unresolved)", style=dashed, dir=both];
+  sw   -> adtr [label="schematic", dir=both];
+  adtr -> adar [label="schematic", dir=both];
+  adar -> mix  [label="beamformed IF/RF (schematic)", dir=both];
+  mix  -> adc  [label="RX IF 120 MHz into AD9484 (schematic;\nDDC IF_FREQ=120e6 ddc_400m.v:48)"];
+  dac  -> mix  [label="TX chirp (schematic)"];
+  fpga -> dac  [label="DAC_0..7 bank 15 (schematic) =\ndac_data[7:0] radar_system_top.v:28\n(dac_clk port has no board pin,\nPIN_MAP:8)"];
+  adc  -> fpga [label="LVDS D0..7 + DCO, bank 14 at 3.3 V\n(schematic) vs RTL LVDS_25 + DIFF_TERM\n(ad9484_interface_400m.v:25-27);\ncapture module\nad9484_lvds_to_cmos_400m MISSING -\nPIN_MAP:9-10", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+  fpga -> ft601 [label="usb_data_interface.v FT601 slave FIFO:\nNO NETS on the board", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  ft601 -> host [label="USB 3.0: no connector, no cable, no\ndriver in GUI (pyftdi cannot drive\nFT60x)", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+  fpga -> host  [label="radar data (range/Doppler/detections):\nNO HARDWARE PATH EXISTS - GUI expects\nFT2232H/FT601 data (GUI_V5.py:479-549)", style=dotted, color="#c0392b", fontcolor="#c0392b", penwidth=2];
+
+  /* ================= CONTROL PATH ================= */
+  host -> usbx [label="USB CDC: start flag [23,46,158,237] +\n82-B settings (GUI_V5.py:401-468);\nstatus text / GPSB back\n(main.cpp:1692, gps_handler.cpp:118)\nwiring confirmed; firmware RX callback\nnever bound (C4) - see SD-04", dir=both];
+  usbx -> stm  [label="STM32_USB_FS_D_P/D_N (schematic) <->\nUSB OTG_FS (usbd_conf.c missing)", dir=both];
+  stm  -> ad9523 [label="SPI4 PE2/PE5/PE6 + PF3..PF10 control\nvia JP1<->JP1 (schematic +\nmain.cpp:927-1058,\nstm32f7xx_hal_msp.c:323-324)"];
+  stm  -> lotx [label="SPI4 + PG11..PG15 via JP13<->JP2\n(schematic + main.h:144-157); firmware\ndriver broken: platform_ops=NULL (C3),\npin macros collide (C2)", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+  stm  -> lorx [label="SPI4 + PG6..PG10 via JP13<->JP2\n(schematic + main.h:124-143); same\nfirmware defects C2/C3", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+  stm  -> fpga [label="SPI1 PA5/PA6/PA7 + CS PA0..PA3 -> FPGA\nJ16/G14/H13, F14/H16/G16/J15\n(schematic; ADAR1000_Manager.cpp:619,\nmain.h:78-85)\nRTL pass-through stm32_*_1v8 UNDRIVEN\n(radar_transmitter.v:65-71)", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+  fpga -> adar [label="1.8 V SPI + TR + LOAD lines, bank 34\n(schematic; RTL ports\nradar_system_top.v:40-57)\nSPI never driven in RTL; TR/LOAD from\nplfm_chirp_controller", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+  stm  -> fpga [label="handshake DIG_0..4 = PD8 new_chirp,\nPD9 new_elevation, PD10 new_azimuth,\nPD11 mixers_enable, PD12 reset_n\n(schematic nets DIG_0..4 ->\nF13/E16/D16/F15/E15;\nmain.cpp:448,484,514,1483,1660;\nradar_system_top.v:23,71-74)\nbit-to-port mapping inferred from\nsource comments (MEDIUM,\nPIN_MAP:16-20)", penwidth=2];
+  stm  -> fpga [label="DIG_5..7 (PD13..PD15 inputs, never\nread; no RTL port) -> H11/G12/H12", style=dashed];
+  stm  -> pabias [label="I2C1 PB6/PB7, I2C2 PF0/PF1 (schematic\n+ main.cpp:1563-1657)"];
+  pabias -> pa [label="VG / VD / VIN_M via X3,X38..X52 3-pin\nMolex (anonymous nets)", style=dashed];
+  stm  -> pwr  [label="EN_* x16 via SV1<->SV1 MA10-2\n(schematic + main.h:94-123,\nmain.cpp:1241-1275,1485-1489)"];
+  stm  -> sens [label="UART5 PC12/PD2, I2C3 PA8/PC9, GPIO\nPD4..PD7 (schematic connectors +\nmain.cpp:908, 1280, 1514-1521)", dir=both];
+  stm  -> sens [label="module part numbers and pinouts\nunspecified", style=dotted, color="#c0392b", fontcolor="#c0392b"];
+
+  /* ================= CLOCK / LO PATH ================= */
+  osc  -> ad9523 [label="reference (schematic); oscillator set\nconflicts with firmware (K7)", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+  ad9523 -> fpga [label="OUT6 100 MHz J7 -> J1 FPGA_SYS_CLOCK\n(schematic + main.cpp:995-996 + RTL\nclk_100m)"];
+  ad9523 -> adc  [label="OUT4 400 MHz J3 -> J21 (schematic +\nmain.cpp:983-984)"];
+  ad9523 -> fpga [label="OUT5 400 MHz J4 -> J19 FPGA_ADC_CLOCK\n(schematic; unused by RTL)", style=dashed];
+  ad9523 -> dac  [label="OUT10 120 MHz -> J20 DAC_CLOCK\n(anonymous synth net; firmware\nmain.cpp:1025-1026)", style=dashed];
+  ad9523 -> fpga [label="OUT11 120 MHz -> J18 FPGA_DAC_CLOCK =\nRTL clk_120m_dac (anonymous synth net)", style=dashed];
+  lotx -> mix [label="LO TX SMA (anonymous nets\nJ1/J2/J5/J6/J9-J13) - mapping requires\nschematic review", style=dashed];
+  lorx -> mix [label="LO RX SMA (anonymous nets) - mapping\nrequires schematic review", style=dashed];
+
+  /* ================= POWER ================= */
+  pwr -> stm  [label="rails via 2-pin Molex (schematic 2.1);\nseveral rail names differ or are not\nfound - verify", style=dashed];
+  pwr -> ad9523 [label="+5V0_LO, +3V3_LO_1/2, +1V8_CLOCK,\n+3V3_CLOCK, +3V3_XO (anonymous synth\nconnector nets)", style=dashed];
+  pwr -> pa   [label="+5V0_PA_1..3, +5V5_PA (schematic); 22\nV PA drain (xlsx) has no rail", style=dashed, color="#ca6f1e", fontcolor="#ca6f1e"];
+
+ legend [shape=note, fillcolor="#fbfcfc", color="#7f8c8d", fontsize=8, label="LEGEND\lSOLID black edge = interface confirmed by a schematic net AND a firmware/RTL reference (file:line in label)\lDASHED edge = unverified: present in only one source, anonymous net, inferred mapping, or wiring confirmed but driver/RTL broken (orange = documented defect)\lDOTTED RED edge = missing specification or no hardware path at all\lred dotted box = component with no wiring/CAD; orange box = documented conflict (K-numbers from docs/SYSTEM/BLOCK_DIAGRAM.md section 4; C-numbers from docs/STM32/STM32_PROJECT_RECONSTRUCTION.md STM-T04)\lKEY FINDING: the only wired host link is STM32 USB-FS CDC (control + GPS/status). The FPGA radar-data output (usb_data_interface.v) targets an FT601 that has no nets;\lno GUI version can decode the RTL packet format (K5). Therefore no end-to-end radar data path exists in the repository as committed.\lNOT VERIFIED: any electrical measurement, RF levels, LO/IF frequency plan beyond the constants quoted, cable harness, antenna\l"];
+  { rank=sink; legend; }
+}

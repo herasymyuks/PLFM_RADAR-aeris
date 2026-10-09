@@ -1,0 +1,66 @@
+digraph aeris10_hardware_interconnection {
+  // One node per board/module, one edge per documented inter-board connector or cable.
+  // Edge label: <source connector> -> <destination connector> : signals [pins] (interface standard).
+  // Solid = both connector ends found in the schematics (nets verified with tools/extract_eagle_netlist.py
+  // logic on the EAGLE XML); dashed = one end is off-board / not in CAD; red = open conflict.
+  rankdir=LR; splines=true; nodesep=0.45; ranksep=1.1; concentrate=false;
+  graph [label="AERIS-10 - Hardware interconnection diagram (inter-board connectors and cables)\lDrawing ID: SYS-02   Revision: A   Date: 2026-10-09   Status: SOURCE-DERIVED; cables themselves are not in any CAD file (lengths, gauge, coax type UNKNOWN)\lSource: RADAR_Main_Board.sch (X*, J*, JP*, SV1 nets), PowerBoard.sch (X1..X35, SV1), Clocks_Freq_Synth_board.sch/.brd (J1..J13, JP1, JP2, X10..X15 + silkscreen), RF_PA.sch/.brd (J1, J2, X2, X3, '22V'), main.h (STM32 pins), docs/SYSTEM/BLOCK_DIAGRAM.md section 2\lLegend: solid = both ends in CAD | dashed = one end off-board (no CAD) | red = conflict / missing hardware | cable IDs CBL-xx are PROPOSED (see interconnection_table.md)\l", labelloc=t, labeljust=l, fontname="Helvetica", fontsize=11];
+  node [fontname="Helvetica", fontsize=9, shape=box, style="filled,rounded", fillcolor="#f4f6f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=7.5, color="#2c3e50"];
+
+  PWR  [label="Power Supply Board\nPowerBoard.sch\nX1 AK300/2 input; X2..X35 Molex 22-23-2021; SV1 MA10-2"];
+  MAIN [label="Main Board\nRADAR_Main_Board.sch\nX1,X4..X22,X24,X54..X56 Molex 2-pin rails; SV1 MA10-2\nJP1 2x6, JP13 2x7; J1,J18,J20 SMA; J19,J21 CJT; JP20 1x2\nJ22,J23 LO SMA; J24..J55 32x SMA; X3,X38..X52 Molex 3-pin; X_1..X_16 Molex 2-pin\nX53 mini-USB; JP2,JP4..JP12,JP14..JP19 pin headers"];
+  SYN  [label="Frequency Synthesizer Board\nClocks_Freq_Synth_board.sch\nJP1 2x6, JP2 2x7; J1,J2,J5..J13 SMA; J3,J4 CJT; X10..X15 Molex 2-pin"];
+  PA   [label="RF PA Board (x16 per README; 1 in CAD)\nRF_PA.sch\nJ1 SMA RFIN, J2 SMA RFOUT, X2 Molex 2-pin VG, X3 Molex 3-pin, '22V' AK300/2"];
+  V22  [label="+22 V PA drain supply\nNOT IN ANY CAD (xlsx row 59: 22 V / 2 A x16)\nK4", style="filled,rounded,dashed", color="#c0392b", fontcolor="#c0392b"];
+  VINSRC [label="External DC source 12-17 V\n(silk 'Vin [12-17]V'; source not specified)", style="filled,rounded,dashed"];
+  ANT  [label="Antenna array (16 feeds)\nNO CAD - K8", style="filled,rounded,dashed", color="#c0392b", fontcolor="#c0392b"];
+  HOST [label="Host PC\n(USB host; no spec)", style="filled,rounded,dashed"];
+  DBG  [label="SWD debug probe\n(not specified)", style="filled,rounded,dashed"];
+  GPS  [label="GPS module NEO-6M\n(xlsx row 49; pinout of module UNVERIFIED)", style="filled,rounded,dashed"];
+  IMU  [label="GY-85 IMU + BMP180\n(xlsx rows 47-48; pinout UNVERIFIED)", style="filled,rounded,dashed"];
+  TEMP [label="8x TMP37 sensors\n(xlsx row 50)", style="filled,rounded,dashed"];
+  STEP [label="Stepper driver 'TBS6600'\n+ motor (xlsx row 63)", style="filled,rounded,dashed"];
+  FAN  [label="Cooling fan relay\n(xlsx row 64)", style="filled,rounded,dashed"];
+  PASW [label="PA drain switch\n(EN/DIS_RFPA_VDD target: NOT IN CAD)", style="filled,rounded,dashed", color="#c0392b", fontcolor="#c0392b"];
+
+  // ---------------- DC input
+  VINSRC -> PWR [label="CBL-00: -> X1 AK300/2 [KL1 VIN, KL2 GND] (DC power, 12-17 V)", style=dashed];
+
+  // ---------------- Power -> Main (one 2-pin Molex cable per rail; pin 1 = rail, pin 2 = GND on both ends - pin ORDER UNVERIFIED, EAGLE pads both named 'S')
+  PWR -> MAIN [label="CBL-01..CBL-20 (2-wire Molex 22-23-2021 -> 22-23-2021, DC power):\nX4->X8 +1V0_FPGA | X5->X10 +1V8_FPGA | X27->X16 +3V3_FPGA | X16->X24 +3V3\nX12->X9 +3V3_AN (Main also has X56 on the same net: 2nd source UNVERIFIED) | X10->X17 +1V8_CLOCK\nX14->X20 +3V3_ADAR_12/+3V3_ADAR12 | X15->X21 +3V3_ADAR_34/+3V3_ADAR34\nX21->X13 -5V0_ADAR12 | X20->X15 -5V0_ADAR34 | X34->X4 +3V3_ADTR | X18->X6 -3V3_SW\nX30->X12 +3V3_VDD_SW | X23->X1 +3V4 (Main X54 same net) | X24->X11 -3V4 (Main X22 same net)\nX3->X55 +5V5_PA | X19->X19 -5V5_PA | X31->X14 +5V0_PA_1 | X32->X5 +5V0_PA_2 | X33->X7 +5V0_PA_3 | X22->X18 +5V0_0"];
+  MAIN -> PWR [label="CBL-21: SV1 MA10-2 -> SV1 MA10-2, 20-way ribbon (3.3 V CMOS enables):\n1 EN_+1V0_FPGA(PE7) 2 EN_+5V0_PA2(PG1) 3 EN_+1V8_FPGA(PE8) 4 EN_+5V0_PA3(PG2) 5 EN_+3V3_FPGA(PE9)\n6 EN_+5V5_PA(PG3) 7 EN_+5V0_ADAR(PE10) 8 EN_+1V8_CLOCK(PG4) 9 EN_+3V3_ADAR12(PE11) 10 EN_+3V3_CLOCK(PG5)\n11 EN_+3V3_ADAR34(PE12) 13 EN_+3V3_ADTR(PE13) 15 EN_+3V3_SW(PE14) 17 EN_+3V3_VDD_SW(PE15) 19 EN_+5V0_PA1(PG0)\n12,14,16,18,20 GND  (pin map identical on both boards)"];
+
+  // ---------------- Power -> Synth
+  PWR -> SYN [label="CBL-22..CBL-27 (2-wire Molex, DC power):\nX35->X10 +3V3_XO (via L9) | X11->X11 +3V3_CLOCK (via L10) | X10->X12 +1V8_CLOCK (via L11)\nX8->X13 +3V3_LO_1 (via L12) | X7->X14 +3V3_LO_2 (via L13) | X6->X15 +5V0_LO\nNOTE: Power X10 (+1V8_CLOCK) is the only +1V8_CLOCK output but is needed by Main X17 AND Synth X12 -> splitting UNRESOLVED", color="#c0392b", fontcolor="#c0392b"];
+
+  // ---------------- Main <-> Synth control
+  MAIN -> SYN [label="CBL-28: JP1 PINHD-2X6 -> JP1 PINHD-2X6, 12-way (SPI4 3.3 V + GPIO):\n1 AD9523_PD(PF3) 2 AD9523_REF_SEL(PF4) 3 AD9523_SYNC(PF5) 4 AD9523_RESET(PF6) 5 AD9523_CS(PF7)\n6 STM32_SCLK4(PE2)->AD9523_SCLK 7 STM32_MOSI4(PE6)->AD9523_SDIO 8 STM32_MISO4(PE5)<-AD9523_SDO\n9 AD9523_STATUS0(PF8) 10 AD9523_STATUS1(PF9) 11 AD9523_EEPROM_SEL(PF10) 12 GND"];
+  MAIN -> SYN [label="CBL-29: JP13 PINHD-2X7 -> JP2 PINHD-2X7, 14-way (SPI4 3.3 V + GPIO):\n1 STM32_MISO4<-ADF4382_SDO 2 STM32_SCLK4->ADF4382_SCLK 3 STM32_MOSI4->ADF4382_SDIO\n4 ADF4382_TX_CS(PG14) 5 ADF4382_TX_CE(PG15) 6 ADF4382_TX_DELSTR(PG12) 7 ADF4382_TX_DELADJ(PG13) 8 ADF4382_TX_LKDET(PG11)\n9 ADF4382_RX_CS(PG10) 10 ADF4382_RX_CE(PG9) 11 ADF4382_RX_DELSTR(PG8) 12 ADF4382_RX_DELADJ(PG7) 13 ADF4382_RX_LKDET(PG6) 14 GND\n(K6: adf4382a_manager.h uses PG0..PG9 instead)", color="#c0392b", fontcolor="#c0392b"];
+
+  // ---------------- Synth -> Main clocks and LO (coax)
+  SYN -> MAIN [label="Clock coax (50 ohm SMA 142-0731-211, type/length UNKNOWN):\nCBL-30: J7 'FPGA SYS. CLOCK' (AD9523_OUT6+, 100 MHz LVCMOS) -> J1 FPGA_SYS_CLOCK -> U42 IO_L13P_T2_MRCC_15\nCBL-31: J5 'DAC' (OUT10, 120 MHz LVCMOS) -> J20 DAC_CLOCK -> U3 CLOCK\nCBL-32: J6 'FPGA=DAC' (OUT11, 120 MHz LVCMOS) -> J18 FPGA_DAC_CLOCK -> U42 IO_L12N_T1_MRCC_15\nCBL-33: J8 'TEST' (OUT7, 20 MHz LVCMOS) -> JP20 1x2 FPGA_CLOCK_TEST (SMA-to-header adapter: UNVERIFIED)"];
+  SYN -> MAIN [label="Differential clock (CJT-T-P-HH-ST-TH1 twinax, pins 1 P / 2 N):\nCBL-34: J3 'ADC' (AD9523_OUT4_P/N, 400 MHz LVDS) -> J21 (N$2_P/N) -> C1/C2 -> U1 CLK+/CLK-\nCBL-35: J4 'FPGA=ADC' (AD9523_OUT5_P/N, 400 MHz LVDS) -> J19 FPGA_ADC_CLOCK_P/N -> U42 IO_L13P/N_T2_MRCC_14 (unused by RTL)"];
+  SYN -> MAIN [label="LO coax (SMA, 10.5 GHz / 10.38 GHz per adf4382a_manager.h):\nCBL-36: J10 'LO TX' (U1 RFOUT1 -> U2 MTX2-143+ -> U4 ATS1005) -> J23 (N$23) -> C272 18 pF -> U5 LTC5552 LO\nCBL-37: J11 'LO RX' (U6 RFOUT1 -> U7 -> U8) -> J22 (N$24) -> C274 18 pF -> U13 LTC5552 LO\n(J1 AUX. LO TX, J12, J2/J9 MUXOUT, J13 PLL_OUT: no Main-Board counterpart - test/aux)"];
+
+  // ---------------- Main <-> PA boards
+  MAIN -> PA [label="CBL-40..CBL-55 (x16) RF coax SMA->SMA:\nRF_SW_n RFOUT1/RFOUT2 -> J(2n+22)/J(2n+23) -> PA J1 RFIN / PA J2 RFOUT\nelement map: SW1 J27/J26, SW2 J29/J28, SW3 J25/J24, SW4 J31/J30, SW5 J35/J34, SW6 J37/J36, SW7 J33/J32, SW8 J39/J38,\nSW9 J47/J46, SW10 J41/J40, SW11 J45/J44, SW12 J43/J42, SW13 J55/J54, SW14 J49/J48, SW15 J53/J52, SW16 J51/J50\nWHICH of the two SMAs feeds PA RFIN and where PA RFOUT returns: UNVERIFIED (no silk, no doc)", style=dashed];
+  MAIN -> PA [label="CBL-56..CBL-71 (x16) Molex 22-23-2021 2-wire: X_1..X_16 (VG_n, GND) -> PA X2 (VG, GND), analogue gate bias -4..-1.2 V (xlsx)\nX_7=VG_1 X_16=VG_2 X_8=VG_3 X_15=VG_4 X_4=VG_5 X_11=VG_6 X_3=VG_7 X_12=VG_8\nX_5=VG_9 X_14=VG_10 X_6=VG_11 X_13=VG_12 X_2=VG_13 X_9=VG_14 X_1=VG_15 X_10=VG_16"];
+  PA -> MAIN [label="CBL-72..CBL-87 (x16) Molex 22-23-2031 3-wire: PA X3 [1 VD, 2 VIN_M, 3 GND] -> Main X3/X38..X52 [S: GND, INA IN+, INA IN-]\nshunt sense across R10 5 mR (WSL2816); Main side: X3->U11, X38->U73 ... (pin-to-pin order UNVERIFIED: EAGLE pads all 'S')\nPA board instance -> Main connector assignment: NOT DOCUMENTED"];
+  V22 -> PA [label="CBL-88 (x16): -> '22V' AK300/2 [KL1 VD, KL2 GND], DC power 22 V (xlsx)", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+  MAIN -> PASW [label="JP10 PINHD-1X3 [1 EN/DIS_RFPA_VDD (PD6), 3 GND] -> PA drain switch (device NOT IN CAD)", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+  PASW -> V22 [style=dashed, color="#c0392b"];
+
+  // ---------------- RF to antenna
+  PA -> ANT [label="J2 RFOUT -> antenna element (AERIS-10X)", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+  MAIN -> ANT [label="J24..J55 -> antenna elements directly (AERIS-10N, README)", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+
+  // ---------------- Host and peripherals
+  MAIN -> HOST [label="CBL-90: X53 MINI-USB [2 D- (PA11), 3 D+ (PA12), 4 ID (PA10), 5 GND] (USB 2.0 full-speed, CDC per firmware)", style=dashed];
+  MAIN -> DBG  [label="JP2 PINHD-1X6 [1 +3V3, 2 SWCLK, 3 GND, 4 SWDIO, 5 NRST, 6 SWO] (ARM SWD)", style=dashed];
+  MAIN -> GPS  [label="JP8 PINHD-1X4 [1 +3V3, 2 STM32_TX5 (PC12), 3 STM32_RX5 (PD2), 4 GND] (UART 3.3 V, 9600 Bd per firmware)", style=dashed];
+  MAIN -> IMU  [label="JP7 PINHD-1X8 [2 +3V3, 3 GND, 4 STM32_SCL3 (PA8), 5 STM32_SDA3 (PC9), 6 MAG_DRDY (PC6), 7 ACC_INT (PC7), 8 GYR_INT (PC8)]\nJP18 PINHD-1X4 [1 SDA3, 2 SCL3, 3 GND, 4 +3V3] (I2C 3.3 V)", style=dashed];
+  MAIN -> TEMP [label="JP5, JP6, JP11, JP12, JP14, JP15, JP16, JP19 PINHD-1X3 [1 +3V3_AN4_F, 2 analogue, 3 GND] (TMP37 analogue, 8 ch -> ADS7830)", style=dashed];
+  MAIN -> STEP [label="JP9 PINHD-1X4 [1 GND, 2 STEPPER_CW+ (PD4), 3 GND, 4 STEPPER_CLK+ (PD5)] (3.3 V step/dir)", style=dashed];
+  MAIN -> FAN  [label="JP4 PINHD-1X3 [1 EN/DIS_COOLING (PD7), 3 GND] (3.3 V relay control)", style=dashed];
+}

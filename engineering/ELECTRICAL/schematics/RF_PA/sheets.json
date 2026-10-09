@@ -1,0 +1,14 @@
+{
+  "board": "RF_PA",
+  "source": "4_Schematics and Boards Layout/4_6_Schematics/PowerAmplifierBoard/RF_PA.sch",
+  "sheets": [
+    {
+      "sheet": 1,
+      "file": "RF_PA_schematic_sheet1.svg",
+      "parts": 47,
+      "nets": 15,
+      "width_mm": 190.9,
+      "height_mm": 320.0
+    }
+  ]
+}

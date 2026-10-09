@@ -1,0 +1,37 @@
+Drill report for FREQUENCY_SYNTHESIZER.kicad_pcb
+Created on 2026-10-09T01:11:14
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  In3.Cu                    in3
+    L5 :  In4.Cu                    in4
+    L6 :  B.Cu                      back
+
+
+Drill file 'FREQUENCY_SYNTHESIZER-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.150mm  0.0059"  (212 holes))
+    T2  0.200mm  0.0079"  (101 holes))
+    T3  0.300mm  0.0118"  (391 holes))
+    T4  0.500mm  0.0197"  (32 holes))
+    T5  0.635mm  0.0250"  (4 holes))
+    T6  0.838mm  0.0330"  (8 holes))
+    T7  1.000mm  0.0394"  (32 holes))
+    T8  1.000mm  0.0394"  (12 holes))
+    T9  1.016mm  0.0400"  (26 holes))
+    T10  1.194mm  0.0470"  (44 holes))
+    T11  2.000mm  0.0787"  (1 hole)
+
+    Total plated holes count 863
+
+
+Drill file 'FREQUENCY_SYNTHESIZER-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  3.200mm  0.1260"  (4 holes))
+
+    Total unplated holes count 4

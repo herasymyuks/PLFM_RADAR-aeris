@@ -1,0 +1,12 @@
+Import Report
+=============
+
+Source file: Clocks_Freq_Synth_board.brd
+Source format: Eagle
+Output file: FREQUENCY_SYNTHESIZER.kicad_pcb
+
+Statistics:
+  Footprints: 188
+  Tracks: 1374
+  Vias: 769
+  Zones: 6

@@ -1,0 +1,16 @@
+# AERIS-10 reconstruction — generated/temporary
+.DS_Store
+__pycache__/
+*.pyc
+build/
+*.FCBak
+*.kicad_prl
+# virtualenvs and third-party packages (recreate with the README instructions)
+beta/gui/.venv/
+beta/stm32/cube/
+beta/stm32/build/
+beta/fpga/logs/*.vcd
+beta/fpga/sim_build/
+*.egg-info/
+dist/
+openems_out/

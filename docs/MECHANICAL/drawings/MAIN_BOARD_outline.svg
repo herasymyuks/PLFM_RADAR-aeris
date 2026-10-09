@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="720" viewBox="0 0 860 720" font-family="monospace" font-size="11">
+<rect width="100%" height="100%" fill="white"/>
+<text x="40" y="18" font-size="14" font-weight="bold">Main Board (RADAR_Main_Board.brd) — outline and mounting holes (from EAGLE layer 20 / NPTH holes). Scale 2.0 px/mm. NOT a mechanical design drawing.</text>
+<line x1="40.0" y1="640.0" x2="560.0" y2="640.0" stroke="black" stroke-width="1.5"/>
+<line x1="560.0" y1="640.0" x2="560.0" y2="40.0" stroke="black" stroke-width="1.5"/>
+<line x1="560.0" y1="40.0" x2="40.0" y2="40.0" stroke="black" stroke-width="1.5"/>
+<line x1="40.0" y1="40.0" x2="40.0" y2="640.0" stroke="black" stroke-width="1.5"/>
+<line x1="40.0" y1="658.0" x2="560.0" y2="658.0" stroke="blue"/>
+<text x="280.0" y="672.0" fill="blue">260.00 mm</text>
+<line x1="578.0" y1="640.0" x2="578.0" y2="40.0" stroke="blue"/>
+<text x="582.0" y="340.0" fill="blue">300.00 mm</text>
+<circle cx="48.0" cy="632.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="53.2" y="630.0" fill="red" font-size="9">H1</text>
+<circle cx="552.0" cy="632.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="557.2" y="630.0" fill="red" font-size="9">H2</text>
+<circle cx="552.0" cy="48.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="557.2" y="46.0" fill="red" font-size="9">H3</text>
+<circle cx="48.0" cy="48.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="53.2" y="46.0" fill="red" font-size="9">H4</text>
+<circle cx="552.0" cy="140.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="557.2" y="138.0" fill="red" font-size="9">H5</text>
+<circle cx="552.0" cy="412.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="557.2" y="410.0" fill="red" font-size="9">H6</text>
+<circle cx="272.0" cy="412.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="277.2" y="410.0" fill="red" font-size="9">H7</text>
+<circle cx="272.0" cy="140.0" r="3.2" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="277.2" y="138.0" fill="red" font-size="9">H8</text>
+<circle cx="40.0" cy="635.6" r="0.9" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="42.9" y="633.6" fill="red" font-size="9">H9</text>
+<circle cx="40.0" cy="644.4" r="0.9" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="42.9" y="642.4" fill="red" font-size="9">H10</text>
+<line x1="151.2" y1="321.5" x2="163.2" y2="321.5" stroke="green"/>
+<line x1="157.2" y1="315.5" x2="157.2" y2="327.5" stroke="green"/>
+<text x="164.2" y="333.5" fill="green" font-size="9">U1 AD9484BCPZ-500</text>
+<line x1="182.8" y1="435.5" x2="194.8" y2="435.5" stroke="green"/>
+<line x1="188.8" y1="429.5" x2="188.8" y2="441.5" stroke="green"/>
+<text x="195.8" y="447.5" fill="green" font-size="9">U2 STM32F746ZGT7</text>
+<line x1="154.8" y1="224.2" x2="166.8" y2="224.2" stroke="green"/>
+<line x1="160.8" y1="218.2" x2="160.8" y2="230.2" stroke="green"/>
+<text x="167.8" y="236.2" fill="green" font-size="9">U3 AD9708AR</text>
+<line x1="133.4" y1="273.4" x2="145.4" y2="273.4" stroke="green"/>
+<line x1="139.4" y1="267.4" x2="139.4" y2="279.4" stroke="green"/>
+<text x="146.4" y="285.4" fill="green" font-size="9">U42 XC7A50T-2FTG256I</text>
+<line x1="44.7" y1="424.9" x2="56.7" y2="424.9" stroke="green"/>
+<line x1="50.7" y1="418.9" x2="50.7" y2="430.9" stroke="green"/>
+<text x="57.7" y="436.9" fill="green" font-size="9">X53 MINI-USB-32005-201</text>
+<line x1="88.6" y1="222.0" x2="100.6" y2="222.0" stroke="green"/>
+<line x1="94.6" y1="216.0" x2="94.6" y2="228.0" stroke="green"/>
+<text x="101.6" y="234.0" fill="green" font-size="9">U6 FT601Q-B-T</text>
+<text x="610.0" y="40" font-weight="bold">Hole table (mm, board origin = EAGLE origin)</text>
+<text x="610.0" y="54">H1: x=4.00 y=4.00 Ø3.20</text>
+<text x="610.0" y="68">H2: x=256.00 y=4.00 Ø3.20</text>
+<text x="610.0" y="82">H3: x=256.00 y=296.00 Ø3.20</text>
+<text x="610.0" y="96">H4: x=4.00 y=296.00 Ø3.20</text>
+<text x="610.0" y="110">H5: x=256.00 y=250.00 Ø3.20</text>
+<text x="610.0" y="124">H6: x=256.00 y=114.00 Ø3.20</text>
+<text x="610.0" y="138">H7: x=116.00 y=114.00 Ø3.20</text>
+<text x="610.0" y="152">H8: x=116.00 y=250.00 Ø3.20</text>
+<text x="610.0" y="166">H9: x=0.00 y=2.20 Ø0.90</text>
+<text x="610.0" y="180">H10: x=0.00 y=-2.20 Ø0.90</text>
+<text x="610.0" y="208">Outline bbox: 260.00 x 300.00 mm</text>
+<text x="610.0" y="222">Origin offset: (0.00, 0.00)</text>
+<text x="610.0" y="236">Thickness / mass: NOT IN SOURCE</text>
+</svg>

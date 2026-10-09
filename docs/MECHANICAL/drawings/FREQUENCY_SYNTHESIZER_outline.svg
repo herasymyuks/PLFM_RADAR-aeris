@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" font-family="monospace" font-size="11">
+<rect width="100%" height="100%" fill="white"/>
+<text x="40" y="18" font-size="14" font-weight="bold">Frequency Synthesizer Board (Clocks_Freq_Synth_board.brd) — outline and mounting holes (from EAGLE layer 20 / NPTH holes). Scale 3.0 px/mm. NOT a mechanical design drawing.</text>
+<line x1="40.0" y1="340.0" x2="340.0" y2="340.0" stroke="black" stroke-width="1.5"/>
+<line x1="340.0" y1="340.0" x2="340.0" y2="40.0" stroke="black" stroke-width="1.5"/>
+<line x1="340.0" y1="40.0" x2="40.0" y2="40.0" stroke="black" stroke-width="1.5"/>
+<line x1="40.0" y1="40.0" x2="40.0" y2="340.0" stroke="black" stroke-width="1.5"/>
+<line x1="40.0" y1="358.0" x2="340.0" y2="358.0" stroke="blue"/>
+<text x="170.0" y="372.0" fill="blue">100.00 mm</text>
+<line x1="358.0" y1="340.0" x2="358.0" y2="40.0" stroke="blue"/>
+<text x="362.0" y="190.0" fill="blue">100.00 mm</text>
+<circle cx="55.0" cy="325.0" r="4.8" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="61.8" y="323.0" fill="red" font-size="9">H1</text>
+<circle cx="325.0" cy="325.0" r="4.8" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="331.8" y="323.0" fill="red" font-size="9">H2</text>
+<circle cx="325.0" cy="55.0" r="4.8" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="331.8" y="53.0" fill="red" font-size="9">H3</text>
+<circle cx="55.0" cy="55.0" r="4.8" fill="none" stroke="red" stroke-width="1.2"/>
+<text x="61.8" y="53.0" fill="red" font-size="9">H4</text>
+<line x1="201.1" y1="218.0" x2="213.1" y2="218.0" stroke="green"/>
+<line x1="207.1" y1="212.0" x2="207.1" y2="224.0" stroke="green"/>
+<text x="214.1" y="230.0" fill="green" font-size="9">IC1 AD9523BCPZ</text>
+<line x1="175.4" y1="174.6" x2="187.4" y2="174.6" stroke="green"/>
+<line x1="181.4" y1="168.6" x2="181.4" y2="180.6" stroke="green"/>
+<text x="188.4" y="186.6" fill="green" font-size="9">U1 ADF4382ABCCZ</text>
+<line x1="103.2" y1="190.1" x2="115.2" y2="190.1" stroke="green"/>
+<line x1="109.2" y1="184.1" x2="109.2" y2="196.1" stroke="green"/>
+<text x="116.2" y="202.1" fill="green" font-size="9">X4 ECOC-2522-100.000-3HC</text>
+<line x1="218.4" y1="174.6" x2="230.4" y2="174.6" stroke="green"/>
+<line x1="224.4" y1="168.6" x2="224.4" y2="180.6" stroke="green"/>
+<text x="231.4" y="186.6" fill="green" font-size="9">U6 ADF4382ABCCZ</text>
+<text x="390.0" y="40" font-weight="bold">Hole table (mm, board origin = EAGLE origin)</text>
+<text x="390.0" y="54">H1: x=5.00 y=5.00 Ø3.20</text>
+<text x="390.0" y="68">H2: x=95.00 y=5.00 Ø3.20</text>
+<text x="390.0" y="82">H3: x=95.00 y=95.00 Ø3.20</text>
+<text x="390.0" y="96">H4: x=5.00 y=95.00 Ø3.20</text>
+<text x="390.0" y="124">Outline bbox: 100.00 x 100.00 mm</text>
+<text x="390.0" y="138">Origin offset: (0.00, 0.00)</text>
+<text x="390.0" y="152">Thickness / mass: NOT IN SOURCE</text>
+</svg>

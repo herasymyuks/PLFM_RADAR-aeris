@@ -1,0 +1,180 @@
+** Drc report for aeris10_patch_array.kicad_pcb **
+** Created on 2026-10-09T04:17:02 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 46 DRC violations **
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -149.3762 mm): Reference field of J10
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -163.6762 mm): Reference field of J11
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -177.9762 mm): Reference field of J12
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -192.2762 mm): Reference field of J13
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -206.5762 mm): Reference field of J14
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -220.8762 mm): Reference field of J15
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(0.0000 mm, -248.0000 mm): Rectangle on Edge.Cuts
+    @(1.0000 mm, -235.1762 mm): Reference field of J16
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -16.6762 mm): Footprint J1
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -30.9762 mm): Footprint J2
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -45.2762 mm): Footprint J3
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -59.5762 mm): Footprint J4
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -73.8762 mm): Footprint J5
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -88.1762 mm): Footprint J6
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -102.4762 mm): Footprint J7
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -116.7762 mm): Footprint J8
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -131.0762 mm): Footprint J9
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -145.3762 mm): Footprint J10
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -159.6762 mm): Footprint J11
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -173.9762 mm): Footprint J12
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -188.2762 mm): Footprint J13
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -202.5762 mm): Footprint J14
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -216.8762 mm): Footprint J15
+[lib_footprint_issues]: The current configuration does not include the footprint library 'AERIS10'
+    Local override; warning
+    @(1.0000 mm, -231.1762 mm): Footprint J16
+[lib_footprint_issues]: The current configuration does not include the footprint library 'MountingHole'
+    Local override; warning
+    @(5.0000 mm, -5.0000 mm): Footprint H
+[lib_footprint_issues]: The current configuration does not include the footprint library 'MountingHole'
+    Local override; warning
+    @(160.0000 mm, -5.0000 mm): Footprint H
+[lib_footprint_issues]: The current configuration does not include the footprint library 'MountingHole'
+    Local override; warning
+    @(5.0000 mm, -243.0000 mm): Footprint H
+[lib_footprint_issues]: The current configuration does not include the footprint library 'MountingHole'
+    Local override; warning
+    @(160.0000 mm, -243.0000 mm): Footprint H
+[lib_footprint_issues]: The current configuration does not include the footprint library 'MountingHole'
+    Local override; warning
+    @(82.5000 mm, -5.0000 mm): Footprint H
+[lib_footprint_issues]: The current configuration does not include the footprint library 'MountingHole'
+    Local override; warning
+    @(82.5000 mm, -243.0000 mm): Footprint H
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -20.6762 mm): Reference field of J1
+    @(2.0000 mm, -19.6762 mm): Pad 2 [GND] of J1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -49.2762 mm): Reference field of J3
+    @(2.0000 mm, -48.2762 mm): Pad 2 [GND] of J3 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -34.9762 mm): Reference field of J2
+    @(2.0000 mm, -33.9762 mm): Pad 2 [GND] of J2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -63.5762 mm): Reference field of J4
+    @(2.0000 mm, -62.5762 mm): Pad 2 [GND] of J4 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -77.8762 mm): Reference field of J5
+    @(2.0000 mm, -76.8762 mm): Pad 2 [GND] of J5 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -106.4762 mm): Reference field of J7
+    @(2.0000 mm, -105.4762 mm): Pad 2 [GND] of J7 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -92.1762 mm): Reference field of J6
+    @(2.0000 mm, -91.1762 mm): Pad 2 [GND] of J6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -120.7762 mm): Reference field of J8
+    @(2.0000 mm, -119.7762 mm): Pad 2 [GND] of J8 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -135.0762 mm): Reference field of J9
+    @(2.0000 mm, -134.0762 mm): Pad 2 [GND] of J9 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -149.3762 mm): Reference field of J10
+    @(2.0000 mm, -148.3762 mm): Pad 2 [GND] of J10 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -163.6762 mm): Reference field of J11
+    @(2.0000 mm, -162.6762 mm): Pad 2 [GND] of J11 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -177.9762 mm): Reference field of J12
+    @(2.0000 mm, -176.9762 mm): Pad 2 [GND] of J12 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -192.2762 mm): Reference field of J13
+    @(2.0000 mm, -191.2762 mm): Pad 2 [GND] of J13 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -206.5762 mm): Reference field of J14
+    @(2.0000 mm, -205.5762 mm): Pad 2 [GND] of J14 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -220.8762 mm): Reference field of J15
+    @(2.0000 mm, -219.8762 mm): Pad 2 [GND] of J15 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(1.0000 mm, -235.1762 mm): Reference field of J16
+    @(2.0000 mm, -234.1762 mm): Pad 2 [GND] of J16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(82.5000 mm, -244.0000 mm): PCB text 'AERIS-10 PATCH ARRAY 16x8 10.5GHz DSN-ANT-01 RevA PROPOSED - SIMULATE BEFORE FAB' on F.Silkscreen
+    @(82.5000 mm, -243.0000 mm): NPTH pad of H
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

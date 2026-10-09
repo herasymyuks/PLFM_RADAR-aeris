@@ -1,0 +1,85 @@
+digraph python_gui_architecture {
+  rankdir=TB; splines=true; nodesep=0.3; ranksep=0.5; newrank=true;
+ graph [fontname="Helvetica", fontsize=11, labelloc=t, labeljust=l,
+ label="AERIS-10 - Python GUI runtime architecture: GUI_V5.py (last complete hardware GUI) and GUI_V6_Demo.py (offline simulator)\lDrawing ID: SD-06 Revision: A Date: 2026-10-09 Status: SOURCE-DERIVED - drawn only from class/method names and call sites in the two files; nothing was executed\lSource: 9_Firmware/9_3_GUI/GUI_V5.py (1542 lines), 9_Firmware/9_3_GUI/GUI_V6_Demo.py (1221 lines); docs/GUI/DEPENDENCIES.md\l"];
+  node [fontname="Helvetica", fontsize=9, shape=box, style="filled,rounded", fillcolor="#eaf2f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=8, color="#2c3e50"];
+
+  /* ===================== GUI_V5.py ===================== */
+  subgraph cluster_v5 {
+ label="GUI_V5.py - hardware GUI (STM32 USB CDC + FTDI FT2232H)"; style="rounded"; color="#1f618d"; fontsize=10;
+
+    v5_main [label="main() :1531-1539\ntk.Tk() -> RadarGUI(root) ->\nroot.mainloop()", fillcolor="#d6eaf8", penwidth=2];
+    v5_gui  [label="class RadarGUI :867\n__init__ :868-909 creates: STM32USBInterface, FTDIInterface, RadarProcessor,\nUSBPacketParser, RadarPacketParser, MapGenerator, RadarSettings (:885-891)\nqueue.Queue radar_data_queue / gps_data_queue (:893-894)"];
+    v5_create [label="create_gui() :993\nsetup_main_tab :1012 (ttk controls, FigureCanvasTkAgg :1070, imshow range_doppler_plot :1058)\nsetup_map_tab :1103, setup_settings_tab :1128, configure_dark_theme :911"];
+
+    subgraph cluster_v5_threads {
+ label="threads / callbacks (start_background_threads :1289-1297)"; style="rounded,dashed"; color="#7f8c8d"; fontsize=9;
+      v5_t_radar [label="threading.Thread(target=process_radar_data,\ndaemon=True) :1291\nprocess_radar_data() :1299-1323\nloop: ftdi_interface.read_data(4096)\n-> buffer -> parse_packet ->\nprocess_radar_packet", fillcolor="#e8f6f3"];
+      v5_t_gps   [label="threading.Thread(target=process_gps_data,\ndaemon=True) :1294\nprocess_gps_data() :1325-1339\nloop:\nstm32_usb_interface.read_data(64) ->\nparse_gps_data -> gps_data_queue.put", fillcolor="#e8f6f3"];
+      v5_after   [label="Tk main-loop timer: root.after(100, update_gui) :1297, :1529\nupdate_gui() :1506-1529: range_doppler_plot.set_array(log10(map+1)), canvas.draw_idle(),\nupdate_targets_list :1482, update_gps_display :1453 (drains gps_data_queue :1456-1457)", fillcolor="#e8f6f3"];
+    }
+
+    subgraph cluster_v5_io {
+ label="hardware interfaces"; style="rounded"; color="#935116"; fontsize=9;
+      v5_stm [label="class STM32USBInterface :307\nlist_devices :314 (VID 0x0483, 6 PIDs :323-330)\nopen_device :358 (pyusb interface 0, bulk OUT/IN :379-386)\nsend_start_flag :401, send_settings :407, _create_settings_packet :454 (82 B), _send_data :434 (64-B zero-padded chunks), read_data :417\nimport usb.core / usb.util guarded by try (:24-30)", fillcolor="#fdf2e9"];
+      v5_ftdi[label="class FTDIInterface :479\nlist_devices :484 (UsbTools.find_all VID 0x0403 PID 0x6010 = FT2232H :493)\nopen_device :504 (Ftdi.open_from_url, set_bitmode SYNCFF :515, latency 2 :518)\nread_data :531 (ftdi.read_data), close :545\nimport pyftdi guarded by try (:32-38)\nNO SUCH DEVICE ON THE MAIN BOARD (no FT2232H; FT601 unconnected) - docs/GUI/DEPENDENCIES.md section 4", fillcolor="#fdebd0", color="#ca6f1e"];
+    }
+
+    subgraph cluster_v5_parse {
+ label="packet parsers"; style="rounded"; color="#117a65"; fontsize=9;
+      v5_rpp [label="class RadarPacketParser :753\nsync A5 C3 (:755), CRC16\ncrcmod.mkCrcFun(0x11021, init 0xFFFF)\n(:756)\nparse_packet :758 -> type 0x01\nparse_range_packet :799 / 0x02\nparse_doppler_packet :821 / 0x03\nparse_detection_packet :845\nFORMAT MISMATCH with RTL\nusb_data_interface.v (0xAA..0x55, no\nCRC) - docs/GUI/DEPENDENCIES.md\nsection 6 item 5", fillcolor="#fdebd0", color="#ca6f1e"];
+      v5_upp [label="class USBPacketParser :672\nparse_gps_data :676 (text 'GPS:' 4 fields) / _parse_binary_gps_with_pitch :702 ('GPSB' 30 B)"];
+    }
+
+    subgraph cluster_v5_proc {
+ label="processing"; style="rounded"; color="#117a65"; fontsize=9;
+      v5_prp [label="RadarGUI.process_radar_packet()\n:1341-1389\nrange -> apply_pitch_correction :1159\n-> RadarTarget ->\nupdate_range_doppler_map :1391\ndoppler -> velocity from prf1 and\nwavelength -> update_target_velocity\n:1403\ndetection -> only logging.info('CFAR\nDetection ...') :1386\nNO CFAR ALGORITHM in the GUI: CFAR\nflag is expected from the FPGA packet"];
+      v5_rp  [label="class RadarProcessor :551\nrange_doppler_map (np.zeros),\ndetected_targets (list) - used by\nRadarGUI :1396-1401, 1516\nclustering() :587 sklearn DBSCAN\n(:593), association() :607,\ntracking() :635 filterpy\nKalmanFilter(dim_x=4, dim_z=2) (:641),\nmulti_prf_unwrap :564, dual_cpi_fusion\n:559\nclustering/association/tracking/unwrap/fusion\nare DEFINED BUT NEVER CALLED by\nRadarGUI\n(grep 'radar_processor.' -> attribute\naccess only :1396-1516)", fillcolor="#f2f3f4"];
+      v5_unused [label="imports present but unused in GUI_V5.py:\nscipy.signal (:15, no 'signal.' call site), matplotlib.patches (:11)", style="filled,rounded,dotted", fillcolor="#f2f3f4", color="#7f8c8d"];
+    }
+
+    subgraph cluster_v5_plot {
+ label="presentation"; style="rounded"; color="#7d3c98"; fontsize=9;
+      v5_plot [label="matplotlib TkAgg: Figure ->\nFigureCanvasTkAgg(fig, display_frame)\n:1070\nrange_doppler_ax.imshow(...) :1058;\ncanvas.draw_idle() :1518\n(no explicit matplotlib.use();\nbackend_tkagg imported :9)"];
+      v5_map  [label="class MapGenerator :89\ngenerate_map(gps, targets, radius,\napi_key) :247 -> Google Maps HTML\n(placeholder key :241, :906)\npolar_to_geographic :287;\nRadarGUI.generate_map :1423 ->\ntempfile; open_map_in_browser :1412 ->\nwebbrowser.open :1415"];
+      v5_list [label="ttk target list / GPS labels / status label\nupdate_targets_list :1482, update_gps_display :1453"];
+    }
+
+    v5_start [label="start_radar() :1201-1251 (Start\nbutton)\nstm32_usb_interface.open_device :1215;\nftdi_interface.open_device :1226\n(warning only if absent :1227-1231)\nsend_start_flag :1234; apply_settings\n:1239 -> send_settings :1281;\nrunning=True :1242\nstop_radar :1253 closes both\ninterfaces (:1260-1261)"];
+    v5_settings [label="class RadarSettings (dataclass) :69\nsystem_frequency, chirp_duration_1/2,\nchirps_per_position, freq_min/max,\nprf1/2, max_distance, map_size\napply_settings :1265 reads ttk vars ->\nsend_settings"];
+  }
+
+  /* V5 edges */
+  v5_main -> v5_gui; v5_gui -> v5_create; v5_gui -> v5_t_radar; v5_gui -> v5_t_gps; v5_gui -> v5_after;
+  v5_create -> v5_start [label="Start button command"];
+  v5_start -> v5_stm [label="open_device / send_start_flag /\nsend_settings"];
+  v5_start -> v5_ftdi [label="open_device"];
+  v5_settings -> v5_stm [label="_create_settings_packet(settings) :455"];
+  v5_t_radar -> v5_ftdi [label="read_data(4096) :1305"];
+  v5_t_radar -> v5_rpp [label="parse_packet(buffer) :1310"];
+  v5_rpp -> v5_prp [label="packet dict :1312"];
+  v5_prp -> v5_rp [label="range_doppler_map[r,d] += 1;\ndetected_targets.append :1396-1398"];
+  v5_t_gps -> v5_stm [label="read_data(64, timeout=100) :1330"];
+  v5_t_gps -> v5_upp [label="parse_gps_data(data) :1333"];
+  v5_upp -> v5_after [label="gps_data_queue (:1335 put -> :1456\nget_nowait)"];
+  v5_rp -> v5_after [label="range_doppler_map, detected_targets\nread in update_gui :1516,\nupdate_targets_list :1487"];
+  v5_after -> v5_plot; v5_after -> v5_list; v5_after -> v5_map [label="generate_map on GPS update :1477"];
+  v5_rp -> v5_unused [style=invis];
+
+  /* ===================== GUI_V6_Demo.py ===================== */
+  subgraph cluster_v6 {
+ label="GUI_V6_Demo.py - offline simulator (no USB, no threads; numpy + matplotlib + tkinter only)"; style="rounded"; color="#1e8449"; fontsize=10;
+    v6_main [label="main() :1196-1219\ntk.Tk() -> RadarDemoGUI(root) ->\nmainloop", fillcolor="#d6eaf8", penwidth=2];
+    v6_gui  [label="class RadarDemoGUI :237\n__init__ :238-279: self.processor = SimulatedRadarProcessor() :252; settings RadarSettings :45 (cfar_threshold 13 dB :55)\ncreate_menu :281, create_main_layout :328, create_control_panel :350, create_status_bar :691"];
+    v6_tabs [label="tabs: create_radar_tab :396\n(range-Doppler imshow,\nFigureCanvasTkAgg :436)\ncreate_scope_tab :477 (canvas :497),\ncreate_spectrum_tab :501 (canvas :521)\ncreate_settings_tab :539 ->\nradar/display/simulation settings\n:563/613/651"];
+    v6_anim [label="animate() :718-748  (Tk timer, root.after(update_ms, animate) :748)\nif running: update_radar_data() :750; frame counter; FPS estimate :725-728\nupdate_status_bar :851", fillcolor="#e8f6f3"];
+    v6_sim  [label="class SimulatedRadarProcessor :61\n_create_targets :71 (synthetic target\nlist)\ngenerate_frame :131 -> drift targets,\n_generate_range_doppler :171 (noise +\nclutter + target blobs via np.random),\n_detect_targets :216 (random.random()\n< snr/35 -> RadarTarget with gaussian\nnoise)\nNO signal processing, NO CFAR, NO\ntracking: detections are drawn from\nthe simulated truth"];
+    v6_upd  [label="update_radar_data() :750-829\nrd_img.set_data(10*log10(rd_map+1)) :764; set_cmap; percentile clim :768-770\ntarget markers on rd_ax :773-790; update_target_list :830"];
+    v6_io   [label="user actions: start/stop_radar\n:871/880, toggle_recording :890,\nclear_targets :905,\napply_settings :912 (cfar_threshold ->\nself.settings only :924),\nreset_simulation :960,\nload_config :970 / save_config :1005\n(json.load/dump :980/1024),\nexport_data :1032 (np.savez :1051)"];
+    v6_main -> v6_gui -> v6_tabs; v6_gui -> v6_anim; v6_anim -> v6_upd; v6_upd -> v6_sim [label="generate_frame() :752"]; v6_sim -> v6_upd [label="(rd_map, targets)"]; v6_upd -> v6_tabs [label="rd_img / rd_ax draw"]; v6_gui -> v6_io;
+  }
+
+ legend [shape=note, fillcolor="#fbfcfc", color="#7f8c8d", fontsize=8, label="LEGEND\lblue = GUI/application class or method (line numbers = definition or call site in the named file); green = thread or Tk-timer callback;\lorange = present but cannot work against the actual hardware or protocol (documented in docs/GUI/DEPENDENCIES.md); grey = defined/imported but not used at runtime\lThird-party at runtime: GUI_V5.py -> numpy, matplotlib(TkAgg), scipy(imported only), scikit-learn + filterpy (inside never-called methods), crcmod, pyusb (optional), pyftdi (optional)\lGUI_V6_Demo.py -> numpy, matplotlib(TkAgg) only (plus stdlib tkinter, json, random, datetime, platform)\lVERIFIED: ast parse of both files (tools/gen_python_module_graph.py), grep of call sites listed above. NOT VERIFIED: GUI launch, hardware I/O, timing of threads\l"];
+  { rank=sink; legend; }
+}

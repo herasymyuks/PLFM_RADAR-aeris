@@ -1,0 +1,17 @@
+ref,qty,description,proposed_part,section
+J1,1,DC input terminal 2-pole 16 A,Phoenix 1792270 or AK300/2,input
+F1,1,Fuse 20 A 32 V automotive,Littelfuse 0297020,input
+D1,1,TVS 18 V SMB,SMBJ18A,input
+FL1,1,CM choke 10 µH 15 A + 4×4.7 µF/50 V X7R,Würth 744 823 110 / GRM32ER71H475K,filter
+"U1,U2",2,Sync boost controller,TI LM5122MH,boost
+Q1–Q4,4,N-MOSFET 100 V 100 A,TI CSD19532Q5B,boost
+"L1,L2",2,Inductor 10 µH 15 A,Coilcraft XAL1580-103,boost
+C_out,4,Polymer 100 µF/35 V,Panasonic 35SVPF100M,boost
+C_bulk,2,Electrolytic 1000 µF/35 V low ESR,Nichicon UHE1V102MHD,boost/bulk
+U3,1,Hot-swap controller 9–80 V,TI LM5069MM-1,switch
+Q5,1,N-MOSFET 100 V 200 A D2PAK,TI CSD19536KTT,switch
+Rs,1,Sense 2 mΩ 3 W,Bourns CSS2H-2512R-L200F,switch
+U4–U19,16,High-side gate driver ≤ 100 ns,ADI LTC7003,gate
+Q6–Q21,16,N-MOSFET 100 V,TI CSD19532Q5B,gate
+C_loc,16,Polymer 220 µF/35 V,Panasonic 35SVPF220M (or on each PA board),gate
+OUT1–16,16,Screw terminal 2-pole,AK300/2 (matches the PA board),output

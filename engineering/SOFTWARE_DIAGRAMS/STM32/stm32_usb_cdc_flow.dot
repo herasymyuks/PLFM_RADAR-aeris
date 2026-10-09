@@ -1,0 +1,63 @@
+digraph stm32_usb_cdc_flow {
+  rankdir=TB; splines=true; nodesep=0.3; ranksep=0.5;
+ graph [fontname="Helvetica", fontsize=11, labelloc=t, labeljust=l,
+ label="AERIS-10 - STM32 USB CDC communication flow (host GUI <-> STM32F746) with the receive-path defects\lDrawing ID: SD-04 Revision: A Date: 2026-10-09 Status: PARTIAL - usbd_cdc_if.c / USB Device Library are missing from the repository; RX callback binding is a documented defect\lSource: CODE/main.cpp:128-132, 331-338, 1527-1555, 1692; LIB/USBHandler.cpp:1-93, USBHandler.h; LIB/RadarSettings.h:12; LIB/gps_handler.cpp:65-119; 9_Firmware/9_3_GUI/GUI_V5.py:307-477; docs/STM32/STM32_PROJECT_RECONSTRUCTION.md 3.5, STM-T04 (C4, C5, C6)\l"];
+  node [fontname="Helvetica", fontsize=9, shape=box, style="filled,rounded", fillcolor="#eaf2f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=8, color="#2c3e50"];
+
+  subgraph cluster_host {
+ label="HOST PC - GUI_V5.py class STM32USBInterface (:307-477), pyusb bulk endpoints (:358-399)"; style="rounded"; color="#1f618d"; fontsize=10;
+    h_list [label="list_devices() :314-356\nVID 0x0483, PIDs 0x5740/3748/374B/374D/374E/3752 (:323-330)"];
+    h_open [label="open_device() :358-399\nusb.core / usb.util: claims interface, finds OUT/IN bulk endpoints (:379-386)\n(platform caveat: OS CDC driver normally owns the device - docs/GUI/DEPENDENCIES.md section 4)"];
+    h_flag [label="send_start_flag() :401-405\nbytes [23, 46, 158, 237]"];
+    h_set  [label="send_settings() :407-415 ->\n_create_settings_packet() :454-468\n'SET' + >d x3 + >I + >d x6 + 'END' =\n82 bytes, big-endian"];
+    h_send [label="_send_data() :434-452\nsplits into 64-byte chunks and\nZERO-PADS the last chunk (:444-446)\n-> start flag goes out as 4 bytes + 60\nx 0x00", fillcolor="#fdebd0", color="#ca6f1e"];
+    h_read [label="read_data(size=64) :417-432\n(ep_in.read)\nused by RadarGUI.process_gps_data()\nthread :1325-1339 ->\nUSBPacketParser.parse_gps_data :676"];
+    h_list -> h_open -> h_flag -> h_send; h_open -> h_set -> h_send;
+  }
+
+  usbbus [label="USB 2.0 full-speed bus\nSTM32 PA11 DM / PA12 DP -> mini-USB\nX53 (schematic net\nSTM32_USB_FS_D_N/D_P;\ndocs/SYSTEM/BLOCK_DIAGRAM.md 2.4)\nthe only host data link present in the\nCAD", fillcolor="#fdf2e9"];
+
+  subgraph cluster_mw {
+ label="STM32 USB DEVICE MIDDLEWARE - MISSING from repository (CubeMX-generated + ST library)"; style="rounded,dashed"; color="#c0392b"; fontsize=10;
+    node [style="filled,rounded,dashed", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b"];
+    mw_conf [label="usbd_conf.c/.h\nhpcd_USB_OTG_FS (extern in LIB/stm32f7xx_it.c:58), HAL_PCD_MspInit, NVIC OTG_FS_IRQn"];
+    mw_core [label="STM32_USB_Device_Library Core + Class/CDC\nUSBD_CDC_SetRxBuffer, USBD_CDC_ReceivePacket (called at main.cpp:336-337)"];
+    mw_dev  [label="usb_device.c/.h\nMX_USB_DEVICE_Init() (called main.cpp:1229), hUsbDeviceFS (extern main.cpp:129)"];
+    mw_if   [label="usbd_cdc_if.c/.h\nCDC_Transmit_FS() (called main.cpp:1692, gps_handler.cpp:118)\nUSBD_Interface_fops_FS binds the file's OWN static int8_t CDC_Receive_FS(uint8_t*, uint32_t*)\n(standard CubeMX template; the generated file is not in the repo)"];
+    mw_desc [label="usbd_desc.c/.h - VID/PID/strings UNKNOWN"];
+    mw_conf -> mw_core -> mw_dev -> mw_if;
+  }
+
+  isr [label="LIB/stm32f7xx_it.c:204-209\nOTG_FS_IRQHandler() ->\nHAL_PCD_IRQHandler(&hpcd_USB_OTG_FS)\n(present; depends on missing hpcd\ndefinition)"];
+
+  subgraph cluster_fw {
+ label="STM32 APPLICATION - CODE/main.cpp + LIB/USBHandler.cpp"; style="rounded"; color="#117a65"; fontsize=10;
+    fw_cb  [label="main.cpp:331-338  extern \"C\" void\nCDC_Receive_FS(uint8_t* Buf, uint32_t*\nLen)\n  usbHandler.processUSBData(Buf,\n*Len);\n  USBD_CDC_SetRxBuffer(&hUsbDeviceFS,\nusb_rx_buffer);\nUSBD_CDC_ReceivePacket(&hUsbDeviceFS);\nDEFECT C4: nothing in the repository\nreferences this function; the CubeMX\ntemplate registers its own\nstatic CDC_Receive_FS inside\nusbd_cdc_if.c -> the application\ncallback is NEVER BOUND (static\nfinding)", fillcolor="#fdebd0", color="#ca6f1e", penwidth=2];
+    fw_h   [label="USBHandler::processUSBData(data,\nlength)  USBHandler.cpp:15-34\nstate machine: WAITING_FOR_START ->\nRECEIVING_SETTINGS -> READY_FOR_DATA\n(USBHandler.h:9-13)"];
+    fw_flag[label="processStartFlag()  USBHandler.cpp:36-57\nsearches START_FLAG {23,46,158,237} (:38); on match: state=RECEIVING_SETTINGS, buffer_index=0 (:43-45)\nthen FORWARDS any remaining bytes to processSettingsData (:51-52)\nDEFECT C5: the 60 padding zeros from the GUI land at buffer offset 0", fillcolor="#fdebd0", color="#ca6f1e"];
+    fw_set [label="processSettingsData()\nUSBHandler.cpp:59-93\nMAX_BUFFER_SIZE 256 (USBHandler.h:38);\nneeds buffer_index >= 74 (:68)\nrequires memcmp(usb_buffer, \"SET\",\n3) == 0 at OFFSET 0 (:70) and an\n\"END\" (:73-75)\n-> RadarSettings::parseFromUSB (:78;\nRadarSettings.h:12) -> state =\nREADY_FOR_DATA (:79)"];
+    fw_wait[label="main.cpp:1534-1555  do { if (isStartFlagReceived() && getState()==READY_FOR_DATA) { settings = getSettings(); /* getters commented out :1540-1550 */ } } while (!isStartFlagReceived());\nwith C4 the loop never exits; even if bound, C5 blocks READY_FOR_DATA; settings are never applied to the radar", fillcolor="#fdebd0", color="#ca6f1e"];
+    fw_tx  [label="TX to host:\nCDC_Transmit_FS(initial_status)\nmain.cpp:1692 (getSystemStatusForGUI\ntext)\nGPS_SendBinaryToGUI()\ngps_handler.cpp:65-119: 30-byte 'GPSB'\npacket -> CDC_Transmit_FS (:118)\nbut returns early while gui_huart ==\nNULL (:67) because GPS_Init() is never\ncalled (DEFECT C6)", fillcolor="#fdebd0", color="#ca6f1e"];
+    fw_cb -> fw_h [label="Buf, *Len"];
+    fw_h -> fw_flag [label="state WAITING_FOR_START (:21-23)"];
+    fw_h -> fw_set  [label="state RECEIVING_SETTINGS (:25-27)"];
+    fw_flag -> fw_set [label="remaining bytes after flag (:51-52)", color="#ca6f1e"];
+    fw_set -> fw_wait [label="READY_FOR_DATA observed by main loop", style=dashed];
+  }
+
+  cfg [label="device configuration consumers (intended, NOT connected in code)\nRadarSettings getters: system_frequency, chirp_duration_1/2, chirps_per_position, freq_min/max, prf1/2, max_distance, map_size (RadarSettings.h:15-24)\nno call site applies them to ADF4382 / ADAR1000 / FPGA (main.cpp:1540-1550 commented out)", style="filled,rounded,dotted", fillcolor="#f2f3f4", color="#7f8c8d"];
+
+  h_send -> usbbus [label="OUT bulk, 64-byte chunks"];
+  usbbus -> h_read [label="IN bulk"];
+  usbbus -> isr [label="OTG_FS interrupt"];
+  isr -> mw_conf [style=dashed, color="#c0392b"];
+  mw_if -> fw_cb [label="EXPECTED binding via\nUSBD_Interface_fops_FS - NOT PRESENT\n(C4)", style=dashed, color="#c0392b", fontcolor="#c0392b", penwidth=2];
+  fw_tx -> mw_if [label="CDC_Transmit_FS()", style=dashed, color="#c0392b"];
+  mw_if -> usbbus [style=dashed, color="#c0392b"];
+  fw_wait -> cfg [style=dotted, color="#7f8c8d"];
+  fw_cb -> mw_core [label="USBD_CDC_SetRxBuffer / ReceivePacket\n(:336-337)", style=dashed, color="#c0392b"];
+
+ legend [shape=note, fillcolor="#fbfcfc", color="#7f8c8d", fontsize=8, label="LEGEND\lblue = code present in repository; orange = present with a documented defect (C4/C5/C6 per docs/STM32/STM32_PROJECT_RECONSTRUCTION.md STM-T04);\lred dashed = file/library absent from repository; grey dotted = intended but not implemented\lPacket formats (verified in source): start flag 4 B = [23,46,158,237] (GUI_V5.py:403 <-> USBHandler.cpp:38);\lsettings 82 B big-endian 'SET'+3x double+uint32+6x double+'END' (GUI_V5.py:454-468 <-> RadarSettings.h:12, USBHandler.cpp:68-75)\lLine-number verification for the RX-callback defect done on 2026-10-09: main.cpp:331 'void CDC_Receive_FS(uint8_t* Buf, uint32_t *Len) {' inside extern \"C\" block :328-339;\lgrep for 'CDC_Receive_FS' across 9_Firmware/ finds only this definition (no caller, no fops table)\lNOT VERIFIED on hardware: enumeration, actual byte flow, timeout behaviour\l"];
+  { rank=sink; legend; }
+}

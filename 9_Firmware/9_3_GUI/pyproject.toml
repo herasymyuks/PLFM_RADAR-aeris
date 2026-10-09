@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aeris10-gui"
+version = "0.6.0"                      # mirrors GUI_V6 (GUI_versions.txt)
+description = "AERIS-10 PLFM phased-array radar host GUI (Tkinter + matplotlib)"
+readme = "../../README.md"
+license = {text = "MIT"}               # README claims MIT; no LICENSE file exists in the repository (REPO-01)
+requires-python = ">=3.10"             # f-strings + PEP 604 unions not used; 3.10 chosen as oldest supported CPython. UNVERIFIED below 3.14.7
+dependencies = [
+  "numpy>=1.24,<3",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "scikit-learn>=1.3",
+  "filterpy>=1.4.5",
+  "crcmod>=1.7",
+  "pyusb>=1.2",
+  "pyftdi>=0.55",
+]
+
+[project.optional-dependencies]
+csv = ["pandas>=2.0"]                  # GUI_V4_2_CSV.py offline replay
+demo-map = ["tkinterweb>=4.0"]        # GUI_V5_Demo.py embedded map
+dev = ["pyflakes>=3.0", "pytest>=7"]
+packaging = ["pyinstaller>=6.0"]
+
+[project.scripts]
+aeris10-gui = "GUI_V6:main"            # GUI_V6.py:605 defines main()
+aeris10-gui-demo = "GUI_V6_Demo:main"  # GUI_V6_Demo.py:1196 defines main()
+
+[tool.setuptools]
+py-modules = ["GUI_V6", "GUI_V6_Demo", "GUI_V5", "GUI_V5_Demo", "GUI_V4", "GUI_V4_2_CSV", "GUI_V3", "GUI_V2"]

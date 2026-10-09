@@ -1,0 +1,38 @@
+{
+  "board": "MAIN_BOARD",
+  "source": "4_Schematics and Boards Layout/4_6_Schematics/MainBoard/RADAR_Main_Board.sch",
+  "sheets": [
+    {
+      "sheet": 1,
+      "file": "MAIN_BOARD_schematic_sheet1.svg",
+      "parts": 189,
+      "nets": 33,
+      "width_mm": 399.2,
+      "height_mm": 325.1
+    },
+    {
+      "sheet": 2,
+      "file": "MAIN_BOARD_schematic_sheet2.svg",
+      "parts": 196,
+      "nets": 181,
+      "width_mm": 899.8,
+      "height_mm": 901.4
+    },
+    {
+      "sheet": 3,
+      "file": "MAIN_BOARD_schematic_sheet3.svg",
+      "parts": 1304,
+      "nets": 356,
+      "width_mm": 1903.6,
+      "height_mm": 1651.7
+    },
+    {
+      "sheet": 4,
+      "file": "MAIN_BOARD_schematic_sheet4.svg",
+      "parts": 348,
+      "nets": 149,
+      "width_mm": 1117.7,
+      "height_mm": 853.9
+    }
+  ]
+}

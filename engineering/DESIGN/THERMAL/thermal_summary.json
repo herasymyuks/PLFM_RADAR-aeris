@@ -1,0 +1,25 @@
+{
+  "duty_rf": 0.086411445975139,
+  "duty_gate": 0.11474306760633213,
+  "p_diss_on_w": 36.96,
+  "cases_w": {
+    "A continuous drain bias (firmware as coded: VD left on)": 591.36,
+    "B drain gated per chirp (D-14), duty 11.5 %": 67.85446045968057,
+    "C drain gated per CPI frame only (on during the 5.6 ms frame, off while the stepper moves)": 532.224
+  },
+  "p_total_case_b_w": 67.85446045968057,
+  "t_plate_c": 57.93325265853841,
+  "t_base_c": 66.41506021599848,
+  "airflow_cfm": 16.256836180326545,
+  "i_peak_a": 45.568,
+  "i_avg_a": 3.474962737179951,
+  "c_bulk_uF": 2734.08,
+  "fins": {
+    "n": 26,
+    "h": 25.0,
+    "t": 2.0,
+    "pitch": 4.0,
+    "len": 280.0,
+    "strip_w": 55.0
+  }
+}

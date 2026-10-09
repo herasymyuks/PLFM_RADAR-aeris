@@ -1,0 +1,60 @@
+{
+  "_doc": "Single source of parameters for the PROPOSED designs (tools/design_*.py read this file). Every value has a 'basis': VERIFIED = from a repository file, DATASHEET = from a datasheet in 7_Components Datasheets, DECISION = design decision D-xx logged in 00_DESIGN_BASIS.md, ASSUMPTION = to be confirmed.",
+  "rf": {
+    "f_c_hz": {"value": 10.5e9, "basis": "VERIFIED main.cpp wavelength 0.02857 m; parameter_table.md"},
+    "n_elements": {"value": 16, "basis": "VERIFIED 02_hardware/04_antenna_beamforming.md"},
+    "element_pitch_mm": {"value": 14.3, "basis": "VERIFIED (lambda/2)"},
+    "patches_per_row": {"value": 8, "basis": "VERIFIED '8x16 patch array' (parameter_table.md row 77); D-03"},
+    "scan_axis": {"value": "elevation (16 rows stacked vertically); azimuth by mechanical rotation", "basis": "VERIFIED main.cpp n=31 elevations, y=50 azimuths"},
+    "substrate": {"value": "RO4350B", "er": 3.66, "tan_d": 0.0037, "h_mm": 0.508, "cu_um": 35, "basis": "DECISION D-04 (RO4350B datasheet present in repo; 0.508 mm = standard 20 mil, matches PCBWay impedance note family)"},
+    "feed_z0_ohm": {"value": 50, "basis": "DECISION D-05"},
+    "pa_psat_dbm": {"value": 40, "basis": "DATASHEET QPA2962"},
+    "pa_pae_pct": {"value": 22, "basis": "DATASHEET QPA2962"},
+    "pa_vd_v": {"value": 22, "basis": "DATASHEET / xlsx row 59"},
+    "pa_idq_a": {"value": 1.68, "basis": "DATASHEET / xlsx row 61"},
+    "pa_id_max_a": {"value": 2.848, "basis": "DATASHEET abs max"},
+    "pa_pdiss_max_w": {"value": 40, "basis": "DATASHEET at TBASE 85 C"},
+    "pa_tbase_max_c": {"value": 85, "basis": "DATASHEET"}
+  },
+  "timing": {
+    "T1_us": {"value": 30, "basis": "VERIFIED main.cpp"}, "PRI1_us": {"value": 167, "basis": "VERIFIED"},
+    "T2_us": {"value": 0.5, "basis": "VERIFIED"}, "PRI2_us": {"value": 175, "basis": "VERIFIED"},
+    "guard_us": {"value": 175.4, "basis": "VERIFIED"}, "chirps_long": {"value": 16, "basis": "VERIFIED main.cpp comment m=16+16"},
+    "chirps_short": {"value": 16, "basis": "VERIFIED"}, "elevations": {"value": 31, "basis": "VERIFIED"}, "azimuths": {"value": 50, "basis": "VERIFIED"},
+    "stepper_steps_per_rev": {"value": 200, "basis": "VERIFIED"}, "steps_per_azimuth": {"value": 4, "basis": "VERIFIED main.cpp:518 Stepper_steps/y_max"}
+  },
+  "boards_mm": {
+    "MAIN_BOARD": {"w": 260, "h": 300, "basis": "VERIFIED .brd"},
+    "POWER_SUPPLY": {"w": 280, "h": 300, "basis": "VERIFIED .brd"},
+    "FREQUENCY_SYNTHESIZER": {"w": 100, "h": 100, "basis": "VERIFIED .brd"},
+    "RF_PA": {"w": 35, "h": 60, "basis": "VERIFIED .brd"},
+    "pcb_thickness_mm": {"value": 1.6, "basis": "ASSUMPTION (not in source)"},
+    "component_height_top_mm": {"value": 15, "basis": "ASSUMPTION D-07: SMA edge/vertical connectors and Molex headers; to be measured"},
+    "component_height_bottom_mm": {"value": 4, "basis": "ASSUMPTION D-07"},
+    "board_pitch_mm": {"value": 25, "basis": "DECISION D-07 (15 + 4 + 1.6 + margin, rounded to standard 25 mm standoffs)"}
+  },
+  "enclosure": {
+    "wall_mm": {"value": 2.5, "basis": "DECISION D-08 (aluminium 5754/6061 sheet)"},
+    "clearance_mm": {"value": 10, "basis": "DECISION D-08 (board edge to wall)"},
+    "material": {"value": "aluminium sheet, folded + riveted/welded, powder-coated; IP54 target", "basis": "DECISION D-08"},
+    "standoff_thread": {"value": "M3", "basis": "ASSUMPTION from 3.2 mm holes (G-11)"}
+  },
+  "thermal": {
+    "ambient_max_c": {"value": 45, "basis": "DECISION D-10"},
+    "duty_cycle_drain_gated": {"value": null, "basis": "computed by tools/design_thermal.py from timing"},
+    "heat_spreader_thickness_mm": {"value": 10, "basis": "DECISION D-11"},
+    "tim_r_c_per_w": {"value": 0.3, "basis": "ASSUMPTION thermal pad/grease per PA footprint"},
+    "fan_margin": {"value": 1.5, "basis": "DECISION D-11"}
+  },
+  "pedestal": {
+    "drive": {"value": "direct drive: stepper shaft -> 1:1 timing belt -> turntable (keeps 4 steps per 7.2 deg azimuth)", "basis": "DECISION D-12 (firmware uses Stepper_steps/y_max = 4 steps per position)"},
+    "stepper": {"value": "NEMA 23, 200 steps/rev, >= 1.9 N·m holding", "basis": "DECISION D-12; driver TB6600 per xlsx row 63 (9-42 V, 4 A)"},
+    "slip_ring_channels": {"value": 12, "basis": "DECISION D-13: VIN+ VIN- (x2 each, 10 A), 22V+ 22V- (x2 each), USB 2.0 (4) -> 12 (see harness)"},
+    "bearing": {"value": "slewing ring / lazy-susan bearing, bore >= 60 mm for slip ring", "basis": "DECISION D-13"}
+  },
+  "pa_supply": {
+    "vin_range_v": {"value": [12, 17], "basis": "VERIFIED xlsx VIN"},
+    "vout_v": {"value": 22, "basis": "DATASHEET"},
+    "topology": {"value": "boost converter 12-17 V -> 22 V, synchronous, + high-side eFuse switch driven by EN/DIS_RFPA_VDD, + per-PA drain gating recommended", "basis": "DECISION D-14"}
+  }
+}

@@ -1,0 +1,101 @@
+digraph python_gui_modules {
+  rankdir=LR; nodesep=0.25; ranksep=1.2; splines=true;
+  graph [label="AERIS-10 - Python GUI modules, imports and definitions (auto-generated)\lDrawing ID: SD-05   Revision: A   Date: 2026-10-09   Status: SOURCE-DERIVED\lSource: 9_Firmware/9_3_GUI/*.py (9 files) parsed with ast by tools/gen_python_module_graph.py\lFiles with syntax errors: 1. Solid edge = unconditional import; dashed edge = import inside try/except (optional). stdlib imports are listed inside each file node, not drawn as edges. No file imports another GUI file (no local edges found).\l", labelloc=t, labeljust=l, fontname="Helvetica", fontsize=11];
+  node [fontname="Helvetica", fontsize=9, shape=record, style="filled", fillcolor="#f4f6f8", color="#2c3e50"];
+  edge [fontname="Helvetica", fontsize=8, color="#2c3e50"];
+
+  subgraph "cluster_0" { label="GUI_V1.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V1" [label="{GUI_V1.py|SYNTAX ERROR\nIndentationError: unexpected indent (line 2)|42 lines - NOT PARSED}", fillcolor="#fdecea", color="#c0392b", fontcolor="#c0392b", penwidth=2];
+  }
+  subgraph "cluster_1" { label="GUI_V2.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V2" [label="{GUI_V2.py\n1060 lines - has __main__ entry|class RadarTarget (:40)\\nclass RadarSettings (:51)\\nclass GPSData (:62)\\nclass STM32USBInterface (:68)\\nclass FTDIInterface (:238)\\nclass RadarProcessor (:310)\\nclass USBPacketParser (:431)\\nclass RadarPacketParser (:499)\\nclass RadarGUI (:613)|def main() (:1048)|stdlib: dataclasses, logging, math, queue, struct, threading, time, tkinter, typing}"];
+  }
+  subgraph "cluster_2" { label="GUI_V3.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V3" [label="{GUI_V3.py\n1147 lines - has __main__ entry|class RadarTarget (:40)\\nclass RadarSettings (:51)\\nclass GPSData (:62)\\nclass STM32USBInterface (:69)\\nclass FTDIInterface (:239)\\nclass RadarProcessor (:311)\\nclass USBPacketParser (:432)\\nclass RadarPacketParser (:513)\\nclass RadarGUI (:627)|def main() (:1135)|stdlib: dataclasses, logging, math, queue, struct, threading, time, tkinter, typing}"];
+  }
+  subgraph "cluster_3" { label="GUI_V4.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V4" [label="{GUI_V4.py\n1428 lines - has __main__ entry|class RadarTarget (:44)\\nclass RadarSettings (:57)\\nclass GPSData (:70)\\nclass MapGenerator (:77)\\nclass STM32USBInterface (:295)\\nclass FTDIInterface (:467)\\nclass RadarProcessor (:539)\\nclass USBPacketParser (:660)\\nclass RadarPacketParser (:741)\\nclass RadarGUI (:855)|def main() (:1416)|stdlib: dataclasses, logging, math, os, queue, struct, tempfile, threading, time, tkinter, typing, webbrowser}"];
+  }
+  subgraph "cluster_4" { label="GUI_V4_2_CSV.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V4_2_CSV" [label="{GUI_V4_2_CSV.py\n679 lines - has __main__ entry|class RadarTarget (:23)\\nclass SignalProcessor (:32)\\nclass RadarGUI (:228)|def main() (:667)|stdlib: dataclasses, logging, queue, threading, time, tkinter, typing}"];
+  }
+  subgraph "cluster_5" { label="GUI_V5.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V5" [label="{GUI_V5.py\n1543 lines - has __main__ entry|class RadarTarget (:56)\\nclass RadarSettings (:69)\\nclass GPSData (:82)\\nclass MapGenerator (:89)\\nclass STM32USBInterface (:307)\\nclass FTDIInterface (:479)\\nclass RadarProcessor (:551)\\nclass USBPacketParser (:672)\\nclass RadarPacketParser (:753)\\nclass RadarGUI (:867)|def main() (:1531)|stdlib: dataclasses, logging, math, os, queue, struct, tempfile, threading, time, tkinter, typing, webbrowser}"];
+  }
+  subgraph "cluster_6" { label="GUI_V5_Demo.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V5_Demo" [label="{GUI_V5_Demo.py\n1357 lines - has __main__ entry|class RadarTarget (:67)\\nclass RadarSettings (:80)\\nclass GPSData (:93)\\nclass RadarProcessor (:100)\\nclass USBPacketParser (:221)\\nclass RadarPacketParser (:302)\\nclass MapGenerator (:416)\\nclass STM32USBInterface (:697)\\nclass FTDIInterface (:869)\\nclass RadarGUI (:941)|def main() (:1344)|stdlib: dataclasses, json, logging, math, os, queue, random, struct, tempfile, threading, time, tkinter, typing, webbrowser}"];
+  }
+  subgraph "cluster_7" { label="GUI_V6.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V6" [label="{GUI_V6.py\n618 lines - has __main__ entry|class RadarTarget (:57)\\nclass RadarSettings (:70)\\nclass GPSData (:83)\\nclass MapGenerator (:90)\\nclass FT601Interface (:94)\\nclass RadarProcessor (:365)\\nclass USBPacketParser (:369)\\nclass RadarPacketParser (:373)\\nclass RadarGUI (:377)|def main() (:605)|stdlib: dataclasses, logging, math, os, queue, struct, tempfile, threading, time, tkinter, typing, webbrowser}"];
+  }
+  subgraph "cluster_8" { label="GUI_V6_Demo.py"; style="rounded"; color="#95a5a6"; fontsize=9;
+    "f_GUI_V6_Demo" [label="{GUI_V6_Demo.py\n1222 lines - has __main__ entry|class RadarTarget (:36)\\nclass RadarSettings (:45)\\nclass SimulatedRadarProcessor (:61)\\nclass RadarDemoGUI (:237)|def main() (:1196)|stdlib: dataclasses, datetime, json, logging, os, platform, queue, random, threading, time, tkinter, typing}"];
+  }
+  subgraph "cluster_third" { label="third-party packages (PyPI distribution)"; style="rounded,filled"; fillcolor="#fbfbfb"; color="#95a5a6";
+    "pkg_numpy" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="numpy\n(numpy)"];
+    "pkg_matplotlib" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="matplotlib\n(matplotlib)"];
+    "pkg_scipy" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="scipy\n(scipy)"];
+    "pkg_sklearn" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="sklearn\n(scikit-learn)"];
+    "pkg_filterpy" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="filterpy\n(filterpy)"];
+    "pkg_crcmod" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="crcmod\n(crcmod)"];
+    "pkg_usb" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="usb\n(pyusb)"];
+    "pkg_pyftdi" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="pyftdi\n(pyftdi)"];
+    "pkg_pandas" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="pandas\n(pandas)"];
+    "pkg_tkinterweb" [shape=box, fillcolor="#e8f6f3", color="#1e8449", label="tkinterweb\n(tkinterweb)"];
+  }
+  "f_GUI_V2" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V2" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V2" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V2" -> "pkg_sklearn" [color="#1e8449"];
+  "f_GUI_V2" -> "pkg_filterpy" [color="#1e8449"];
+  "f_GUI_V2" -> "pkg_crcmod" [color="#1e8449"];
+  "f_GUI_V2" -> "pkg_usb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V2" -> "pkg_pyftdi" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V3" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V3" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V3" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V3" -> "pkg_sklearn" [color="#1e8449"];
+  "f_GUI_V3" -> "pkg_filterpy" [color="#1e8449"];
+  "f_GUI_V3" -> "pkg_crcmod" [color="#1e8449"];
+  "f_GUI_V3" -> "pkg_usb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V3" -> "pkg_pyftdi" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V4" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V4" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V4" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V4" -> "pkg_sklearn" [color="#1e8449"];
+  "f_GUI_V4" -> "pkg_filterpy" [color="#1e8449"];
+  "f_GUI_V4" -> "pkg_crcmod" [color="#1e8449"];
+  "f_GUI_V4" -> "pkg_usb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V4" -> "pkg_pyftdi" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V4_2_CSV" -> "pkg_pandas" [color="#1e8449"];
+  "f_GUI_V4_2_CSV" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V4_2_CSV" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V4_2_CSV" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_sklearn" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_filterpy" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_crcmod" [color="#1e8449"];
+  "f_GUI_V5" -> "pkg_usb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V5" -> "pkg_pyftdi" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V5_Demo" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V5_Demo" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V5_Demo" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V5_Demo" -> "pkg_sklearn" [color="#1e8449"];
+  "f_GUI_V5_Demo" -> "pkg_filterpy" [color="#1e8449"];
+  "f_GUI_V5_Demo" -> "pkg_crcmod" [color="#1e8449"];
+  "f_GUI_V5_Demo" -> "pkg_tkinterweb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V5_Demo" -> "pkg_usb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V5_Demo" -> "pkg_pyftdi" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V6" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V6" -> "pkg_matplotlib" [color="#1e8449"];
+  "f_GUI_V6" -> "pkg_scipy" [color="#1e8449"];
+  "f_GUI_V6" -> "pkg_sklearn" [color="#1e8449"];
+  "f_GUI_V6" -> "pkg_filterpy" [color="#1e8449"];
+  "f_GUI_V6" -> "pkg_crcmod" [color="#1e8449"];
+  "f_GUI_V6" -> "pkg_usb" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V6" -> "pkg_pyftdi" [color="#1e8449", style=dashed, label="optional (try/except)"];
+  "f_GUI_V6_Demo" -> "pkg_numpy" [color="#1e8449"];
+  "f_GUI_V6_Demo" -> "pkg_matplotlib" [color="#1e8449"];
+}

@@ -1,0 +1,2543 @@
+** Drc report for FREQUENCY_SYNTHESIZER.kicad_pcb **
+** Created on 2026-10-09T01:11:12 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 639 DRC violations **
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(35.4000 mm, -4.9000 mm): Footprint C25
+    @(40.8000 mm, -6.2000 mm): Footprint L10
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(22.2000 mm, -91.0000 mm): Footprint L12
+    @(19.4000 mm, -85.7000 mm): Footprint C45
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(22.2000 mm, -91.0000 mm): Footprint L12
+    @(18.1000 mm, -95.1000 mm): Footprint C33
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(45.9000 mm, -5.3000 mm): Footprint C27
+    @(40.8000 mm, -6.2000 mm): Footprint L10
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(75.8000 mm, -6.3000 mm): Footprint L11
+    @(81.2000 mm, -4.9000 mm): Footprint C29
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(75.8000 mm, -6.3000 mm): Footprint L11
+    @(70.5000 mm, -5.0000 mm): Footprint C31
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; error
+    @(15.4000 mm, -31.9000 mm): Footprint L9
+    @(10.0000 mm, -30.6000 mm): Footprint C21
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.0000 mm, -34.5700 mm): Track [GND] on F.Cu, length 0.0566 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.0000 mm, -35.0000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.4592 mm, -35.7678 mm): Track [AD9523_OUT10+] on F.Cu, length 2.0336 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.4500 mm, -33.7342 mm): Track (arc) [AD9523_OUT10+] on F.Cu, length 0.0145 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.0000 mm, -35.0000 mm): Track [GND] on F.Cu, length 0.4300 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.4500 mm, -33.7250 mm): Pad 1 [AD9523_OUT10+] of R40 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.4500 mm, -33.2150 mm): Pad 2 [N$65] of R40 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.4592 mm, -35.7678 mm): Pad 35 [AD9523_OUT10+] of IC1 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(58.9600 mm, -34.5300 mm): Pad 2 [GND] of C22 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(59.4500 mm, -33.2150 mm): Track [N$65] on F.Cu, length 2.2050 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(59.4592 mm, -35.7678 mm): Segment on F.Mask
+    @(60.9400 mm, -31.0100 mm): Track (arc) [N$65] on F.Cu, length 2.3405 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -76.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -71.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -85.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -75.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -75.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -70.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -73.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -80.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.9400 mm, -69.0356 mm): Track [N$35] on F.Cu, length 15.8244 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -71.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.9400 mm, -90.0000 mm): Track [N$35] on F.Cu, length 4.9800 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.9400 mm, -84.8600 mm): Track [N$35] on F.Cu, length 0.1600 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -78.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -79.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -83.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -74.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.9400 mm, -85.0200 mm): Track [N$35] on F.Cu, length 0.0001 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -82.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.2877 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7377 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -75.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -70.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -79.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -79.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -72.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -72.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -78.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -75.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -84.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5923 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7077 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -83.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -83.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -81.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -71.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -82.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3900 mm, -74.4720 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -79.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -83.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -77.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -84.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -73.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -71.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -77.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.9400 mm, -69.0356 mm): Pad 2 [N$35] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -81.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Pad 3 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Pad 4 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -76.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -85.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -80.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5778 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.8799 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.9400 mm, -69.0356 mm): Track [N$35] on F.Cu, length 15.8244 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5500 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.4180 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.1598 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(51.5000 mm, -66.4500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(54.2000 mm, -66.4500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(51.5000 mm, -66.4500 mm): Track [GND] on F.Cu, length 0.8799 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.2877 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7377 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.1222 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.2798 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(54.3000 mm, -68.6500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5923 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7077 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(51.5500 mm, -68.6500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.3300 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.4180 mm, -65.8278 mm): Pad 1 [GND] of U3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.4020 mm, -65.8278 mm): Pad 3 [GND] of U3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.9400 mm, -69.0356 mm): Pad 2 [N$35] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Pad 3 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.3000 mm, -64.7500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Pad 4 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.9100 mm, -64.3800 mm): Pad 13 [GND] of U3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.5500 mm, -64.7500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5778 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.8799 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.9400 mm, -69.0356 mm): Track [N$35] on F.Cu, length 15.8244 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5500 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.4180 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.1598 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(51.5000 mm, -66.4500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(54.2000 mm, -66.4500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(51.5000 mm, -66.4500 mm): Track [GND] on F.Cu, length 0.8799 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.2877 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7377 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.1222 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.2798 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(54.3000 mm, -68.6500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5923 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7077 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(51.5500 mm, -68.6500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.3300 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.4180 mm, -65.8278 mm): Pad 1 [GND] of U3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.4020 mm, -65.8278 mm): Pad 3 [GND] of U3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.9400 mm, -69.0356 mm): Pad 2 [N$35] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Pad 3 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.3000 mm, -64.7500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Pad 4 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.9100 mm, -64.3800 mm): Pad 13 [GND] of U3 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(52.5500 mm, -64.7500 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -76.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -71.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -85.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -75.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -75.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -70.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -73.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -80.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -71.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -78.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -79.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -83.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -74.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -82.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.2877 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7377 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -75.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -70.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -79.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -79.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -72.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -72.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -78.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -75.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -84.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5923 mm, -68.6500 mm): Track [GND] on F.Cu, length 0.7077 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -83.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -83.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -81.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -71.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -82.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3900 mm, -74.4720 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -79.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -83.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -77.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -84.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -73.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -71.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -77.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.9400 mm, -68.3244 mm): Pad 1 [N$34] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -81.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Pad 3 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3177 mm, -68.6800 mm): Pad 4 [GND] of U5 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(53.5500 mm, -76.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -85.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -69.0356 mm): Segment on F.Mask
+    @(52.3300 mm, -80.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -71.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -68.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -71.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5777 mm, -68.0000 mm): Track [GND] on F.Cu, length 0.9777 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8223 mm, -68.0000 mm): Track [GND] on F.Cu, length 1.0277 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -73.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.9400 mm, -74.3900 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.2000 mm, -67.6444 mm): Pad 1 [N$54] of U8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -72.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -71.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -70.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -70.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8223 mm, -68.0000 mm): Pad 3 [GND] of U8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.4200 mm, -74.3700 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5777 mm, -68.0000 mm): Pad 4 [GND] of U8 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -68.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(59.5900 mm, -71.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -72.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.8100 mm, -73.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(60.2000 mm, -74.0000 mm): Segment on F.Mask
+    @(60.2000 mm, -66.4578 mm): Track [N$54] on F.Cu, length 1.1866 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.5500 mm, -88.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.5500 mm, -85.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.5500 mm, -87.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.3300 mm, -86.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.5500 mm, -87.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.3300 mm, -88.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.3300 mm, -84.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.5500 mm, -86.3000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.5500 mm, -84.7000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.3300 mm, -87.1000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.2300 mm, -89.5300 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(53.6700 mm, -89.5200 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.3300 mm, -87.9000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+    @(52.3300 mm, -85.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5778 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.8799 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5500 mm, -69.5000 mm): Via [GND] on F.Cu - B.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.5623 mm, -68.6800 mm): Track [GND] on F.Cu, length 0.0424 mm
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+    @(53.4180 mm, -65.8278 mm): Track [GND] on F.Cu, length 0.1598 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(48.2976 mm, -58.2734 mm): Track (arc) [GND] on F.Cu, length 0.0804 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(47.2976 mm, -58.2734 mm): Track (arc) [GND] on F.Cu, length 0.0804 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(45.9183 mm, -58.2975 mm): Track (arc) [GND] on F.Cu, length 0.0536 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(45.8741 mm, -61.5759 mm): Track (arc) [GND] on F.Cu, length 0.0268 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(62.8024 mm, -58.2734 mm): Track (arc) [GND] on F.Cu, length 0.0804 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.7983 mm, -57.8983 mm): Track (arc) [GND] on F.Cu, length 0.0536 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.3024 mm, -58.2734 mm): Track (arc) [GND] on F.Cu, length 0.0804 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(46.7976 mm, -58.2734 mm): Track (arc) [GND] on F.Cu, length 0.0804 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(62.5793 mm, -60.2807 mm): Track (arc) [GND] on F.Cu, length 0.1341 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(50.7838 mm, -40.9240 mm): Track (arc) [VCXO_OUT] on F.Cu, length 0.0220 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(45.4000 mm, -50.0533 mm): Track (arc) [AD9523_OUT9_N] on F.Cu, length 0.0734 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(44.8200 mm, -50.0660 mm): Track (arc) [AD9523_OUT9_P] on F.Cu, length 0.0534 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(60.6180 mm, -37.9268 mm): Track (arc) [AD9523_OUT8_N] on F.Cu, length 0.0248 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(60.6366 mm, -38.4094 mm): Track (arc) [AD9523_OUT8_P] on F.Cu, length 0.0540 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(92.6700 mm, -30.2000 mm): Track (arc) [AD9523_OUT6+] on F.Cu, length 0.0628 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(45.3650 mm, -51.0750 mm): Track (arc) [ADF4382_TX_SYNC_N] on F.Cu, length 0.0079 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(45.4000 mm, -50.6300 mm): Track (arc) [ADF4382_TX_SYNC_N] on F.Cu, length 0.0471 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(47.6238 mm, -59.6538 mm): Track (arc) [TX_RFOUT_2_P] on F.Cu, length 0.0402 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(43.8742 mm, -53.8700 mm): Track (arc) [ADF4382_SDIO] on F.Cu, length 0.0314 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(52.9100 mm, -65.8578 mm): Track (arc) [N$34] on F.Cu, length 0.0471 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.7300 mm, -51.8892 mm): Track (arc) [N$38] on F.Cu, length 0.0079 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.2300 mm, -51.8792 mm): Track (arc) [N$39] on F.Cu, length 0.0236 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(57.4600 mm, -50.1500 mm): Track (arc) [N$51] on B.Cu, length 0.0157 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(63.5304 mm, -59.5996 mm): Track (arc) [RX_RFOUT_2_N] on F.Cu, length 0.0670 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(60.9279 mm, -60.7379 mm): Track (arc) [RX_RFOUT_1_N] on F.Cu, length 0.0134 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(59.1900 mm, -50.2950 mm): Track (arc) [ADF4382_RX_SYNC_P] on F.Cu, length 0.0393 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(59.4500 mm, -33.7342 mm): Track (arc) [AD9523_OUT10+] on F.Cu, length 0.0145 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(57.9700 mm, -33.7344 mm): Track (arc) [AD9523_OUT11+] on F.Cu, length 0.0148 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.9096 mm, -59.5996 mm): Track (arc) [RX_RFOUT_2_P] on F.Cu, length 0.0670 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.7400 mm, -50.1090 mm): Track (arc) [AD9523_OUT1_N] on F.Cu, length 0.0016 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(61.1900 mm, -49.9950 mm): Track (arc) [AD9523_OUT1_P] on F.Cu, length 0.1335 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(11.6800 mm, -67.9100 mm): Track (arc) [N$61] on F.Cu, length 0.0157 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(62.9130 mm, -41.3800 mm): Track (arc) [N$62] on F.Cu, length 0.0817 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(52.7750 mm, -25.0250 mm): Track (arc) [N$68] on F.Cu, length 0.2122 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(45.8159 mm, -60.7259 mm): Track (arc) [+3V3_LO_2] on F.Cu, length 0.0268 mm
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.5600 mm, -51.9200 mm): Polygon of R18 on F.Silkscreen
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.5600 mm, -51.9200 mm): Polygon of R18 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(52.5600 mm, -51.9200 mm): Polygon of R18 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.5600 mm, -51.9200 mm): Polygon of R18 on F.Silkscreen
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(45.6668 mm, -51.4243 mm): Polygon of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(44.4750 mm, -51.7050 mm): Reference field of R13
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(46.4750 mm, -51.7050 mm): Reference field of R12
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(44.4750 mm, -51.7050 mm): Reference field of R13
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.4750 mm, -51.7050 mm): Reference field of R13
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(46.4750 mm, -51.7050 mm): Reference field of R12
+    @(44.4750 mm, -51.7050 mm): Reference field of R13
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(46.4750 mm, -51.7050 mm): Reference field of R12
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(50.8030 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.9460 mm, -53.0118 mm): Footprint text of U1 (*)
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+    @(52.9300 mm, -53.8600 mm): Polygon of R16 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(53.0250 mm, -52.6750 mm): Reference field of C61
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.9300 mm, -53.8600 mm): Polygon of R16 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.6300 mm, -52.7000 mm): Polygon of R17 on F.Silkscreen
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(53.0250 mm, -52.6750 mm): Reference field of C61
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(53.0250 mm, -52.6750 mm): Reference field of C61
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.6300 mm, -52.7000 mm): Polygon of R17 on F.Silkscreen
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.6300 mm, -52.7000 mm): Polygon of R17 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.0250 mm, -55.2750 mm): Reference field of R25
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.1449 mm, -55.5732 mm): Polygon of U1 on F.Silkscreen
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+    @(42.3800 mm, -57.3200 mm): Polygon of R21 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.0250 mm, -55.2750 mm): Reference field of R25
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.1700 mm, -54.2400 mm): Polygon of R24 on F.Silkscreen
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.8650 mm, -54.8050 mm): Reference field of C38
+    @(42.1700 mm, -54.2400 mm): Polygon of R24 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+    @(43.4370 mm, -51.9958 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.4370 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.1950 mm, -52.7050 mm): Reference field of C39
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.1950 mm, -52.7050 mm): Reference field of C39
+    @(43.4370 mm, -51.9958 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.1950 mm, -52.7050 mm): Reference field of C39
+    @(42.0250 mm, -55.2750 mm): Reference field of R25
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.0250 mm, -59.3050 mm): Reference field of C67
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.2050 mm, -60.3650 mm): Reference field of C63
+    @(45.9350 mm, -60.3650 mm): Reference field of C64
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.2050 mm, -60.3650 mm): Reference field of C63
+    @(44.2844 mm, -63.3744 mm): Segment of U2 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.4750 mm, -59.3050 mm): Reference field of C66
+    @(45.6550 mm, -61.0350 mm): Reference field of L2
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.4950 mm, -58.8050 mm): Reference field of C56
+    @(51.0550 mm, -56.9650 mm): Reference field of C57
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.5150 mm, -60.3650 mm): Reference field of C65
+    @(45.2050 mm, -60.3650 mm): Reference field of C63
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.5150 mm, -60.3650 mm): Reference field of C65
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.2050 mm, -60.3650 mm): Reference field of C63
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.2050 mm, -60.3650 mm): Reference field of C63
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.0250 mm, -59.3050 mm): Reference field of C67
+    @(45.9350 mm, -60.3650 mm): Reference field of C64
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.9350 mm, -60.3650 mm): Reference field of C64
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.6550 mm, -61.0350 mm): Reference field of L2
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.0250 mm, -59.3050 mm): Reference field of C67
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.6550 mm, -61.0350 mm): Reference field of L2
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.2844 mm, -64.0602 mm): Segment of U2 on F.Silkscreen
+    @(45.2050 mm, -60.3650 mm): Reference field of C63
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.2844 mm, -64.0602 mm): Segment of U2 on F.Silkscreen
+    @(44.5150 mm, -60.3650 mm): Reference field of C65
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(44.5150 mm, -60.3650 mm): Reference field of C65
+    @(44.2844 mm, -63.3744 mm): Segment of U2 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.3250 mm, -55.6750 mm): Reference field of R15
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.5900 mm, -56.3200 mm): Polygon of R14 on F.Silkscreen
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.3250 mm, -55.6750 mm): Reference field of R15
+    @(51.5900 mm, -56.3200 mm): Polygon of R14 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.2550 mm, -54.7450 mm): Reference field of C77
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.2550 mm, -54.7450 mm): Reference field of C77
+    @(53.0250 mm, -52.6750 mm): Reference field of C61
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(55.0400 mm, -55.2100 mm): Reference field of FB2
+    @(57.2550 mm, -54.7450 mm): Reference field of C77
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.4950 mm, -58.8050 mm): Reference field of C56
+    @(50.8030 mm, -58.8030 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.4950 mm, -58.8050 mm): Reference field of C56
+    @(50.8030 mm, -58.2442 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.7350 mm, -59.2750 mm): Reference field of C1
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+    @(48.4750 mm, -59.3050 mm): Reference field of C66
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+    @(45.6550 mm, -61.0350 mm): Reference field of L2
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.1650 mm, -59.9550 mm): Reference field of L1
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.0250 mm, -59.3050 mm): Reference field of C67
+    @(45.6550 mm, -61.0350 mm): Reference field of L2
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(17.5650 mm, -67.2850 mm): Reference field of C92
+    @(14.6700 mm, -66.4100 mm): Segment of J13 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(16.1950 mm, -93.1950 mm): Reference field of C33
+    @(14.9400 mm, -93.9300 mm): Segment of X13 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(14.9400 mm, -93.9300 mm): Segment of X13 on F.Silkscreen
+    @(16.1950 mm, -93.1950 mm): Reference field of C33
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(16.1950 mm, -93.1950 mm): Reference field of C33
+    @(14.9400 mm, -98.3750 mm): Segment of X13 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+    @(47.3850 mm, -38.7950 mm): Reference field of R5
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.8850 mm, -42.5550 mm): Reference field of C6
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(53.8450 mm, -46.2650 mm): Reference field of C32
+    @(52.2456 mm, -47.6550 mm): Reference field of IC1
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.0750 mm, -47.4650 mm): Reference field of C30
+    @(55.9250 mm, -47.3650 mm): Reference field of C43
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.0750 mm, -47.4650 mm): Reference field of C30
+    @(59.8250 mm, -50.6550 mm): Reference field of C71
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.0750 mm, -47.4650 mm): Reference field of C30
+    @(61.2150 mm, -44.6150 mm): Reference field of C42
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+    @(52.2456 mm, -47.6550 mm): Reference field of IC1
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+    @(50.6000 mm, -50.4500 mm): Reference field of FB3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.4700 mm, -50.7400 mm): Polygon of R19 on F.Silkscreen
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(51.9460 mm, -53.0118 mm): Footprint text of U1 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.9460 mm, -53.0118 mm): Footprint text of U1 (*)
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(50.8030 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.8030 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(50.8030 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.2442 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(50.2442 mm, -51.4370 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.4700 mm, -50.7400 mm): Polygon of R19 on F.Silkscreen
+    @(50.6000 mm, -50.4500 mm): Reference field of FB3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(60.4500 mm, -50.6600 mm): Reference field of C70
+    @(59.8250 mm, -50.6550 mm): Reference field of C71
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(58.8350 mm, -51.7950 mm): Reference field of R26
+    @(59.8350 mm, -51.4750 mm): Reference field of C79
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(61.2150 mm, -44.6150 mm): Reference field of C42
+    @(59.8250 mm, -50.6550 mm): Reference field of C71
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(60.4500 mm, -50.6600 mm): Reference field of C70
+    @(61.2150 mm, -44.6150 mm): Reference field of C42
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+    @(53.0250 mm, -52.6750 mm): Reference field of C61
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(53.0250 mm, -52.6750 mm): Reference field of C61
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(46.4750 mm, -51.7050 mm): Reference field of R12
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.6300 mm, -52.7000 mm): Polygon of R17 on F.Silkscreen
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(51.3250 mm, -55.6750 mm): Reference field of R15
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.8157 mm, -57.0732 mm): Polygon of U1 on F.Silkscreen
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(48.0050 mm, -50.9350 mm): Reference field of C11
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.4600 mm, -50.7300 mm): Polygon of R20 on F.Silkscreen
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(50.4600 mm, -50.7300 mm): Polygon of R20 on F.Silkscreen
+    @(50.6000 mm, -50.4500 mm): Reference field of FB3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(50.4600 mm, -50.7300 mm): Polygon of R20 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+    @(48.0050 mm, -50.9350 mm): Reference field of C11
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(46.4750 mm, -51.7050 mm): Reference field of R12
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(50.9756 mm, -45.6738 mm): Segment of IC1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+    @(50.6962 mm, -45.6738 mm): Segment of IC1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(56.4750 mm, -56.7950 mm): Reference field of R36
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(56.8750 mm, -55.2450 mm): Reference field of R38
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(56.4750 mm, -56.7950 mm): Reference field of R36
+    @(56.6900 mm, -54.3100 mm): Polygon of R37 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.2550 mm, -54.7450 mm): Reference field of C77
+    @(56.6900 mm, -54.3100 mm): Polygon of R37 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.2550 mm, -54.7450 mm): Reference field of C77
+    @(56.8750 mm, -55.2450 mm): Reference field of R38
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.2550 mm, -54.7450 mm): Reference field of C77
+    @(56.0900 mm, -54.7600 mm): Polygon of R38 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(56.4750 mm, -56.7950 mm): Reference field of R36
+    @(57.5049 mm, -55.5732 mm): Polygon of U6 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.5049 mm, -55.5732 mm): Polygon of U6 on F.Silkscreen
+    @(57.5750 mm, -57.3450 mm): Reference field of R35
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.7970 mm, -51.9958 mm): Segment of U6 on F.Silkscreen
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(56.8750 mm, -55.2450 mm): Reference field of R38
+    @(57.7970 mm, -51.9958 mm): Segment of U6 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(57.5750 mm, -57.3450 mm): Reference field of R35
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+    @(51.8100 mm, -54.8900 mm): Polygon of R15 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(52.6300 mm, -52.7000 mm): Polygon of R17 on F.Silkscreen
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(52.6300 mm, -52.7000 mm): Polygon of R17 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(61.8250 mm, -50.9650 mm): Reference field of C69
+    @(65.4350 mm, -48.5050 mm): Reference field of C82
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.3750 mm, -50.9950 mm): Reference field of C68
+    @(65.4350 mm, -48.5050 mm): Reference field of C82
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(45.4550 mm, -50.9850 mm): Reference field of C14
+    @(46.0350 mm, -50.9850 mm): Reference field of C13
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.1250 mm, -37.2550 mm): Reference field of C9
+    @(49.8350 mm, -38.2250 mm): Reference field of C34
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(49.8350 mm, -38.2250 mm): Reference field of C34
+    @(47.8700 mm, -38.0100 mm): Polygon of R5 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.3750 mm, -50.9950 mm): Reference field of C68
+    @(61.8250 mm, -50.9650 mm): Reference field of C69
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.8850 mm, -51.2950 mm): Reference field of C80
+    @(62.3750 mm, -50.9950 mm): Reference field of C68
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.8850 mm, -51.2950 mm): Reference field of C80
+    @(61.8250 mm, -50.9650 mm): Reference field of C69
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.3750 mm, -50.9950 mm): Reference field of C68
+    @(63.3350 mm, -51.2950 mm): Reference field of C81
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.8850 mm, -51.2950 mm): Reference field of C80
+    @(63.3350 mm, -51.2950 mm): Reference field of C81
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(64.3750 mm, -51.2950 mm): Reference field of C85
+    @(64.3900 mm, -50.7500 mm): Polygon of R33 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(64.3750 mm, -51.2950 mm): Reference field of C85
+    @(63.3350 mm, -51.2950 mm): Reference field of C81
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(64.3900 mm, -50.7500 mm): Polygon of R33 on F.Silkscreen
+    @(63.3350 mm, -51.2950 mm): Reference field of C81
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(64.3750 mm, -51.2950 mm): Reference field of C85
+    @(64.2600 mm, -49.7900 mm): Reference field of FB4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(64.2600 mm, -49.7900 mm): Reference field of FB4
+    @(63.3350 mm, -51.2950 mm): Reference field of C81
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.5850 mm, -42.0150 mm): Reference field of R39
+    @(61.6250 mm, -42.5150 mm): Reference field of C41
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(59.3000 mm, -33.6200 mm): Polygon of R40 on F.Silkscreen
+    @(58.6050 mm, -34.1050 mm): Reference field of R41
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(55.0250 mm, -35.1750 mm): Reference field of C20
+    @(56.5750 mm, -35.1750 mm): Reference field of C35
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(55.0250 mm, -35.1750 mm): Reference field of C20
+    @(58.0750 mm, -35.1650 mm): Reference field of C22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(56.5750 mm, -35.1750 mm): Reference field of C35
+    @(58.0750 mm, -35.1650 mm): Reference field of C22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(60.5250 mm, -35.3750 mm): Reference field of C36
+    @(58.0750 mm, -35.1650 mm): Reference field of C22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(65.4350 mm, -48.5050 mm): Reference field of C82
+    @(63.3350 mm, -51.2950 mm): Reference field of C81
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(62.8850 mm, -51.2950 mm): Reference field of C80
+    @(65.4350 mm, -48.5050 mm): Reference field of C82
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.8650 mm, -54.8050 mm): Reference field of C38
+    @(41.2400 mm, -54.7900 mm): Polygon of R25 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.1250 mm, -37.2550 mm): Reference field of C9
+    @(47.8700 mm, -38.0100 mm): Polygon of R5 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(31.1050 mm, -14.1550 mm): Reference field of C2
+    @(31.6300 mm, -14.0100 mm): Polygon of R4 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(31.1050 mm, -14.1550 mm): Reference field of C2
+    @(31.1450 mm, -14.7950 mm): Reference field of R4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(32.1428 mm, -15.1948 mm): Segment of X6 on F.Silkscreen
+    @(31.1050 mm, -14.1550 mm): Reference field of C2
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(32.1428 mm, -15.1948 mm): Segment of X6 on F.Silkscreen
+    @(31.1450 mm, -14.7950 mm): Reference field of R4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(48.1250 mm, -37.2550 mm): Reference field of C9
+    @(47.3850 mm, -38.7950 mm): Reference field of R5
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(13.2250 mm, -20.8650 mm): Reference field of R8
+    @(13.1850 mm, -22.0550 mm): Reference field of R9
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(15.7850 mm, -22.0650 mm): Reference field of R11
+    @(15.7250 mm, -20.9150 mm): Reference field of R10
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(17.0050 mm, -12.9550 mm): Reference field of R7
+    @(17.0150 mm, -14.0050 mm): Reference field of R6
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.8650 mm, -54.8050 mm): Reference field of C38
+    @(42.0250 mm, -55.2750 mm): Reference field of R25
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.0250 mm, -55.2750 mm): Reference field of R25
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(42.8650 mm, -54.8050 mm): Reference field of C38
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(43.1449 mm, -55.5732 mm): Polygon of U1 on F.Silkscreen
+    @(42.4150 mm, -57.3250 mm): Reference field of R22
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(60.3050 mm, -60.3650 mm): Reference field of C87
+    @(57.4350 mm, -60.2750 mm): Reference field of C76
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(60.3050 mm, -60.3650 mm): Reference field of C87
+    @(61.3350 mm, -59.2750 mm): Reference field of C91
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(59.1350 mm, -61.0350 mm): Reference field of L6
+    @(60.3050 mm, -60.3650 mm): Reference field of C87
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(60.3050 mm, -60.3650 mm): Reference field of C87
+    @(59.5650 mm, -60.3650 mm): Reference field of C86
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(59.1350 mm, -61.0350 mm): Reference field of L6
+    @(59.5650 mm, -60.3650 mm): Reference field of C86
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(59.1350 mm, -61.0350 mm): Reference field of L6
+    @(57.4350 mm, -60.2750 mm): Reference field of C76
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(52.9650 mm, -52.0700 mm): Pad 2 [N$17] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.5600 mm, -51.9200 mm): Polygon of R18 on F.Silkscreen
+    @(52.4550 mm, -52.0700 mm): Pad 1 [N$25] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.5600 mm, -51.9200 mm): Polygon of R18 on F.Silkscreen
+    @(52.9650 mm, -52.0700 mm): Pad 2 [N$17] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(52.4550 mm, -52.0700 mm): Pad 1 [N$25] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.4550 mm, -52.0700 mm): Pad 1 [N$25] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.9650 mm, -52.0700 mm): Pad 2 [N$17] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(53.4100 mm, -52.0400 mm): Pad 1 [N$17] of C61 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(45.8700 mm, -51.8942 mm): Pad 40 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(46.8700 mm, -51.8942 mm): Pad 42 [N$16] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(47.8700 mm, -51.8942 mm): Pad 44 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.4750 mm, -51.7050 mm): Reference field of R13
+    @(47.3700 mm, -51.8942 mm): Pad 43 [N$15] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(47.3650 mm, -51.0700 mm): Pad 2 [N$15] of R12 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(47.3700 mm, -51.8942 mm): Pad 43 [N$15] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(48.3700 mm, -51.8942 mm): Pad 45 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.4750 mm, -51.1550 mm): Reference field of C40
+    @(48.8700 mm, -51.8942 mm): Pad 46 [N$20] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(49.0150 mm, -48.9350 mm): Reference field of C59
+    @(48.8700 mm, -51.8942 mm): Pad 46 [N$20] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(50.3458 mm, -52.3700 mm): Pad 1 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(50.3458 mm, -52.8700 mm): Pad 2 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(51.6400 mm, -52.8700 mm): Pad 2 [GND] of C50 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+    @(53.0350 mm, -53.7100 mm): Pad 1 [N$24] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+    @(52.5250 mm, -53.7100 mm): Pad 2 [N$23] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+    @(52.9500 mm, -54.3500 mm): Pad 1 [N$24] of C60 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9300 mm, -53.8600 mm): Polygon of R16 on F.Silkscreen
+    @(53.0350 mm, -53.7100 mm): Pad 1 [N$24] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9300 mm, -53.8600 mm): Polygon of R16 on F.Silkscreen
+    @(52.5250 mm, -53.7100 mm): Pad 2 [N$23] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(53.0350 mm, -53.7100 mm): Pad 1 [N$24] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(52.5250 mm, -53.7100 mm): Pad 2 [N$23] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.0750 mm, -52.7050 mm): Reference field of R18
+    @(52.4800 mm, -53.1050 mm): Pad 2 [N$24] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(53.0350 mm, -53.7100 mm): Pad 1 [N$24] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(52.4800 mm, -52.5950 mm): Pad 1 [N$25] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.4150 mm, -53.0750 mm): Reference field of R16
+    @(52.4800 mm, -53.1050 mm): Pad 2 [N$24] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2750 mm, -53.7550 mm): Reference field of C50
+    @(52.4800 mm, -53.1050 mm): Pad 2 [N$24] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+    @(43.8942 mm, -54.8700 mm): Pad 31 [ADF4382_TX_CE] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+    @(43.8942 mm, -55.3700 mm): Pad 30 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+    @(43.8942 mm, -56.3700 mm): Pad 28 [ADF4382_TX_DELADJ] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.1650 mm, -57.8050 mm): Reference field of R21
+    @(43.8942 mm, -55.8700 mm): Pad 29 [ADF4382_TX_DELSTR] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.3800 mm, -57.3200 mm): Polygon of R21 on F.Silkscreen
+    @(42.5300 mm, -57.4250 mm): Pad 1 [N$36] of R21 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.3800 mm, -57.3200 mm): Polygon of R21 on F.Silkscreen
+    @(42.5300 mm, -56.9150 mm): Pad 2 [ADF4382_TX_LKDET] of R21 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+    @(43.8942 mm, -54.3700 mm): Pad 32 [ADF4382_TX_CS] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+    @(43.8942 mm, -53.8700 mm): Pad 33 [ADF4382_SDIO] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.1700 mm, -54.2400 mm): Polygon of R24 on F.Silkscreen
+    @(42.3200 mm, -54.3450 mm): Pad 1 [ADF4382_TX_CS] of R24 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.1700 mm, -54.2400 mm): Polygon of R24 on F.Silkscreen
+    @(42.3200 mm, -53.8350 mm): Pad 2 [+3V3_LO_1] of R24 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(42.9550 mm, -54.7250 mm): Reference field of R24
+    @(43.8942 mm, -52.8700 mm): Pad 35 [ADF4382_SDO] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.1950 mm, -52.7050 mm): Reference field of C39
+    @(44.3700 mm, -51.8942 mm): Pad 37 [N$37] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.1950 mm, -52.7050 mm): Reference field of C39
+    @(43.8942 mm, -52.3700 mm): Pad 36 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.9702 mm, -66.0056 mm): Segment of U3 on F.Silkscreen
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(54.5356 mm, -66.0056 mm): Segment of U3 on F.Silkscreen
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.0370 mm, -67.4026 mm): Footprint text of U3 (*)
+    @(52.9400 mm, -68.3244 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+    @(46.5700 mm, -61.2500 mm): Pad 2 [N$31] of C64 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.4950 mm, -58.8050 mm): Reference field of C56
+    @(48.4325 mm, -56.4325 mm): Pad 50 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.4950 mm, -58.8050 mm): Reference field of C56
+    @(49.3700 mm, -58.3458 mm): Pad 14 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.4950 mm, -58.8050 mm): Reference field of C56
+    @(51.6900 mm, -57.8500 mm): Pad 2 [GND] of C57 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.8050 mm, -61.0350 mm): Reference field of L3
+    @(45.1500 mm, -61.2500 mm): Pad 2 [N$28] of C65 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.6550 mm, -61.0350 mm): Reference field of L2
+    @(45.8400 mm, -61.2500 mm): Pad 2 [GND] of C63 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+    @(45.1500 mm, -61.2500 mm): Pad 2 [N$28] of C65 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.9350 mm, -60.3650 mm): Reference field of C64
+    @(45.4020 mm, -63.5522 mm): Pad 7 [N$28] of U2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.9350 mm, -60.3650 mm): Reference field of C64
+    @(45.9100 mm, -63.5522 mm): Pad 8 [<no net>] of U2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(43.5750 mm, -60.2350 mm): Reference field of C55
+    @(45.1650 mm, -60.4000 mm): Pad 1 [TX_RFOUT_1_P] of L3 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(45.9350 mm, -60.3650 mm): Reference field of C64
+    @(45.1500 mm, -60.7500 mm): Pad 1 [TX_RFOUT_1_P] of C65 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+    @(52.9500 mm, -54.8500 mm): Pad 2 [GND] of C60 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3750 mm, -56.8050 mm): Reference field of R14
+    @(52.7850 mm, -56.0100 mm): Pad 2 [N$19] of FB2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.5900 mm, -56.3200 mm): Polygon of R14 on F.Silkscreen
+    @(51.7400 mm, -56.4250 mm): Pad 1 [N$18] of R14 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.5900 mm, -56.3200 mm): Polygon of R14 on F.Silkscreen
+    @(51.7400 mm, -55.9150 mm): Pad 2 [N$19] of R14 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(55.6900 mm, -56.3100 mm): Polygon of R36 on F.Silkscreen
+    @(55.8400 mm, -56.4150 mm): Pad 1 [GND] of R36 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(55.6900 mm, -56.3100 mm): Polygon of R36 on F.Silkscreen
+    @(55.8400 mm, -55.9050 mm): Pad 2 [ADF4382_RX_DELSTR] of R36 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+    @(47.6600 mm, -60.1900 mm): Pad 2 [N$32] of C67 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+    @(48.3700 mm, -60.1600 mm): Pad 2 [GND] of C1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.3150 mm, -59.9550 mm): Reference field of L4
+    @(49.1100 mm, -60.1900 mm): Pad 2 [N$33] of C66 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(9.8500 mm, -82.3700 mm): Reference field of J9
+    @(9.8500 mm, -82.3700 mm): Pad 1 [N$37] of J9 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(11.6700 mm, -67.9100 mm): Reference field of J13
+    @(11.6700 mm, -67.9100 mm): Pad 1 [N$61] of J13 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(17.5650 mm, -67.2850 mm): Reference field of C92
+    @(14.2100 mm, -65.3700 mm): PTH pad 3 [GND] of J13
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(7.2900 mm, -58.9600 mm): Polygon of R2 on F.Silkscreen
+    @(7.3950 mm, -58.8100 mm): Pad 1 [N$1] of R2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(7.2900 mm, -58.9600 mm): Polygon of R2 on F.Silkscreen
+    @(6.8850 mm, -58.8100 mm): Pad 2 [+3V3_XO] of R2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(28.9950 mm, -88.6050 mm): Reference field of C47
+    @(29.6000 mm, -90.2000 mm): Pad 1 [+3V3_LO_2] of L13 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.9702 mm, -66.6256 mm): Segment of U2 on F.Silkscreen
+    @(45.9100 mm, -67.6444 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.5356 mm, -66.6256 mm): Segment of U2 on F.Silkscreen
+    @(45.9100 mm, -67.6444 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(46.0370 mm, -68.0226 mm): Footprint text of U2 (*)
+    @(45.9100 mm, -67.6444 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(46.0370 mm, -68.0226 mm): Footprint text of U2 (*)
+    @(45.9100 mm, -70.5200 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.4300 mm, -71.0000 mm): Segment of J10 on F.Silkscreen
+    @(45.9300 mm, -74.0000 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.4300 mm, -71.0000 mm): Segment of J10 on F.Silkscreen
+    @(45.9100 mm, -70.5200 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.4400 mm, -87.0000 mm): Segment of J1 on F.Silkscreen
+    @(52.9401 mm, -85.0199 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.6400 mm, -94.0300 mm): Segment of X14 on F.Silkscreen
+    @(43.3700 mm, -95.3000 mm): PTH pad 1 [N$77] of X14
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(44.6400 mm, -94.0300 mm): Segment of X14 on F.Silkscreen
+    @(40.8300 mm, -95.3000 mm): PTH pad 2 [GND] of X14
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(14.9400 mm, -93.9300 mm): Segment of X13 on F.Silkscreen
+    @(13.6700 mm, -95.2000 mm): PTH pad 1 [N$75] of X13
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(14.9400 mm, -93.9300 mm): Segment of X13 on F.Silkscreen
+    @(11.1300 mm, -95.2000 mm): PTH pad 2 [GND] of X13
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+    @(49.7600 mm, -40.3900 mm): Pad 2 [N$7] of C7 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+    @(50.7978 mm, -41.4320 mm): Pad 8 [OSC_CTRL] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+    @(50.7978 mm, -40.9240 mm): Pad 9 [VCXO_OUT] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(50.7978 mm, -40.9240 mm): Pad 9 [VCXO_OUT] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(50.7978 mm, -41.4320 mm): Pad 8 [OSC_CTRL] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(50.7978 mm, -41.9146 mm): Pad 7 [N$4] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(50.7978 mm, -42.4226 mm): Pad 6 [N$6] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(50.7978 mm, -41.4320 mm): Pad 8 [OSC_CTRL] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(50.7978 mm, -41.9146 mm): Pad 7 [N$4] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.9950 mm, -40.0550 mm): Reference field of C10
+    @(50.7978 mm, -40.4160 mm): Pad 10 [N$7] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(49.2700 mm, -41.9200 mm): Pad 1 [GND] of C6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -40.5050 mm): Reference field of C8
+    @(49.7700 mm, -41.9200 mm): Pad 2 [N$4] of C6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(49.2700 mm, -41.9200 mm): Pad 1 [GND] of C6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(49.2700 mm, -42.3900 mm): Pad 1 [GND] of C5 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8750 mm, -41.0250 mm): Reference field of C7
+    @(49.7700 mm, -42.3900 mm): Pad 2 [N$6] of C5 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -42.5550 mm): Reference field of C6
+    @(49.2300 mm, -43.3900 mm): Pad 1 [GND] of C4 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+    @(49.2300 mm, -43.3900 mm): Pad 1 [GND] of C4 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+    @(49.7300 mm, -43.3900 mm): Pad 2 [N$5] of C4 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+    @(50.7978 mm, -43.9212 mm): Pad 3 [10MHZ_OUT] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+    @(50.7978 mm, -43.4132 mm): Pad 4 [N$5] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.8450 mm, -46.2650 mm): Reference field of C32
+    @(52.8550 mm, -49.6500 mm): Pad 2 [+5V0_LO] of FB3 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(55.7000 mm, -40.6700 mm): Pad 73 [GND] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -40.4160 mm): Pad 45 [+3V3_CLOCK] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6322 mm, -42.6826 mm): Segment on F.Mask
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -41.9146 mm): Pad 48 [+1V8_CLOCK] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(53.8450 mm, -46.2650 mm): Reference field of C32
+    @(52.5800 mm, -46.8200 mm): Pad 1 [+1V8_CLOCK] of C44 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(51.4582 mm, -45.5722 mm): Pad 72 [N$60] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(52.4488 mm, -45.5722 mm): Pad 70 [<no net>] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(51.9408 mm, -45.5722 mm): Pad 71 [<no net>] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(52.4550 mm, -52.0700 mm): Pad 1 [N$25] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(53.4100 mm, -52.0400 mm): Pad 1 [N$17] of C61 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+    @(51.2650 mm, -49.6500 mm): Pad 1 [N$20] of FB3 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+    @(50.8650 mm, -50.8800 mm): Pad 2 [N$21] of R20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+    @(51.3650 mm, -50.8900 mm): Pad 1 [N$21] of R19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.4950 mm, -51.2550 mm): Reference field of C62
+    @(51.8750 mm, -50.8900 mm): Pad 2 [N$25] of R19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.6000 mm, -50.4500 mm): Reference field of FB3
+    @(51.3650 mm, -50.8900 mm): Pad 1 [N$21] of R19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(49.9750 mm, -51.5150 mm): Reference field of R20
+    @(50.3458 mm, -52.3700 mm): Pad 1 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.4550 mm, -52.0700 mm): Pad 1 [N$25] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.6000 mm, -50.4500 mm): Reference field of FB3
+    @(51.8750 mm, -50.8900 mm): Pad 2 [N$25] of R19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.4700 mm, -50.7400 mm): Polygon of R19 on F.Silkscreen
+    @(51.3650 mm, -50.8900 mm): Pad 1 [N$21] of R19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.4700 mm, -50.7400 mm): Polygon of R19 on F.Silkscreen
+    @(51.8750 mm, -50.8900 mm): Pad 2 [N$25] of R19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(60.4500 mm, -50.6600 mm): Reference field of C70
+    @(61.7400 mm, -50.1100 mm): Pad 2 [AD9523_OUT1_N] of C68 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.8250 mm, -50.9650 mm): Reference field of C69
+    @(61.7400 mm, -50.6100 mm): Pad 1 [N$38] of C68 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.8250 mm, -50.9650 mm): Reference field of C69
+    @(61.7400 mm, -50.1100 mm): Pad 2 [AD9523_OUT1_N] of C68 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(59.8250 mm, -50.6550 mm): Reference field of C71
+    @(61.1900 mm, -50.0800 mm): Pad 2 [AD9523_OUT1_P] of C69 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(59.8350 mm, -51.4750 mm): Reference field of C79
+    @(60.7300 mm, -51.8942 mm): Pad 41 [GND] of U6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(59.8350 mm, -51.4750 mm): Reference field of C79
+    @(60.2300 mm, -51.8942 mm): Pad 40 [+3V3_LO_1] of U6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(59.8350 mm, -51.4750 mm): Reference field of C79
+    @(60.1675 mm, -53.8075 mm): Pad 52 [GND] of U6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2150 mm, -44.6150 mm): Reference field of C42
+    @(60.6022 mm, -44.9118 mm): Pad 54 [+1V8_CLOCK] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2150 mm, -44.6150 mm): Reference field of C42
+    @(59.9418 mm, -45.5722 mm): Pad 55 [AD9523_STATUS1] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -43.4132 mm): Pad 51 [+3V3_CLOCK] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -42.4226 mm): Pad 49 [AD9523_OUT5_N] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -42.9306 mm): Pad 50 [AD9523_OUT5_P] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.5650 mm, -39.5950 mm): Reference field of C37
+    @(61.8400 mm, -40.4000 mm): Pad 1 [+3V3_CLOCK] of C26 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.5650 mm, -39.5950 mm): Reference field of C37
+    @(61.8400 mm, -40.9000 mm): Pad 2 [GND] of C26 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -40.9240 mm): Pad 46 [<no net>] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.2050 mm, -40.0150 mm): Reference field of C26
+    @(60.6022 mm, -41.4320 mm): Pad 47 [N$62] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(53.0350 mm, -53.7100 mm): Pad 1 [N$24] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.9500 mm, -54.3500 mm): Pad 1 [N$24] of C60 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+    @(48.8700 mm, -51.8942 mm): Pad 46 [N$20] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+    @(50.3458 mm, -52.3700 mm): Pad 1 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.4800 mm, -52.5950 mm): Pad 1 [N$25] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.5250 mm, -53.7100 mm): Pad 2 [N$23] of R16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.2550 mm, -54.8050 mm): Reference field of C58
+    @(52.4800 mm, -53.1050 mm): Pad 2 [N$24] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(51.6400 mm, -53.3700 mm): Pad 1 [+3V3_LO_1] of C50 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.9850 mm, -51.5250 mm): Reference field of R19
+    @(51.6400 mm, -52.8700 mm): Pad 2 [GND] of C50 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+    @(51.6200 mm, -54.4200 mm): Pad 1 [+3V3_LO_2] of C58 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(51.6200 mm, -53.9200 mm): Pad 2 [GND] of C58 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(50.3458 mm, -53.8700 mm): Pad 4 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(50.3458 mm, -52.8700 mm): Pad 2 [GND] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+    @(51.7400 mm, -55.9150 mm): Pad 2 [N$19] of R14 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(50.3458 mm, -54.8700 mm): Pad 6 [<no net>] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(50.3458 mm, -55.3700 mm): Pad 7 [N$22] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(51.7050 mm, -55.0400 mm): Pad 1 [N$22] of R15 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+    @(51.7400 mm, -56.4250 mm): Pad 1 [N$18] of R14 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.4600 mm, -50.7300 mm): Polygon of R20 on F.Silkscreen
+    @(50.3550 mm, -50.8800 mm): Pad 1 [N$26] of R20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.4600 mm, -50.7300 mm): Polygon of R20 on F.Silkscreen
+    @(50.8650 mm, -50.8800 mm): Pad 2 [N$21] of R20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(50.6000 mm, -50.4500 mm): Reference field of FB3
+    @(50.8650 mm, -50.8800 mm): Pad 2 [N$21] of R20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+    @(47.3700 mm, -50.0500 mm): Pad 2 [AD9523_OUT0_N] of C11 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+    @(47.3700 mm, -50.5500 mm): Pad 1 [N$15] of C11 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+    @(47.8600 mm, -50.5400 mm): Pad 1 [+3V3_LO_1] of C48 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+    @(48.3600 mm, -50.5400 mm): Pad 2 [GND] of C48 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4450 mm, -50.9350 mm): Reference field of C12
+    @(48.3600 mm, -50.0600 mm): Pad 2 [GND] of C49 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+    @(49.3700 mm, -51.8942 mm): Pad 47 [N$26] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(49.3700 mm, -51.8942 mm): Pad 47 [N$26] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(50.3550 mm, -50.8800 mm): Pad 1 [N$26] of R20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -51.1750 mm): Reference field of C48
+    @(47.8700 mm, -51.8942 mm): Pad 44 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(47.8700 mm, -51.8942 mm): Pad 44 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.0050 mm, -50.9350 mm): Reference field of C11
+    @(48.3600 mm, -50.0600 mm): Pad 2 [GND] of C49 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(47.4750 mm, -50.6950 mm): Reference field of C49
+    @(48.3700 mm, -51.8942 mm): Pad 45 [+3V3_LO_1] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(49.7100 mm, -45.7200 mm): Pad 2 [N$3] of C3 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+    @(49.0700 mm, -44.4000 mm): Pad 1 [+3V3_CLOCK] of C16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+    @(49.0700 mm, -44.9000 mm): Pad 2 [GND] of C16 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+    @(50.7978 mm, -44.9118 mm): Pad 1 [N$3] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.9650 mm, -46.1850 mm): Reference field of C44
+    @(50.7978 mm, -44.9118 mm): Pad 1 [N$3] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8450 mm, -44.0250 mm): Reference field of C4
+    @(50.7978 mm, -44.4292 mm): Pad 2 [+3V3_CLOCK] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -43.0250 mm): Reference field of C5
+    @(50.7978 mm, -44.4292 mm): Pad 2 [+3V3_CLOCK] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -42.5550 mm): Reference field of C6
+    @(50.7978 mm, -43.9212 mm): Pad 3 [10MHZ_OUT] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -42.5550 mm): Reference field of C6
+    @(50.7978 mm, -43.4132 mm): Pad 4 [N$5] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(48.8850 mm, -42.5550 mm): Reference field of C6
+    @(50.7978 mm, -42.9306 mm): Pad 5 [100MHZ_OUT] of IC1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.8750 mm, -55.2450 mm): Reference field of R38
+    @(56.8400 mm, -54.4150 mm): Pad 1 [ADF4382_RX_CS] of R37 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.6900 mm, -54.3100 mm): Polygon of R37 on F.Silkscreen
+    @(56.8400 mm, -54.4150 mm): Pad 1 [ADF4382_RX_CS] of R37 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.6900 mm, -54.3100 mm): Polygon of R37 on F.Silkscreen
+    @(56.8400 mm, -53.9050 mm): Pad 2 [+3V3_LO_1] of R37 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.0900 mm, -54.7600 mm): Polygon of R38 on F.Silkscreen
+    @(56.2400 mm, -54.8650 mm): Pad 1 [ADF4382_RX_CE] of R38 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.0900 mm, -54.7600 mm): Polygon of R38 on F.Silkscreen
+    @(56.2400 mm, -54.3550 mm): Pad 2 [+3V3_LO_1] of R38 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.7900 mm, -56.8600 mm): Polygon of R35 on F.Silkscreen
+    @(56.9400 mm, -56.9650 mm): Pad 1 [GND] of R35 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(56.7900 mm, -56.8600 mm): Polygon of R35 on F.Silkscreen
+    @(56.9400 mm, -56.4550 mm): Pad 2 [ADF4382_RX_DELADJ] of R35 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.3250 mm, -55.6750 mm): Reference field of R15
+    @(54.3750 mm, -56.0100 mm): Pad 1 [+5V0_LO] of FB2 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+    @(58.2542 mm, -52.3700 mm): Pad 36 [+3V3_LO_1] of U6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+    @(58.2542 mm, -53.3700 mm): Pad 34 [ADF4382_SCLK] of U6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(57.4750 mm, -54.7950 mm): Reference field of R37
+    @(58.2542 mm, -54.3700 mm): Pad 32 [ADF4382_RX_CS] of U6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(52.3150 mm, -53.9650 mm): Reference field of C60
+    @(52.2150 mm, -55.0400 mm): Pad 2 [N$23] of R15 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8450 mm, -52.2150 mm): Reference field of R17
+    @(51.6200 mm, -54.4200 mm): Pad 1 [+3V3_LO_2] of C58 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8100 mm, -54.8900 mm): Polygon of R15 on F.Silkscreen
+    @(51.7050 mm, -55.0400 mm): Pad 1 [N$22] of R15 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(51.8100 mm, -54.8900 mm): Polygon of R15 on F.Silkscreen
+    @(52.2150 mm, -55.0400 mm): Pad 2 [N$23] of R15 on F.Cu
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Text height out of range
+    - Text thickness out of range
+    - Footprint component type doesn't match footprint pads
+    - Footprint not found in libraries
+    - Footprint doesn't match copy in library
+
+** End of Report **

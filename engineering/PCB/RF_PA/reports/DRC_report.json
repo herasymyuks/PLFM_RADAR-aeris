@@ -1,0 +1,1182 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-09T01:10:44",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Text height out of range",
+            "key": "text_height"
+        },
+        {
+            "description": "Text thickness out of range",
+            "key": "text_thickness"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        },
+        {
+            "description": "Footprint not found in libraries",
+            "key": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint doesn't match copy in library",
+            "key": "lib_footprint_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "RF_PA.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 16.2,
+                        "y": -11.2
+                    },
+                    "uuid": "8002930c-6121-42a2-ba82-f59f62295758"
+                },
+                {
+                    "description": "Pad GND [GND] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 16.2,
+                        "y": -13.4
+                    },
+                    "uuid": "92e24f03-46b0-4f4c-af86-76883d868d88"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.1230 mm)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Track [VIN_M] on F.Cu, length 0.0294 mm",
+                    "pos": {
+                        "x": 17.455,
+                        "y": -15.6275
+                    },
+                    "uuid": "ea3d2cf7-81a2-4d81-87f5-b121eaff4256"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 18.45,
+                        "y": -14.9
+                    },
+                    "uuid": "06d0f72f-5c76-4b26-9f70-d8b7d5d16963"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 18.45,
+                        "y": -14.3
+                    },
+                    "uuid": "0a854701-a882-4fde-a6ce-909c21fd843f"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 17.2,
+                        "y": -11.2
+                    },
+                    "uuid": "00e57b46-18d4-412c-88f8-9419bec9b67c"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.1245 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 13.45,
+                        "y": -12.65
+                    },
+                    "uuid": "0b3a6790-df39-456c-9458-0ea0cbffd75e"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 15.7,
+                        "y": -11.2
+                    },
+                    "uuid": "e4b15310-569b-492d-999e-b745f3716675"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 16.7,
+                        "y": -11.2
+                    },
+                    "uuid": "deda7c68-1278-4cca-90b4-49cd676a8568"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 18.2,
+                        "y": -11.2
+                    },
+                    "uuid": "c8777563-12ad-480e-8c06-00ff1d2a72ef"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 18.45,
+                        "y": -13.1
+                    },
+                    "uuid": "c3de5bd3-ce1a-47c8-bfc7-a45357ade2ca"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 17.7,
+                        "y": -11.2
+                    },
+                    "uuid": "ba3f6031-363d-4d37-a954-e3f53082de07"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.1245 mm)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 13.45,
+                        "y": -11.146
+                    },
+                    "uuid": "a3a6f473-ef71-4888-87e2-09b65acac73c"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.0,
+                        "y": -14.85
+                    },
+                    "uuid": "8e947c90-2e42-4b47-b43e-8b128eef1326"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 16.2,
+                        "y": -11.2
+                    },
+                    "uuid": "8002930c-6121-42a2-ba82-f59f62295758"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.0,
+                        "y": -13.1
+                    },
+                    "uuid": "7c103764-b6e7-4c1b-a066-798249e429c4"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 18.45,
+                        "y": -12.55
+                    },
+                    "uuid": "7efebb23-9bc7-4181-9d36-882e1bbf9b2c"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 18.45,
+                        "y": -13.7
+                    },
+                    "uuid": "6d2e42e3-628d-4fc5-b815-a7a8084f6da7"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.0,
+                        "y": -12.55
+                    },
+                    "uuid": "68691e0c-ac05-4491-9557-995f160d2f5d"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 15.2,
+                        "y": -11.2
+                    },
+                    "uuid": "46cdb461-3bbc-470b-8ff8-2406fe123254"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.0,
+                        "y": -14.25
+                    },
+                    "uuid": "3d434f59-01fb-4840-8c89-637284c167dd"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.0,
+                        "y": -13.65
+                    },
+                    "uuid": "26cd10e0-ee8a-4e36-95b0-047133ce61e0"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.2,
+                        "y": -11.2
+                    },
+                    "uuid": "2a6f57a5-45ac-4919-926e-af3c9afa7dce"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 14.7,
+                        "y": -11.2
+                    },
+                    "uuid": "49554417-6071-4576-ac8a-f98cb1a69488"
+                },
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets <no net> and GND)",
+            "items": [
+                {
+                    "description": "Polygon [<no net>] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "8346905b-dbfb-43a6-8e6d-f31c13defe8b"
+                },
+                {
+                    "description": "Pad GND [GND] of U$1 on F.Cu",
+                    "pos": {
+                        "x": 16.2,
+                        "y": -13.4
+                    },
+                    "uuid": "92e24f03-46b0-4f4c-af86-76883d868d88"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 12.085,
+                        "y": -26.715
+                    },
+                    "uuid": "16558e68-7013-44d0-b14c-4ec5d446cd59"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.8,
+                        "y": -59.341421
+                    },
+                    "uuid": "2c1b8dd3-32f2-4ffb-9067-190f49d3d163"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.75,
+                        "y": -5.05
+                    },
+                    "uuid": "5bdc6d25-9cc8-4436-89ee-2f7458be1ec5"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 35.05,
+                        "y": -5.945711
+                    },
+                    "uuid": "f220ef0e-1c6f-4ead-b159-8a57478bf764"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 5.75,
+                        "y": -4.85
+                    },
+                    "uuid": "abbb9f5b-dae1-450e-905c-afe51ba0000e"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 35.05,
+                        "y": -5.945711
+                    },
+                    "uuid": "f220ef0e-1c6f-4ead-b159-8a57478bf764"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 14.1762,
+                        "y": -15.7238
+                    },
+                    "uuid": "0281ffbb-a3c1-4053-8dcb-1775eb7d917b"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.8,
+                        "y": -59.341421
+                    },
+                    "uuid": "2c1b8dd3-32f2-4ffb-9067-190f49d3d163"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.8,
+                        "y": -59.341421
+                    },
+                    "uuid": "2c1b8dd3-32f2-4ffb-9067-190f49d3d163"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 23.7762,
+                        "y": -15.9238
+                    },
+                    "uuid": "6b4e8e95-05fe-420c-b2f7-5c00c7b14a61"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.8,
+                        "y": -59.341421
+                    },
+                    "uuid": "2c1b8dd3-32f2-4ffb-9067-190f49d3d163"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 5.75,
+                        "y": -4.85
+                    },
+                    "uuid": "abbb9f5b-dae1-450e-905c-afe51ba0000e"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.8,
+                        "y": -59.341421
+                    },
+                    "uuid": "2c1b8dd3-32f2-4ffb-9067-190f49d3d163"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.75,
+                        "y": -5.05
+                    },
+                    "uuid": "5bdc6d25-9cc8-4436-89ee-2f7458be1ec5"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Copper zones intersect (intersecting zones must have distinct priorities)",
+            "items": [
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 34.8,
+                        "y": -59.341421
+                    },
+                    "uuid": "2c1b8dd3-32f2-4ffb-9067-190f49d3d163"
+                },
+                {
+                    "description": "Zone [GND] on F.Cu, priority 6",
+                    "pos": {
+                        "x": 35.05,
+                        "y": -5.945711
+                    },
+                    "uuid": "f220ef0e-1c6f-4ead-b159-8a57478bf764"
+                }
+            ],
+            "severity": "error",
+            "type": "zones_intersect"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 35.0,
+                        "y": -60.0
+                    },
+                    "uuid": "3ee84708-785e-441b-8ad2-1dc0907629a8"
+                },
+                {
+                    "description": "Reference field of UNK22V0",
+                    "pos": {
+                        "x": 29.669,
+                        "y": -54.12
+                    },
+                    "uuid": "13f562e1-242c-4f96-9ead-3df0ef32c500"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.625,
+                        "y": -37.29
+                    },
+                    "uuid": "3d054a30-9c97-4687-8021-0be7917e125b"
+                },
+                {
+                    "description": "PCB text 'VIN-' on F.Silkscreen",
+                    "pos": {
+                        "x": 10.1,
+                        "y": -40.75
+                    },
+                    "uuid": "b9eda494-4c28-43c2-8910-b76d2d228a6b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "PCB text 'VIN+' on F.Silkscreen",
+                    "pos": {
+                        "x": 9.95,
+                        "y": -43.6
+                    },
+                    "uuid": "23e2d816-e3ff-44ca-a219-79a6912ea14b"
+                },
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.625,
+                        "y": -37.29
+                    },
+                    "uuid": "3d054a30-9c97-4687-8021-0be7917e125b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 23.2136,
+                        "y": -51.965
+                    },
+                    "uuid": "025c24ad-ad19-4720-8868-12418c2ec7cd"
+                },
+                {
+                    "description": "Footprint text of UNK22V0 (2)",
+                    "pos": {
+                        "x": 21.7658,
+                        "y": -51.33
+                    },
+                    "uuid": "41d21095-b170-470f-b91e-d47147b059da"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (2)",
+                    "pos": {
+                        "x": 21.7658,
+                        "y": -51.33
+                    },
+                    "uuid": "41d21095-b170-470f-b91e-d47147b059da"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 22.8326,
+                        "y": -52.346
+                    },
+                    "uuid": "f82502a8-7025-4867-a620-2e15f394fd71"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (2)",
+                    "pos": {
+                        "x": 21.7658,
+                        "y": -51.33
+                    },
+                    "uuid": "41d21095-b170-470f-b91e-d47147b059da"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 22.8326,
+                        "y": -56.918
+                    },
+                    "uuid": "b096d4c3-fca7-4309-a3d1-27648ad7def2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (1)",
+                    "pos": {
+                        "x": 26.8458,
+                        "y": -51.33
+                    },
+                    "uuid": "2121d4e0-598c-472b-bfd7-b4239ee187f2"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 27.43,
+                        "y": -51.965
+                    },
+                    "uuid": "882c4949-5c82-48dc-8d64-3a73479d6189"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 27.43,
+                        "y": -58.823
+                    },
+                    "uuid": "0fb11229-fea7-4bb6-bf57-7310cd2f7562"
+                },
+                {
+                    "description": "Footprint text of UNK22V0 (1)",
+                    "pos": {
+                        "x": 26.8458,
+                        "y": -51.33
+                    },
+                    "uuid": "2121d4e0-598c-472b-bfd7-b4239ee187f2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (1)",
+                    "pos": {
+                        "x": 26.8458,
+                        "y": -51.33
+                    },
+                    "uuid": "2121d4e0-598c-472b-bfd7-b4239ee187f2"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 27.43,
+                        "y": -51.965
+                    },
+                    "uuid": "2dc688fd-c7af-42a0-837d-b2a2cc714882"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 17.07,
+                        "y": -44.91
+                    },
+                    "uuid": "ea9058dd-e5bd-4dd3-a592-225e03e7fd38"
+                },
+                {
+                    "description": "PTH pad 2 [VIN_M] of X3",
+                    "pos": {
+                        "x": 15.8,
+                        "y": -41.1
+                    },
+                    "uuid": "c3424639-2c69-41ba-b642-826c1bcadc01"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 17.07,
+                        "y": -44.91
+                    },
+                    "uuid": "ea9058dd-e5bd-4dd3-a592-225e03e7fd38"
+                },
+                {
+                    "description": "PTH pad 3 [GND] of X3",
+                    "pos": {
+                        "x": 15.8,
+                        "y": -38.56
+                    },
+                    "uuid": "1e509276-dcc9-440a-b3de-7f1668299bf2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 17.07,
+                        "y": -44.91
+                    },
+                    "uuid": "ea9058dd-e5bd-4dd3-a592-225e03e7fd38"
+                },
+                {
+                    "description": "PTH pad 1 [VD] of X3",
+                    "pos": {
+                        "x": 15.8,
+                        "y": -43.64
+                    },
+                    "uuid": "b2c5c0a9-122b-4fc6-bebe-f9773f7c7d1f"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of J2 on F.Silkscreen",
+                    "pos": {
+                        "x": 21.27,
+                        "y": -13.37
+                    },
+                    "uuid": "95511ebb-f9a9-43f2-8b38-e36d483e45c1"
+                },
+                {
+                    "description": "Zone [<no net>] on F.Mask, priority 6",
+                    "pos": {
+                        "x": 26.05,
+                        "y": -10.45
+                    },
+                    "uuid": "29baa1a2-96b0-4e2d-859d-a028dda5cc93"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of J1 on F.Silkscreen",
+                    "pos": {
+                        "x": 11.047,
+                        "y": -13.37
+                    },
+                    "uuid": "7c7e70f5-a71a-46fc-8421-c8976a7109b4"
+                },
+                {
+                    "description": "Zone [<no net>] on F.Mask, priority 6",
+                    "pos": {
+                        "x": 26.05,
+                        "y": -10.45
+                    },
+                    "uuid": "29baa1a2-96b0-4e2d-859d-a028dda5cc93"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Footprint text of U$1 (*)",
+                    "pos": {
+                        "x": 14.2,
+                        "y": -14.4
+                    },
+                    "uuid": "d5382dc3-64e5-4bc3-b388-41d7c3a3fbd0"
+                },
+                {
+                    "description": "Zone [<no net>] on F.Mask, priority 6",
+                    "pos": {
+                        "x": 18.725,
+                        "y": -10.875
+                    },
+                    "uuid": "583ab25c-4f1a-400b-a18d-45127bc6f64d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X2 on F.Silkscreen",
+                    "pos": {
+                        "x": 10.07,
+                        "y": -32.12
+                    },
+                    "uuid": "418320a0-4236-4bde-aa18-25158f8d36df"
+                },
+                {
+                    "description": "PTH pad 1 [VG] of X2",
+                    "pos": {
+                        "x": 8.8,
+                        "y": -30.85
+                    },
+                    "uuid": "a02cfc44-507b-485a-b7cd-0292703ec4a6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X2 on F.Silkscreen",
+                    "pos": {
+                        "x": 10.07,
+                        "y": -32.12
+                    },
+                    "uuid": "418320a0-4236-4bde-aa18-25158f8d36df"
+                },
+                {
+                    "description": "PTH pad 2 [GND] of X2",
+                    "pos": {
+                        "x": 8.8,
+                        "y": -28.31
+                    },
+                    "uuid": "7fb8ee3c-c1db-4aae-a109-0bea133acf71"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}
