@@ -2,6 +2,8 @@
 // BETA (beta/fpga/CHANGELOG.md) changes vs 9_Firmware/9_2_FPGA/ddc_400m.v:
 //  * reset_n_400m port added: reset released synchronously to clk_400m for the NCO/mixer/CIC
 //  * CIC -> FIR clock crossing uses async_fifo (Gray pointers) instead of cdc_adc_to_processing
+//  * NCO enabled by the data valid (phase = function of the sample index, needed for the
+//    bit-exact comparison with ddc_4x_100m; identical behaviour for a continuous stream)
 //  * declaration-before-use fixed (fir_* wires), output stage on posedge, reset_monitors made
 //    synchronous, saturation_count single-driven, NCO phase_valid from the synchronised enable,
 //    bypass_mode implemented (mixer bypass for tests), uninitialised $display debug removed.
@@ -169,7 +171,7 @@ nco_400m_enhanced nco_core (
     .clk_400m(clk_400m),
     .reset_n(reset_n_400m),
     .frequency_tuning_word(phase_inc_dithered),
-    .phase_valid(mixers_enable_sync),
+    .phase_valid(mixers_enable_sync & adc_data_valid_i & adc_data_valid_q),   // BETA: phase advances per valid sample
     .phase_offset(16'h0000),
     .sin_out(sin_out),
     .cos_out(cos_out),

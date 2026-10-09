@@ -1,0 +1,18 @@
+DAC active samples      : 57540
+range-profile bins      : 2560 (segment-0 profiles: 10)
+  chirp 0: echo delay 100 samples -> seg0 peak bin 8
+  chirp 1: echo delay 420 samples -> seg0 peak bin 28
+  chirp 2: echo delay 100 samples -> seg0 peak bin 8
+  chirp 3: echo delay 420 samples -> seg0 peak bin 28
+  chirp 4: echo delay 100 samples -> seg0 peak bin 8
+  chirp 5: echo delay 420 samples -> seg0 peak bin 28
+  chirp 6: echo delay 100 samples -> seg0 peak bin 8
+  chirp 7: echo delay 420 samples -> seg0 peak bin 28
+  chirp 8: echo delay 100 samples -> seg0 peak bin 8
+  chirp 9: echo delay 420 samples -> seg0 peak bin 28
+Doppler valid outputs   : 2048 (frames started: 1)
+USB packets             : 2688 (0 header/footer/sequence errors)
+X on outputs            : 0
+chirps missed (MF busy) : 0
+PASS tb_system_smoke (ADC_CAPTURE_MODE=0): 10 chirps, 40 range profiles, peak shift 20 bins for a 320-sample delay change, 2048 Doppler outputs, 2688 USB packets
+tb/tb_system_smoke.v:220: $finish called at 3302705000 (1ps)

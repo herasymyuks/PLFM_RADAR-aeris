@@ -29,7 +29,9 @@
 //      missed - the chain is not pipelined; see README "Known limitations").
 // Runtime: ~3.3 ms simulated (about 2 minutes with Icarus).
 // ============================================================================
-module tb_system_smoke;
+module tb_system_smoke #(
+    parameter ADC_MODE = 1          // radar_system_top ADC_CAPTURE_MODE (build.sh runs 1 and 0)
+);
     localparam NUM_CHIRPS      = 10;
     localparam CHIRP_PERIOD_NS = 300_000;   // > matched-filter processing time per chirp (see README: not real-time)
     localparam MIN_PACKETS     = 100;
@@ -65,7 +67,7 @@ module tb_system_smoke;
     wire [31:0] dbg_doppler_data; wire dbg_doppler_valid; wire [4:0] dbg_doppler_bin; wire [5:0] dbg_range_bin;
     wire [3:0] system_status;
 
-    radar_system_top dut (
+    radar_system_top #(.ADC_CAPTURE_MODE(ADC_MODE)) dut (
         .clk_100m(clk_100m), .clk_120m_dac(clk_120m), .ft601_clk_in(ft601_clk), .reset_n(reset_n),
         .dac_data(dac_data), .dac_clk(dac_clk), .dac_sleep(dac_sleep), .fpga_rf_switch(fpga_rf_switch),
         .rx_mixer_en(rx_mixer_en), .tx_mixer_en(tx_mixer_en),
@@ -213,8 +215,8 @@ module tb_system_smoke;
         if (missed != 0) begin errors = errors + 1; $display("FAIL: %0d chirp toggles arrived while the matched filter was busy", missed); end
 
         if (errors == 0) begin
-            $display("PASS tb_system_smoke: %0d chirps, %0d range profiles, peak shift %0d bins for a 320-sample delay change, %0d Doppler outputs, %0d USB packets",
-                     NUM_CHIRPS, rp_count / 64, got_diff, dop_count, packets);
+            $display("PASS tb_system_smoke (ADC_CAPTURE_MODE=%0d): %0d chirps, %0d range profiles, peak shift %0d bins for a 320-sample delay change, %0d Doppler outputs, %0d USB packets",
+                     ADC_MODE, NUM_CHIRPS, rp_count / 64, got_diff, dop_count, packets);
             $finish;
         end else begin
             $display("FAIL tb_system_smoke: %0d check(s) failed", errors);

@@ -1,0 +1,4 @@
+outputs: legacy 1999, polyphase 2000
+alignment lag -7 output samples, 1855 samples compared, max |diff| = 0 LSB, |legacy| peak 21217
+PASS tb_ddc_4x: legacy 400 MHz DDC and polyphase DDC agree (1855 samples, max diff 0 LSB, lag -7)
+tb/tb_ddc_4x.v:109: $finish called at 23100000 (1ps)

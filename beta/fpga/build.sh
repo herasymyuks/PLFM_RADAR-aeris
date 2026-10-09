@@ -8,7 +8,8 @@
 #   5. python3 tb/gen_vectors.py       (numpy reference vectors)
 #   6. every testbench in tb/tb_*.v    (iverilog + vvp; a run passes only if it prints "PASS" and not "FAIL")
 #      tb_fft_wrappers, tb_matched_filter, tb_range_bin_decimator, tb_host_bridge (unit),
-#      tb_host_bridge_top (option B bridge through the top, ~65 s), tb_system_smoke (~65 s)
+#      tb_host_bridge_top (option B bridge through the top, ~65 s), tb_adc_iserdes_capture,
+#      tb_ddc_4x, tb_system_smoke twice (ADC_CAPTURE_MODE = 1 and 0, ~65 s each)
 #
 # Exit code = number of failed steps. Logs: beta/fpga/logs/. Never modifies rtl/ or mem/.
 # Run from anywhere: paths are resolved relative to this script. $readmemh paths in the RTL are
@@ -72,23 +73,33 @@ step 5 "numpy reference vectors"
 python3 tb/gen_vectors.py >"$LOG/gen_vectors.log" 2>&1
 result $? "gen_vectors.py" "$LOG/gen_vectors.log"
 
+run_tb() {   # $1 = tb name, $2 = extra iverilog args (may be empty), $3 = label suffix
+  local name=$1 extra=$2 label="$1$3"
+  step 6 "testbench $label"
+  if ! iverilog "${IVFLAGS[@]}" -DSIM $extra -s "$name" -o "$LOG/$label.vvp" "${RTL[@]}" "$SIMMODELS" "tb/$name.v" >"$LOG/$label.compile.log" 2>&1; then
+    result 1 "$label compile" "$LOG/$label.compile.log"; return
+  fi
+  local start=$(date +%s)
+  vvp -n "$LOG/$label.vvp" >"$LOG/$label.run.log" 2>&1
+  local rc=$?
+  local dur=$(( $(date +%s) - start ))
+  [ "${VERBOSE:-0}" = 1 ] && cat "$LOG/$label.run.log"
+  if [ "$rc" -eq 0 ] && grep -q '^PASS' "$LOG/$label.run.log" && ! grep -q 'FAIL' "$LOG/$label.run.log"; then
+    echo "  -> PASS in ${dur}s: $(grep '^PASS' "$LOG/$label.run.log" | head -1)"
+  else
+    echo "  -> FAIL (exit $rc, ${dur}s) - see $LOG/$label.run.log"; FAILS=$((FAILS+1)); grep -i 'fail\|error' "$LOG/$label.run.log" | head -n 10 | sed 's/^/     /'
+  fi
+}
+
 for tb in tb/tb_*.v; do
   name=$(basename "$tb" .v)
-  if [ "${SKIP_SYSTEM:-0}" = 1 ] && [ "$name" = tb_system_smoke ]; then echo; echo "[6] $name skipped (SKIP_SYSTEM=1)"; continue; fi
-  step 6 "testbench $name"
-  if ! iverilog "${IVFLAGS[@]}" -DSIM -s "$name" -o "$LOG/$name.vvp" "${RTL[@]}" "$SIMMODELS" "$tb" >"$LOG/$name.compile.log" 2>&1; then
-    result 1 "$name compile" "$LOG/$name.compile.log"; continue
+  if [ "$name" = tb_system_smoke ]; then
+    if [ "${SKIP_SYSTEM:-0}" = 1 ]; then echo; echo "[6] $name skipped (SKIP_SYSTEM=1)"; continue; fi
+    run_tb "$name" "-Ptb_system_smoke.ADC_MODE=1" "_mode1"     # ISERDES capture + polyphase DDC (default)
+    run_tb "$name" "-Ptb_system_smoke.ADC_MODE=0" "_mode0"     # legacy IDDR capture + 400 MHz DDC
+    continue
   fi
-  start=$(date +%s)
-  vvp -n "$LOG/$name.vvp" >"$LOG/$name.run.log" 2>&1
-  rc=$?
-  dur=$(( $(date +%s) - start ))
-  [ "${VERBOSE:-0}" = 1 ] && cat "$LOG/$name.run.log"
-  if [ "$rc" -eq 0 ] && grep -q '^PASS' "$LOG/$name.run.log" && ! grep -q 'FAIL' "$LOG/$name.run.log"; then
-    echo "  -> PASS in ${dur}s: $(grep '^PASS' "$LOG/$name.run.log" | head -1)"
-  else
-    echo "  -> FAIL (exit $rc, ${dur}s) - see $LOG/$name.run.log"; FAILS=$((FAILS+1)); grep -i 'fail\|error' "$LOG/$name.run.log" | head -n 10 | sed 's/^/     /'
-  fi
+  run_tb "$name" "" ""
 done
 
 echo

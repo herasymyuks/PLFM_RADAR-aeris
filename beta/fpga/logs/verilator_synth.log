@@ -1,37 +1,106 @@
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:106:18: Instance pin connected by name with empty reference: 'O'
+  106 |                 .O(), .Q1(q1[i]), .Q2(q2[i]), .Q3(q3[i]), .Q4(q4[i]), .Q5(), .Q6(), .Q7(), .Q8(),
+      |                  ^
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.052
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:106:72: Instance pin connected by name with empty reference: 'Q5'
+  106 |                 .O(), .Q1(q1[i]), .Q2(q2[i]), .Q3(q3[i]), .Q4(q4[i]), .Q5(), .Q6(), .Q7(), .Q8(),
+      |                                                                        ^~
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:106:79: Instance pin connected by name with empty reference: 'Q6'
+  106 |                 .O(), .Q1(q1[i]), .Q2(q2[i]), .Q3(q3[i]), .Q4(q4[i]), .Q5(), .Q6(), .Q7(), .Q8(),
+      |                                                                               ^~
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:106:86: Instance pin connected by name with empty reference: 'Q7'
+  106 |                 .O(), .Q1(q1[i]), .Q2(q2[i]), .Q3(q3[i]), .Q4(q4[i]), .Q5(), .Q6(), .Q7(), .Q8(),
+      |                                                                                      ^~
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:106:93: Instance pin connected by name with empty reference: 'Q8'
+  106 |                 .O(), .Q1(q1[i]), .Q2(q2[i]), .Q3(q3[i]), .Q4(q4[i]), .Q5(), .Q6(), .Q7(), .Q8(),
+      |                                                                                             ^~
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:107:18: Instance pin connected by name with empty reference: 'SHIFTOUT1'
+  107 |                 .SHIFTOUT1(), .SHIFTOUT2(),
+      |                  ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:107:32: Instance pin connected by name with empty reference: 'SHIFTOUT2'
+  107 |                 .SHIFTOUT1(), .SHIFTOUT2(),
+      |                                ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ad9484_iserdes_capture.v:140:10: Instance pin connected by name with empty reference: 'full'
+  140 |         .full(), .wr_overflow_count(ovf_cnt),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:49:36: Instance pin connected by name with empty reference: 'CLKOUT0B'
+   49 |         .CLKOUT0  (clk200_unbuf), .CLKOUT0B (),
+      |                                    ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:50:10: Instance pin connected by name with empty reference: 'CLKOUT1'
+   50 |         .CLKOUT1  (), .CLKOUT1B (), .CLKOUT2 (), .CLKOUT2B (), .CLKOUT3 (), .CLKOUT3B (),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:50:24: Instance pin connected by name with empty reference: 'CLKOUT1B'
+   50 |         .CLKOUT1  (), .CLKOUT1B (), .CLKOUT2 (), .CLKOUT2B (), .CLKOUT3 (), .CLKOUT3B (),
+      |                        ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:50:38: Instance pin connected by name with empty reference: 'CLKOUT2'
+   50 |         .CLKOUT1  (), .CLKOUT1B (), .CLKOUT2 (), .CLKOUT2B (), .CLKOUT3 (), .CLKOUT3B (),
+      |                                      ^~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:50:51: Instance pin connected by name with empty reference: 'CLKOUT2B'
+   50 |         .CLKOUT1  (), .CLKOUT1B (), .CLKOUT2 (), .CLKOUT2B (), .CLKOUT3 (), .CLKOUT3B (),
+      |                                                   ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:50:65: Instance pin connected by name with empty reference: 'CLKOUT3'
+   50 |         .CLKOUT1  (), .CLKOUT1B (), .CLKOUT2 (), .CLKOUT2B (), .CLKOUT3 (), .CLKOUT3B (),
+      |                                                                 ^~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:50:78: Instance pin connected by name with empty reference: 'CLKOUT3B'
+   50 |         .CLKOUT1  (), .CLKOUT1B (), .CLKOUT2 (), .CLKOUT2B (), .CLKOUT3 (), .CLKOUT3B (),
+      |                                                                              ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:51:10: Instance pin connected by name with empty reference: 'CLKOUT4'
+   51 |         .CLKOUT4  (), .CLKOUT5 (), .CLKOUT6 (),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:51:24: Instance pin connected by name with empty reference: 'CLKOUT5'
+   51 |         .CLKOUT4  (), .CLKOUT5 (), .CLKOUT6 (),
+      |                        ^~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:51:37: Instance pin connected by name with empty reference: 'CLKOUT6'
+   51 |         .CLKOUT4  (), .CLKOUT5 (), .CLKOUT6 (),
+      |                                     ^~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/clk_gen.v:52:29: Instance pin connected by name with empty reference: 'CLKFBOUTB'
+   52 |         .CLKFBOUT (clkfb), .CLKFBOUTB (),
+      |                             ^~~~~~~~~
 %Warning-DECLFILENAME: rtl/dac_interface_single.v:1:8: Filename 'dac_interface_single' does not match MODULE name: 'dac_interface_enhanced'
     1 | module dac_interface_enhanced (
       |        ^~~~~~~~~~~~~~~~~~~~~~
                        ... For warning description see https://verilator.org/warn/DECLFILENAME?v=5.052
                        ... Use "/* verilator lint_off DECLFILENAME */" and lint_on around source to disable this message.
-%Warning-DECLFILENAME: rtl/ddc_400m.v:9:8: Filename 'ddc_400m' does not match MODULE name: 'ddc_400m_enhanced'
-    9 | module ddc_400m_enhanced (
+%Warning-DECLFILENAME: rtl/ddc_400m.v:11:8: Filename 'ddc_400m' does not match MODULE name: 'ddc_400m_enhanced'
+   11 | module ddc_400m_enhanced (
       |        ^~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:255:6: Instance pin connected by name with empty reference: 'saturation_detected'
-  255 |     .saturation_detected(),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:257:6: Instance pin connected by name with empty reference: 'saturation_detected'
+  257 |     .saturation_detected(),
       |      ^~~~~~~~~~~~~~~~~~~
-                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.052
-                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:256:6: Instance pin connected by name with empty reference: 'max_value_monitor'
-  256 |     .max_value_monitor(),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:258:6: Instance pin connected by name with empty reference: 'max_value_monitor'
+  258 |     .max_value_monitor(),
       |      ^~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:267:6: Instance pin connected by name with empty reference: 'saturation_detected'
-  267 |     .saturation_detected(),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:269:6: Instance pin connected by name with empty reference: 'saturation_detected'
+  269 |     .saturation_detected(),
       |      ^~~~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:268:6: Instance pin connected by name with empty reference: 'max_value_monitor'
-  268 |     .max_value_monitor(),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:270:6: Instance pin connected by name with empty reference: 'max_value_monitor'
+  270 |     .max_value_monitor(),
       |      ^~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:283:6: Instance pin connected by name with empty reference: 'full'
-  283 |     .full(), .wr_overflow_count(fifo_i_ovf),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:285:6: Instance pin connected by name with empty reference: 'full'
+  285 |     .full(), .wr_overflow_count(fifo_i_ovf),
       |      ^~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:290:6: Instance pin connected by name with empty reference: 'full'
-  290 |     .full(), .wr_overflow_count(fifo_q_ovf),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:292:6: Instance pin connected by name with empty reference: 'full'
+  292 |     .full(), .wr_overflow_count(fifo_q_ovf),
       |      ^~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:310:6: Instance pin connected by name with empty reference: 'fir_ready'
-  310 |     .fir_ready(),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:312:6: Instance pin connected by name with empty reference: 'fir_ready'
+  312 |     .fir_ready(),
       |      ^~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:322:6: Instance pin connected by name with empty reference: 'fir_ready'
-  322 |     .fir_ready(),
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:324:6: Instance pin connected by name with empty reference: 'fir_ready'
+  324 |     .fir_ready(),
       |      ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_4x_100m.v:246:62: Instance pin connected by name with empty reference: 'fir_ready'
+  246 |         .data_out(fir_i_out), .data_out_valid(fir_valid_i), .fir_ready(), .filter_overflow());
+      |                                                              ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_4x_100m.v:246:76: Instance pin connected by name with empty reference: 'filter_overflow'
+  246 |         .data_out(fir_i_out), .data_out_valid(fir_valid_i), .fir_ready(), .filter_overflow());
+      |                                                                            ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_4x_100m.v:249:62: Instance pin connected by name with empty reference: 'fir_ready'
+  249 |         .data_out(fir_q_out), .data_out_valid(fir_valid_q), .fir_ready(), .filter_overflow());
+      |                                                              ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_4x_100m.v:249:76: Instance pin connected by name with empty reference: 'filter_overflow'
+  249 |         .data_out(fir_q_out), .data_out_valid(fir_valid_q), .fir_ready(), .filter_overflow());
+      |                                                                            ^~~~~~~~~~~~~~~
 %Warning-DECLFILENAME: rtl/doppler_processor.v:12:8: Filename 'doppler_processor' does not match MODULE name: 'doppler_processor_optimized'
    12 | module doppler_processor_optimized #(
       |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,47 +125,56 @@
 %Warning-DECLFILENAME: rtl/plfm_chirp_controller.v:5:8: Filename 'plfm_chirp_controller' does not match MODULE name: 'plfm_chirp_controller_enhanced'
     5 | module plfm_chirp_controller_enhanced (
       |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:107:6: Instance pin connected by name with empty reference: 'ddc_status'
-  107 |     .ddc_status        (),
-      |      ^~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:108:6: Instance pin connected by name with empty reference: 'ddc_diagnostics'
-  108 |     .ddc_diagnostics   (),
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:129:10: Instance pin connected by name with empty reference: 'ddc_status'
+  129 |         .ddc_status        (),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:130:10: Instance pin connected by name with empty reference: 'ddc_diagnostics'
+  130 |         .ddc_diagnostics   (),
+      |          ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:131:10: Instance pin connected by name with empty reference: 'mixer_saturation'
+  131 |         .mixer_saturation  (),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:132:10: Instance pin connected by name with empty reference: 'filter_overflow'
+  132 |         .filter_overflow   (),
+      |          ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:138:10: Instance pin connected by name with empty reference: 'debug_sample_count'
+  138 |         .debug_sample_count(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:139:10: Instance pin connected by name with empty reference: 'debug_internal_i'
+  139 |         .debug_internal_i  (),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:140:10: Instance pin connected by name with empty reference: 'debug_internal_q'
+  140 |         .debug_internal_q  (),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:202:10: Instance pin connected by name with empty reference: 'cic_i_dbg'
+  202 |         .cic_i_dbg(), .cic_q_dbg(), .cic_valid_dbg()
+      |          ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:202:24: Instance pin connected by name with empty reference: 'cic_q_dbg'
+  202 |         .cic_i_dbg(), .cic_q_dbg(), .cic_valid_dbg()
+      |                        ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:202:38: Instance pin connected by name with empty reference: 'cic_valid_dbg'
+  202 |         .cic_i_dbg(), .cic_q_dbg(), .cic_valid_dbg()
+      |                                      ^~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:222:6: Instance pin connected by name with empty reference: 'data_sync_error'
+  222 |     .data_sync_error()
       |      ^~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:109:6: Instance pin connected by name with empty reference: 'mixer_saturation'
-  109 |     .mixer_saturation  (),
-      |      ^~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:110:6: Instance pin connected by name with empty reference: 'filter_overflow'
-  110 |     .filter_overflow   (),
-      |      ^~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:116:6: Instance pin connected by name with empty reference: 'debug_sample_count'
-  116 |     .debug_sample_count(),
-      |      ^~~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:117:6: Instance pin connected by name with empty reference: 'debug_internal_i'
-  117 |     .debug_internal_i  (),
-      |      ^~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:118:6: Instance pin connected by name with empty reference: 'debug_internal_q'
-  118 |     .debug_internal_q  (),
-      |      ^~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:135:6: Instance pin connected by name with empty reference: 'data_sync_error'
-  135 |     .data_sync_error()
-      |      ^~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:215:6: Instance pin connected by name with empty reference: 'status'
-  215 |     .status           ()
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:302:6: Instance pin connected by name with empty reference: 'status'
+  302 |     .status           ()
       |      ^~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:261:6: Instance pin connected by name with empty reference: 'processing_active'
-  261 |     .processing_active (),
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:348:6: Instance pin connected by name with empty reference: 'processing_active'
+  348 |     .processing_active (),
       |      ^~~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:262:6: Instance pin connected by name with empty reference: 'frame_complete'
-  262 |     .frame_complete    (),
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:349:6: Instance pin connected by name with empty reference: 'frame_complete'
+  349 |     .frame_complete    (),
       |      ^~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:263:6: Instance pin connected by name with empty reference: 'status'
-  263 |     .status            ()
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:350:6: Instance pin connected by name with empty reference: 'status'
+  350 |     .status            ()
       |      ^~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:317:6: Instance pin connected by name with empty reference: 'reg_rdata'
-  317 |     .reg_rdata       (),
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:324:6: Instance pin connected by name with empty reference: 'reg_rdata'
+  324 |     .reg_rdata       (),
       |      ^~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:362:6: Instance pin connected by name with empty reference: 'new_chirp_frame'
-  362 |     .new_chirp_frame(),
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:384:6: Instance pin connected by name with empty reference: 'new_chirp_frame'
+  384 |     .new_chirp_frame(),
       |      ^~~~~~~~~~~~~~~
 %Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:177:52: Instance pin connected by name with empty reference: 'miso_3v3'
   177 |     .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
@@ -128,34 +206,26 @@
 %Warning-DECLFILENAME: rtl/sim/unisim_sim_models.v:18:8: Filename 'unisim_sim_models' does not match MODULE name: 'BUFG'
    18 | module BUFG (
       |        ^~~~
-%Warning-GENUNNAMED: rtl/ddc_400m.v:383:28: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
+%Warning-GENUNNAMED: rtl/ddc_400m.v:385:28: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
                                           : ... Suggest assign a label with 'begin : gen_<label_name>'
-  383 |     if (DITHER_WIDTH == 4) begin
+  385 |     if (DITHER_WIDTH == 4) begin
       |                            ^~~~~
                      ... For warning description see https://verilator.org/warn/GENUNNAMED?v=5.052
                      ... Use "/* verilator lint_off GENUNNAMED */" and lint_on around source to disable this message.
-%Warning-GENUNNAMED: rtl/ddc_400m.v:385:37: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
+%Warning-GENUNNAMED: rtl/ddc_400m.v:387:37: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
                                           : ... Suggest assign a label with 'begin : gen_<label_name>'
-  385 |     end else if (DITHER_WIDTH == 8) begin
+  387 |     end else if (DITHER_WIDTH == 8) begin
       |                                     ^~~~~
-%Warning-GENUNNAMED: rtl/ddc_400m.v:387:14: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
+%Warning-GENUNNAMED: rtl/ddc_400m.v:389:14: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
                                           : ... Suggest assign a label with 'begin : gen_<label_name>'
-  387 |     end else begin
+  389 |     end else begin
       |              ^~~~~
-%Warning-WIDTHEXPAND: rtl/nco_400m_enhanced.v:62:32: Bit extraction of array[64:0] requires 7 bit index, not 6 bits.
-                                                   : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
-   62 |     wire [15:0] lut_a = sin_lut[idx];           
-      |                                ^
-                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.052
-                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
-%Warning-WIDTHEXPAND: rtl/cic_decimator_4x_enhanced.v:151:32: Operator EQ expects 32 or 3 bits on the LHS, but LHS's VARREF 'decimation_counter' generates 2 bits.
-                                                            : ... note: In instance 'radar_system_top.rx_inst.ddc.cic_q_inst'
-  151 |         if (decimation_counter == DECIMATION - 1) begin
-      |                                ^~
 %Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:52:57: Operator COND expects 17 bits on the Conditional False, but Conditional False's VARREF 'range_i_in' generates 16 bits.
                                                      : ... note: In instance 'radar_system_top.rx_inst.range_decim'
    52 |     wire [MAG_W-1:0] mag_in = (range_i_in[DATA_WIDTH-1] ? -range_i_in : range_i_in)
       |                                                         ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.052
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
 %Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:53:57: Operator COND expects 17 bits on the Conditional False, but Conditional False's VARREF 'range_q_in' generates 16 bits.
                                                      : ... note: In instance 'radar_system_top.rx_inst.range_decim'
    53 |                             + (range_q_in[DATA_WIDTH-1] ? -range_q_in : range_q_in);
@@ -214,6 +284,62 @@
                                                     : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
   282 |                 if (read_range_bin < RANGE_BINS - 1) begin
       |                                    ^
+%Warning-WIDTHEXPAND: rtl/ddc_4x_100m.v:127:25: Bit extraction of array[64:0] requires 7 bit index, not 6 bits.
+                                              : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  127 |             la = sin_lut[addr[5:0]]; lb = sin_lut[7'd64 - {1'b0, addr[5:0]}];
+      |                         ^
+%Warning-WIDTHEXPAND: rtl/ddc_4x_100m.v:140:25: Bit extraction of array[64:0] requires 7 bit index, not 6 bits.
+                                              : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  140 |             la = sin_lut[addr[5:0]]; lb = sin_lut[7'd64 - {1'b0, addr[5:0]}];
+      |                         ^
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:162:16: Operator ASSIGNDLY expects 9 bits on the Assign RHS, but Assign RHS's SUB generates 10 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  162 |             x0 <= $signed({1'b0, s0_r, 1'b0}) - 9'sd255;
+      |                ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:163:16: Operator ASSIGNDLY expects 9 bits on the Assign RHS, but Assign RHS's SUB generates 10 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  163 |             x1 <= $signed({1'b0, s1_r, 1'b0}) - 9'sd255;
+      |                ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:164:16: Operator ASSIGNDLY expects 9 bits on the Assign RHS, but Assign RHS's SUB generates 10 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  164 |             x2 <= $signed({1'b0, s2_r, 1'b0}) - 9'sd255;
+      |                ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:165:16: Operator ASSIGNDLY expects 9 bits on the Assign RHS, but Assign RHS's SUB generates 10 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  165 |             x3 <= $signed({1'b0, s3_r, 1'b0}) - 9'sd255;
+      |                ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:188:24: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  188 |                 mi[16] <= pi0 >>> 8; mi[17] <= pi1 >>> 8; mi[18] <= pi2 >>> 8; mi[19] <= pi3 >>> 8;
+      |                        ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:188:45: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  188 |                 mi[16] <= pi0 >>> 8; mi[17] <= pi1 >>> 8; mi[18] <= pi2 >>> 8; mi[19] <= pi3 >>> 8;
+      |                                             ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:188:66: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  188 |                 mi[16] <= pi0 >>> 8; mi[17] <= pi1 >>> 8; mi[18] <= pi2 >>> 8; mi[19] <= pi3 >>> 8;
+      |                                                                  ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:188:87: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  188 |                 mi[16] <= pi0 >>> 8; mi[17] <= pi1 >>> 8; mi[18] <= pi2 >>> 8; mi[19] <= pi3 >>> 8;
+      |                                                                                       ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:189:24: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  189 |                 mq[16] <= pq0 >>> 8; mq[17] <= pq1 >>> 8; mq[18] <= pq2 >>> 8; mq[19] <= pq3 >>> 8;
+      |                        ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:189:45: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  189 |                 mq[16] <= pq0 >>> 8; mq[17] <= pq1 >>> 8; mq[18] <= pq2 >>> 8; mq[19] <= pq3 >>> 8;
+      |                                             ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:189:66: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  189 |                 mq[16] <= pq0 >>> 8; mq[17] <= pq1 >>> 8; mq[18] <= pq2 >>> 8; mq[19] <= pq3 >>> 8;
+      |                                                                  ^~
+%Warning-WIDTHTRUNC: rtl/ddc_4x_100m.v:189:87: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 25 bits.
+                                             : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  189 |                 mq[16] <= pq0 >>> 8; mq[17] <= pq1 >>> 8; mq[18] <= pq2 >>> 8; mq[19] <= pq3 >>> 8;
+      |                                                                                       ^~
 %Warning-WIDTHTRUNC: rtl/rd_map_packer.v:63:36: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's SHIFTR generates 17 bits.
                                               : ... note: In instance 'radar_system_top.rd_packer'
    63 |                 if (msb >= 3) frac = (m >> (msb-3));    
@@ -250,23 +376,35 @@
                                                 : ... note: In instance 'radar_system_top.rd_packer'
   115 |                           wr_addr <= HDR + MAP + det_wr;
       |                                                ^
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:155:12: Signal is not driven, nor used: 'tx_chirp_data'
+%Warning-BLKSEQ: rtl/sim/unisim_sim_models.v:241:22: Blocking assignment '=' in sequential logic process
+                                                   : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                   : ... Suggest using delayed assignment '<='
+  241 |             t_sample = $realtime;
+      |                      ^
+                 ... For warning description see https://verilator.org/warn/BLKSEQ?v=5.052
+                 ... Use "/* verilator lint_off BLKSEQ */" and lint_on around source to disable this message.
+%Warning-BLKSEQ: rtl/sim/unisim_sim_models.v:242:68: Blocking assignment '=' in sequential logic process
+                                                   : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                   : ... Suggest using delayed assignment '<='
+  242 |             if (meta_pending) begin sr[0] <= $random; meta_pending = 1'b0; end    
+      |                                                                    ^
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:156:12: Signal is not driven, nor used: 'tx_chirp_data'
                                                     : ... note: In instance 'radar_system_top'
-  155 | wire [7:0] tx_chirp_data;
+  156 | wire [7:0] tx_chirp_data;
       |            ^~~~~~~~~~~~~
                        ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.052
                        ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:156:6: Signal is not driven, nor used: 'tx_chirp_valid'
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:157:6: Signal is not driven, nor used: 'tx_chirp_valid'
                                                    : ... note: In instance 'radar_system_top'
-  156 | wire tx_chirp_valid;
+  157 | wire tx_chirp_valid;
       |      ^~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:157:6: Signal is not driven, nor used: 'tx_chirp_done'
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:158:6: Signal is not driven, nor used: 'tx_chirp_done'
                                                    : ... note: In instance 'radar_system_top'
-  157 | wire tx_chirp_done;
+  158 | wire tx_chirp_done;
       |      ^~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:170:6: Signal is not used: 'rx_doppler_data_valid'
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:171:6: Signal is not used: 'rx_doppler_data_valid'
                                                    : ... note: In instance 'radar_system_top'
-  170 | wire rx_doppler_data_valid;
+  171 | wire rx_doppler_data_valid;
       |      ^~~~~~~~~~~~~~~~~~~~~
 %Warning-UNUSEDSIGNAL: rtl/host_bridge_spi.v:33:16: Bits of signal are not used: 'shin'[7]
                                                   : ... note: In instance 'radar_system_top.host_bridge'
@@ -280,48 +418,38 @@
                                                             : ... note: In instance 'radar_system_top.rx_inst.chirp_mem'
    39 | reg [799:0] debug_msg;
       |             ^~~~~~~~~
-%Warning-UNUSEDPARAM: rtl/ddc_400m.v:46:11: Parameter is not used: 'OUTPUT_WIDTH'
-                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   46 | parameter OUTPUT_WIDTH = 18;
-      |           ^~~~~~~~~~~~
-                      ... For warning description see https://verilator.org/warn/UNUSEDPARAM?v=5.052
-                      ... Use "/* verilator lint_off UNUSEDPARAM */" and lint_on around source to disable this message.
-%Warning-UNUSEDPARAM: rtl/ddc_400m.v:49:11: Parameter is not used: 'IF_FREQ'
-                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   49 | parameter IF_FREQ = 120000000;
-      |           ^~~~~~~
-%Warning-UNUSEDPARAM: rtl/ddc_400m.v:50:11: Parameter is not used: 'FS'
-                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   50 | parameter FS = 400000000;
-      |           ^~
-%Warning-UNUSEDPARAM: rtl/ddc_400m.v:51:11: Parameter is not used: 'PHASE_WIDTH'
-                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   51 | parameter PHASE_WIDTH = 32;
-      |           ^~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:56:6: Signal is not used: 'cic_valid'
-                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   56 | wire cic_valid;
-      |      ^~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:65:11: Bits of signal are not used: 'error_counter'[7:5]
-                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   65 | reg [7:0] error_counter;
-      |           ^~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:73:20: Signal is not used: 'debug_mixed_i_trunc'
-                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   73 | wire signed [17:0] debug_mixed_i_trunc;
-      |                    ^~~~~~~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:74:20: Signal is not used: 'debug_mixed_q_trunc'
-                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   74 | wire signed [17:0] debug_mixed_q_trunc;
-      |                    ^~~~~~~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:77:11: Signal is not driven, nor used: 'signal_power_i'
-                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   77 | reg [7:0] signal_power_i, signal_power_q;
-      |           ^~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:77:27: Signal is not driven, nor used: 'signal_power_q'
-                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
-   77 | reg [7:0] signal_power_i, signal_power_q;
-      |                           ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:89:17: Bits of signal are not used: 'p0'[23:0]
+                                              : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+   89 |     wire [31:0] p0 = first ? 32'd0    : acc;
+      |                 ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:90:17: Bits of signal are not used: 'p1'[23:0]
+                                              : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+   90 |     wire [31:0] p1 = first ? 32'd0    : acc + i0;
+      |                 ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:91:17: Bits of signal are not used: 'p2'[23:0]
+                                              : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+   91 |     wire [31:0] p2 = first ? a1_first : acc + i0 + i1;
+      |                 ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:92:17: Bits of signal are not used: 'p3'[23:0]
+                                              : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+   92 |     wire [31:0] p3 = first ? a2_first : acc + i0 + i1 + i2;
+      |                 ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:125:20: Bits of function variable are not used: 'la'[15]
+                                               : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  125 |         reg [15:0] la, lb;
+      |                    ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:125:24: Bits of function variable are not used: 'lb'[15]
+                                               : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  125 |         reg [15:0] la, lb;
+      |                        ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:138:20: Bits of function variable are not used: 'la'[15]
+                                               : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  138 |         reg [15:0] la, lb;
+      |                    ^~
+%Warning-UNUSEDSIGNAL: rtl/ddc_4x_100m.v:138:24: Bits of function variable are not used: 'lb'[15]
+                                               : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.ddc'
+  138 |         reg [15:0] la, lb;
+      |                        ^~
 %Warning-UNUSEDSIGNAL: rtl/ddc_input_interface.v:8:30: Bits of signal are not used: 'ddc_i'[0]
                                                      : ... note: In instance 'radar_system_top.rx_inst.ddc_if'
     8 |     input wire signed [17:0] ddc_i,
@@ -346,6 +474,8 @@
                                                        : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
    40 | parameter F_START = 30000000;        
       |           ^~~~~~~
+                      ... For warning description see https://verilator.org/warn/UNUSEDPARAM?v=5.052
+                      ... Use "/* verilator lint_off UNUSEDPARAM */" and lint_on around source to disable this message.
 %Warning-UNUSEDPARAM: rtl/plfm_chirp_controller.v:41:11: Parameter is not used: 'F_END'
                                                        : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
    41 | parameter F_END = 10000000;          
@@ -354,88 +484,141 @@
                                                        : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
    42 | parameter FS = 120000000;            
       |           ^~
-%Warning-UNUSEDSIGNAL: rtl/cic_decimator_4x_enhanced.v:34:5: Signal is not used: 'overflow_latched'
-                                                           : ... note: In instance 'radar_system_top.rx_inst.ddc.cic_q_inst'
-   34 | reg overflow_latched;   
-      |     ^~~~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/cic_decimator_4x_enhanced.v:37:5: Signal is not used: 'comb_overflow_latched'
-                                                           : ... note: In instance 'radar_system_top.rx_inst.ddc.cic_q_inst'
-   37 | reg comb_overflow_latched;
-      |     ^~~~~~~~~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:377:5: Signal is not used: 'lock_detected'
-                                           : ... note: In instance 'radar_system_top.rx_inst.ddc.phase_dither_gen'
-  377 | reg lock_detected;
-      |     ^~~~~~~~~~~~~
 %Warning-UNUSEDSIGNAL: rtl/matched_filter_processing_chain.v:51:24: Bits of signal are not used: 'chirp_counter'[5:1]
                                                                   : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c'
    51 |     input  wire [5:0]  chirp_counter,      
       |                        ^~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/nco_400m_enhanced.v:31:16: Bits of signal are not used: 'phase_with_offset'[23:0]
-                                                    : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
-   31 |     reg [31:0] phase_with_offset;
-      |                ^~~~~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/nco_400m_enhanced.v:62:17: Bits of signal are not used: 'lut_a'[15]
-                                                    : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
-   62 |     wire [15:0] lut_a = sin_lut[idx];           
-      |                 ^~~~~
-%Warning-UNUSEDSIGNAL: rtl/nco_400m_enhanced.v:63:17: Bits of signal are not used: 'lut_b'[15]
-                                                    : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
-   63 |     wire [15:0] lut_b = sin_lut[idx_mirror];    
-      |                 ^~~~~
 %Warning-UNUSEDPARAM: rtl/sim/unisim_sim_models.v:26:15: Parameter is not used: 'DIFF_TERM'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.u_ibufds_dco'
+                                                       : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_ibufds'
    26 |     parameter DIFF_TERM    = "FALSE",
       |               ^~~~~~~~~
 %Warning-UNUSEDPARAM: rtl/sim/unisim_sim_models.v:27:15: Parameter is not used: 'IBUF_LOW_PWR'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.u_ibufds_dco'
+                                                       : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_ibufds'
    27 |     parameter IBUF_LOW_PWR = "TRUE",
       |               ^~~~~~~~~~~~
 %Warning-UNUSEDPARAM: rtl/sim/unisim_sim_models.v:28:15: Parameter is not used: 'IOSTANDARD'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.u_ibufds_dco'
+                                                       : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_ibufds'
    28 |     parameter IOSTANDARD   = "DEFAULT"
       |               ^~~~~~~~~~
-%Warning-UNUSEDPARAM: rtl/sim/unisim_sim_models.v:44:15: Parameter is not used: 'SRTYPE'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.g_iddr[7].u_iddr'
-   44 |     parameter SRTYPE       = "SYNC"
-      |               ^~~~~~
-%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:54:18: Procedural assignment to declaration with initial value: 'q_rise'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.g_iddr[7].u_iddr'
-                                                       : ... Location of variable initialization
-   54 |     reg q_rise = INIT_Q1;    
-      |                  ^~~~~~~
-                      rtl/sim/unisim_sim_models.v:60:22: ... Location of variable process write
-                                                       : ... Perhaps should initialize instead using a reset in this process
-   60 |         if (R)       q_rise <= 1'b0;
-      |                      ^~~~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:129:21: Procedural assignment to declaration with initial value: 'cnt'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.u_bufr'
+                                                        : ... Location of variable initialization
+  129 |     reg [3:0] cnt = 0;
+      |                     ^
+                      rtl/sim/unisim_sim_models.v:133:13: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  133 |             cnt <= 0; o_div <= 0;
+      |             ^~~
                       ... For warning description see https://verilator.org/warn/PROCASSINIT?v=5.052
                       ... Use "/* verilator lint_off PROCASSINIT */" and lint_on around source to disable this message.
-%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:55:18: Procedural assignment to declaration with initial value: 'q_fall'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.g_iddr[7].u_iddr'
-                                                       : ... Location of variable initialization
-   55 |     reg q_fall = INIT_Q2;    
-      |                  ^~~~~~~
-                      rtl/sim/unisim_sim_models.v:65:22: ... Location of variable process write
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:130:23: Procedural assignment to declaration with initial value: 'o_div'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.u_bufr'
+                                                        : ... Location of variable initialization
+  130 |     reg       o_div = 0;
+      |                       ^
+                      rtl/sim/unisim_sim_models.v:133:23: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  133 |             cnt <= 0; o_div <= 0;
+      |                       ^~~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:165:33: Procedural assignment to declaration with initial value: 'tap'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_idelay'
+                                                        : ... Location of variable initialization
+  165 |     reg [4:0] tap = IDELAY_VALUE[4:0];
+      |                                 ^
+                      rtl/sim/unisim_sim_models.v:168:26: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  168 |             if (LD)      tap <= CNTVALUEIN;
+      |                          ^~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:173:17: Procedural assignment to declaration with initial value: 'dout'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_idelay'
+                                                        : ... Location of variable initialization
+  173 |     reg  dout = 0;
+      |                 ^
+                      rtl/sim/unisim_sim_models.v:177:16: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  177 |         #(dly) dout = din;
+      |                ^~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:225:21: Procedural assignment to declaration with initial value: 't_change'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  225 |     real t_change = -1000.0, t_sample = -1000.0;
+      |                     ^
+                      rtl/sim/unisim_sim_models.v:228:9: ... Location of variable process write
                                                        : ... Perhaps should initialize instead using a reset in this process
-   65 |         if (R)       q_fall <= 1'b0;
-      |                      ^~~~~~
-%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:56:20: Procedural assignment to declaration with initial value: 'q_rise_p'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.g_iddr[7].u_iddr'
-                                                       : ... Location of variable initialization
-   56 |     reg q_rise_p = INIT_Q1;  
-      |                    ^~~~~~~
-                      rtl/sim/unisim_sim_models.v:71:13: ... Location of variable process write
-                                                       : ... Perhaps should initialize instead using a reset in this process
-   71 |             q_rise_p <= 1'b0;
+  228 |         t_change = $realtime;
+      |         ^~~~~~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:225:41: Procedural assignment to declaration with initial value: 't_sample'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  225 |     real t_change = -1000.0, t_sample = -1000.0;
+      |                                         ^
+                      rtl/sim/unisim_sim_models.v:241:13: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  241 |             t_sample = $realtime;
       |             ^~~~~~~~
-%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:57:20: Procedural assignment to declaration with initial value: 'q_fall_p'
-                                                       : ... note: In instance 'radar_system_top.rx_inst.adc.g_iddr[7].u_iddr'
-                                                       : ... Location of variable initialization
-   57 |     reg q_fall_p = INIT_Q2;  
-      |                    ^~~~~~~
-                      rtl/sim/unisim_sim_models.v:72:13: ... Location of variable process write
-                                                       : ... Perhaps should initialize instead using a reset in this process
-   72 |             q_fall_p <= 1'b0;
-      |             ^~~~~~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:226:25: Procedural assignment to declaration with initial value: 'meta_pending'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  226 |     reg  meta_pending = 0;
+      |                         ^
+                      rtl/sim/unisim_sim_models.v:229:43: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  229 |         if (($realtime - t_sample) < T_H) meta_pending = 1'b1;    
+      |                                           ^~~~~~~~~~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:231:20: Procedural assignment to declaration with initial value: 'sr'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  231 |     reg [7:0] sr = 0;          
+      |                    ^
+                      rtl/sim/unisim_sim_models.v:239:24: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  239 |         if (RST) begin sr <= 0; cnt <= 0; word <= 0; frame_end <= 0; end
+      |                        ^~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:232:22: Procedural assignment to declaration with initial value: 'word'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  232 |     reg [7:0] word = 0;        
+      |                      ^
+                      rtl/sim/unisim_sim_models.v:239:43: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  239 |         if (RST) begin sr <= 0; cnt <= 0; word <= 0; frame_end <= 0; end
+      |                                           ^~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:233:19: Procedural assignment to declaration with initial value: 'q'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  233 |     reg [7:0] q = 0;
+      |                   ^
+                      rtl/sim/unisim_sim_models.v:263:24: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  263 |         if (RST) begin q <= 0; slip <= 0; end
+      |                        ^
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:234:21: Procedural assignment to declaration with initial value: 'cnt'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  234 |     reg [2:0] cnt = 0;         
+      |                     ^
+                      rtl/sim/unisim_sim_models.v:239:33: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  239 |         if (RST) begin sr <= 0; cnt <= 0; word <= 0; frame_end <= 0; end
+      |                                 ^~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:235:22: Procedural assignment to declaration with initial value: 'slip'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  235 |     reg [2:0] slip = 0;        
+      |                      ^
+                      rtl/sim/unisim_sim_models.v:263:32: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  263 |         if (RST) begin q <= 0; slip <= 0; end
+      |                                ^~~~
+%Warning-PROCASSINIT: rtl/sim/unisim_sim_models.v:236:27: Procedural assignment to declaration with initial value: 'frame_end'
+                                                        : ... note: In instance 'radar_system_top.rx_inst.g_iserdes.adc.g_lane[7].u_iserdes'
+                                                        : ... Location of variable initialization
+  236 |     reg       frame_end = 0;
+      |                           ^
+                      rtl/sim/unisim_sim_models.v:239:54: ... Location of variable process write
+                                                        : ... Perhaps should initialize instead using a reset in this process
+  239 |         if (RST) begin sr <= 0; cnt <= 0; word <= 0; frame_end <= 0; end
+      |                                                      ^~~~~~~~~
 %Warning-UNUSEDSIGNAL: rtl/fft_1024_forward.v:22:6: Signal is not used: 's_axis_config_tready'
                                                   : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_fwd'
    22 | wire s_axis_config_tready;
@@ -490,6 +673,15 @@
       |                         ^
                    ... For warning description see https://verilator.org/warn/CMPCONST?v=5.052
                    ... Use "/* verilator lint_off CMPCONST */" and lint_on around source to disable this message.
+%Warning-ZERODLY: rtl/sim/unisim_sim_models.v:177:9: Value of # delay control statically unknown. Assuming it can be #0.
+                                                   : ... If all # delays are non-zero at runtime,
+                                                   : ... use '--no-sched-zero-delay' for improved performance.
+                                                   : ... If a real #0 is expected at runtime,
+                                                   : ... use '--sched-zero-delay' to suppress this warning.
+  177 |         #(dly) dout = din;
+      |         ^
+                  ... For warning description see https://verilator.org/warn/ZERODLY?v=5.052
+                  ... Use "/* verilator lint_off ZERODLY */" and lint_on around source to disable this message.
 - V e r i l a t i o n   R e p o r t: Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905
-- Verilator: Built from 4.198 MB sources in 35 modules, into 3.932 MB in 6 C++ files needing 0.000 MB
-- Verilator: Walltime 0.237 s (elab=0.015, cvt=0.185, bld=0.000); cpu 0.237 s on 1 threads; allocated 60.484 MB
+- Verilator: Built from 5.237 MB sources in 45 modules, into 4.264 MB in 7 C++ files needing 0.000 MB
+- Verilator: Walltime 0.260 s (elab=0.018, cvt=0.199, bld=0.000); cpu 0.259 s on 1 threads; allocated 66.594 MB

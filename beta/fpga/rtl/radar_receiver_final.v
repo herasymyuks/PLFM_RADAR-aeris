@@ -22,8 +22,13 @@
 //   * adc_pwdn driven from the register map; bypass/decimation controls added.
 //   * debug $display blocks (:321-349) removed.
 // ============================================================================
+// ADC_CAPTURE_MODE (BETA follow-up): 0 = legacy IDDR capture + 400 MHz mixer/CIC
+// (ad9484_lvds_to_cmos_400m + ddc_400m_enhanced), 1 = ISERDES 1:4 capture (BUFIO/BUFR,
+// IDELAY calibration) + polyphase DDC at 100 MHz (ad9484_iserdes_capture + adc_capture_calib +
+// ddc_4x_100m + clk_gen). Both produce the same baseband format for ddc_input_interface.
 module radar_receiver_final #(
-    parameter CHIRPS_PER_FRAME = 32
+    parameter CHIRPS_PER_FRAME = 32,
+    parameter ADC_CAPTURE_MODE = 1
 ) (
     input  wire        clk,           // 100MHz
     input  wire        reset_n,
@@ -56,72 +61,154 @@ module radar_receiver_final #(
     output wire [4:0]  doppler_bin,
     output wire [5:0]  range_bin,
 
+    // ADC capture calibration (ADC_CAPTURE_MODE = 1; quasi-static, from/to the register map)
+    input  wire        cal_auto_start_t,
+    input  wire        cal_manual_load_t,
+    input  wire        cal_bitslip_load_t,
+    input  wire        cal_check_en,
+    input  wire [2:0]  cal_lane,
+    input  wire [4:0]  cal_tap,
+    input  wire [1:0]  cal_bitslip,
+    input  wire [7:0]  cal_pattern_a,
+    input  wire [7:0]  cal_pattern_b,
+    output wire [15:0] cal_status,        // {fifo_ovf, 4'b0, align_fail, busy, done, lock[7:0]}
+    output wire [15:0] cal_lane_info,     // {1'b0, win_hi, win_lo, tap}
+    output wire [15:0] cal_err_count,
+    output wire [7:0]  cal_undetermined,
+
     // Status
     output wire [5:0]  rx_chirp_counter,
     output wire        new_chirp_frame,
     output wire        cdc_overflow
 );
 
-// ========== 1. ADC capture (400 MHz DCO domain) ==========
-wire [7:0] adc_data_cmos;
-wire       clk_400m;        // buffered ADC DCO
-wire       adc_valid;
-
-ad9484_lvds_to_cmos_400m adc (
-    .adc_d_p       (adc_d_p),
-    .adc_d_n       (adc_d_n),
-    .adc_dco_p     (adc_dco_p),
-    .adc_dco_n     (adc_dco_n),
-    .reset_n       (reset_n),
-    .pwdn_req      (adc_pwdn_req),
-    .adc_data_cmos (adc_data_cmos),
-    .adc_dco_cmos  (clk_400m),
-    .adc_valid     (adc_valid),
-    .adc_pwdn      (adc_pwdn)
-);
-
-wire reset_n_400m;
-reset_synchronizer #(.STAGES(2)) rst_sync_400m (
-    .clk           (clk_400m),
-    .async_reset_n (reset_n),
-    .sync_reset_n  (reset_n_400m)
-);
-
-// ========== 2. DDC ==========
+// ========== 1./2. ADC capture + DDC (two selectable implementations) ==========
 wire signed [17:0] ddc_out_i, ddc_out_q;
 wire ddc_valid_i, ddc_valid_q;
 
-ddc_400m_enhanced ddc (
-    .clk_400m          (clk_400m),
-    .clk_100m          (clk),
-    .reset_n           (reset_n),
-    .reset_n_400m      (reset_n_400m),
-    .mixers_enable     (1'b1),            // NCO always running (original)
-    .adc_data          (adc_data_cmos),
-    .adc_data_valid_i  (adc_valid),
-    .adc_data_valid_q  (adc_valid),
-    .baseband_i        (ddc_out_i),
-    .baseband_q        (ddc_out_q),
-    .baseband_valid_i  (ddc_valid_i),
-    .baseband_valid_q  (ddc_valid_q),
-    .ddc_status        (),
-    .ddc_diagnostics   (),
-    .mixer_saturation  (),
-    .filter_overflow   (),
-    .bypass_mode       (ddc_bypass),      // original tied 1'b1 (:126) to an unimplemented input
-    .test_mode         (2'b00),
-    .test_phase_inc    (16'h0000),
-    .force_saturation  (1'b0),
-    .reset_monitors    (1'b0),
-    .debug_sample_count(),
-    .debug_internal_i  (),
-    .debug_internal_q  (),
-    .cdc_overflow      (cdc_overflow)
-);
+generate
+if (ADC_CAPTURE_MODE == 0) begin : g_legacy
+    // ---- legacy: IDDR capture, 400 MHz fabric mixer + CIC (timing closure unrealistic) ----
+    wire [7:0] adc_data_cmos;
+    wire       clk_400m;        // buffered ADC DCO
+    wire       adc_valid;
+
+    ad9484_lvds_to_cmos_400m adc (
+        .adc_d_p       (adc_d_p),
+        .adc_d_n       (adc_d_n),
+        .adc_dco_p     (adc_dco_p),
+        .adc_dco_n     (adc_dco_n),
+        .reset_n       (reset_n),
+        .pwdn_req      (adc_pwdn_req),
+        .adc_data_cmos (adc_data_cmos),
+        .adc_dco_cmos  (clk_400m),
+        .adc_valid     (adc_valid),
+        .adc_pwdn      (adc_pwdn)
+    );
+
+    wire reset_n_400m;
+    reset_synchronizer #(.STAGES(2)) rst_sync_400m (
+        .clk           (clk_400m),
+        .async_reset_n (reset_n),
+        .sync_reset_n  (reset_n_400m)
+    );
+
+    ddc_400m_enhanced ddc (
+        .clk_400m          (clk_400m),
+        .clk_100m          (clk),
+        .reset_n           (reset_n),
+        .reset_n_400m      (reset_n_400m),
+        .mixers_enable     (1'b1),            // NCO always running (original)
+        .adc_data          (adc_data_cmos),
+        .adc_data_valid_i  (adc_valid),
+        .adc_data_valid_q  (adc_valid),
+        .baseband_i        (ddc_out_i),
+        .baseband_q        (ddc_out_q),
+        .baseband_valid_i  (ddc_valid_i),
+        .baseband_valid_q  (ddc_valid_q),
+        .ddc_status        (),
+        .ddc_diagnostics   (),
+        .mixer_saturation  (),
+        .filter_overflow   (),
+        .bypass_mode       (ddc_bypass),      // original tied 1'b1 (:126) to an unimplemented input
+        .test_mode         (2'b00),
+        .test_phase_inc    (16'h0000),
+        .force_saturation  (1'b0),
+        .reset_monitors    (1'b0),
+        .debug_sample_count(),
+        .debug_internal_i  (),
+        .debug_internal_q  (),
+        .cdc_overflow      (cdc_overflow)
+    );
+    assign cal_status       = 16'd0;
+    assign cal_lane_info    = 16'd0;
+    assign cal_err_count    = 16'd0;
+    assign cal_undetermined = 8'd0;
+end else begin : g_iserdes
+    // ---- ISERDES 1:4 capture (regional clock) + polyphase DDC at 100 MHz ----
+    wire        clk_200m_ref, ref_locked, idelay_rdy;
+    wire        clk_div, rst_n_div;
+    wire [7:0]  tap_ld, bitslip;
+    wire [39:0] tap_val, tap_cur;
+    wire [31:0] word_div, word;
+    wire        word_div_valid, word_valid, fifo_ovf;
+    wire        cal_busy, cal_done;
+    wire [7:0]  lock, undetermined;
+    wire        align_fail;
+    wire [4:0]  lane_tap, lane_win_lo, lane_win_hi;
+
+    clk_gen u_clk_gen (
+        .clk_100m     (clk),
+        .reset_n      (reset_n),
+        .clk_200m_ref (clk_200m_ref),
+        .locked       (ref_locked)
+    );
+
+    ad9484_iserdes_capture #(.DIFF_TERM("FALSE"), .Q1_IS_OLDEST(1)) adc (
+        .adc_d_p(adc_d_p), .adc_d_n(adc_d_n), .adc_dco_p(adc_dco_p), .adc_dco_n(adc_dco_n),
+        .reset_n(reset_n), .clk_200m_ref(clk_200m_ref), .ref_locked(ref_locked), .idelay_rdy(idelay_rdy),
+        .clk_div(clk_div), .rst_n_div(rst_n_div),
+        .tap_ld(tap_ld), .tap_val(tap_val), .bitslip(bitslip), .tap_cur(tap_cur),
+        .word_div(word_div), .word_div_valid(word_div_valid),
+        .clk_100m(clk), .rst_n_100m(reset_n),
+        .word(word), .word_valid(word_valid), .fifo_overflow(fifo_ovf)
+    );
+    assign adc_pwdn = adc_pwdn_req;
+
+    adc_capture_calib #(.DEFAULT_TAP(5'd16), .SETTLE(16), .MEAS(64), .MIN_WINDOW(4)) calib (
+        .clk(clk_div), .rst_n(rst_n_div), .idelay_rdy(idelay_rdy),
+        .word(word_div), .word_valid(word_div_valid),
+        .ctrl_auto_start_t(cal_auto_start_t), .ctrl_manual_load_t(cal_manual_load_t),
+        .ctrl_bitslip_load_t(cal_bitslip_load_t), .ctrl_check_en(cal_check_en),
+        .ctrl_lane(cal_lane), .ctrl_tap(cal_tap), .ctrl_bitslip(cal_bitslip),
+        .pattern_a(cal_pattern_a), .pattern_b(cal_pattern_b),
+        .tap_ld(tap_ld), .tap_val(tap_val), .bitslip(bitslip),
+        .cal_busy(cal_busy), .cal_done(cal_done), .lock(lock), .undetermined(undetermined), .align_fail(align_fail),
+        .lane_tap(lane_tap), .lane_win_lo(lane_win_lo), .lane_win_hi(lane_win_hi),
+        .err_count(cal_err_count)
+    );
+    assign cal_status       = {fifo_ovf, 4'b0000, align_fail, cal_busy, cal_done, lock};
+    assign cal_lane_info    = {1'b0, lane_win_hi, lane_win_lo, lane_tap};
+    assign cal_undetermined = undetermined;
+    /* verilator lint_off UNUSEDSIGNAL */
+    wire [39:0] unused_tap_cur = tap_cur;   // CNTVALUEOUT readback kept for waveform debugging
+    /* verilator lint_on UNUSEDSIGNAL */
+
+    ddc_4x_100m ddc (
+        .clk(clk), .reset_n(reset_n), .mixers_enable(1'b1), .bypass_mode(ddc_bypass),
+        .word(word), .word_valid(word_valid),
+        .baseband_i(ddc_out_i), .baseband_q(ddc_out_q),
+        .baseband_valid_i(ddc_valid_i), .baseband_valid_q(ddc_valid_q),
+        .cic_i_dbg(), .cic_q_dbg(), .cic_valid_dbg()
+    );
+    assign cdc_overflow = fifo_ovf;
+end
+endgenerate
 
 wire signed [15:0] adc_i_scaled, adc_q_scaled;
 wire adc_valid_sync;
 
+// ========== DDC output scaling (common to both modes) ==========
 ddc_input_interface ddc_if (
     .clk            (clk),
     .reset_n        (reset_n),

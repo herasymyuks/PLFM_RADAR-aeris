@@ -178,4 +178,5 @@ Add datasheets for parts actually used (`docs/03_MISSING_COMPONENTS.md` PCB-ALL-
 | R-BETA-05 FPGA→host path (DSN-LINK-01) | DONE (option B code), OPEN (bench, rev. B) | `engineering/DESIGN/HOST_LINK/` |
 | R-BETA-06 Antenna simulation | DONE (one row) | `engineering/DESIGN/ANTENNA/simulation/` |
 | R-BETA-07 Enclosure detail (flat patterns, fasteners, parts list) | DONE (PROPOSED) | `engineering/DESIGN/MECHANICAL/` |
+| R-BETA-09 ISERDES ADC capture + polyphase DDC at 100 MHz | DONE (BETA, bit-exact vs legacy in simulation) | `beta/fpga/rtl/ad9484_iserdes_capture.v`, `adc_capture_calib.v`, `ddc_4x_100m.v`; tb_adc_iserdes_capture, tb_ddc_4x |
 | R-BETA-08 Vivado synthesis, flashing, fabrication, bench tests | BLOCKED (tools/hardware not on this machine) | — |

@@ -1,0 +1,13 @@
+lane 0: lock=1 undetermined=0 tap=12 window 29..26
+lane 1: lock=1 undetermined=0 tap=12 window 29..26
+lane 2: lock=1 undetermined=0 tap=12 window 29..26
+lane 3: lock=1 undetermined=0 tap=12 window 29..26
+lane 4: lock=1 undetermined=0 tap=12 window 29..26
+lane 5: lock=1 undetermined=0 tap=4 window 22..18
+lane 6: lock=1 undetermined=0 tap=12 window 29..26
+lane 7: lock=1 undetermined=0 tap=12 window 29..26
+bitslip test: errors 0 (cal) / 1998 (1 slip) / 0 (4 slips)
+normal data: 5700 source samples, 1225 words captured, fifo_overflow=0
+sequence check: first word = source sample 768, 0 mismatching samples of 4000
+PASS tb_adc_iserdes_capture: 8 lanes locked (lane 5 skew compensated, 8 taps), bitslip/manual/auto ok, 4000 samples reproduced exactly
+tb/tb_adc_iserdes_capture.v:132: $finish called at 154548750 (1ps)

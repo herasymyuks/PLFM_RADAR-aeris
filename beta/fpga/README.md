@@ -18,11 +18,11 @@ beta/fpga/
 ├── build.sh                 open-source flow (exit code = number of failures)      <- RUN THIS
 ├── gen_chirp_mem.py         verifies the .mem formula, writes the missing seg3 files
 ├── CHANGELOG.md             every change vs. 9_Firmware/9_2_FPGA, file:line + reason
-├── rtl/                     synthesisable Verilog-2001 (30 files; incl. host-link option B rd_map_packer + host_bridge_spi)
+├── rtl/                     synthesisable Verilog-2001 (34 files; incl. host-link option B and the ISERDES capture path)
 │   ├── sim/unisim_sim_models.v   BUFG/IBUFDS/IDDR stand-ins (simulation + lint only)
 │   └── unused_orig/              5 untouched originals that are no longer compiled (+README)
 ├── mem/                     8 original .mem copies + generated long_chirp_seg3_{i,q}.mem
-├── tb/                      6 self-checking testbenches, gen_vectors.py, vectors/, original TB (reference)
+├── tb/                      8 self-checking testbenches (9 runs), gen_vectors.py, vectors/, original TB (reference)
 ├── constraints/radar_system_top_beta.xdc
 ├── vivado/create_project.tcl, vivado/build.tcl     (NOT executed)
 ├── ip/README.md             exact FFT IP settings (xfft v9.1) derived from the port usage
@@ -47,18 +47,21 @@ resolves Memory Files by name).
 |---|---|---|---|
 | 1 | `iverilog -g2005 -DSIM -s radar_system_top rtl/*.v rtl/sim/unisim_sim_models.v` | PASS | `logs/iverilog_top_sim.log` |
 | 2 | `iverilog -g2005 -s radar_system_top ...` (synthesis view) | PASS | `logs/iverilog_top_synth.log` |
-| 3a | `verilator --lint-only -Wall -Wno-fatal --top-module radar_system_top ...` (synth view) | PASS, **0 %Error, 124 %Warning** | `logs/verilator_synth.log` |
-| 3b | same with `-DSIM` | PASS, **0 %Error, 117 %Warning** | `logs/verilator_sim.log` |
+| 3a | `verilator --lint-only -Wall -Wno-fatal --top-module radar_system_top ...` (synth view) | PASS, **0 %Error, 165 %Warning** | `logs/verilator_synth.log` |
+| 3b | same with `-DSIM` | PASS, **0 %Error, 159 %Warning** | `logs/verilator_sim.log` |
 | 4 | `python3 gen_chirp_mem.py` | PASS: seg0/1/2 reproduced within 1 LSB, seg3 written | `logs/gen_chirp_mem.log` |
 | 5 | `python3 tb/gen_vectors.py` | PASS | `logs/gen_vectors.log` |
 | 6a | `tb_fft_wrappers` - xfft_32 (4 frames incl. back-pressure) and FFT_enhanced (fwd + inv) vs numpy | PASS: 2176 samples within +/-2 LSB | `logs/tb_fft_wrappers.run.log` |
 | 6b | `tb_matched_filter` - chain + memory, reference chirp delayed 300 samples | PASS: peak at bin 302 (300 +/-4), peak/sidelobe 4.76 | `logs/tb_matched_filter.run.log` |
 | 6c | `tb_range_bin_decimator` - 2 x 1024 bins (one with input gaps) vs numpy, peak mode | PASS: 128/128 bins | `logs/tb_range_bin_decimator.run.log` |
-| 6d | `tb_system_smoke` - full top, 10 chirps, synthetic IF echoes, 3.3 ms | PASS (~65 s): see below | `logs/tb_system_smoke.run.log` |
+| 6d | `tb_system_smoke` - full top, 10 chirps, synthetic IF echoes, 3.3 ms (see 6i for the two capture modes) | PASS (~65 s each): see below | `logs/tb_system_smoke_mode1.run.log` |
 | 6e | `tb_host_bridge` - copy of the HOST_LINK unit test (packer + SPI slave, 3 detections) | PASS: 2075-byte frame, CRC ok | `logs/tb_host_bridge.run.log` |
 | 6f | `tb_host_bridge_top` - option B bridge through the top: SPI master reads one 64x32 frame after DRDY | PASS (~65 s): 2162-byte frame, 32 detections, sync/dims/az-el/chirp-count/map/CRC ok, ADAR pass-through gated | `logs/tb_host_bridge_top.run.log` |
+| 6g | `tb_adc_iserdes_capture` - ISERDES capture + IDELAY calibration + FIFO | PASS: 8/8 lanes locked, centre tap 12 (skewed lane 5: 4 = 0.6 ns compensated), bitslip detected/realigned, 4000 samples exact | `logs/tb_adc_iserdes_capture.run.log` |
+| 6h | `tb_ddc_4x` - legacy 400 MHz DDC vs polyphase DDC, same input | PASS: 1855 outputs, max diff 0 LSB | `logs/tb_ddc_4x.run.log` |
+| 6i | `tb_system_smoke` runs twice: `ADC_CAPTURE_MODE=1` (default) and `=0` | both PASS | `logs/tb_system_smoke_mode1.run.log`, `_mode0` |
 
-`build.sh` summary line: `0 failure(s), 241 verilator warning line(s) (both views)` (124 synth view + 117 sim view, after the host-link integration; 219 before it).
+`build.sh` summary line: `0 failure(s), 324 verilator warning line(s) (both views)` (165 synth view + 159 sim view; 219 for the first beta, 241 after the host link, 324 after the ISERDES capture path).
 
 System smoke test evidence (`logs/tb_system_smoke.run.log`): DAC left mid-scale (57540 samples);
 40 range profiles (4 segments x 10 chirps); for alternating echo delays of 100 and 420 baseband
@@ -67,14 +70,14 @@ samples the segment-0 peak sat at decimated bin 8 and 28 on every chirp - a shif
 DDC -> matched filter -> decimator; 2048 Doppler outputs (one 64 x 32 frame); 2688 USB packets with
 0 header/footer/sequence errors; no X on outputs; the matched-filter FSM was idle at every toggle.
 
-Verilator warning breakdown (synthesis view, 124): 36 UNUSEDSIGNAL (debug/diagnostic nets of the
-original, unused IP tready/tlast nets in the wrappers), 34 PINCONNECTEMPTY (monitor outputs left
-unconnected on purpose), 13 WIDTHEXPAND / 4 WIDTHTRUNC (original arithmetic widths, e.g.
-`plfm_chirp_controller.v` 16-bit counter indexing a 3600-entry LUT), 12 UNUSEDPARAM (original
-parameters such as `F_START`, `IF_FREQ`), 9 DECLFILENAME (original file names differ from module
-names - kept so the docs stay valid), 4 PROCASSINIT (sim models), 3 GENUNNAMED (original `generate`
-in `lfsr_dither_enhanced`). None was hidden with a global `-Wno-*`; the few local `lint_off` pragmas
-are documented in the source next to the reason.
+Verilator warning breakdown (synthesis view, 165): 59 PINCONNECTEMPTY (monitor/unused IP outputs left
+unconnected on purpose), 32 UNUSEDSIGNAL (diagnostic nets of the original, unused IP tready/tlast),
+22 WIDTHTRUNC / 16 WIDTHEXPAND (original arithmetic widths, the copied host-link modules, the UNISIM
+models), 13 PROCASSINIT + 2 BLKSEQ + 1 ZERODLY (simulation-only UNISIM models in `rtl/sim/`), 9
+DECLFILENAME (original file names differ from module names - kept so the docs stay valid), 7
+UNUSEDPARAM, 3 GENUNNAMED (original `generate`), 1 CMPCONST (`host_bridge_spi`). None was hidden
+with a global `-Wno-*`; the few local `lint_off` pragmas are documented in the source next to the
+reason.
 
 Additional checks: `tools/check_fpga_constraints.py --top beta/fpga/rtl/radar_system_top.v --xdc
 beta/fpga/constraints/radar_system_top_beta.xdc` -> 0 placeholders, 0 invalid properties, 67/183
@@ -116,6 +119,40 @@ names are the two deliberate IP placeholders (`logs/hier/`).
 5. **Register map** (`radar_control_regs`): the receiver's control inputs that were floating wires
    now have one driver with documented reset defaults. Its write port is tied off because the board
    offers no host write path (see "Host path").
+
+## ADC capture and DDC front end (`ADC_CAPTURE_MODE`, default 1)
+
+| | mode 0 (legacy) | mode 1 (default) |
+|---|---|---|
+| Capture | `ad9484_lvds_to_cmos_400m`: IBUFDS -> BUFG (400 MHz global clock) -> IDDR as dual-edge sampler | `ad9484_iserdes_capture`: IBUFDS(DCO) -> BUFIO + BUFR/4; IDELAYE2 (VAR_LOAD) -> ISERDESE2 SDR 1:4 per lane; IDELAYCTRL on 200 MHz from `clk_gen` (MMCM); 32-bit `async_fifo` into clk_100m |
+| DDC | `ddc_400m_enhanced`: NCO, mixer, 5-stage CIC at 400 MHz in fabric (timing closure unrealistic), FIFO, FIR | `ddc_4x_100m`: 4-phase NCO + 8 mixers + CIC as 16-tap FIR + the same FIRs, all at 100 MHz; **bit-exact** with the legacy path (`tb_ddc_4x`: max diff 0 LSB) |
+| Calibration | none (`CAPTURE_FALLING` edge choice) | `adc_capture_calib`: default tap 16; manual tap/bitslip per lane; auto IDELAY sweep with the ADC in a 2-code test pattern (register 0x0D = 0x48, P1/P2 = 0x19..0x1C = pattern A/B; or 0x04 checkerboard / 0x07 toggle), centre tap per lane, lane rotation alignment, lock/undetermined/align_fail status, pattern error counter (register map 0x4..0xC) |
+
+Datasheet facts used (AD9484.pdf, re-checked): LVDS SDR, DCO at the sample rate (400 MHz), data valid
+on the rising DCO edge, tSKEW -0.07..+0.07 ns (tPD 0.85 / tCPD 0.6 ns typ), offset binary.
+
+Resource estimate for mode 1 (XC7A50T): 8 ISERDESE2 + 8 IDELAYE2 + 1 IDELAYCTRL (bank 14), 1 BUFIO +
+1 BUFR, 1 MMCME2 (of 5) + 1 BUFG, 8 DSP48E1 for the mixers (9x16) + 64 DSP48E1 for the two
+unchanged 32-tap FIRs (of 120), CIC adder trees in LUTs (~16 constant multiplies per I/Q), 1 BRAM18
+for the 32-bit FIFO (or distributed RAM), small ROM for the 65-entry sine table. The 400 MHz
+fabric path (mode 0) is kept only for comparison.
+
+Remaining risks / what to check in Vivado (mode 1):
+* BUFR (DCO/4) versus clk_100m (AD9523 OUT6): same nominal frequency, unknown phase; the FIFO
+  absorbs phase/jitter, `cal_status[15]` (FIFO overflow) must stay 0 on hardware. If the two clocks
+  are not frequency-locked the design needs a re-sampler (not present).
+* IDELAYCTRL placement: all IDELAYE2 and the IDELAYCTRL must be in bank 14 (`IODELAY_GROUP` set in
+  the XDC); the 200 MHz reference comes from the MMCM through a BUFG.
+* Bank 14 is 3.3 V: LVDS_25 inputs only with `DIFF_TERM FALSE` and external 100 Ohm termination
+  (design conflict kept visible in the XDC).
+* ISERDESE2 Q1..Q4 bit order (`Q1_IS_OLDEST`) and BUFR framing are UNVERIFIED against UG471; a
+  reversed order inverts the sample order inside every word - run the ADC PN9 pattern (0x0D = 0x06)
+  and compare against a PN9 generator before trusting the data.
+* Checks after implementation: `report_clock_interaction` (clk_div <-> clk_100m only through the
+  FIFO, adc_dco/clk_div/clk_200m as derived clocks), `report_timing_summary` for the clk_div and
+  clk_200m paths, `report_cdc`, `report_io`; on hardware: run the auto calibration with the ADC test
+  pattern, read `CAL_STAT`/`CAL_LANE_INFO` per lane (windows should be ~27 of 32 taps wide at
+  400 MSPS), then switch to normal data and check `CAL_ERR` stays 0 while the pattern check is off.
 
 ## Constraints (`constraints/radar_system_top_beta.xdc`)
 
@@ -172,12 +209,10 @@ map's write port is the hook for it.
    (default part `xc7a50tftg256-2` = schematic U42; README/XDC claim XC7A100T - resolve first).
    Expect resource pressure: two 1024-point FFT IPs, 2 x 32 parallel 18x18 multipliers in the FIR
    (`fir_lowpass.v`, 64 DSP48E1 of the 50T's 120), 400 MHz fabric logic (next item).
-3. **400 MHz processing is not realistic in Artix-7 fabric.** NCO, 18x16 mixer, five 36-bit CIC
-   integrators and the FIFO write side run at the DCO rate. The capture is correct in simulation,
-   but timing closure at 2.5 ns is very unlikely; the production structure is ISERDESE2 (SDR, 2 bits)
-   + BUFR/2 giving two samples per 200 MHz clock, with the DDC reworked for 2 samples/cycle, plus
-   IDELAYE2/IDELAYCTRL for data centring. The beta keeps the original single-rate architecture so
-   the documentation stays valid.
+3. **400 MHz fabric path replaced** (`ADC_CAPTURE_MODE = 1`, see "ADC capture and DDC front
+   end"): ISERDESE2 SDR 1:4 + BUFR/4 + IDELAY calibration and a polyphase DDC at 100 MHz, bit-exact
+   with the legacy path in simulation. Remaining: Vivado timing on the clk_div/clk_200m paths,
+   IDELAYCTRL/IODELAY_GROUP placement, hardware calibration with the ADC test pattern, Q1..Q4 order.
 4. **Matched-filter throughput.** The chain is not pipelined against the collector: one long chirp
    (4 segments) occupies the FSM for ~92 us with the behavioural FFT latency (160 clocks) and
    ~270 us with a realistic IP latency (~2.3k clocks per transform), while the TX repeats long chirps

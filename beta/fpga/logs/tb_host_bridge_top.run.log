@@ -1,4 +1,4 @@
-Doppler cell |I|+|Q|: max 1840, >50: 272, >150: 91, >500: 32
-DRDY high; 2048 Doppler cells captured, 91 detections; az=3 el=4
+Doppler cell |I|+|Q|: max 1849, >50: 245, >150: 89, >500: 28
+DRDY high; 2048 Doppler cells captured, 89 detections; az=3 el=4
 PASS tb_host_bridge_top: frame 2162 bytes read over SPI1 (32 detections), sync/dims/az-el/chirp-count/map/CRC ok, ADAR pass-through gated during the transfer
 tb/tb_host_bridge_top.v:241: $finish called at 3396565000 (1ps)

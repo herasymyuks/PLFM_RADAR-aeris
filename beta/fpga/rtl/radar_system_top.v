@@ -141,6 +141,7 @@ parameter USE_LONG_CHIRP = 1'b1;          // Default to long chirp
 parameter DOPPLER_ENABLE = 1'b1;           // Enable Doppler processing (not used - kept for compatibility)
 parameter USB_ENABLE = 1'b1;               // Enable USB data transfer
 parameter [15:0] CFAR_THRESHOLD_DEFAULT = 16'd10000;   // BETA: reset value of the register-map threshold (|I|+|Q|)
+parameter ADC_CAPTURE_MODE = 1;            // BETA: 1 = ISERDES/polyphase DDC (default), 0 = legacy IDDR + 400 MHz fabric
 
 // ============================================================================
 // INTERNAL SIGNALS
@@ -188,6 +189,12 @@ wire        ctl_usb_enable;
 wire [15:0] ctl_cfar_threshold;
 wire [1:0]  ctl_decimation_mode;
 wire [9:0]  ctl_start_bin;
+wire        cal_auto_start_t, cal_manual_load_t, cal_bitslip_load_t, cal_check_en;
+wire [2:0]  cal_lane;
+wire [4:0]  cal_tap;
+wire [1:0]  cal_bitslip;
+wire [7:0]  cal_pattern_a, cal_pattern_b, cal_undetermined;
+wire [15:0] cal_status, cal_lane_info, cal_err_count;
 
 // Data packing for USB
 wire [31:0] usb_range_profile;
@@ -320,11 +327,18 @@ radar_control_regs #(
     .usb_enable      (ctl_usb_enable),
     .cfar_threshold  (ctl_cfar_threshold),
     .decimation_mode (ctl_decimation_mode),
-    .start_bin       (ctl_start_bin)
+    .start_bin       (ctl_start_bin),
+    .cal_auto_start_t(cal_auto_start_t), .cal_manual_load_t(cal_manual_load_t),
+    .cal_bitslip_load_t(cal_bitslip_load_t), .cal_check_en(cal_check_en),
+    .cal_lane(cal_lane), .cal_tap(cal_tap), .cal_bitslip(cal_bitslip),
+    .cal_pattern_a(cal_pattern_a), .cal_pattern_b(cal_pattern_b),
+    .cal_status(cal_status), .cal_lane_info(cal_lane_info),
+    .cal_err_count(cal_err_count), .cal_undetermined(cal_undetermined)
 );
 
 radar_receiver_final #(
-    .CHIRPS_PER_FRAME(32)
+    .CHIRPS_PER_FRAME(32),
+    .ADC_CAPTURE_MODE(ADC_CAPTURE_MODE)
 ) rx_inst (
     .clk(clk_100m_buf),
     .reset_n(sys_reset_n),
@@ -356,6 +370,14 @@ radar_receiver_final #(
     .doppler_valid(rx_doppler_valid),
     .doppler_bin(rx_doppler_bin),
     .range_bin(rx_range_bin),
+
+    // ADC capture calibration (register map)
+    .cal_auto_start_t(cal_auto_start_t), .cal_manual_load_t(cal_manual_load_t),
+    .cal_bitslip_load_t(cal_bitslip_load_t), .cal_check_en(cal_check_en),
+    .cal_lane(cal_lane), .cal_tap(cal_tap), .cal_bitslip(cal_bitslip),
+    .cal_pattern_a(cal_pattern_a), .cal_pattern_b(cal_pattern_b),
+    .cal_status(cal_status), .cal_lane_info(cal_lane_info),
+    .cal_err_count(cal_err_count), .cal_undetermined(cal_undetermined),
 
     // Status
     .rx_chirp_counter(rx_chirp_counter),

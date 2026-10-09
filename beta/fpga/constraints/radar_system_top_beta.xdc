@@ -41,14 +41,30 @@ set_clock_groups -asynchronous \
     -group [get_clocks spi_sclk]
 
 # ----------------------------------------------------- I/O timing ---------
-# AD9484 LVDS data, SDR, edge-aligned with DCO (tSKEW +/-0.07 ns). Board trace skew is
-# UNKNOWN (layout not finished) - the +/-0.25 ns below is an allowance that MUST be
-# replaced by the measured/simulated trace delays. Captured on the DCO falling edge
-# (ad9484_lvds_to_cmos_400m CAPTURE_FALLING = 1), hence -clock_fall.
-set_input_delay -clock adc_dco -max  0.320 [get_ports {adc_d_p[*] adc_d_n[*]}]
-set_input_delay -clock adc_dco -min -0.320 [get_ports {adc_d_p[*] adc_d_n[*]}]
-set_input_delay -clock adc_dco -max  0.320 [get_ports {adc_d_p[*] adc_d_n[*]}] -clock_fall -add_delay
-set_input_delay -clock adc_dco -min -0.320 [get_ports {adc_d_p[*] adc_d_n[*]}] -clock_fall -add_delay
+# AD9484 LVDS data (datasheet Table 4, "Output (LVDS-SDR)", re-checked 2026-10-09):
+#   SDR, DCO at the sample rate, data valid on the rising DCO edge,
+#   data-to-DCO skew tSKEW = -0.07 .. +0.07 ns  (tPD 0.85 ns, tCPD 0.6 ns typ.)
+# ADC_CAPTURE_MODE = 1 (default): DCO -> BUFIO (I/O clock) + BUFR /4 (regional clock, auto-derived
+# generated clock "clk_div"); data -> IDELAYE2 (VAR_LOAD, calibrated by adc_capture_calib) ->
+# ISERDESE2 SDR 1:4. The IDELAY calibration centres the sampling point at run time, so the
+# static analysis below documents the datasheet skew; board trace skew (layout not finished)
+# MUST be added to these numbers when the Main Board layout exists.
+set_input_delay -clock adc_dco -max  0.070 [get_ports {adc_d_p[*] adc_d_n[*]}]
+set_input_delay -clock adc_dco -min -0.070 [get_ports {adc_d_p[*] adc_d_n[*]}]
+# ADC_CAPTURE_MODE = 0 (legacy, falling-edge IDDR capture) would additionally need:
+# set_input_delay -clock adc_dco -max  0.070 [get_ports {adc_d_p[*] adc_d_n[*]}] -clock_fall -add_delay
+# set_input_delay -clock adc_dco -min -0.070 [get_ports {adc_d_p[*] adc_d_n[*]}] -clock_fall -add_delay
+
+# IDELAYCTRL reference: 200 MHz from the MMCM in clk_gen.v (auto-derived generated clock from
+# clk_100m). Group every IDELAYE2 with its IDELAYCTRL (all in bank 14 / one clock region):
+set_property -quiet IODELAY_GROUP adc_idelay_grp [get_cells -hier -filter {NAME =~ *u_idelayctrl*}]
+set_property -quiet IODELAY_GROUP adc_idelay_grp [get_cells -hier -filter {NAME =~ *g_lane[*].u_idelay*}]
+# BUFIO/BUFR: the DCO pins (N14/P14, IO_L12P/N_T1_MRCC_14) are a clock-capable pair in bank 14
+# and all eight data pairs are in bank 14 (PIN_MAP_FROM_SCHEMATIC.md lines 27-42), so the BUFIO
+# clock reaches every ISERDESE2 without crossing a clock region. The BUFR output and the MMCM
+# output are generated clocks derived automatically; no create_generated_clock is needed.
+# Check after implementation: report_clock_interaction (clk_div <-> clk_100m must be
+# "asynchronous"/FIFO-crossed only), report_timing_summary on clk_div and clk_200m paths.
 
 # AD9708 DAC data (dac_data[7:0]) is clocked by the DAC's own clock from AD9523 OUT10
 # (no FPGA pin, see UNRESOLVED dac_clk); set_output_delay values need the AD9708
