@@ -50,10 +50,10 @@ def test_host_formats_accepted_by_device_parser():
 
 
 def test_bridge_status_bytes():
-    rx = bytes([0x00, 0x09, 0x00, 0x02, 0x01, 0x34, 0x12, 0x00, 0x00])
+    rx = bytes([0x00, 0x19, 0x00, 0x02, 0x00, 0x34, 0x12, 0x00, 0x00])
     st = rc.parse_bridge_status(rx)
-    assert (st.status, st.version, st.frames, st.reserved) == (9, 0x0102, 0x1234, 0)
-    assert st.frame_ready and st.calibration_lock and not st.fifo_overflow and not st.adar_cs_conflict
+    assert (st.status, st.version, st.frames, st.reserved) == (0x19, rm.RTL_VERSION, 0x1234, 0)
+    assert st.frame_ready and st.calibration_lock and st.packer_overflow and not st.fifo_overflow and not st.adar_cs_conflict
     with pytest.raises(rc.RegisterCommandError):
         rc.parse_bridge_status(rx[:5])
 
@@ -65,7 +65,13 @@ def test_register_map_matches_rtl_resets_and_fields():
     assert rm.decode(0x9, 0x86FF) == {"lock": 0xFF, "done": 0, "busy": 1, "align_fail": 1, "fifo_ovf": 1}
     assert rm.decode(0xA, (22 << 10) | (10 << 5) | 16) == {"tap": 16, "win_lo": 10, "win_hi": 22}
     assert rm.register(0x4).encode(auto_start=1, check_en=1) == 0b1001
-    assert set(rm.UNMAPPED_ADDRESSES) == {0xD, 0xE}
+    assert rm.register(0x4).encode(auto_start=1, blind=1) == 0b10001          # bit4 blind method (level)
+    assert rm.ADDR_MASK == 0x1F and rm.RTL_VERSION == 0x0002
+    assert set(rm.UNMAPPED_ADDRESSES) == set(range(0x11, 0x20))
+    assert rm.REGISTERS[0xD].reset == 0xEC39 and rm.REGISTERS[0xE].reset == 0x0040
+    assert rm.REGISTERS[0x10].access == "ro" and rm.REGISTERS[0xF].reset == 0xBE7A
+    assert rm.blind_coef_to_cos(0xEC39) == pytest.approx(-5063 / 16384)
+    assert rm.blind_coef_from_if(120e6) == 0xEC39                            # RTL default: 120 MHz @ 400 MSPS
     with pytest.raises(ValueError):
         rm.register(0x6).encode(tap=32)
 
@@ -79,9 +85,21 @@ def test_demo_register_file_rtl_semantics_and_firmware_replies():
     assert rf.read(0x9) & 0xFF == 0xFF                 # simulated auto calibration locked all lanes
     rf.write(0x9, 0)
     assert rf.read(0x9) & 0xFF == 0xFF                 # read-only
-    assert rf.read(0xD) == 0 and rf.read(0xF) == 0xBE7A
+    assert rf.read(0xD) == 0xEC39 and rf.read(0xE) == 0x0040 and rf.read(0xF) == 0xBE7A and rf.read(0x11) == 0
     assert rf.handle_transfer(b"REG R 0xF\r\n") == b"REG 0x000F 0x0000BE7A\r\n"
-    assert rf.handle_transfer(b"REG R 0xD\n") == FW_REPLY_ERR
+    assert rf.handle_transfer(b"REG R 0x11\n") == FW_REPLY_ERR                     # unmapped (5-bit map)
+    # blind method: bit4 level, CAL_BLIND_MIN per lane after an auto start
+    rf.write(0x4, 0b10000)
+    assert rf.read(0x4) == 0b10000 and rf.read(0x10) == 0
+    rf.write(0x4, 0b10001)
+    assert rf.read(0x10) == 0x0120
+    rf.write(0x5, 7)
+    assert rf.read(0x10) == 0x0120 and (rf.read(0xA) & 0x1F) == 16
+    rf.write(0xD, 0xC000)                                                       # mistuned IF -> worse notch, narrower window
+    rf.write(0x4, 0b10001)
+    assert rf.read(0x10) > 0x0120
+    info = rm.decode(0xA, rf.read(0xA))
+    assert info["win_hi"] - info["win_lo"] < 12
     assert rf.handle_transfer(b"garbage") == b""       # not a text command at byte 0
     assert rf.handle_transfer(b"REG R 0x1\nREG R 0x2\n") == b"REG 0x0001 0x00002710\r\n"   # second line lost
 
@@ -116,7 +134,7 @@ def test_client_single_slot_pacing_round_trip():
     client = rc.RegisterClient(fw.usb_out, clock=lambda: 0.0)
     client.write(0x1, 2000)
     client.read(0x1)
-    client.read(0xD)                                   # unmapped -> REG ERR
+    client.read(0x11)                                  # unmapped -> REG ERR
     client.read_all(rm.READ_ALL_ADDRESSES)
     assert client.sent == 1 and fw.slot == b"REG W 0x1 0x7D0\n"       # exactly one command in flight
     parser = StatusStreamParser()
@@ -128,10 +146,11 @@ def test_client_single_slot_pacing_round_trip():
             for msg in parser.feed(reply[i:i + 5]):
                 client.on_reply(msg)
     assert fw.dropped == 0                             # pacing respected the single slot
-    assert client.sent == loops == 3 + len(rm.READ_ALL_ADDRESSES) + 2 * 8 + 1
+    assert client.sent == loops == 3 + len(rm.READ_ALL_ADDRESSES) + 3 * 8 + 1
     assert client.values[0x1] == 2000 and client.values[0xF] == 0xBE7A
-    assert [e[1] for e in client.errors] == [0xD]
-    assert sorted(client.lane_info) == list(range(8))
+    assert [e[1] for e in client.errors] == [0x11]
+    assert sorted(client.lane_info) == list(range(8)) == sorted(client.lane_blind_min)
+    assert client.values[0xD] == 0xEC39 and client.values[0x10] == 0
     assert all(rm.decode(0xA, v)["tap"] == 16 for v in client.lane_info.values())
     assert client.unexpected == 0 and client.retransmits == 0
 

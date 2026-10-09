@@ -94,9 +94,9 @@ Originals in `9_Firmware/9_3_GUI/` were read only; nothing there was modified.
 - Demo detection threshold: taken from the simulated CFAR_THR register (reset 10000, same as before) instead of a constant.
 
 ### Discrepancies / unresolved (recorded, not papered over)
-1. **HOST_LINK_DESIGN.md §7 register table ≠ RTL.** §7 describes 32-bit registers: 0x0 = run/long_chirp/mixers, 0x2 = NCO tuning word, 0x4 = packed calibration control, status at 0x5/0x7/0x8..0xC. `radar_control_regs.v` has 16-bit registers: 0x0 = use_long_chirp/adc_pwdn/usb_enable, 0x2 = DECIM, 0x4..0x8 = calibration control, status at 0x9..0xC, ID at 0xF. The beta follows the RTL. **Run, mixers enable and the NCO word are not offered** because no RTL implements them.
-2. **Blind calibration** is implemented in `adc_capture_calib.v` (`ctrl_blind`, `blind_coef/thr/max`), but no register in `radar_control_regs.v` drives it. The panel shows it as unavailable.
-3. **`radar_system_top.v:321-323` ties `reg_we`/`reg_addr`/`reg_wdata` of `ctl_regs` to constants.** Even with the SPI bridge decoding commands 0x02/0x03, register writes do not reach the register file on the current RTL.
+1. ~~HOST_LINK_DESIGN.md §7 register table ≠ RTL.~~ **Resolved**: §7 was rewritten to mirror `radar_control_regs.v` (run / mixers / NCO removed). The GUI follows the RTL (see the final-map entry below).
+2. ~~Blind calibration not reachable through registers.~~ **Resolved**: CAL_CTRL bit4 + 0x0D/0x0E/0x10 (see below).
+3. ~~`radar_system_top.v` ties the register write port off.~~ The register port is now driven by `host_bridge_spi` (RTL header of `radar_control_regs.v`); see the final-map entry for the GUI-side check.
 4. ~~No firmware implements the REG text commands.~~ **Resolved the same day**: `beta/stm32/Core/Src/host_bridge_proto.c` (`hb_cmd_parse`/`hb_cmd_execute`), `LIB/USBHandler.cpp` (`captureTextCommand` single slot) and `main.cpp` (main-loop reply) now implement them. `protocol/register_cmd.py` was re-aligned to the firmware (see the entry below); the GUI's line rules are now "same as firmware", not a proposal.
 5. There is no request ID in the protocol; replies are matched to the single in-flight command. A lost reply is handled by the client's timeout/retransmit, not by sequence numbers.
 
@@ -145,3 +145,28 @@ Firmware read: `beta/stm32/Core/Src/host_bridge_proto.c`, `beta/stm32/Core/Src/h
 - `tests/test_bridge_source.py`: demo source slot semantics (second transfer dropped, replies
   arrive one per poll, write echoes the value). `tests/test_ui_smoke.py`: register panel
   loops `step()` until the read-all is answered; asserts 0 drops, `sent == polls`.
+
+## 2026-10-09 (final register map, RTL 0x0002)
+
+`beta/fpga/rtl/radar_control_regs.v` and HOST_LINK_DESIGN.md §7 are now identical; the GUI was
+updated to that map.
+
+### Changed
+- `protocol/register_map.py`: 5-bit addresses (`ADDR_MASK = 0x1F`, unmapped 0x11..0x1F); CAL_CTRL
+  bit4 `blind` (level: 0 = ADC test pattern, 1 = CW tone at the IF); new registers 0x0D
+  `CAL_BLIND_COEF` (rw, signed Q1.14, reset 0xEC39), 0x0E `CAL_BLIND_MARGIN` (rw, reset 0x0040),
+  0x10 `CAL_BLIND_MIN` (ro, per CAL_LANE); `RTL_VERSION = 0x0002`; helpers `blind_coef_to_cos`,
+  `blind_coef_from_if` (120 MHz @ 400 MSPS -> 0xEC39, matches the RTL default). The discrepancy
+  docstring is gone.
+- `protocol/register_cmd.py`: `BridgeStatus.packer_overflow` (status word bit4); `RegisterClient.
+  read_all` also reads CAL_BLIND_MIN for every lane (`lane_blind_min`), 3 commands per lane.
+- `sim/register_file.py`: 5-bit decode, bit4 blind level, 0x0D/0x0E rw, 0x10 ro; blind auto
+  calibration yields a per-lane minimum metric (0x0120 at the default coefficient) and a window
+  that narrows as the coefficient is detuned from the default IF.
+- `ui/register_panel.py`: the "unavailable" note is replaced by a plain map note; new blind-method
+  checkbox (bit4), blind coef / margin fields with Write buttons, "IF -> coef" helper, per-lane
+  `blind_min` readout and a method/coef/margin summary line. `auto_pattern`/`write_check` renamed
+  `auto_start`/`write_cal_ctrl` (old names kept as aliases).
+- Tests updated: map resets/fields/unmapped range, status bit4, register-file blind behaviour,
+  read-all now 3 commands per lane (client pacing test: 52 commands, 0 drops), UI panel exercises
+  compute-coef -> write -> blind auto calibration -> read-all.

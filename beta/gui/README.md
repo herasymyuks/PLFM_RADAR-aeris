@@ -13,8 +13,7 @@
   (`beta/stm32/Core/Src/host_bridge_proto.c`): one command per USB transfer, replies
   `REG 0x%04X 0x%08X\r\n` / `REG ERR\r\n`, a write echoes the written value, and the
   firmware holds a single command slot, so the GUI sends one command at a time and waits for
-  the reply (timeout + retransmit). Not bench-tested; the top-level RTL still ties the
-  register write port off. See CHANGELOG "Discrepancies".
+  the reply (timeout + retransmit). Not bench-tested.
 * The STM32 USB CDC path (settings upload, status/GPS reception) is implemented from
   the firmware sources but is **unverified on a board**; the firmware RX path itself is
   reported dead in `docs/STM32/`.
@@ -151,9 +150,10 @@ pointed at `pyinstaller_launcher.py` instead.
 10. `filterpy` 1.4.5 (2018) runs on numpy 2.5.3 here; long-term maintenance risk.
 11. Only CPython 3.14.7 (Tk 9.0, then 9.1) on macOS was exercised; Windows/Linux and older Pythons
     are unverified.
-12. **Register map mismatch**: HOST_LINK_DESIGN.md section 7 and `radar_control_regs.v`
-    disagree. The GUI follows the RTL; run, mixers, NCO and blind calibration are not
-    available.
+12. Register map = `radar_control_regs.v` (RTL 0x0002) = HOST_LINK_DESIGN.md section 7 (5-bit
+    addresses, 16-bit registers, pattern and blind calibration). The demo register file only
+    *simulates* calibration results (lock mask, windows, blind metric); real values come from
+    `adc_capture_calib.v` on hardware.
 13. **REG text protocol** matches the firmware implementation line for line, but neither side
     has been exercised on hardware. No request ID exists: the client keeps one command in
     flight and relies on timeout/retransmit.

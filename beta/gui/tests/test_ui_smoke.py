@@ -89,9 +89,16 @@ def test_register_panel_read_all_and_calibration():
         win._after_id = None
         panel.v_cfar.set("4096")
         panel._write_entry(0x1, panel.v_cfar)
-        panel.auto_pattern()
+        panel.v_if.set("100e6")
+        panel.compute_coef()
+        from aeris10_gui.protocol.register_map import blind_coef_from_if
+        assert panel.v_coef.get() == f"0x{blind_coef_from_if(100e6):04X}"
+        panel._write_entry(0xD, panel.v_coef)
+        panel.v_blind.set(True)
+        panel.write_cal_ctrl()
+        panel.auto_start()                                   # blind-method auto calibration (recentres all taps)
         panel.v_lane.set("3"); panel.v_tap.set("9")
-        panel.manual_tap()
+        panel.manual_tap()                                   # then a manual override of lane 3
         panel.v_slip.set("2")
         panel.manual_bitslip()
         panel.read_all()
@@ -107,7 +114,9 @@ def test_register_panel_read_all_and_calibration():
         assert c.values[0x9] & 0xFF == 0xFF                  # simulated lock mask after auto calibration
         assert c.lane_info[3] & 0x1F == 9                    # manual tap loaded into lane 3
         text = panel.text.get("1.0", "end")
-        assert "lock[7..0]=LLLLLLLL" in text and "lane 3: tap= 9" in text
+        assert "lock[7..0]=LLLLLLLL" in text and "method = blind" in text and "blind_min=0x" in text
+        assert c.values[0x4] & 0x10 and c.values[0xD] == int(panel.v_coef.get(), 16)
+        assert all(v > 0 for v in c.lane_blind_min.values())
         assert win.source.sim.regs.cfar_threshold == 4096    # the write reached the demo FPGA
         panel.v_tap.set("40")
         panel.manual_tap()

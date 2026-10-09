@@ -22,8 +22,9 @@ Rules the GUI mirrors exactly:
   read-back needs an explicit read) or ``REG ERR\\r\\n`` on a parse error,
   SPI transfer error or missing 0xA2 write-ack.
 * SPI status command 0x04 (``hb_proto_status``) returns four little-endian
-  u16 fields: status (bit0 frame ready, bit1 ADAR CS conflict, bit2 FIFO
-  overflow, bit3 calibration lock), version, frames, reserved.  It has no
+  u16 fields: status (bit0 frame ready, bit1 ADAR CS conflict, bit2 ADC FIFO
+  overflow, bit3 calibration lock, bit4 packer overflow), RTL version
+  (0x0002), frames produced, reserved.  It has no
   text form yet; :func:`parse_bridge_status` decodes the raw bytes.
 """
 from __future__ import annotations
@@ -150,6 +151,7 @@ class BridgeStatus:
     adar_cs_conflict = property(lambda s: bool(s.status & 2))
     fifo_overflow = property(lambda s: bool(s.status & 4))
     calibration_lock = property(lambda s: bool(s.status & 8))
+    packer_overflow = property(lambda s: bool(s.status & 16))
 
 
 def parse_bridge_status(rx: bytes) -> BridgeStatus:
@@ -188,6 +190,7 @@ class RegisterClient:
 
     LANE_INFO_ADDR = 0xA
     LANE_SELECT_ADDR = 0x5
+    LANE_BLIND_MIN_ADDR = 0x10
 
     def __init__(self, write_fn: Callable[[bytes], object], *, max_pending: int = 256,
                  timeout: float = 1.0, retries: int = 2, clock: Callable[[], float] = time.monotonic):
@@ -200,6 +203,7 @@ class RegisterClient:
         self.in_flight: Optional[_Request] = None
         self.values: dict = {}            # addr -> last value reported by the device
         self.lane_info: dict = {}         # lane -> raw CAL_LANE_INFO
+        self.lane_blind_min: dict = {}    # lane -> CAL_BLIND_MIN
         self.errors = []                  # (op, addr, value, tag) answered with REG ERR / timed out
         self.unexpected = 0               # replies with no in-flight request, or address mismatch
         self.retransmits = 0
@@ -246,6 +250,7 @@ class RegisterClient:
             for lane in range(lanes):
                 self.write(self.LANE_SELECT_ADDR, lane, tag=("lane_select", lane))
                 self.read(self.LANE_INFO_ADDR, tag=("lane", lane))
+                self.read(self.LANE_BLIND_MIN_ADDR, tag=("lane_blind", lane))
             self.write(self.LANE_SELECT_ADDR, restore, tag=("lane_select", restore))
 
     # --- progress --------------------------------------------------------------------------
@@ -282,5 +287,7 @@ class RegisterClient:
             self.values[reply.addr] = reply.value
             if isinstance(req.tag, tuple) and req.tag[0] == "lane" and reply.addr == self.LANE_INFO_ADDR:
                 self.lane_info[req.tag[1]] = reply.value
+            if isinstance(req.tag, tuple) and req.tag[0] == "lane_blind" and reply.addr == self.LANE_BLIND_MIN_ADDR:
+                self.lane_blind_min[req.tag[1]] = reply.value
         self._pump()
         return req.as_tuple()

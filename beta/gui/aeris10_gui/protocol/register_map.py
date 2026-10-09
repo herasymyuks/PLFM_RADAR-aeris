@@ -1,20 +1,12 @@
 """FPGA control/status register map -- transcribed from the RTL.
 
 Source of truth: ``beta/fpga/rtl/radar_control_regs.v`` (address map comment
-block and the two ``case`` statements).  Registers are **16 bits** wide,
-4-bit word addresses.
-
-DISCREPANCY (recorded 2026-10-09): ``engineering/DESIGN/HOST_LINK/
-HOST_LINK_DESIGN.md`` section 7 describes 32-bit registers with a different
-layout (0x0 "run/long_chirp/mixers", 0x2 "NCO tuning word", 0x4 packed
-calibration control, 0x5/0x7/0x8..0xC status).  That table says "the RTL owner
-keeps this table in sync" -- it is not in sync with the RTL.  This module
-follows the RTL; the GUI labels say so.  Fields that only exist in the design
-note (run, mixers enable, NCO word, "auto blind" calibration) are **not**
-offered because no RTL implements them.
-
-Bridge transport note: the SPI command set (section 7) carries 32-bit values;
-the upper 16 bits are ignored by / read as zero from this register file.
+block and the two ``case`` statements); ``engineering/DESIGN/HOST_LINK/
+HOST_LINK_DESIGN.md`` section 7 carries the identical table (2026-10-09, RTL
+version 0x0002).  Registers are **16 bits** wide with **5-bit** word addresses
+(``addr[4:0]``); the SPI bridge carries 16-bit addresses and 32-bit data, the
+upper address bits must be 0 and data[31:16] are ignored / read as 0.
+Unmapped addresses read 0 and ignore writes (RTL ``default`` arms).
 """
 from __future__ import annotations
 
@@ -23,7 +15,8 @@ from typing import Dict, List, Tuple
 
 REG_WIDTH_BITS = 16
 REG_MASK = 0xFFFF
-ADDR_MASK = 0xF
+ADDR_MASK = 0x1F
+RTL_VERSION = 0x0002        # host_bridge_spi.v parameter, reported by SPI command 0x04
 
 
 @dataclass(frozen=True)
@@ -80,11 +73,12 @@ REGISTERS: Dict[int, Register] = {r.addr: r for r in (
     Register(0x2, "DECIM", "rw", 0b01, "range decimation mode", (Field("mode", 0, 2, "01 = peak"),)),
     Register(0x3, "START_BIN", "rw", 0, "first range bin passed to the decimator", (Field("start_bin", 0, 10, ""),)),
     Register(0x4, "CAL_CTRL", "rw", 0, "ADC capture calibration control (bits 0..2 write-1-to-toggle, read as 0)",
-             (Field("auto_start", 0, 1, "write 1: start auto (pattern) calibration", "toggle"),
+             (Field("auto_start", 0, 1, "write 1: start auto calibration (pattern or blind, per bit4)", "toggle"),
               Field("manual_load", 1, 1, "write 1: load CAL_TAP into lane CAL_LANE", "toggle"),
               Field("bitslip_load", 2, 1, "write 1: issue CAL_SLIP BITSLIP pulses to lane CAL_LANE", "toggle"),
-              Field("check_en", 3, 1, "level: pattern-check error counting"))),
-    Register(0x5, "CAL_LANE", "rw", 0, "lane for CAL_TAP/CAL_SLIP writes and CAL_LANE_INFO read", (Field("lane", 0, 3, "0..7"),)),
+              Field("check_en", 3, 1, "level: pattern-check error counting"),
+              Field("blind", 4, 1, "level: 0 = ADC test pattern method, 1 = blind (CW tone at the IF)"))),
+    Register(0x5, "CAL_LANE", "rw", 0, "lane for CAL_TAP/CAL_SLIP writes and CAL_LANE_INFO / CAL_BLIND_MIN reads", (Field("lane", 0, 3, "0..7"),)),
     Register(0x6, "CAL_TAP", "rw", 16, "manual IDELAY tap (reset 16)", (Field("tap", 0, 5, "0..31, 78 ps each"),)),
     Register(0x7, "CAL_SLIP", "rw", 0, "BITSLIP pulses for a manual bitslip load", (Field("bitslip", 0, 2, "0..3"),)),
     Register(0x8, "CAL_PATT", "rw", 0x55AA, "expected alternating ADC test codes {pattern_b, pattern_a}",
@@ -97,12 +91,18 @@ REGISTERS: Dict[int, Register] = {r.addr: r for r in (
              (Field("tap", 0, 5, "chosen tap", "ro"), Field("win_lo", 5, 5, "", "ro"), Field("win_hi", 10, 5, "", "ro"))),
     Register(0xB, "CAL_ERR", "ro", 0, "pattern-check error counter (saturating)", (Field("errors", 0, 16, "", "ro"),)),
     Register(0xC, "CAL_UNDET", "ro", 0, "{8'b0, undetermined[7:0]}", (Field("undetermined", 0, 8, "lanes constant in pattern", "ro"),)),
+    Register(0xD, "CAL_BLIND_COEF", "rw", 0xEC39, "signed Q1.14 cos(2*pi*f_IF/f_S) for the blind notch (0xEC39 = -5063 = 120 MHz @ 400 MSPS)",
+             (Field("coef", 0, 16, "signed Q1.14"),)),
+    Register(0xE, "CAL_BLIND_MARGIN", "rw", 0x0040, "absolute part of the blind pass margin: pass when metric <= min + margin + min/16",
+             (Field("margin", 0, 16, ""),)),
     Register(0xF, "ID", "ro", 0xBE7A, "beta build identifier", (Field("id", 0, 16, "", "ro"),)),
+    Register(0x10, "CAL_BLIND_MIN", "ro", 0, "minimum blind metric of CAL_LANE (sum |r| over the window >> 4, saturated)",
+             (Field("blind_min", 0, 16, "", "ro"),)),
 )}
 
 READ_ALL_ADDRESSES: List[int] = sorted(REGISTERS)
 # addresses not in the map read as 0 and ignore writes (RTL default arms)
-UNMAPPED_ADDRESSES = [a for a in range(16) if a not in REGISTERS]
+UNMAPPED_ADDRESSES = [a for a in range(ADDR_MASK + 1) if a not in REGISTERS]
 
 
 def register(addr: int) -> Register:
@@ -121,3 +121,15 @@ def describe_cal_stat(value: int) -> str:
     lanes = "".join("L" if f["lock"] >> i & 1 else "." for i in range(8))
     return (f"lock[7..0]={lanes[::-1]} ({f['lock']:#04x}) done={f['done']} busy={f['busy']} "
             f"align_fail={f['align_fail']} fifo_ovf={f['fifo_ovf']}")
+
+
+def blind_coef_to_cos(raw: int) -> float:
+    """CAL_BLIND_COEF (signed Q1.14) -> cos value."""
+    v = raw & 0xFFFF
+    return (v - 0x10000 if v & 0x8000 else v) / 16384.0
+
+
+def blind_coef_from_if(f_if_hz: float, f_s_hz: float = 400e6) -> int:
+    """round(16384 * cos(2*pi*f_IF/f_S)) as the 16-bit register value (RTL default: 120 MHz -> 0xEC39)."""
+    import math
+    return round(16384 * math.cos(2 * math.pi * f_if_hz / f_s_hz)) & 0xFFFF

@@ -7,7 +7,10 @@ write-1-to-toggle and read back as 0, bit 3 is a level.  The calibration
 *behaviour* (what ``adc_capture_calib.v`` would report) is a plain simulation:
 an auto-start marks all lanes locked with a 12-tap window centred on tap 16,
 pattern-check errors accumulate only when ``check_en`` is set and the
-pattern register differs from the simulated ADC pattern 0x55AA.
+pattern register differs from the simulated ADC pattern 0x55AA.  Blind method
+(CAL_CTRL bit4): the simulated minimum blind metric per lane is 0x0120 with
+the default coefficient and grows with the coefficient's distance from the
+default (a mistuned IF gives a worse notch).
 """
 from __future__ import annotations
 
@@ -25,6 +28,8 @@ class DemoRegisterFile:
         self.regs: Dict[int, int] = {a: r.reset for a, r in REGISTERS.items() if r.access == "rw"}
         self.regs[0x4] = 0                       # toggles read as 0; check_en level kept separately
         self.check_en = 0
+        self.blind = 0
+        self.blind_min = [0] * 8
         self.toggles = {"auto_start": 0, "manual_load": 0, "bitslip_load": 0}
         self.lane_tap = [16] * 8                 # DEFAULT_TAP
         self.lane_window = [(0, 0)] * 8
@@ -61,6 +66,7 @@ class DemoRegisterFile:
             if value & 4:
                 self.toggles["bitslip_load"] ^= 1
             self.check_en = (value >> 3) & 1
+            self.blind = (value >> 4) & 1
         elif addr == 0x5:
             self.regs[0x5] = value & 0x7
         elif addr == 0x6:
@@ -69,13 +75,17 @@ class DemoRegisterFile:
             self.regs[0x7] = value & 0x3
         elif addr == 0x8:
             self.regs[0x8] = value
-        # 0x9..0xF and unmapped: ignored (RTL default arm)
+        elif addr == 0xD:
+            self.regs[0xD] = value
+        elif addr == 0xE:
+            self.regs[0xE] = value
+        # 0x9..0xC, 0xF, 0x10 and unmapped: ignored (RTL default arm)
 
     def read(self, addr: int) -> int:
         addr &= ADDR_MASK
         self.reads += 1
         if addr == 0x4:
-            return self.check_en << 3
+            return (self.blind << 4) | (self.check_en << 3)
         if addr == 0x9:
             return (self.fifo_ovf << 15) | (self.align_fail << 10) | (self.busy << 9) | (self.done << 8) | (self.lock & 0xFF)
         if addr == 0xA:
@@ -88,11 +98,18 @@ class DemoRegisterFile:
             return self.undetermined & 0xFF
         if addr == 0xF:
             return 0xBE7A
+        if addr == 0x10:
+            return self.blind_min[self.regs[0x5]]
         return self.regs.get(addr, 0)
 
     # --- simulated calibration behaviour -----------------------------------------------------
     def _auto_calibrate(self) -> None:
         lo, hi = SIM_WINDOW
+        if self.blind:
+            # blind method: window narrows as the notch coefficient departs from the default IF
+            detune = abs(((self.regs[0xD] ^ 0x8000) - (0xEC39 ^ 0x8000))) >> 9      # 0 at default
+            lo, hi = min(lo + detune, 15), max(hi - detune, 17)
+            self.blind_min = [0x0120 + 0x40 * detune] * 8
         self.lane_window = [(lo, hi)] * 8
         self.lane_tap = [(lo + hi) // 2] * 8
         self.lock, self.done, self.busy, self.align_fail, self.undetermined = 0xFF, 1, 0, 0, 0
