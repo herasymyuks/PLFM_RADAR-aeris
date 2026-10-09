@@ -55,6 +55,7 @@ add_compile_definitions(STM32F746xx USE_HAL_DRIVER HSE_VALUE=8000000U)
 set(APP_SRC
   ${CORE}/Src/main.cpp
   ${CORE}/Src/host_bridge.c
+  ${CORE}/Src/host_bridge_proto.c
   ${CORE}/Src/stm32f7xx_hal_msp.c
   ${CORE}/Src/stm32f7xx_it.c
   ${CORE}/Src/system_stm32f7xx.c
@@ -74,7 +75,7 @@ set(LIB_SRC
   ${LIB}/gps_handler.cpp ${LIB}/TinyGPS++.cpp ${LIB}/BMP180.cpp
   ${LIB}/GY_85_HAL.c ${LIB}/ADS7830.c ${LIB}/DA5578.c
   ${LIB}/ad9523.c ${LIB}/adf4382.c ${LIB}/adf4382a_manager.c
-  ${LIB}/stm32_spi.c ${LIB}/stm32_delay.c ${LIB}/aeris_beam.c
+  ${LIB}/stm32_spi.c ${LIB}/stm32_delay.c ${LIB}/aeris_beam.c ${LIB}/adar1000_vm_tables.c
   ${LIB}/no_os_spi.c ${LIB}/no_os_util.c ${LIB}/no_os_alloc.c ${LIB}/no_os_mutex.c
 )
 set(HAL_SRC

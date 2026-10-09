@@ -25,11 +25,20 @@ void USBHandler::reset() {
     start_flag_received = false;
     buffer_index = 0;
     synced_on_set = false;
+    cmd_pending = false;
+    cmd_buf[0] = '\0';
     current_settings.resetToDefaults();
 }
 
 void USBHandler::processUSBData(const uint8_t* data, uint32_t length) {
     if (data == nullptr || length == 0) {
+        return;
+    }
+
+    // BETA (bridge v2): text command branch. Checked before the binary state machine but never
+    // while a settings packet is being assembled (binary payload could contain "REG").
+    if (!(current_state == USBState::RECEIVING_SETTINGS && synced_on_set) &&
+        captureTextCommand(data, length)) {
         return;
     }
 
@@ -136,4 +145,32 @@ void USBHandler::processSettingsData(const uint8_t* data, uint32_t length) {
             synced_on_set = false;
         }
     }
+}
+
+bool USBHandler::captureTextCommand(const uint8_t* data, uint32_t length) {
+    if (length < 3 || data[0] != 'R' || data[1] != 'E' || data[2] != 'G') {
+        return false;
+    }
+    if (cmd_pending) {
+        return true;   // previous command not yet executed: drop this one (host retries on timeout)
+    }
+    uint32_t n = 0;
+    while (n < length && n < MAX_CMD_LEN && data[n] != '\0' && data[n] != '\r' && data[n] != '\n') {
+        cmd_buf[n] = (char)data[n];
+        n++;
+    }
+    cmd_buf[n] = '\0';
+    cmd_pending = true;
+    return true;
+}
+
+bool USBHandler::takePendingCommand(char* out, uint32_t cap) {
+    if (!cmd_pending || out == nullptr || cap == 0) {
+        return false;
+    }
+    uint32_t i = 0;
+    for (; i + 1 < cap && cmd_buf[i] != '\0'; i++) out[i] = cmd_buf[i];
+    out[i] = '\0';
+    cmd_pending = false;
+    return true;
 }

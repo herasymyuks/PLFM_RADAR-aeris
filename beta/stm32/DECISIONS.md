@@ -68,5 +68,18 @@ Each entry: what was decided, the evidence, what remains unverified. IDs are ref
 ## D-16 — `GPS_Init(&huart3)`
 - `gps_handler.cpp` guards both senders on `gui_huart != NULL` (`:47`, `:67`) although the binary packet goes to USB CDC. Binding USART3 (the debug UART) satisfies the guard and routes the text variant to the debug port; no new hardware assumption.
 
+## D-17 — Bridge register access runs in the main loop, never in the USB ISR
+- `REG` lines arrive in the OTG_FS ISR (`CDC_Receive_FS` → `USBHandler`). SPI1 is shared by the ADAR1000 path and the frame read (`HostBridge_Poll`), so the ISR only captures the line; `main.cpp` executes it right after `HostBridge_Poll()`. The transport refuses (`HB_ERR_BUSY` / transfer error → `REG ERR`) while a frame read is active or any ADAR1000 CS is low. One command slot: a second `REG` before execution is dropped (host must wait for the reply). Text detection is suppressed while a synchronised binary settings packet is being assembled, so binary bytes `R E G` inside the settings payload are never mistaken for a command (tested, T10).
+- Reply format: `REG 0x%04X 0x%08X\r\n` (write echoes the written value after the ack), `REG ERR\r\n` on syntax error, NACK, busy or SPI error. Numbers in commands: `0x` hex or decimal; keyword `REG` upper-case, `W/R` either case.
+
+## D-18 — Bridge v2 framing assumptions (HOST_LINK_DESIGN.md §7)
+- Write: 8 clocked bytes `02 a0 a1 d0 d1 d2 d3 00`, ack expected on MISO during the 8th byte ("after the last data byte"). Read: 7 bytes `03 a0 a1 00 00 00 00`, data LE in bytes 3..6 (no turnaround byte — §7 shows none). Status: 9 bytes, `04` + 8 reply bytes = status u16, version u16, frames u16, reserved u16 (all LE; §7 gives no width for the status word — u16 assumed). 0xEE in the ack position = unknown command → NACK.
+- **The beta FPGA RTL (`beta/fpga/rtl/host_bridge_spi.v`) does not implement 0x02..0x04 yet** (grep 2026-10-09): STM32 side is ready, end-to-end untested.
+
+## D-19 — ADAR1000 VM tables from data sheet Tables 10-13; VM_GAIN = 0
+- 128 rows (0 … 357.1875° in 2.8125° steps) from Rev. B pp. 35-36; every row parsed, none missing or duplicated. Register words: bit 5 = polarity (1 = positive), bits 4:0 = magnitude (Tables 47/48). Consistency check: data sheet example "0x014 = 0x36 / 0x015 = 0x35 (positive, magnitude 16/15)" equals the 45° row (I 0x36, Q 0x35) — "Magnitude 16" in the example text means 0x16.
+- The data sheet gives no per-phase gain word: its tables are designed to "sweep the phase while keeping the gain of the vector modulator constant" and the VGA (0x010-0x013 / 0x01C-0x01F) does all gain control (Theory of Operation, p. 33). `VM_GAIN` is therefore all zeros (no correction) and is not used by `ADAR1000_Manager`.
+- Ambiguity noted: the I/Q words realise the nominal phase only approximately — decoding atan2(Q,I) gives up to 3.12° deviation (e.g. 2.8125° row decodes to 1.8°, 90° row to 88.0°); the data sheet itself states "degrades the phase resolution to 2.8°" and RMS phase error 2° (spec table). Tables are used as published; per-board phase calibration is a hardware task.
+
 ## Open items deliberately NOT decided here (see README "Unresolved")
-VM_I/VM_Q/VM_GAIN tables are empty placeholders; ADAR1000/ADF4382/AD9523 register-level correctness; 180 s OCXO wait; cache/MPU policy; interrupt priorities beyond USB; stack/heap sizing beyond ST defaults; VBUS sensing; crystal load.
+ADAR1000/ADF4382/AD9523 register-level correctness; 180 s OCXO wait; cache/MPU policy; interrupt priorities beyond USB; stack/heap sizing beyond ST defaults; VBUS sensing; crystal load.

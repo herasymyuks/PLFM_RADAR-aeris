@@ -1,28 +1,28 @@
    text	   data	    bss	    dec	    hex	filename
-  91152	    788	  16520	 108460	  1a7ac	/Users/void/PLFM_RADAR/beta/stm32/build/aeris10_fw.elf
+  92480	    788	  16704	 109972	  1ad94	/Users/void/PLFM_RADAR/beta/stm32/build/aeris10_fw.elf
 /Users/void/PLFM_RADAR/beta/stm32/build/aeris10_fw.elf  :
 section                size        addr
 .isr_vector             456   134217728
-.text                 83968   134218192
-.rodata                6720   134302160
-.ARM                      8   134308880
-.init_array               8   134308888
-.fini_array               8   134308896
+.text                 85256   134218192
+.rodata                6760   134303448
+.ARM                      8   134310208
+.init_array               8   134310216
+.fini_array               8   134310224
 .data                   772   536870912
-.bss                  14888   536871688
-._user_heap_stack      1632   536886576
+.bss                  15072   536871688
+._user_heap_stack      1632   536886760
 .ARM.attributes          48           0
-.debug_info          383921           0
-.debug_abbrev         37628           0
-.debug_loclists      128575           0
-.debug_aranges        10120           0
-.debug_rnglists        8333           0
-.debug_macro         258340           0
-.debug_line          253249           0
-.debug_str          1200616           0
+.debug_info          387815           0
+.debug_abbrev         38284           0
+.debug_loclists      130664           0
+.debug_aranges        10264           0
+.debug_rnglists        8493           0
+.debug_macro         259173           0
+.debug_line          256365           0
+.debug_str          1205431           0
 .comment                 69           0
-.debug_frame          37224           0
+.debug_frame          37732           0
 .debug_line_str         615           0
-Total               2427198
+Total               2444925
 
 

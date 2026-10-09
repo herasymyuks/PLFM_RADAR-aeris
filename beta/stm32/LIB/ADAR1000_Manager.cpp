@@ -2,6 +2,7 @@
 #include "main.h"
 #include "stm32f7xx_hal.h"
 #include "ADAR1000_Manager.h"
+#include "adar1000_vm_tables.h"
 #include <cmath>
 #include <cstring>
 
@@ -19,18 +20,12 @@ static const struct {
     {GPIOA, GPIO_PIN_3}  // ADAR1000 #4
 };
 
-// Vector Modulator lookup tables
-const uint8_t ADAR1000Manager::VM_I[128] = {
-    // ... (same as in your original file)
-};
-
-const uint8_t ADAR1000Manager::VM_Q[128] = {
-    // ... (same as in your original file)
-};
-
-const uint8_t ADAR1000Manager::VM_GAIN[128] = {
-    // ... (same as in your original file)
-};
+// Vector Modulator lookup tables - ADAR1000 data sheet Rev. B, Tables 10-13 (pages 35-36), via
+// LIB/adar1000_vm_tables.h. BETA: the original file had empty placeholder initializers
+// ("same as in your original file"), i.e. every phase write was I = Q = 0.
+const uint8_t ADAR1000Manager::VM_I[128]    = ADAR1000_VM_TABLE_I;
+const uint8_t ADAR1000Manager::VM_Q[128]    = ADAR1000_VM_TABLE_Q;
+const uint8_t ADAR1000Manager::VM_GAIN[128] = ADAR1000_VM_TABLE_GAIN;
 
 ADAR1000Manager::ADAR1000Manager() {
     for (int i = 0; i < 4; ++i) {
@@ -707,8 +702,8 @@ void ADAR1000Manager::adarSetRxPhase(uint8_t deviceIndex, uint8_t channel, uint8
     uint8_t i_val = VM_I[phase % 128];
     uint8_t q_val = VM_Q[phase % 128];
 
-    uint32_t mem_addr_i = REG_CH1_RX_PHS_I + (channel & 0x03) * 2;
-    uint32_t mem_addr_q = REG_CH1_RX_PHS_Q + (channel & 0x03) * 2;
+    uint32_t mem_addr_i = REG_CH1_RX_PHS_I + ((channel - 1) & 0x03) * 2 /* BETA: callers pass 1..4 */;
+    uint32_t mem_addr_q = REG_CH1_RX_PHS_Q + ((channel - 1) & 0x03) * 2 /* BETA: callers pass 1..4 */;
 
     adarWrite(deviceIndex, mem_addr_i, i_val, broadcast);
     adarWrite(deviceIndex, mem_addr_q, q_val, broadcast);
@@ -719,8 +714,8 @@ void ADAR1000Manager::adarSetTxPhase(uint8_t deviceIndex, uint8_t channel, uint8
     uint8_t i_val = VM_I[phase % 128];
     uint8_t q_val = VM_Q[phase % 128];
 
-    uint32_t mem_addr_i = REG_CH1_TX_PHS_I + (channel & 0x03) * 2;
-    uint32_t mem_addr_q = REG_CH1_TX_PHS_Q + (channel & 0x03) * 2;
+    uint32_t mem_addr_i = REG_CH1_TX_PHS_I + ((channel - 1) & 0x03) * 2 /* BETA: callers pass 1..4 */;
+    uint32_t mem_addr_q = REG_CH1_TX_PHS_Q + ((channel - 1) & 0x03) * 2 /* BETA: callers pass 1..4 */;
 
     adarWrite(deviceIndex, mem_addr_i, i_val, broadcast);
     adarWrite(deviceIndex, mem_addr_q, q_val, broadcast);
@@ -728,13 +723,13 @@ void ADAR1000Manager::adarSetTxPhase(uint8_t deviceIndex, uint8_t channel, uint8
 }
 
 void ADAR1000Manager::adarSetRxVgaGain(uint8_t deviceIndex, uint8_t channel, uint8_t gain, uint8_t broadcast) {
-    uint32_t mem_addr = REG_CH1_RX_GAIN + (channel & 0x03);
+    uint32_t mem_addr = REG_CH1_RX_GAIN + ((channel - 1) & 0x03) /* BETA: callers pass 1..4 */;
     adarWrite(deviceIndex, mem_addr, gain, broadcast);
     adarWrite(deviceIndex, REG_LOAD_WORKING, 0x1, broadcast);
 }
 
 void ADAR1000Manager::adarSetTxVgaGain(uint8_t deviceIndex, uint8_t channel, uint8_t gain, uint8_t broadcast) {
-    uint32_t mem_addr = REG_CH1_TX_GAIN + (channel & 0x03);
+    uint32_t mem_addr = REG_CH1_TX_GAIN + ((channel - 1) & 0x03) /* BETA: callers pass 1..4 */;
     adarWrite(deviceIndex, mem_addr, gain, broadcast);
     adarWrite(deviceIndex, REG_LOAD_WORKING, LD_WRK_REGS_LDTX_OVERRIDE, broadcast);
 }

@@ -103,3 +103,19 @@ shows whole-file hunks; use `diff -u --strip-trailing-cr` to see the real change
 
 ## 2026-10-09 — host-link option B (DSN-LINK-01)
 - New `Core/Src/host_bridge.c`, `Core/Inc/host_bridge.h` (copies of `engineering/DESIGN/HOST_LINK/stm32/`): SPI1 bridge to the FPGA using the already-routed DIG_5 (PD13 → FPGA_CS_N, reconfigured as output), DIG_6 (PD14 → DRDY, EXTI14 rising), DIG_7 (PD15 spare). `HostBridge_Init()` after `MX_SPI1_Init()` (main.cpp), `HostBridge_Poll()` at the top of the main loop; `EXTI15_10_IRQHandler` added to `stm32f7xx_it.c`; `HAL_GPIO_EXTI_Callback` defined in host_bridge.c (no other user). Frame (≤ 2162 B) is CRC-checked and forwarded unchanged with `CDC_Transmit_FS`. SPI1 stays at the ADAR1000 setting (6.75 MHz, mode 0) → ≈ 2.5 ms per frame; the firmware must not start an ADAR1000 transaction while `HostBridge_Busy()`. Build: 0 errors; RAM 17 296 B, FLASH 91 948 B. Not run on hardware.
+
+## 2026-10-09 — ADAR1000 vector-modulator tables + bridge command set v2
+
+| File (beta) | Change | Category |
+|---|---|---|
+| `LIB/adar1000_vm_tables.h/.c` (NEW) | 128-entry I/Q phase words parsed mechanically from ADAR1000 data sheet Rev. B, Tables 10-13, pp. 35-36 (`pdftotext -layout`); bit layout per Tables 47/48 (bit 5 polarity, bits 4:0 magnitude); `VM_GAIN` all zero (D-19) | DEFECT (tables were empty) |
+| `LIB/ADAR1000_Manager.cpp` orig. 22-33 | empty `VM_I/VM_Q/VM_GAIN` initialisers → `ADAR1000_VM_TABLE_*` macros; `#include "adar1000_vm_tables.h"` | DEFECT |
+| `LIB/ADAR1000_Manager.cpp` `adarSetRxPhase/TxPhase/RxVgaGain/TxVgaGain` (orig. ~710-745) | register offset `(channel & 0x03)` → `((channel - 1) & 0x03)`: every caller passes channel 1..4 (`:161-180`, `:524-526`, `main.cpp:1113,1121`), so channel 1 wrote CH2's registers … channel 4 wrapped to CH1 (beam pattern rotated by one element per device) | DEFECT C10 |
+| `Core/Inc/host_bridge_proto.h`, `Core/Src/host_bridge_proto.c` (NEW) | HAL-free command set v2 (0x02 write/ack 0xA2, 0x03 read, 0x04 status) + ASCII `REG W/R` parser/executor/reply formatter | NEW (D-17, D-18) |
+| `Core/Inc/host_bridge.h`, `Core/Src/host_bridge.c` | `HostBridge_WriteReg/ReadReg/Status/ExecuteTextCommand` over a HAL transport that refuses while `s_busy` (frame read), checks all ADAR CS high, drives `FPGA_CS_N` and sets `s_busy` exactly like the frame read | NEW (D-17) |
+| `LIB/USBHandler.h/.cpp` | text-command branch: a CDC packet starting with `REG` is captured (≤64 chars, up to CR/LF/NUL) into a one-slot buffer, except while a synchronised settings packet is being assembled; `hasPendingCommand()/takePendingCommand()`; `reset()` clears it | NEW (D-17) |
+| `Core/Src/main.cpp` main loop (after `HostBridge_Poll()`) | executes a pending `REG` command and sends the reply with `CDC_Transmit_FS` (bounded 50 ms busy wait) | NEW (D-17) |
+| `CMakeLists.txt` | + `host_bridge_proto.c`, `adar1000_vm_tables.c` | BUILD |
+| `tests/test_adar_vm_tables.c`, `tests/test_host_bridge_cmds.c` (NEW), `tests/test_settings_parser.cpp` (+T10), `tests/run_tests.sh` | host tests | NEW |
+
+Build after this change: 0 errors, same 5 pre-existing warnings; RAM 17 480 B (5.33 %), FLASH 93 276 B (8.90 %); text 92 480 / data 788 / bss 16 704.

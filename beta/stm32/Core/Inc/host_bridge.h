@@ -6,6 +6,7 @@
 #define HOST_BRIDGE_H
 #include <stdint.h>
 #include <stdbool.h>
+#include "host_bridge_proto.h"   /* command set v2 (HOST_LINK_DESIGN.md §7) */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,6 +18,13 @@ bool     HostBridge_Busy(void);          /* true while a SPI1 bridge transfer is
 uint32_t HostBridge_FramesForwarded(void);
 uint32_t HostBridge_FramesDropped(void);
 uint32_t HostBridge_CrcErrors(void);
+/* Command set v2 (BETA, D-17). Return HB_OK or a negative hb_err. They refuse with HB_ERR_BUSY while a
+ * frame read is in progress and use the same FPGA_CS_N handling; call from the main loop only (not ISR). */
+int      HostBridge_WriteReg(uint16_t addr, uint32_t val);     /* 0x02, expects ack 0xA2 */
+int      HostBridge_ReadReg(uint16_t addr, uint32_t *val);     /* 0x03 */
+int      HostBridge_Status(hb_status_t *st);                   /* 0x04 */
+/* Executes one ASCII "REG W/R ..." line and writes the reply ("REG <addr> <value>\r\n" / "REG ERR\r\n"). */
+int      HostBridge_ExecuteTextCommand(const char *line, char *reply, size_t cap);
 uint16_t HostBridge_Crc16(const uint8_t *data, uint32_t len);   /* CRC-16/CCITT-FALSE */
 #ifdef __cplusplus
 }

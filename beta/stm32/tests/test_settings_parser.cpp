@@ -131,6 +131,25 @@ int main() {
       CHECK(std::memcmp(v.data() + 71, one_kib, 8) == 0);
       RadarSettings s; CHECK(s.parseFromUSB(v.data(), (uint32_t)v.size())); CHECK(s.getMapSize() == 1000.0); }
 
+    std::printf("T10 ASCII 'REG' command branch does not disturb the binary settings path\n");
+    { USBHandler h; char buf[80];
+      const char* c1 = "REG R 0x5\r\n";
+      h.processUSBData((const uint8_t*)c1, (uint32_t)std::strlen(c1));          // before the start flag
+      CHECK(h.hasPendingCommand()); CHECK(!h.isStartFlagReceived());
+      CHECK(h.takePendingCommand(buf, sizeof buf)); CHECK(std::strcmp(buf, "REG R 0x5") == 0);
+      CHECK(!h.hasPendingCommand());
+      send_padded(h, std::vector<uint8_t>(FLAG, FLAG + 4));
+      // a settings packet whose 2nd 64-byte chunk starts with "REG": must stay binary
+      std::vector<uint8_t> p2 = pkt; p2[64] = 'R'; p2[65] = 'E'; p2[66] = 'G';
+      send_padded(h, p2);
+      CHECK(!h.hasPendingCommand());
+      send_padded(h, pkt);
+      CHECK(h.getState() == USBHandler::USBState::READY_FOR_DATA);
+      const char* c2 = "REG W 0 7";
+      h.processUSBData((const uint8_t*)c2, (uint32_t)std::strlen(c2));          // after settings
+      CHECK(h.takePendingCommand(buf, sizeof buf)); CHECK(std::strcmp(buf, "REG W 0 7") == 0);
+      CHECK(h.getState() == USBHandler::USBState::READY_FOR_DATA); }
+
     std::printf("%s (%d failure(s))\n", failures ? "TEST FAILED" : "TEST PASSED", failures);
     return failures ? 1 : 0;
 }

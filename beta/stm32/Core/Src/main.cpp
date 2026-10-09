@@ -1711,6 +1711,18 @@ int main(void)
   while (1)
   {
 	  HostBridge_Poll();   /* DSN-LINK-01: forward one range-Doppler frame per DRDY over CDC */
+	  /* BETA (D-17): execute one pending ASCII "REG W/R" command received over CDC and reply in the
+	   * status stream. Runs here (not in the USB ISR) so SPI1 is never shared with an ISR. */
+	  {
+	      static char reg_line[USBHandler::MAX_CMD_LEN + 1];
+	      static char reg_reply[48];
+	      if (usbHandler.takePendingCommand(reg_line, sizeof reg_line)) {
+	          HostBridge_ExecuteTextCommand(reg_line, reg_reply, sizeof reg_reply);
+	          uint32_t t0 = HAL_GetTick();
+	          while (CDC_Transmit_FS((uint8_t*)reg_reply, (uint16_t)strlen(reg_reply)) == USBD_BUSY &&
+	                 HAL_GetTick() - t0 < 50u) { }
+	      }
+	  }
 	  //////////////////////////////////////////////////////////////////////////////////////
 	  //////////////////////// Check system health at the start of each loop////////////////
 	  //////////////////////////////////////////////////////////////////////////////////////

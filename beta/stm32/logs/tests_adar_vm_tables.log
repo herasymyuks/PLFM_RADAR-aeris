@@ -1,0 +1,7 @@
+T1 128 entries, every word uses only bits 5:0, no zero vector
+T2 data sheet spot values (Table 10..13): 0, 90, 180, 270 deg and two arbitrary rows
+T3 polarity convention: bit5 = 1 positive (quadrant signs)
+T4 decoded angle tracks k*2.8125 deg (|err| < 3.5 deg) and is strictly monotonic
+   max |angle error| = 3.12 deg
+T5 round trip: degreesTo7BitPhase(k*2.8125) == k and table lookup decodes back to that phase
+TEST PASSED (0 failure(s))

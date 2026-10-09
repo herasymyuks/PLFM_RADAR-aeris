@@ -7,4 +7,5 @@ T6 short packets (< 4 B) before the flag must not crash or trigger
 T7 invalid values are rejected and a later valid packet is accepted
 T8 RadarSettings::parseFromUSB rejects wrong markers / short input
 T9 big-endian decode against a hand-encoded constant (1.0 = 0x3FF0000000000000)
+T10 ASCII 'REG' command branch does not disturb the binary settings path
 TEST PASSED (0 failure(s))

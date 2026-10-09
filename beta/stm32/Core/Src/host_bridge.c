@@ -95,3 +95,42 @@ void HostBridge_Poll(void)
     if (crc_calc != crc_rx) { s_crc_err++; return; }
     if (cdc_send_all(s_rx + 1, total)) s_forwarded++; else s_dropped++;
 }
+
+/* ---- command set v2 (BETA, D-17): register access through the same CS / busy discipline ---- */
+static int hb_hal_xfer(void *ctx, const uint8_t *tx, uint8_t *rx, uint16_t len)
+{
+    (void)ctx;
+    if (s_busy) return -1;
+    /* ADAR1000 chip selects must be high while FPGA_CS_N is low (option_b_signal_map.csv) */
+    if ((GPIOA->ODR & (ADAR_1_CS_3V3_Pin | ADAR_2_CS_3V3_Pin | ADAR_3_CS_3V3_Pin | ADAR_4_CS_3V3_Pin)) !=
+        (ADAR_1_CS_3V3_Pin | ADAR_2_CS_3V3_Pin | ADAR_3_CS_3V3_Pin | ADAR_4_CS_3V3_Pin)) return -1;
+    s_busy = true;
+    HAL_GPIO_WritePin(HB_CS_PORT, HB_CS_PIN, GPIO_PIN_RESET);
+    HAL_StatusTypeDef st = HAL_SPI_TransmitReceive(&hspi1, (uint8_t *)tx, rx, len, HB_SPI_TIMEOUT_MS);
+    HAL_GPIO_WritePin(HB_CS_PORT, HB_CS_PIN, GPIO_PIN_SET);
+    s_busy = false;
+    return (st == HAL_OK) ? 0 : -1;
+}
+
+int HostBridge_WriteReg(uint16_t addr, uint32_t val)
+{
+    if (s_busy) return HB_ERR_BUSY;
+    return hb_proto_write_reg(hb_hal_xfer, NULL, addr, val);
+}
+
+int HostBridge_ReadReg(uint16_t addr, uint32_t *val)
+{
+    if (s_busy) return HB_ERR_BUSY;
+    return hb_proto_read_reg(hb_hal_xfer, NULL, addr, val);
+}
+
+int HostBridge_Status(hb_status_t *st)
+{
+    if (s_busy) return HB_ERR_BUSY;
+    return hb_proto_status(hb_hal_xfer, NULL, st);
+}
+
+int HostBridge_ExecuteTextCommand(const char *line, char *reply, size_t cap)
+{
+    return hb_cmd_execute(line, hb_hal_xfer, NULL, reply, cap);
+}

@@ -48,13 +48,13 @@ bash beta/stm32/build.sh               # Debug (-Og -g3); or: bash beta/stm32/bu
 `logs/build_warnings.log`, `logs/build_errors.log`, `logs/size.log` and copies
 `aeris10_fw.elf/.hex/.bin/.map` to `build_out/`. **Exit code 0 only on a clean link.**
 
-### Result on 2026-10-09 (clean build, Debug)
+### Result on 2026-10-09 (clean build, Debug; includes host bridge v2 + VM tables)
 ```
 Memory region         Used Size  Region Size  %age Used
-             RAM:       12952 B       320 KB      3.95%
-           FLASH:       91276 B         1 MB      8.70%
+             RAM:       17480 B       320 KB      5.33%
+           FLASH:       93276 B         1 MB      8.90%
    text    data     bss     dec     hex filename
-  90480     788   12176  103444   19414 aeris10_fw.elf
+  92480     788   16704  109972   1ad94 aeris10_fw.elf
 ```
 0 errors. 5 unique warnings, all pre-existing code (`logs/build_warnings.log`): `main.cpp` unused `settings`
 reference (the original commented-out block), `BMP180.cpp` misleading indentation ×3, `TinyGPS++.cpp` implicit
@@ -70,12 +70,14 @@ so it was run against a scratch copy laid out that way.)
 ```sh
 bash beta/stm32/tests/run_tests.sh     # needs cc/c++ + python3 only
 ```
-Result 2026-10-09: **4/4 PASSED** (`logs/tests_*.log`)
+Result 2026-10-09: **6/6 PASSED** (`logs/tests_*.log`)
 | Test | What it checks |
 |---|---|
-| `test_settings_parser.cpp` | real `USBHandler.cpp` + `RadarSettings.cpp`: start flag `[23,46,158,237]`, 82-byte big-endian `SET…END` packet, unpadded and GUI-style 64-byte zero-padded framing, flag+settings in one packet, `SET` straddling a packet boundary, byte-at-a-time, short packets, invalid-value rejection and recovery, big-endian decode against a hand-encoded constant (9 cases) |
+| `test_settings_parser.cpp` | real `USBHandler.cpp` + `RadarSettings.cpp`: start flag `[23,46,158,237]`, 82-byte big-endian `SET…END` packet, unpadded and GUI-style 64-byte zero-padded framing, flag+settings in one packet, `SET` straddling a packet boundary, byte-at-a-time, short packets, invalid-value rejection and recovery, big-endian decode against a hand-encoded constant, `REG` text commands coexisting with the binary path (10 cases) |
 | `test_beam_matrix.c` | `aeris_beam.c` (verbatim arithmetic of `initializeBeamMatrices`/`degreesTo7BitPhase`): 7-bit phase conversion, reference element, range, hand-computed samples, mirror symmetry, linearity |
 | `test_ad9523_regs.c` | real `ad9523.c` + `no_os_spi.c` against a mock SPI register file: full `ad9523_setup()` path, channel distribution registers for OUT0/1/4/5/6/7/8/9/10/11 (dividers 12/9/36/180/60/30, LVDS/CMOS modes), unused outputs powered down, IO_UPDATE/SYNC/status. **This test found defect C8** (see below) |
+| `test_adar_vm_tables.c` | ADAR1000 VM tables vs data sheet Tables 10-13: 128 entries, bits 7:6 clear, quadrant signs, spot rows 0/45/90/180/230.625/270/312.1875/357.1875°, strictly monotonic decoded phase (max error 3.12°), `degreesTo7BitPhase` → table round trip |
+| `test_host_bridge_cmds.c` | bridge v2 byte sequences with a mock SPI (0x02 + ack 0xA2 / no ack / 0xEE / transfer error, 0x03 LE decode, 0x04 status fields), ASCII `REG W/R` parser (hex/decimal, errors) and reply formatting |
 | `check_i2c_timing.py` | decodes TIMINGR: original `0x00808CD2`@36 MHz ≈ 100 kHz; beta `0x10916EA0`@54 MHz ≈ 97.6 kHz, I2C Standard-mode minima met |
 
 Not host-testable as-is (need HAL types): `stm32_spi_prescaler_for()`, the USB glue, power sequencing.
@@ -91,6 +93,8 @@ Not host-testable as-is (need HAL types): `stm32_spi_prescaler_for()`, the USB g
 | C7 | SPI chip selects driven low permanently and never toggled; SPI clock PCLK/2 regardless of the 10 MHz request | CS index table + toggling in `stm32_spi.c`, CS parked high, prescaler from `max_speed_hz` |
 | C8 | `ad9523_init()` called after `pdata` was configured → whole AD9523 channel/PLL configuration reset to defaults | call removed |
 | C9 | `ad9523_setup()` executed twice (first device leaked) | single call after reset release |
+| C10 | ADAR1000 phase/gain setters used `(channel & 3)` with 1-based channels → element pattern rotated by one channel per device | `((channel - 1) & 3)` |
+| — | `VM_I/VM_Q/VM_GAIN` empty → every phase write was I = Q = 0 | tables from the data sheet (D-19) |
 | U10 | IDQ servo for DAC2 read ADC2 into `adc1_readings` and computed from stale data | `adc2_readings` |
 | — | `printf()` → weak `__io_putchar` undefined → call to address 0 | retargeted to USART3 |
 | — | `USBHandler::processStartFlag` unsigned underflow on packets < 4 bytes | guarded |
@@ -104,7 +108,16 @@ D-03 I2C TIMINGR 0x10916EA0 (computed, not CubeMX) · D-04 ADF4382 pins per sche
 D-06 SPI 6.75 MHz (≤10 MHz) · D-07 OTG_FS device-only PA11/PA12, no VBUS sensing · D-08 USB IRQ priority 0 ·
 D-09 VID/PID 0x0483:0x5740 PLACEHOLDER · D-10 CDC RX hook · D-11 PA sequencing: `+5V5_PA` before VG DAC
 programming, VG before VD, VD removed first on power-down (delays are estimates) · D-12 AD9523 single setup ·
-D-13 compiler flags = CubeIDE defaults (assumed) · D-14 excluded sources · D-15 pinned Cube commits · D-16 `GPS_Init`.
+D-13 compiler flags = CubeIDE defaults (assumed) · D-14 excluded sources · D-15 pinned Cube commits · D-16 `GPS_Init` · D-17 REG commands executed from the main loop · D-18 bridge v2 framing assumptions · D-19 VM tables / VM_GAIN = 0.
+
+## 6a. Beam steering and host register access (added 2026-10-09)
+- **Beam steering is now functional in software**: `ADAR1000_Manager` VM tables come from the ADAR1000 data sheet
+  (Rev. B Tables 10-13, `LIB/adar1000_vm_tables.h`), and the channel-offset bug C10 is fixed. Phase words for the 31
+  beam positions go through `degreesTo7BitPhase` → table → CHx_RX/TX_PHASE_I/Q. **Not verified on hardware**: no
+  phase/gain measurement, no array calibration.
+- **Bridge command set v2** (`Core/Src/host_bridge*.c`): `HostBridge_WriteReg/ReadReg/Status` and the CDC text
+  commands `REG W <addr> <value>` / `REG R <addr>` → `REG <addr> <value>\r\n` or `REG ERR\r\n` in the status
+  stream (D-17, D-18). The FPGA side of 0x02..0x04 is not implemented in `beta/fpga` yet.
 
 ## 7. Unresolved / remaining work
 1. **Regenerate the CubeMX project** from `CUBEMX_SETTINGS.md` and diff the generated `usbd_conf.c`, `usbd_desc.c`,
@@ -115,9 +128,8 @@ D-13 compiler flags = CubeIDE defaults (assumed) · D-14 excluded sources · D-1
    216 MHz (SWO/USART3 output at 115200 proves the clock), CDC enumeration (placeholder VID/PID), start flag +
    settings acceptance, enable-rail order on a scope (power_rails.md §3 + D-11), AD9523 lock, ADF4382 lock, SPI
    waveforms (CS, ≤10 MHz).
-3. `ADAR1000_Manager.cpp:23-33` — `VM_I`, `VM_Q`, `VM_GAIN` are **empty placeholder tables** ("same as in your
-   original file"): every phase/gain write is 0 → beam steering cannot work. Needs the ADAR1000 vector-modulator
-   tables from the datasheet/original project.
+3. ADAR1000 phase accuracy on hardware (data-sheet tables realise the nominal phase within ~3°; array calibration
+   needed); FPGA implementation of bridge commands 0x02..0x04 and an end-to-end `REG` test.
 4. ADAR1000 SCLK limit and FPGA level-shifter bandwidth (SPI1 clock, D-06); AD9523/ADF4382 register-level
    correctness; ADF4382 `DELADJ` "PWM" is a stub (`adf4382a_manager.c:433-460`).
 5. VBUS wiring to PA9 (D-07); production VID/PID (D-09); USB interrupt priority policy (D-08).

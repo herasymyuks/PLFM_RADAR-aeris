@@ -1,13 +1,1 @@
-[1/4] Building C object CMakeFiles/aeris10_fw.dir/Core/Src/stm32f7xx_it.c.obj
-[2/4] Building C object CMakeFiles/aeris10_fw.dir/Core/Src/host_bridge.c.obj
-[3/4] Building CXX object CMakeFiles/aeris10_fw.dir/Core/Src/main.cpp.obj
-/Users/void/PLFM_RADAR/beta/stm32/Core/Src/main.cpp: In function 'int main()':
-/Users/void/PLFM_RADAR/beta/stm32/Core/Src/main.cpp:1535:40: warning: unused variable 'settings' [-Wunused-variable]
- 1535 |                   const RadarSettings& settings = usbHandler.getSettings();
-      |                                        ^~~~~~~~
-[4/4] Linking CXX executable aeris10_fw.elf; Size report and HEX/BIN generation
-Memory region         Used Size  Region Size  %age Used
-             RAM:       17296 B       320 KB      5.28%
-           FLASH:       91948 B         1 MB      8.77%
-   text	   data	    bss	    dec	    hex	filename
-  91152	    788	  16520	 108460	  1a7ac	/Users/void/PLFM_RADAR/beta/stm32/build/aeris10_fw.elf
+ninja: no work to do.

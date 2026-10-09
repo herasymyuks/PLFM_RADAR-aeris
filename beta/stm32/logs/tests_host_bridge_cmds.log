@@ -1,0 +1,7 @@
+T1 0x02 write: 8 bytes, addr/data little-endian, ack 0xA2 in byte 7
+T2 0x02 write without ack / with 0xEE (unknown command) / transport failure
+T3 0x03 read: 7 bytes, value from bytes 3..6 little-endian
+T4 0x04 status: 9 bytes, four little-endian u16 fields
+T5 ASCII parser: hex and decimal, case, whitespace, errors
+T6 execute: write -> REG <addr> <value>; read -> value from bus; errors -> REG ERR
+TEST PASSED (0 failure(s), 13 mock transfers)
