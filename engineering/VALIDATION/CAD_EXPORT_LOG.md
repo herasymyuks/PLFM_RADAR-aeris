@@ -118,3 +118,7 @@ _Run 2026-10-08T22:11:11Z with kicad-cli 10.0.6_
 | 2026-10-08T22:36:52Z | MAIN_BOARD | dxf-fab-regen/ipc-gzip | 0 | `manual re-export without --uc; gzip ipc xml > 10 MB` |
 | 2026-10-08T22:36:53Z | POWER_SUPPLY | dxf-fab-regen/ipc-gzip | 0 | `manual re-export without --uc; gzip ipc xml > 10 MB` |
 | 2026-10-08T22:47:55Z | FREQUENCY_SYNTHESIZER | stray-dru-moved | 0 | `kicad-cli import wrote Clocks_Freq_Synth_board.kicad_dru next to the EAGLE source; moved to kicad/FREQUENCY_SYNTHESIZER_from_eagle.kicad_dru` |
+| 2026-10-09T13:29:24Z | RF_PA | pdf-reexport-autoscale | 0 | `--scale 0 added to all pdf exports` |
+| 2026-10-09T13:29:27Z | FREQUENCY_SYNTHESIZER | pdf-reexport-autoscale | 0 | `--scale 0 added to all pdf exports` |
+| 2026-10-09T13:29:46Z | MAIN_BOARD | pdf-reexport-autoscale | 0 | `--scale 0 added to all pdf exports` |
+| 2026-10-09T13:29:50Z | POWER_SUPPLY | pdf-reexport-autoscale | 0 | `--scale 0 added to all pdf exports` |

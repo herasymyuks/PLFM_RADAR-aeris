@@ -98,12 +98,12 @@ for B in "${BOARDS[@]}"; do
   # 5 drills (Excellon mm, PTH/NPTH separate, PDF map, report)
   run "$B" drill "$KC" pcb export drill --format excellon --excellon-units mm --excellon-separate-th --generate-map --map-format pdf --generate-report --report-path "$O/drill/drill_report.txt" -o "$O/drill/" "$PCB"
   # 6 drawings (PDF): copper per page, assembly top/bottom, outline
-  run "$B" pdf-copper "$KC" pcb export pdf --check-zones --mode-multipage --cl Edge.Cuts -l "$CU" --ibt -o "$O/drawings/${B}_copper_layers.pdf" "$PCB"
-  run "$B" pdf-asm-top "$KC" pcb export pdf --mode-single --sp -l "F.Fab,F.SilkS,Edge.Cuts" --ibt --black-and-white -o "$O/drawings/${B}_assembly_top.pdf" "$PCB"
-  run "$B" pdf-asm-bot "$KC" pcb export pdf --mode-single --sp -m -l "B.Fab,B.SilkS,Edge.Cuts" --ibt --black-and-white -o "$O/drawings/${B}_assembly_bottom_mirrored.pdf" "$PCB"
-  run "$B" pdf-top "$KC" pcb export pdf --check-zones --mode-single -l "F.Cu,F.SilkS,Edge.Cuts" --ibt -o "$O/drawings/${B}_top_layer.pdf" "$PCB"
-  run "$B" pdf-bottom "$KC" pcb export pdf --check-zones --mode-single -m -l "B.Cu,B.SilkS,Edge.Cuts" --ibt -o "$O/drawings/${B}_bottom_layer_mirrored.pdf" "$PCB"
-  run "$B" pdf-outline "$KC" pcb export pdf --mode-single -l "Edge.Cuts,Dwgs.User,Cmts.User" --ibt --black-and-white -o "$O/drawings/${B}_outline.pdf" "$PCB"
+  run "$B" pdf-copper "$KC" pcb export pdf --check-zones --mode-multipage --cl Edge.Cuts -l "$CU" --ibt --scale 0 -o "$O/drawings/${B}_copper_layers.pdf" "$PCB"
+  run "$B" pdf-asm-top "$KC" pcb export pdf --mode-single --sp -l "F.Fab,F.SilkS,Edge.Cuts" --ibt --scale 0 --black-and-white -o "$O/drawings/${B}_assembly_top.pdf" "$PCB"
+  run "$B" pdf-asm-bot "$KC" pcb export pdf --mode-single --sp -m -l "B.Fab,B.SilkS,Edge.Cuts" --ibt --scale 0 --black-and-white -o "$O/drawings/${B}_assembly_bottom_mirrored.pdf" "$PCB"
+  run "$B" pdf-top "$KC" pcb export pdf --check-zones --mode-single -l "F.Cu,F.SilkS,Edge.Cuts" --ibt --scale 0 -o "$O/drawings/${B}_top_layer.pdf" "$PCB"
+  run "$B" pdf-bottom "$KC" pcb export pdf --check-zones --mode-single -m -l "B.Cu,B.SilkS,Edge.Cuts" --ibt --scale 0 -o "$O/drawings/${B}_bottom_layer_mirrored.pdf" "$PCB"
+  run "$B" pdf-outline "$KC" pcb export pdf --mode-single -l "Edge.Cuts,Dwgs.User,Cmts.User" --ibt --scale 0 --black-and-white -o "$O/drawings/${B}_outline.pdf" "$PCB"
   # 7 SVG per layer (board area only)
   run "$B" svg "$KC" pcb export svg --check-zones --mode-multi --page-size-mode 2 -l "$CU,F.SilkS,B.SilkS,F.Mask,B.Mask,Edge.Cuts,F.Fab,B.Fab" -o "$O/svg/" "$PCB"
   run "$B" svg-top "$KC" pcb export svg --check-zones --mode-single --page-size-mode 2 -l "F.Cu,F.SilkS,Edge.Cuts" -o "$O/svg/${B}_top_composite.svg" "$PCB"

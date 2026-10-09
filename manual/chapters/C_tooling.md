@@ -1,13 +1,114 @@
-# Tools and scripts (what each generator does, how to regenerate)
+# Appendix C — Tools and scripts: what each generator does and how to regenerate
 
-<!-- STUB: to be written by Claude Design per MANUAL_BUILD_SPEC.md -->
+**Author of this appendix:** Antidrone Ukraine · antidrone.cc.
 
-**Status summary:** (to fill — list the status label of every item in this chapter)
+**Status summary:** documentation of the repository's own automation (`tools/`) and of the external tools installed on the authoring workstation. Every purpose statement is taken from the script's module docstring or header comment (read on 2026-10-09 with a shell loop over `tools/*`); every external version is the output of the tool's own `--version` call on the same date. No script modifies the upstream design files; outputs go to `engineering/`, `docs/`, `beta/`, `manual/` or `build/`.
 
-**Sources:** `tools/*.py` docstrings, `engineering/README.md`, `beta/README.md`
+**Sources:** `tools/*.py`, `tools/*.sh`, `tools/vivado/create_project.tcl` (docstrings/headers), `engineering/README.md` ("Regenerate everything"), `engineering/DESIGN/README.md` ("Regenerate"), `beta/README.md`, `beta/stm32/README.md` §1–§3, `beta/pcb/README.md`, `beta/fpga/README.md`, `docs/TESTING/VALIDATION_PLAN.md`.
 
-**Planned figures:** —
+## C.1 Repository scripts (`tools/`)
 
-## Content
+| Script | Purpose (from its docstring) | Inputs | Outputs | Regenerate / run |
+|---|---|---|---|---|
+| `build_manual.py` | "Build the AERIS-10 manual: concatenate manual/chapters/*.md in the order of manual/00_OUTLINE.md, number figures, resolve relative image links, write manual/AERIS10_MANUAL.md, manual/build/AERIS10_MANUAL.html (images embedded as data URIs; SVG inline) and manual/build/AERIS10_MANUAL.pdf (headless Chrome). `--check` only validates … Stdlib only (+ Google Chrome for the PDF). Exit 0 ok, 1 validation problems, 2 error." | `manual/00_OUTLINE.md`, `manual/chapters/*.md`, figure files | `manual/AERIS10_MANUAL.md`, `manual/build/*.html`, `*.pdf` | `python3 tools/build_manual.py [--check] [--no-pdf]` |
+| `check_doc_links.py` | "Markdown link and path-reference validator … Scans every *.md file for Markdown links and backticked repository paths and verifies that each target exists relative to the referencing file's directory" | all `*.md` | report, exit code | `python3 tools/check_doc_links.py` (R-02) |
+| `check_fpga_constraints.py` | "FPGA constraint completeness checker … reports unresolved placeholders, top-level ports with no PACKAGE_PIN constraint, ports with no IOSTANDARD" | top-level `.v`, `.xdc` | report, exit code | `python3 tools/check_fpga_constraints.py [--top … --xdc …]` (F-04) |
+| `check_manufacturing_files.py` | "PCB manufacturing-package inventory … checks presence of schematic, board, Gerber set, NC drill, pick-and-place, BOM, assembly drawing, fabrication drawing, netlist, DRC/ERC reports. Reports a readiness table. Never creates files." | repository tree | readiness table, exit code | `python3 tools/check_manufacturing_files.py [--include-generated]` (B-06) |
+| `check_missing_files.py` | "Expected-artifact manifest checker … Each entry has an ID that matches docs/03_MISSING_COMPONENTS.md. Never creates files." | manifest in the script | report, exit code | `python3 tools/check_missing_files.py` (R-03) |
+| `check_python_imports.py` | "Python dependency extractor and import checker … Parses every *.py file with `ast` (no execution), lists imported top-level modules, classifies them as stdlib / third-party / local, maps third-party modules to PyPI distribution names, and (optionally, --try-import) tries importing each" | `*.py` under `--dir` | report, exit code | `python3 tools/check_python_imports.py [--dir …] [--try-import]` (P-02/P-03) |
+| `check_stm32_includes.py` | "STM32 firmware include-graph and missing-header analyser … classifies each header as LOCAL / HAL / …" | C/C++ sources under `9_Firmware/9_1_Microcontroller` (or `--root`) | report, exit code | `python3 tools/check_stm32_includes.py [--root …]` (S-01) |
+| `design_antenna_array.py` | "PROPOSED DESIGN — 16-row × 8-patch series-fed microstrip array for AERIS-10 (10.5 GHz). Reads engineering/DESIGN/design_parameters.json, computes first-order patch and microstrip dimensions … and writes engineering/DESIGN/ANTENNA/kicad/aeris10_patch_array.kicad_pcb" | `design_parameters.json` | `engineering/DESIGN/ANTENNA/` (KiCad board, drawings, calc sheet, openEMS model) | `python3 tools/design_antenna_array.py` |
+| `design_antenna_tune.py` | "Tune the patch length of the openEMS row model until the resonance sits at f0 (secant on L_SCALE). Runs … openems_patch_row.py with the openEMS Python venv; writes … TUNING_LOG.md and the final s11.csv / s11 plot / pattern." | openEMS model | `engineering/DESIGN/ANTENNA/simulation/` | `python3 tools/design_antenna_tune.py [--iters 3] [--python PATH]` |
+| `design_calcs.py` | "PROPOSED DESIGN calculations (BETA, no measurement): 2-D thermal map of the PA heat-spreader plate, pedestal drive torque, and the radar range equation. Stdlib only." | `design_parameters.json`, `THERMAL/thermal_summary.json`, `CAD/detail/parts_list.json`, `ANTENNA/simulation/tuning_result.json` | `engineering/DESIGN/CALCS/DESIGN_CALCULATIONS.md`, `thermal_map_*.svg` | `python3 tools/design_calcs.py` |
+| `design_enclosure_detail_freecad.py` | "PROPOSED DESIGN — detailed radar-head enclosure and pedestal (DSN-MECH-06…09), FreeCAD headless. Builds every mechanical part as its own solid … writes to engineering/DESIGN/MECHANICAL/CAD/detail/" | `tools/design_layout.py`, PCB hole tables | `aeris10_enclosure_detail.FCStd`, STEP, `parts_list.json`, isometric PNG/PDF | `freecadcmd -c "exec(open('tools/design_enclosure_detail_freecad.py').read())"` |
+| `design_enclosure_drawings.py` | "PROPOSED DESIGN — enclosure detail drawings (no CAD needed): sheet-metal flat patterns with bend lines (DSN-MECH-06), assembly section with fastener balloons (DSN-MECH-07) and the mechanical parts list … Bend allowance: 90°, inside radius R = t, K = 0.4 → BA = π/2·(R + K·t)." | `CAD/detail/parts_list.json` | DSN-MECH-06/07 SVG/PDF/PNG, `MECHANICAL_PARTS_LIST.md` | `python3 tools/design_enclosure_drawings.py` |
+| `design_host_link.py` | "PROPOSED DESIGN — FPGA → host data path (DSN-LINK-01). Option A 'FT601 on Main Board rev. B' … Option B 'SPI bridge, no PCB change'" | Main Board netlist, RTL geometry | `engineering/DESIGN/HOST_LINK/` (design note, pin plan, signal map) | `python3 tools/design_host_link.py` |
+| `design_layout.py` | "Shared PROPOSED head/pedestal layout for the AERIS-10 design generators (D-08, D-09, D-11, D-12, D-13). Coordinate system of the HEAD … Boards are VERTICAL, parallel to the antenna, in depth order" | `design_parameters.json` | prints the station table (JSON) when run directly; imported by the other generators | `python3 tools/design_layout.py` |
+| `design_mechanical_drawings.py` | "PROPOSED DESIGN — 2-D engineering drawings (SVG, scale 1:1) of the AERIS-10 head and pedestal plus the harness schedule, from tools/design_layout.py (no CAD application needed). Outputs … DSN-MECH-01 … DSN-MECH-05" | `design_layout.py`, KiCad P&P files | `engineering/DESIGN/MECHANICAL/drawings/`, `engineering/DESIGN/HARNESS/` | `python3 tools/design_mechanical_drawings.py [--harness]` |
+| `design_mechanical_freecad.py` | "PROPOSED DESIGN — parametric 3-D model of the AERIS-10 radar head and pedestal in FreeCAD. Run with FreeCAD's Python (headless) … Reads tools/design_layout.py" | `design_layout.py` | `engineering/DESIGN/MECHANICAL/CAD/` (FCStd, STEP, STL, DXF page, mass table, isometrics) | `~/Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd -c "exec(open('tools/design_mechanical_freecad.py').read())"` |
+| `design_pa_supply_schematic.py` | "PROPOSED DESIGN — block-level schematic, netlist and BOM of the 22 V PA drain supply / switch module (DSN-PSU-01, decision D-14). Draws an editable SVG … Component-level capture in KiCad is the next step (MDR-12); values come from tools/design_thermal.py." | `THERMAL/thermal_summary.json` | `engineering/DESIGN/ELECTRICAL/PA_SUPPLY_22V/` | `python3 tools/design_pa_supply_schematic.py` |
+| `design_thermal.py` | "PROPOSED DESIGN — thermal budget of the 16 × QPA2962 PA set and sizing of the 22 V drain supply. Reads … design_parameters.json and writes … THERMAL_AND_PA_SUPPLY.md (+ thermal_summary.json). All formulas are first-order engineering estimates" | `design_parameters.json` | `engineering/DESIGN/THERMAL/` | `python3 tools/design_thermal.py` |
+| `eagle_svg_common.py` | "Shared helpers for rendering Autodesk EAGLE XML (.sch/.brd) to SVG. Stdlib only. Used by render_eagle_board.py and render_eagle_schematic.py." Holds the `ATTRIBUTION` title-block line (Antidrone Ukraine · antidrone.cc) applied when figures are regenerated. | — | library | imported |
+| `extract_eagle_netlist.py` | "Extract per-part pin/net connectivity from an EAGLE 6/7 XML schematic … provide verifiable evidence (net name <-> device pin <-> package pad) for FPGA/MCU pin-assignment reconstruction. Read-only" | `.sch` | CSV named by `--out` | `python3 tools/extract_eagle_netlist.py <sch> --part U42 --out …` (S-07) |
+| `fpga_lint.sh` | "syntax/elaboration check of the AERIS-10 FPGA RTL with open-source tools. Runs iverilog -g2012 elaboration of radar_system_top, verilator --lint-only, iverilog elaboration of the testbench (expected to fail: SystemVerilog assertions) … Never modifies RTL. Exit code: 0 if step 1 AND step 2 succeed, 1 otherwise, 3 if no tool found. Dependencies: bash 3.2+, iverilog >= 11 (tested 13.0), verilator >= 5 (tested 5.052)" | `9_Firmware/9_2_FPGA/*.v` | logs in `build/lint/` | `bash tools/fpga_lint.sh` (F-01…F-03) |
+| `gen_assembly_exploded_view.py` | "CONCEPTUAL exploded assembly view of the AERIS-10 electronics set (SVG). Board outlines and hole positions are taken from the EAGLE .brd files (verified geometry …). The vertical ARRANGEMENT, the spacing, the antenna panel and the host computer are CONCEPTUAL" | `.brd` files | `engineering/ASSEMBLY/EXPLODED_VIEWS/` | `python3 tools/gen_assembly_exploded_view.py` |
+| `gen_board_outline_svg.py` | "Draw an outline/mounting-hole dimension drawing (SVG) from an EAGLE .brd. Verified geometry only … The drawing contains NO enclosure, NO component outlines and NO thickness" | `.brd` | SVG | `python3 tools/gen_board_outline_svg.py …` (B-07) |
+| `gen_drawing_register.py` | "Drawing register for engineering/ — definition table + existence/validity check. Writes engineering/DRAWING_REGISTER.md from the REGISTER table below and, with --check, verifies that every native file and export exists, is non-empty and (for SVG/DOT/PDF) is well-formed" | register table in the script, files | `engineering/DRAWING_REGISTER.md` | `python3 tools/gen_drawing_register.py --check` (AC-E1; run 2026-10-09: 89 drawings, 0 problems) |
+| `gen_eagle_bom.py` | "Extract a bill of materials from an EAGLE 6+/7/9 XML schematic … Output: CSV (grouped), optional per-reference CSV" | `.sch` | `docs/BOM/*.csv` | `python3 tools/gen_eagle_bom.py …` (B-05) |
+| `gen_engineering_pcb_docs.py` | "Generate the per-board manufacturing-package README (engineering/PCB/<BOARD>/README.md), copy the schematic-derived BOM next to the exports, and write the EAGLE↔KiCad cross-check (engineering/VALIDATION/PCB_CROSS_CHECK.md)" | `.brd`, KiCad pipeline outputs | README/STACKUP per board, cross-check | `python3 tools/gen_engineering_pcb_docs.py` |
+| `gen_inventory_doc.py` | "Generate docs/01_REPOSITORY_INVENTORY.md (Path / File type / Subsystem / Purpose / Dependencies / Status) from the live file tree plus a curated purpose/dependency map … Writes ONLY the --out file." | file tree | `docs/01_REPOSITORY_INVENTORY.md` | `python3 tools/gen_inventory_doc.py` (R-01) |
+| `gen_manual_asset_index.py` | "Scan the repository for figures usable in the manual (PNG/SVG/PDF/JPG/DOT/MMD renders) and write manual/ASSET_INDEX.md: one row per asset with path, type, size, origin, proposed caption and status" | repository tree, drawing register | `manual/ASSET_INDEX.md` | `python3 tools/gen_manual_asset_index.py` |
+| `gen_mechanical_package.py` | "Build engineering/MECHANICAL/ from verified PCB geometry. For every board it extracts from the EAGLE .brd XML: the board outline (layer 20 Dimension), all non-plated holes and mounting pads … and writes … <BOARD>_dimensions.md" | `.brd` | `engineering/MECHANICAL/` (DXF, STEP, PDF, dimension sheets, plan view) | `python3 tools/gen_mechanical_package.py` |
+| `gen_python_module_graph.py` | "Python GUI module/import graph. For every .py file under --src … parses the file with ast and records imports, classified as stdlib / third-party / local" | `9_Firmware/9_3_GUI/*.py` | `engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_modules.dot/.md` | `python3 tools/gen_python_module_graph.py` (SD-05) |
+| `gen_schematic_reports.py` | "Schematic connectivity reports from the EAGLE XML files (no EAGLE needed). For every board … writes netlist CSV (by net, by part), connection report …" | `.sch` | `engineering/ELECTRICAL/netlists/`, `connection_diagrams/` | `python3 tools/gen_schematic_reports.py` (AC-E3) |
+| `gen_verilog_hierarchy.py` | "Verilog module hierarchy extractor. Parses every .v file under --rtl (recursively, nothing skipped), finds module definitions and module instantiations and writes" the DOT/Markdown hierarchy | RTL directory | `fpga_module_hierarchy.dot/.md` | `python3 tools/gen_verilog_hierarchy.py --rtl <dir> --out <dir>` (SD-01) |
+| `gen_xdc_from_schematic.py` | "Build a candidate pin-constraint file for radar_system_top from the Main Board EAGLE schematic (RADAR_Main_Board.sch, FPGA part U42). Every PACKAGE_PIN written by this tool is taken verbatim from the schematic pad of the FPGA symbol; the mapping 'schematic net -> RTL port' is a documented, reviewable table with a confidence level." | `RADAR_Main_Board.sch` | candidate XDC + `PIN_MAP_FROM_SCHEMATIC.md` | `python3 tools/gen_xdc_from_schematic.py` (F-05) |
+| `kicad_pcb_pipeline.sh` | "import the EAGLE .brd files into KiCad and export the complete manufacturing / drawing package with kicad-cli (KiCad >= 10.0). Non-destructive: original EAGLE files are only read. Outputs go to engineering/PCB/<BOARD>/ and every command + exit code is appended to engineering/VALIDATION/CAD_EXPORT_LOG.md." | `.brd` files | `engineering/PCB/<BOARD>/` (Gerber, drill, PDF drawings, SVG layers, DXF/STEP, P&P, IPC-2581, IPC-D-356, DRC, 3-D renders) | `bash tools/kicad_pcb_pipeline.sh [--kicad-cli PATH] [--out DIR] [BOARD …]` |
+| `kicad_project_from_dru.py` | "Create a KiCad project file (.kicad_pro) whose design rules come from the EAGLE design rules (<designrules> block) stored in an EAGLE .brd file" — otherwise DRC runs with KiCad defaults | `.brd` | `.kicad_pro` | called by the pipeline |
+| `render_eagle_schematic.py` | "Render an Autodesk EAGLE schematic (.sch, XML) to one SVG per sheet. Stdlib only; no EAGLE needed … a documentation rendering (SOURCE-DERIVED), not a CAD export: EAGLE's vector font is replaced by a monospace system font" | `.sch` | `engineering/ELECTRICAL/schematics/<BOARD>/svg/` | `python3 tools/render_eagle_schematic.py <sch> --out … --board … --root .` |
+| `repo_inventory.py` | "AERIS-10 repository inventory generator. Walks the repository, classifies every file by type and subsystem, and prints a Markdown or CSV table. Non-destructive" | file tree | table on stdout or `--out` | `python3 tools/repo_inventory.py` |
+| `run_all_checks.sh` | "runs every AERIS-10 static check and summarises PASS/FAIL. Non-destructive. Exit code = number of failed checks (capped at 125). Dependencies: bash, python3 (>=3.10). Optional: iverilog, verilator" | — | summary | `bash tools/run_all_checks.sh` |
+| `stl_to_svg_iso.py` | "Render binary/ASCII STL files to a flat-shaded isometric SVG (painter's algorithm). Stdlib only … Intended for quick visual checks of FreeCAD/KiCad STL exports; not a CAD drawing." | STL | SVG | `python3 tools/stl_to_svg_iso.py -o out.svg [--title T] [--scale 0.5] [--az 35 --el 30] file.stl[:#color[:opacity]] …` |
+| `stm32_check_cube_package.sh` | "verify that a STM32CubeF7 package tree contains every file the AERIS-10 firmware needs (HAL modules enabled in stm32f7xx_hal_conf.h, CMSIS device files, startup/linker templates, USB Device Library Core + CDC class). Read-only … Exit: 0 all found, 1 some missing, 2 bad argument." | Cube tree path | report | `tools/stm32_check_cube_package.sh beta/stm32/cube` (S-02) |
+| `svg_sheets_to_pdf.py` | "Combine one or more SVG drawings into a multi-page PDF using headless Chrome/Chromium. Each SVG becomes one page whose size equals the SVG's width/height (mm), so the drawing prints at scale 1:1. No Python packages needed" (`--png-dir` also writes a PNG per sheet) | SVG files | PDF (+ PNG) | `python3 tools/svg_sheets_to_pdf.py -o out.pdf [--png-dir DIR] a.svg b.svg …` |
+| `vivado/create_project.tcl` | "create a Vivado project from the repository RTL. This script DOES NOT choose the FPGA part for you … You must pass the verified part explicitly … It never edits RTL. Output: build/vivado/aeris10/aeris10.xpr. Tested: NOT executed in this repository (Vivado is not installed on the authoring machine)." | RTL, XDC | Vivado project | `vivado -mode batch -source tools/vivado/create_project.tcl -tclargs xc7a50tftg256-2` (F-07) |
 
-(to write)
+Scripts living next to their sub-projects, documented in their own READMEs: `beta/fpga/build.sh`, `beta/fpga/gen_chirp_mem.py`, `beta/fpga/tb/gen_vectors.py`, `beta/fpga/vivado/*.tcl` (`beta/fpga/README.md`); `beta/stm32/build.sh`, `setup_cube.sh`, `tests/run_tests.sh` (`beta/stm32/README.md`); `beta/gui/build_app.sh` (`beta/gui/README.md`); `beta/pcb/tools/*.py` pcbnew/kicad-cli scripts (`beta/pcb/tools/README.md`).
+
+## C.2 External tools installed on the authoring workstation (macOS arm64)
+
+Versions as printed on 2026-10-09 by the commands in the last column; where a version was only recorded in a README it is marked so.
+
+| Tool | Version found | Used for | Command / evidence |
+|---|---|---|---|
+| Python (system) | 3.14.8 | all `tools/*.py`, `build_manual.py` | `python3 --version` |
+| Python venv `beta/gui/.venv` | CPython 3.14.7 + Tk 9.x | GUI, pytest, matplotlib (coupling plot F8.4) | `beta/gui/README.md`, `CHANGELOG.md` |
+| KiCad / kicad-cli | 10.0.6 | EAGLE import, Gerber/drill/PDF/STEP exports, DRC (`kicad_pcb_pipeline.sh`, `beta/pcb`) | `~/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli version` |
+| FreeCAD | 1.1.4 (Revision 20260928) | `design_mechanical_freecad.py`, `design_enclosure_detail_freecad.py` | `~/Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd --version` |
+| openEMS (+ CSXCAD) | built from source, installed under `~/opt/openEMS` with its own Python venv | antenna row simulation (`design_antenna_tune.py`, `openems_patch_row.py`) | `beta/README.md` ("built from source on this machine"); `pip install openEMS` fails (not on PyPI — `docs/GUI/DEPENDENCIES.md` §7) |
+| Arm GNU Toolchain | 14.2.Rel1 (`arm-none-eabi-gcc 14.2.1 20241119`) | `beta/stm32/build.sh` | `arm-none-eabi-gcc --version` |
+| CMake | 4.4.3 | STM32 build | `cmake --version` |
+| OpenJDK | 27 (Homebrew `openjdk 27`) — **not on the shell PATH**: `java -version` printed "Unable to locate a Java Runtime" during the check; `beta/pcb/README.md` records "Freerouting 2.5.0 jar (OpenJDK 27)" | Freerouting | `brew list --versions openjdk` |
+| Freerouting | 2.5.0 (jar; log in `~/Library/Logs/freerouting/`) | Power Supply board routing (`beta/pcb`) | `beta/pcb/README.md` |
+| Yosys | 0.69+post (git 143eb14f) | open-source synthesis trial (`beta/fpga_synth/`) | `yosys -V` |
+| Icarus Verilog | 13.0 (stable) | `fpga_lint.sh`, `beta/fpga/build.sh` | `iverilog -V` |
+| Verilator | 5.052 (2026-09-05) | lint, `beta/fpga/build.sh` | `verilator --version` |
+| Graphviz | 16.1.0 (dot) | SYS-/SD-/ELEC- diagrams from `.dot` | `dot -V` |
+| poppler | pdftoppm 26.10.0 | PDF → PNG renders for the manual (assembly drawings F15.2–F15.5) | `pdftoppm -v` |
+| Google Chrome | present at `/Applications/Google Chrome.app` | `svg_sheets_to_pdf.py`, `build_manual.py` PDF | path check |
+| Vivado | **not installed** | synthesis, timing, bitstream (F-07…F-09) | `docs/TESTING/VALIDATION_PLAN.md`; `beta/fpga/README.md` |
+| STM32CubeMX / CubeIDE | **not installed** | `.ioc` regeneration (AC-S2) | `beta/stm32/CUBEMX_SETTINGS.md` |
+| EAGLE | **not installed** | fresh ERC/DRC on the originals (B-01/B-02) | `docs/TESTING/VALIDATION_PLAN.md` |
+
+## C.3 Regeneration order
+
+Full engineering package (source: `engineering/README.md`, "Regenerate everything (≈ 10 min, needs KiCad 10 and Google Chrome on the machine; Graphviz for the DOT renders)", copied):
+
+```bash
+bash tools/kicad_pcb_pipeline.sh                      # 4 boards → engineering/PCB/*
+python3 tools/gen_engineering_pcb_docs.py             # README/STACKUP per board + PCB_CROSS_CHECK.md
+python3 tools/gen_schematic_reports.py                # netlists + connection reports
+for b in RF_PA FREQUENCY_SYNTHESIZER MAIN_BOARD POWER_SUPPLY; do
+  python3 tools/render_eagle_schematic.py "<path to .sch>" --out engineering/ELECTRICAL/schematics/$b/svg --board $b --root .
+  python3 tools/svg_sheets_to_pdf.py -o engineering/ELECTRICAL/schematics/$b/${b}_schematic.pdf --png-dir engineering/ELECTRICAL/schematics/$b/png engineering/ELECTRICAL/schematics/$b/svg/*.svg
+done
+python3 tools/gen_mechanical_package.py && python3 tools/gen_assembly_exploded_view.py
+python3 tools/gen_verilog_hierarchy.py --rtl 9_Firmware/9_2_FPGA --out engineering/SOFTWARE_DIAGRAMS/FPGA
+python3 tools/gen_python_module_graph.py
+for d in $(find engineering -name "*.dot"); do dot -Tsvg -o ${d%.dot}.svg $d; dot -Tpdf -o ${d%.dot}.pdf $d; dot -Tpng -Gdpi=150 -o ${d%.dot}.png $d; done
+python3 tools/gen_drawing_register.py --check
+```
+
+Proposed designs (source: `engineering/DESIGN/README.md`, "Regenerate", copied; every generator reads `engineering/DESIGN/design_parameters.json`):
+
+```bash
+python3 tools/design_thermal.py && python3 tools/design_antenna_array.py && python3 tools/design_pa_supply_schematic.py && python3 tools/design_mechanical_drawings.py && freecadcmd -c "exec(open('tools/design_mechanical_freecad.py').read())"
+```
+
+followed by `python3 tools/design_enclosure_drawings.py` and `python3 tools/design_calcs.py` (they consume `CAD/detail/parts_list.json` and `THERMAL/thermal_summary.json`, so they run after the FreeCAD detail model and the thermal sheet — chapter 10 §10.9), and `python3 tools/design_antenna_tune.py` for the openEMS run.
+
+BETA trees (source: `beta/README.md`, table "Build/verify"): `bash beta/fpga/build.sh` (iverilog + verilator + 9 testbench runs); `bash beta/stm32/setup_cube.sh` then `bash beta/stm32/build.sh` and `bash beta/stm32/tests/run_tests.sh`; `cd beta/gui && .venv/bin/python -m pytest -q` and `.venv/bin/python -m aeris10_gui --selftest`; `beta/pcb` scripts per board as documented in `beta/pcb/tools/README.md`.
+
+Manual (this document): render the figures listed in `manual/FIGURE_PLAN.md` ("to render") into `manual/figures/`, then `python3 tools/build_manual.py --check` (0 problems required), then `python3 tools/build_manual.py` (HTML + PDF). Figures rendered for the chapters of this edition and their exact commands are recorded in `manual/FIGURE_LOG.md`.
+
+Static checks in one go: `bash tools/run_all_checks.sh` (exit code = number of failed checks; optional FPGA checks are skipped if iverilog/verilator are absent).

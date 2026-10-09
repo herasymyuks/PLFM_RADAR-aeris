@@ -25,7 +25,7 @@ def md_to_html(md: str) -> str:
     out, lines, i = [], md.splitlines(), 0
     def inline(t):
         t = html.escape(t, quote=False)
-        t = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", lambda m: f'<img alt="{m.group(1)}" src="{m.group(2)}">', t)
+        t = re.sub(r"!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)]+)\)", lambda m: f'<img alt="{m.group(1)}" src="{m.group(2)}">', t)
         t = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', t)
         t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
         t = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", t)
@@ -92,7 +92,7 @@ def main() -> int:
                 return m.group(0)
             fig_n += 1
             return f"![Figure {fig_n} — {cap}]({os.path.relpath(rel, ROOT)})"
-        md = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", fix_img, md)
+        md = re.sub(r"!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)]+)\)", fix_img, md)   # alt text may contain [STATUS]
         for m in re.finditer(r"(?<!!)\[[^\]]+\]\(([^)#]+)(#[^)]*)?\)", md):
             t = m.group(1)
             if t.startswith(("http://", "https://", "mailto:")): continue
