@@ -1,0 +1,688 @@
+{
+ "nets": [
+  "FT_BE_0",
+  "FT_BE_1",
+  "FT_BE_2",
+  "FT_BE_3",
+  "FT_CLK",
+  "FT_DATA_0",
+  "FT_DATA_1",
+  "FT_DATA_10",
+  "FT_DATA_11",
+  "FT_DATA_12",
+  "FT_DATA_13",
+  "FT_DATA_14",
+  "FT_DATA_15",
+  "FT_DATA_16",
+  "FT_DATA_17",
+  "FT_DATA_18",
+  "FT_DATA_19",
+  "FT_DATA_2",
+  "FT_DATA_20",
+  "FT_DATA_21",
+  "FT_DATA_22",
+  "FT_DATA_23",
+  "FT_DATA_24",
+  "FT_DATA_25",
+  "FT_DATA_26",
+  "FT_DATA_27",
+  "FT_DATA_28",
+  "FT_DATA_29",
+  "FT_DATA_3",
+  "FT_DATA_30",
+  "FT_DATA_31",
+  "FT_DATA_4",
+  "FT_DATA_5",
+  "FT_DATA_6",
+  "FT_DATA_7",
+  "FT_DATA_8",
+  "FT_DATA_9",
+  "FT_GPIO0",
+  "FT_OE_N",
+  "FT_RD_N",
+  "FT_RESET_N",
+  "FT_RXF_N",
+  "FT_SIWU_N",
+  "FT_TXE_N",
+  "FT_WAKEUP_N",
+  "FT_WR_N",
+  "USB_SSTX_P"
+ ],
+ "items": [
+  {
+   "net": "FT_BE_3",
+   "kind": "PCB_TRACK",
+   "uuid": "9d00170d-73ae-410c-a980-72a715a30956"
+  },
+  {
+   "net": "FT_BE_3",
+   "kind": "PCB_TRACK",
+   "uuid": "ff7ad8be-8c7e-450e-a6c6-590f5d9143e1"
+  },
+  {
+   "net": "FT_BE_3",
+   "kind": "PCB_VIA",
+   "uuid": "26676c4e-3760-410b-81fe-a2828984b777"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_TRACK",
+   "uuid": "1137abc7-ce23-4d2b-b773-f5ecf304b693"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_TRACK",
+   "uuid": "1fda3083-e17c-46c9-a133-578388ec8141"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_TRACK",
+   "uuid": "47ec2660-47d9-49e5-8c11-0db2a4e1ef60"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_TRACK",
+   "uuid": "8d0b9060-8ce4-41f1-b5ec-d3877f552021"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_TRACK",
+   "uuid": "8f4f7b18-bbe0-40da-a871-efe2ddffa23b"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_VIA",
+   "uuid": "eb928e3c-5d2d-4acc-9b5f-667688fd988a"
+  },
+  {
+   "net": "FT_RXF_N",
+   "kind": "PCB_VIA",
+   "uuid": "ff692414-1d9d-4dac-8504-9328a4fff450"
+  },
+  {
+   "net": "FT_WR_N",
+   "kind": "PCB_TRACK",
+   "uuid": "1cf77c22-7f05-44c3-ab56-c218a3cd6795"
+  },
+  {
+   "net": "FT_WR_N",
+   "kind": "PCB_TRACK",
+   "uuid": "e6afade9-438c-4d60-acb9-4d311f2a1b40"
+  },
+  {
+   "net": "FT_WR_N",
+   "kind": "PCB_VIA",
+   "uuid": "6dbf582e-c8a6-43c7-9992-0d71f45abfc5"
+  },
+  {
+   "net": "FT_RD_N",
+   "kind": "PCB_TRACK",
+   "uuid": "91cd8167-17ce-4c8e-8aa1-d3be156a4f52"
+  },
+  {
+   "net": "FT_RD_N",
+   "kind": "PCB_TRACK",
+   "uuid": "bbeacff8-958e-4d3b-b480-f5234f63beae"
+  },
+  {
+   "net": "FT_RD_N",
+   "kind": "PCB_TRACK",
+   "uuid": "e8115443-709b-474b-aa4c-2969423271eb"
+  },
+  {
+   "net": "FT_RD_N",
+   "kind": "PCB_VIA",
+   "uuid": "9761891e-cc91-4353-83d2-a2fd6cd21897"
+  },
+  {
+   "net": "FT_OE_N",
+   "kind": "PCB_TRACK",
+   "uuid": "497e252d-7b46-40e3-a7f4-7ea9800c9eae"
+  },
+  {
+   "net": "FT_OE_N",
+   "kind": "PCB_TRACK",
+   "uuid": "90520724-a24b-46af-8558-90a52fce1285"
+  },
+  {
+   "net": "FT_OE_N",
+   "kind": "PCB_TRACK",
+   "uuid": "94e1a80b-df7d-4ff0-b7f4-64325e6729a4"
+  },
+  {
+   "net": "FT_OE_N",
+   "kind": "PCB_TRACK",
+   "uuid": "e9df172a-8b06-4714-b444-20802e3985d0"
+  },
+  {
+   "net": "FT_OE_N",
+   "kind": "PCB_VIA",
+   "uuid": "d74af2a5-1e6e-4d42-b7d4-8b75b5529809"
+  },
+  {
+   "net": "FT_RESET_N",
+   "kind": "PCB_TRACK",
+   "uuid": "185afd10-23b6-49aa-89db-efda1cb93ac9"
+  },
+  {
+   "net": "FT_RESET_N",
+   "kind": "PCB_TRACK",
+   "uuid": "4ea2d1ed-e2b3-44dd-9214-e2b3b56cc06d"
+  },
+  {
+   "net": "FT_RESET_N",
+   "kind": "PCB_TRACK",
+   "uuid": "9ef0dc54-86db-4e9e-b724-c50a8249cd9b"
+  },
+  {
+   "net": "FT_RESET_N",
+   "kind": "PCB_VIA",
+   "uuid": "77bcccf3-1ea3-4508-8819-b0576a4858c3"
+  },
+  {
+   "net": "FT_GPIO0",
+   "kind": "PCB_TRACK",
+   "uuid": "0ad7ffbe-a21b-47d5-a8ac-1275a38604bf"
+  },
+  {
+   "net": "FT_GPIO0",
+   "kind": "PCB_TRACK",
+   "uuid": "3d0707de-6a15-4285-bee0-58db8c489893"
+  },
+  {
+   "net": "FT_GPIO0",
+   "kind": "PCB_TRACK",
+   "uuid": "7637557d-ee3e-4a32-8bcd-9be53182e7a3"
+  },
+  {
+   "net": "FT_GPIO0",
+   "kind": "PCB_VIA",
+   "uuid": "cfb93785-7f25-4d3b-a615-160842050672"
+  },
+  {
+   "net": "USB_SSTX_P",
+   "kind": "PCB_TRACK",
+   "uuid": "9b25359b-63e3-40de-adf8-41e75f4bda35"
+  },
+  {
+   "net": "USB_SSTX_P",
+   "kind": "PCB_VIA",
+   "uuid": "1132a32d-1d6f-4e70-b5ed-a77968a46886"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_TRACK",
+   "uuid": "01a3a704-fb1f-42f6-b1be-e1e5089bda36"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_TRACK",
+   "uuid": "25545c0b-84ee-4ce6-b164-29f6a24381f0"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_TRACK",
+   "uuid": "b29c303a-a1e8-4962-8525-b443941f8cae"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_TRACK",
+   "uuid": "c4563741-45cd-4131-a29c-e45afbd962d8"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_TRACK",
+   "uuid": "cef0431c-5234-4fed-988b-8cb93e142a52"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_VIA",
+   "uuid": "a9de2b1f-ffc6-4378-96f6-a95cbf90048f"
+  },
+  {
+   "net": "FT_DATA_0",
+   "kind": "PCB_VIA",
+   "uuid": "cdbcaecc-9a4c-4052-8ffd-4e33cfc20030"
+  },
+  {
+   "net": "FT_DATA_1",
+   "kind": "PCB_TRACK",
+   "uuid": "aceb1a4b-f20f-4c6a-9633-5f513fcd25de"
+  },
+  {
+   "net": "FT_DATA_1",
+   "kind": "PCB_TRACK",
+   "uuid": "dcdff289-65ad-4407-87b1-1e7cbc1c16b8"
+  },
+  {
+   "net": "FT_DATA_1",
+   "kind": "PCB_VIA",
+   "uuid": "24267f87-7f40-4fe5-9a7d-db1f0a9eabb2"
+  },
+  {
+   "net": "FT_DATA_3",
+   "kind": "PCB_TRACK",
+   "uuid": "1049a389-0c9d-4c8c-9c59-3b99c61b83ba"
+  },
+  {
+   "net": "FT_DATA_3",
+   "kind": "PCB_TRACK",
+   "uuid": "d3dc4c2d-a38f-4cac-9ea1-ea33c67bf319"
+  },
+  {
+   "net": "FT_DATA_3",
+   "kind": "PCB_TRACK",
+   "uuid": "d833a890-26ee-45b4-81f6-514d00417c85"
+  },
+  {
+   "net": "FT_DATA_3",
+   "kind": "PCB_VIA",
+   "uuid": "b5ce9480-6bd9-40d3-9b0e-a939603fcca2"
+  },
+  {
+   "net": "FT_DATA_4",
+   "kind": "PCB_TRACK",
+   "uuid": "2c585257-4dba-43fb-95b4-13a1510fe553"
+  },
+  {
+   "net": "FT_DATA_4",
+   "kind": "PCB_VIA",
+   "uuid": "e437d135-73d2-4902-b510-b2e78fa84e49"
+  },
+  {
+   "net": "FT_DATA_5",
+   "kind": "PCB_TRACK",
+   "uuid": "090fdd0c-906f-44a7-a5d5-86f52413eb6d"
+  },
+  {
+   "net": "FT_DATA_5",
+   "kind": "PCB_VIA",
+   "uuid": "e28a5704-b02d-4930-82cd-e862ad1e325b"
+  },
+  {
+   "net": "FT_DATA_8",
+   "kind": "PCB_TRACK",
+   "uuid": "266a714a-2b75-42d3-ac8c-5901c895030a"
+  },
+  {
+   "net": "FT_DATA_8",
+   "kind": "PCB_TRACK",
+   "uuid": "fc645400-f166-423c-b5a8-8d20033be024"
+  },
+  {
+   "net": "FT_DATA_8",
+   "kind": "PCB_VIA",
+   "uuid": "04705563-3b41-458b-b6f1-cf8d5ef83d8c"
+  },
+  {
+   "net": "FT_DATA_9",
+   "kind": "PCB_TRACK",
+   "uuid": "1100f72f-12cf-4c12-8d52-ccd5d49fd1c7"
+  },
+  {
+   "net": "FT_DATA_9",
+   "kind": "PCB_TRACK",
+   "uuid": "261970b4-e6fb-4e93-b248-c8dda87b2136"
+  },
+  {
+   "net": "FT_DATA_9",
+   "kind": "PCB_VIA",
+   "uuid": "61732ab2-d70d-40b3-9471-a3f1f71bc129"
+  },
+  {
+   "net": "FT_DATA_11",
+   "kind": "PCB_TRACK",
+   "uuid": "2a3982a8-d906-46fe-82a0-a7ffc7067370"
+  },
+  {
+   "net": "FT_DATA_11",
+   "kind": "PCB_TRACK",
+   "uuid": "37479ce7-2df7-496a-9c43-eaa325ca6ed2"
+  },
+  {
+   "net": "FT_DATA_11",
+   "kind": "PCB_TRACK",
+   "uuid": "62bff2a3-db38-49b2-b946-433bb8155e6c"
+  },
+  {
+   "net": "FT_DATA_11",
+   "kind": "PCB_TRACK",
+   "uuid": "e44ab30a-1462-41e5-b7dc-f9d739fdab94"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_TRACK",
+   "uuid": "0712917f-8021-42a0-a1c1-2295b923cc29"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_TRACK",
+   "uuid": "1a665a0b-a4d7-4289-8163-a6a8e65ee3ce"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_TRACK",
+   "uuid": "51decedf-9bfd-48bb-8a9f-ac8a711a6b73"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_TRACK",
+   "uuid": "63638465-e799-4faf-a5e5-481dc236bb1b"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_TRACK",
+   "uuid": "7fdd01c3-106f-4a09-a5a8-6917b177d107"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_TRACK",
+   "uuid": "c1c6efdf-d577-4ddd-9dbb-f9c3441649d0"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_VIA",
+   "uuid": "11ca1d2c-c885-44ca-928d-ed9f3831e983"
+  },
+  {
+   "net": "FT_DATA_12",
+   "kind": "PCB_VIA",
+   "uuid": "133324f7-2060-40f8-9844-7ea8c38d6ad1"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_TRACK",
+   "uuid": "1dbe1514-9878-48cf-89dc-ae02b59d8581"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_TRACK",
+   "uuid": "4f8156fc-5855-4d1d-a2c5-601b94a76c59"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_TRACK",
+   "uuid": "8ae190d0-a5df-4923-82a8-96ab86943036"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_TRACK",
+   "uuid": "fe20fe6e-f5dd-4dee-8083-01482ade34ba"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_TRACK",
+   "uuid": "fecb359a-e76b-4b13-a5a0-bec6aa8edbea"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_VIA",
+   "uuid": "e6dbcdee-e525-4608-8ed5-5ef86b06ddf9"
+  },
+  {
+   "net": "FT_DATA_13",
+   "kind": "PCB_VIA",
+   "uuid": "f54d4746-4f9a-4591-82e1-0f833b2454c5"
+  },
+  {
+   "net": "FT_DATA_15",
+   "kind": "PCB_TRACK",
+   "uuid": "126eb4da-e327-43ff-88e8-9c7bf951cedc"
+  },
+  {
+   "net": "FT_DATA_15",
+   "kind": "PCB_TRACK",
+   "uuid": "20be7852-aa94-4384-bf9c-1b1b7a281094"
+  },
+  {
+   "net": "FT_DATA_15",
+   "kind": "PCB_TRACK",
+   "uuid": "4c031b01-a783-453b-aa6e-3aeb4d5b200c"
+  },
+  {
+   "net": "FT_DATA_15",
+   "kind": "PCB_TRACK",
+   "uuid": "91ac49c2-82d5-459a-b844-f4f50f62c821"
+  },
+  {
+   "net": "FT_DATA_15",
+   "kind": "PCB_VIA",
+   "uuid": "ae024fa3-bc5d-465a-af27-5a11a4274a61"
+  },
+  {
+   "net": "FT_CLK",
+   "kind": "PCB_TRACK",
+   "uuid": "35b18baf-1cf4-48ae-9bd0-ce16d94e59e6"
+  },
+  {
+   "net": "FT_CLK",
+   "kind": "PCB_TRACK",
+   "uuid": "6695f5fc-c068-4e87-a9f5-d18ac1022a4b"
+  },
+  {
+   "net": "FT_CLK",
+   "kind": "PCB_VIA",
+   "uuid": "5835f093-1eee-441b-b0be-c65c9228c48a"
+  },
+  {
+   "net": "FT_DATA_16",
+   "kind": "PCB_TRACK",
+   "uuid": "1604ae63-f1cb-46e7-a80d-9a9ca39e8e6e"
+  },
+  {
+   "net": "FT_DATA_16",
+   "kind": "PCB_TRACK",
+   "uuid": "9a9868fc-f277-48ce-9252-c73477c465fa"
+  },
+  {
+   "net": "FT_DATA_16",
+   "kind": "PCB_TRACK",
+   "uuid": "f99a41ec-80ce-443a-a024-5b7629ee6522"
+  },
+  {
+   "net": "FT_DATA_16",
+   "kind": "PCB_VIA",
+   "uuid": "6aaa95b9-bc6e-4d7b-b4e3-2435eb8e90bf"
+  },
+  {
+   "net": "FT_DATA_16",
+   "kind": "PCB_VIA",
+   "uuid": "ee446aa2-e47d-4b4e-90f4-e13e1a39d398"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_TRACK",
+   "uuid": "0d5b4108-a058-4443-ab3a-5d21cde8b63d"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_TRACK",
+   "uuid": "377e9516-b5c1-469f-8b1b-71973177a449"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_TRACK",
+   "uuid": "5dcfa522-2a77-4cf6-b74d-0918ff36cb51"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_TRACK",
+   "uuid": "961030d6-25ea-4f9f-a0f6-1b547224c10c"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_TRACK",
+   "uuid": "c59d2515-9072-42bb-8779-87e9dd52d64c"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_TRACK",
+   "uuid": "fe59bb64-f300-492f-9133-681c7bd71974"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_VIA",
+   "uuid": "1fb1f911-6599-4573-bb5e-455c62651734"
+  },
+  {
+   "net": "FT_DATA_17",
+   "kind": "PCB_VIA",
+   "uuid": "c201554f-132f-4687-a6ca-a4f2b3af1287"
+  },
+  {
+   "net": "FT_DATA_18",
+   "kind": "PCB_TRACK",
+   "uuid": "06a57242-897a-4bde-845e-4c38f70365f0"
+  },
+  {
+   "net": "FT_DATA_18",
+   "kind": "PCB_TRACK",
+   "uuid": "337a66c5-76e6-4903-9170-42a9170628d9"
+  },
+  {
+   "net": "FT_DATA_18",
+   "kind": "PCB_TRACK",
+   "uuid": "3b8321ad-fcaf-49d8-bffc-a812fdf87fa5"
+  },
+  {
+   "net": "FT_DATA_18",
+   "kind": "PCB_VIA",
+   "uuid": "8fd026bf-02d2-4e22-91c6-0d9ff6de6c28"
+  },
+  {
+   "net": "FT_DATA_23",
+   "kind": "PCB_TRACK",
+   "uuid": "1991753d-9b72-4809-a7c9-e896775cf61f"
+  },
+  {
+   "net": "FT_DATA_23",
+   "kind": "PCB_TRACK",
+   "uuid": "712e67f6-5718-49e8-bc3b-ab57004ff39e"
+  },
+  {
+   "net": "FT_DATA_23",
+   "kind": "PCB_VIA",
+   "uuid": "c2274752-8df8-4a4b-82e4-9a32bac2c70a"
+  },
+  {
+   "net": "FT_DATA_24",
+   "kind": "PCB_TRACK",
+   "uuid": "b3bc0948-f638-4e02-9168-18df965522e7"
+  },
+  {
+   "net": "FT_DATA_24",
+   "kind": "PCB_TRACK",
+   "uuid": "cd8fba9d-af13-48df-91a2-191d8f15ee78"
+  },
+  {
+   "net": "FT_DATA_24",
+   "kind": "PCB_TRACK",
+   "uuid": "e0f95ac6-28f6-41d3-ad84-22c243aec398"
+  },
+  {
+   "net": "FT_DATA_24",
+   "kind": "PCB_VIA",
+   "uuid": "ec6684df-2065-493e-afec-c202e9594cc5"
+  },
+  {
+   "net": "FT_DATA_25",
+   "kind": "PCB_TRACK",
+   "uuid": "5761247a-3754-447b-bde0-497019af49cc"
+  },
+  {
+   "net": "FT_DATA_25",
+   "kind": "PCB_TRACK",
+   "uuid": "d1d0c9ec-17f2-4a6e-8b1d-89685bf1987c"
+  },
+  {
+   "net": "FT_DATA_25",
+   "kind": "PCB_VIA",
+   "uuid": "ba632ab4-ad81-43e5-b2e9-0cf5bc82ffcc"
+  },
+  {
+   "net": "FT_DATA_26",
+   "kind": "PCB_TRACK",
+   "uuid": "027908de-14f3-4cd0-ae37-f804171f5bdf"
+  },
+  {
+   "net": "FT_DATA_26",
+   "kind": "PCB_TRACK",
+   "uuid": "8cc87d02-bb87-47d4-9f2a-cddde4088bd9"
+  },
+  {
+   "net": "FT_DATA_26",
+   "kind": "PCB_TRACK",
+   "uuid": "fa5902d1-e434-4d4a-93c9-ef24f2d2b9ce"
+  },
+  {
+   "net": "FT_DATA_26",
+   "kind": "PCB_VIA",
+   "uuid": "e7c1990d-a925-415d-9425-9e78d85ec4fc"
+  },
+  {
+   "net": "FT_DATA_27",
+   "kind": "PCB_TRACK",
+   "uuid": "4dde65d5-de86-4f11-90b1-0a254a8f12fe"
+  },
+  {
+   "net": "FT_DATA_27",
+   "kind": "PCB_TRACK",
+   "uuid": "ab999d82-35ab-4873-babb-10e370ba7e16"
+  },
+  {
+   "net": "FT_DATA_27",
+   "kind": "PCB_VIA",
+   "uuid": "99eeb365-0835-42ae-867b-c2ff53681302"
+  },
+  {
+   "net": "FT_DATA_29",
+   "kind": "PCB_TRACK",
+   "uuid": "0f5530b2-3196-43fc-909a-a9424283eb8c"
+  },
+  {
+   "net": "FT_DATA_29",
+   "kind": "PCB_TRACK",
+   "uuid": "a413a190-e8d1-4bdb-89b4-9d42c1990927"
+  },
+  {
+   "net": "FT_DATA_29",
+   "kind": "PCB_TRACK",
+   "uuid": "c33da9f2-79a2-4696-99ed-8e9aa897a3f2"
+  },
+  {
+   "net": "FT_DATA_29",
+   "kind": "PCB_VIA",
+   "uuid": "982ad71e-ac35-4981-b71d-b5192426cb58"
+  },
+  {
+   "net": "FT_DATA_30",
+   "kind": "PCB_TRACK",
+   "uuid": "867e7947-36e8-477e-a21f-195f11fb59c4"
+  },
+  {
+   "net": "FT_DATA_30",
+   "kind": "PCB_TRACK",
+   "uuid": "eed8ed9c-3270-4481-8a46-8619cbe90bf3"
+  },
+  {
+   "net": "FT_DATA_30",
+   "kind": "PCB_VIA",
+   "uuid": "9f234ad1-e046-47c0-b0e9-930faa68d754"
+  },
+  {
+   "net": "FT_DATA_31",
+   "kind": "PCB_TRACK",
+   "uuid": "2946a5e6-c8b3-41dc-aa74-f1aa346532fc"
+  },
+  {
+   "net": "FT_DATA_31",
+   "kind": "PCB_TRACK",
+   "uuid": "95ceec62-f033-43ed-8a75-a9b9b966cfbb"
+  },
+  {
+   "net": "FT_DATA_31",
+   "kind": "PCB_VIA",
+   "uuid": "f2b81bdf-b5b0-49dd-86a2-a4794ba97abb"
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "tracks": 89,
+ "vias": 6,
+ "skipped_dup": 0,
+ "skipped_net": 56,
+ "unknown_net": [],
+ "per_net": {
+  "GND": 89
+ }
+}

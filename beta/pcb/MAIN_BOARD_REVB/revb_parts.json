@@ -1,0 +1,461 @@
+{
+ "parts": [
+  {
+   "ref": "J_USB3",
+   "footprint": "Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A",
+   "value": "USB-C 3.1 receptacle",
+   "mpn": "12401610E4#2A",
+   "manufacturer": "Amphenol ICC",
+   "x": 4.0,
+   "y": -208.0,
+   "rot": 270,
+   "note": "only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both \u2014 VERIFY acceptable"
+  },
+  {
+   "ref": "D_ESD1",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "value": "TPD4E05U06",
+   "mpn": "TPD4E05U06DQAR",
+   "manufacturer": "Texas Instruments",
+   "x": 12.5,
+   "y": -210.0,
+   "rot": 0,
+   "note": "pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) \u2014 VERIFY"
+  },
+  {
+   "ref": "D_ESD2",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "value": "TPD4E05U06",
+   "mpn": "TPD4E05U06DQAR",
+   "manufacturer": "Texas Instruments",
+   "x": 12.5,
+   "y": -206.0,
+   "rot": 0,
+   "note": "second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) \u2014 channels 3/4 unused"
+  },
+  {
+   "ref": "C_SSTX_P",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "100nF",
+   "mpn": "GRM155R71C104KA88D",
+   "manufacturer": "Murata",
+   "x": 16.5,
+   "y": -211.2,
+   "rot": 0,
+   "note": "USB 3 TX AC coupling \u2014 added (spec requirement), VERIFY"
+  },
+  {
+   "ref": "C_SSTX_N",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "100nF",
+   "mpn": "GRM155R71C104KA88D",
+   "manufacturer": "Murata",
+   "x": 16.5,
+   "y": -210.0,
+   "rot": 0,
+   "note": "USB 3 TX AC coupling \u2014 added (spec requirement), VERIFY"
+  },
+  {
+   "ref": "R_CC1",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "value": "5.1k",
+   "mpn": "RC0402FR-075K1L",
+   "manufacturer": "Yageo",
+   "x": 11.0,
+   "y": -214.0,
+   "rot": 0,
+   "note": "Type-C Rd 5.1 k\u03a9 (device) \u2014 added because a USB-C receptacle was chosen"
+  },
+  {
+   "ref": "R_CC2",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "value": "5.1k",
+   "mpn": "RC0402FR-075K1L",
+   "manufacturer": "Yageo",
+   "x": 11.0,
+   "y": -202.5,
+   "rot": 0,
+   "note": "Type-C Rd 5.1 k\u03a9 (device)"
+  },
+  {
+   "ref": "R_VBUS_1",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "value": "10k",
+   "mpn": "RC0402FR-0710KL",
+   "manufacturer": "Yageo",
+   "x": 32.5,
+   "y": -201.9,
+   "rot": 90,
+   "note": "VERIFY VBUS pin limit"
+  },
+  {
+   "ref": "R_VBUS_2",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "value": "3.3k",
+   "mpn": "RC0402FR-073K3L",
+   "manufacturer": "Yageo",
+   "x": 33.7,
+   "y": -201.9,
+   "rot": 90,
+   "note": "VERIFY VBUS pin limit"
+  },
+  {
+   "ref": "R_RREF",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "value": "3.24k 1%",
+   "mpn": "RC0402FR-073K24L",
+   "manufacturer": "Yageo",
+   "x": 26.3,
+   "y": -201.9,
+   "rot": 90,
+   "note": "value per FT60x datasheet \u2014 VERIFY"
+  },
+  {
+   "ref": "C_VD10_1",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "4.7uF 6.3V",
+   "mpn": "GRM155R60J475ME47D",
+   "manufacturer": "Murata",
+   "x": 20.3,
+   "y": -210.4,
+   "rot": 90,
+   "note": "VD10/DV10 decoupling \u2014 VERIFY"
+  },
+  {
+   "ref": "C_VD10_2",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "4.7uF 6.3V",
+   "mpn": "GRM155R60J475ME47D",
+   "manufacturer": "Murata",
+   "x": 27.5,
+   "y": -201.9,
+   "rot": 90,
+   "note": "VD10/DV10 decoupling \u2014 VERIFY"
+  },
+  {
+   "ref": "C_VD10_3",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "4.7uF 6.3V",
+   "mpn": "GRM155R60J475ME47D",
+   "manufacturer": "Murata",
+   "x": 28.7,
+   "y": -201.9,
+   "rot": 90,
+   "note": "VD10/DV10 decoupling \u2014 VERIFY"
+  },
+  {
+   "ref": "C_VD10_4",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "4.7uF 6.3V",
+   "mpn": "GRM155R60J475ME47D",
+   "manufacturer": "Murata",
+   "x": 29.9,
+   "y": -201.9,
+   "rot": 90,
+   "note": "VD10/DV10 decoupling \u2014 VERIFY"
+  },
+  {
+   "ref": "FB_A",
+   "footprint": "Inductor_SMD:L_0603_1608Metric",
+   "value": "600R@100MHz",
+   "mpn": "BLM18PG601SN1D",
+   "manufacturer": "Murata",
+   "x": 18.0,
+   "y": -214.6,
+   "rot": 0,
+   "note": "+3V3_FT -> AVDD/VDDA"
+  },
+  {
+   "ref": "C_AVDD_1",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "100nF",
+   "mpn": "GRM155R71C104KA88D",
+   "manufacturer": "Murata",
+   "x": 20.3,
+   "y": -212.6,
+   "rot": 90,
+   "note": ""
+  },
+  {
+   "ref": "C_AVDD_2",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "1uF",
+   "mpn": "GRM155R61A105KE15D",
+   "manufacturer": "Murata",
+   "x": 19.2,
+   "y": -212.6,
+   "rot": 90,
+   "note": ""
+  },
+  {
+   "ref": "Y_FT",
+   "footprint": "Crystal:Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm",
+   "value": "30MHz 18pF",
+   "mpn": "ABM8-30.000MHZ-B2-T",
+   "manufacturer": "Abracon",
+   "x": 22.5,
+   "y": -199.6,
+   "rot": 0,
+   "note": "ABM8 land pattern (3.2\u00d72.5, 4 pads; ABM8G footprint of the KiCad library) \u2014 VERIFY"
+  },
+  {
+   "ref": "C_XI",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "18pF C0G",
+   "mpn": "GRM1555C1H180JA01D",
+   "manufacturer": "Murata",
+   "x": 19.6,
+   "y": -198.75,
+   "rot": 0,
+   "note": "load cap \u2014 VERIFY against crystal CL"
+  },
+  {
+   "ref": "C_XO",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "value": "18pF C0G",
+   "mpn": "GRM1555C1H180JA01D",
+   "manufacturer": "Murata",
+   "x": 25.2,
+   "y": -199.2,
+   "rot": 0,
+   "note": "load cap \u2014 VERIFY against crystal CL"
+  }
+ ],
+ "fpga_pins": [
+  {
+   "net": "FT_CLK",
+   "pad": "C4",
+   "pin": "IO_L12N_T1_MRCC_35"
+  },
+  {
+   "net": "FT_DATA_0",
+   "pad": "A2",
+   "pin": "IO_L8N_T1_AD14N_35"
+  },
+  {
+   "net": "FT_DATA_1",
+   "pad": "A3",
+   "pin": "IO_L4N_T0_35"
+  },
+  {
+   "net": "FT_DATA_2",
+   "pad": "A4",
+   "pin": "IO_L3N_T0_DQS_AD5N_35"
+  },
+  {
+   "net": "FT_DATA_3",
+   "pad": "A5",
+   "pin": "IO_L3P_T0_DQS_AD5P_35"
+  },
+  {
+   "net": "FT_DATA_4",
+   "pad": "A7",
+   "pin": "IO_L1N_T0_AD4N_35"
+  },
+  {
+   "net": "FT_DATA_5",
+   "pad": "B1",
+   "pin": "IO_L9N_T1_DQS_AD7N_35"
+  },
+  {
+   "net": "FT_DATA_6",
+   "pad": "B2",
+   "pin": "IO_L8P_T1_AD14P_35"
+  },
+  {
+   "net": "FT_DATA_7",
+   "pad": "B4",
+   "pin": "IO_L4P_T0_35"
+  },
+  {
+   "net": "FT_DATA_8",
+   "pad": "B5",
+   "pin": "IO_L2N_T0_AD12N_35"
+  },
+  {
+   "net": "FT_DATA_9",
+   "pad": "B6",
+   "pin": "IO_L2P_T0_AD12P_35"
+  },
+  {
+   "net": "FT_DATA_10",
+   "pad": "B7",
+   "pin": "IO_L1P_T0_AD4P_35"
+  },
+  {
+   "net": "FT_DATA_11",
+   "pad": "C1",
+   "pin": "IO_L9P_T1_DQS_AD7P_35"
+  },
+  {
+   "net": "FT_DATA_12",
+   "pad": "C2",
+   "pin": "IO_L7N_T1_AD6N_35"
+  },
+  {
+   "net": "FT_DATA_13",
+   "pad": "C3",
+   "pin": "IO_L7P_T1_AD6P_35"
+  },
+  {
+   "net": "FT_DATA_14",
+   "pad": "C6",
+   "pin": "IO_L5N_T0_AD13N_35"
+  },
+  {
+   "net": "FT_DATA_15",
+   "pad": "C7",
+   "pin": "IO_L5P_T0_AD13P_35"
+  },
+  {
+   "net": "FT_DATA_16",
+   "pad": "D1",
+   "pin": "IO_L10N_T1_AD15N_35"
+  },
+  {
+   "net": "FT_DATA_17",
+   "pad": "D3",
+   "pin": "IO_L11N_T1_SRCC_35"
+  },
+  {
+   "net": "FT_DATA_18",
+   "pad": "D4",
+   "pin": "IO_L12P_T1_MRCC_35"
+  },
+  {
+   "net": "FT_DATA_19",
+   "pad": "D6",
+   "pin": "IO_L6P_T0_35"
+  },
+  {
+   "net": "FT_DATA_20",
+   "pad": "E1",
+   "pin": "IO_L15N_T2_DQS_35"
+  },
+  {
+   "net": "FT_DATA_21",
+   "pad": "E2",
+   "pin": "IO_L10P_T1_AD15P_35"
+  },
+  {
+   "net": "FT_DATA_22",
+   "pad": "E3",
+   "pin": "IO_L11P_T1_SRCC_35"
+  },
+  {
+   "net": "FT_DATA_23",
+   "pad": "E5",
+   "pin": "IO_L13N_T2_MRCC_35"
+  },
+  {
+   "net": "FT_DATA_24",
+   "pad": "E6",
+   "pin": "IO_0_35"
+  },
+  {
+   "net": "FT_DATA_25",
+   "pad": "F2",
+   "pin": "IO_L15P_T2_DQS_35"
+  },
+  {
+   "net": "FT_DATA_26",
+   "pad": "F3",
+   "pin": "IO_L14N_T2_SRCC_35"
+  },
+  {
+   "net": "FT_DATA_27",
+   "pad": "F4",
+   "pin": "IO_L14P_T2_SRCC_35"
+  },
+  {
+   "net": "FT_DATA_28",
+   "pad": "F5",
+   "pin": "IO_L13P_T2_MRCC_35"
+  },
+  {
+   "net": "FT_DATA_29",
+   "pad": "G1",
+   "pin": "IO_L17N_T2_35"
+  },
+  {
+   "net": "FT_DATA_30",
+   "pad": "G2",
+   "pin": "IO_L17P_T2_35"
+  },
+  {
+   "net": "FT_DATA_31",
+   "pad": "G4",
+   "pin": "IO_L16N_T2_35"
+  },
+  {
+   "net": "FT_BE_0",
+   "pad": "G5",
+   "pin": "IO_L16P_T2_35"
+  },
+  {
+   "net": "FT_BE_1",
+   "pad": "H1",
+   "pin": "IO_L20N_T3_35"
+  },
+  {
+   "net": "FT_BE_2",
+   "pad": "H2",
+   "pin": "IO_L20P_T3_35"
+  },
+  {
+   "net": "FT_BE_3",
+   "pad": "H3",
+   "pin": "IO_L21N_T3_DQS_35"
+  },
+  {
+   "net": "FT_TXE_N",
+   "pad": "H4",
+   "pin": "IO_L18N_T2_35"
+  },
+  {
+   "net": "FT_RXF_N",
+   "pad": "H5",
+   "pin": "IO_L18P_T2_35"
+  },
+  {
+   "net": "FT_WR_N",
+   "pad": "J1",
+   "pin": "IO_L22N_T3_35"
+  },
+  {
+   "net": "FT_RD_N",
+   "pad": "J3",
+   "pin": "IO_L21P_T3_DQS_35"
+  },
+  {
+   "net": "FT_OE_N",
+   "pad": "J5",
+   "pin": "IO_L19P_T3_35"
+  },
+  {
+   "net": "FT_SIWU_N",
+   "pad": "K1",
+   "pin": "IO_L22P_T3_35"
+  },
+  {
+   "net": "FT_RESET_N",
+   "pad": "K2",
+   "pin": "IO_L24N_T3_35"
+  },
+  {
+   "net": "FT_WAKEUP_N",
+   "pad": "K3",
+   "pin": "IO_L24P_T3_35"
+  },
+  {
+   "net": "FT_GPIO0",
+   "pad": "K5",
+   "pin": "IO_25_35"
+  },
+  {
+   "net": "FT_GPIO1",
+   "pad": "L2",
+   "pin": "IO_L23N_T3_35"
+  }
+ ]
+}

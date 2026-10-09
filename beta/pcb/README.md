@@ -1,6 +1,6 @@
 # AERIS-10 — BETA PCB packages
 
-**Status of everything in this directory: BETA.** KiCad 10.0.6 copies of the EAGLE → KiCad conversion in `engineering/PCB/`, brought to a routed / DRC-checked state by scripts and Freerouting 2.5.0, with proposed BOM part numbers and fabrication notes. **Not reviewed by the original designer. Not fabricated. Not a release.** The EAGLE originals in `4_Schematics and Boards Layout/` and the reference conversion in `engineering/PCB/` are untouched; no circuit connectivity (netlist) was changed on any board.
+**Status of everything in this directory: BETA.** KiCad 10.0.6 copies of the EAGLE → KiCad conversion in `engineering/PCB/`, brought to a routed / DRC-checked state by scripts and Freerouting 2.5.0, with proposed BOM part numbers and fabrication notes. **Not reviewed by the original designer. Not fabricated. Not a release.** The EAGLE originals in `4_Schematics and Boards Layout/` and the reference conversion in `engineering/PCB/` are untouched; no circuit connectivity (netlist) was changed on the four BETA boards. The only exception is the separate, explicitly labelled **Main Board rev. B proposal** in `MAIN_BOARD_REVB/` (FT601 host interface wired; netlist delta in `MAIN_BOARD_REVB/NETLIST_DELTA.csv`) — the EAGLE schematic must be updated by the designer to match it.
 
 | Board | Dir | Unconnected before → after | DRC before → after | Outside outline before → after | Routing work | Remaining blockers |
 |---|---|---|---|---|---|---|
@@ -8,6 +8,8 @@
 | Power Supply (2 L, 280×300) | `POWER_SUPPLY/` | 308 → **89** | 163 → 328 | 132 → **0** | 132 parts placed by script, Freerouting ×2 (+1372 tracks, +171 vias), 29 bridges, 22 stitching items, B.Cu GND plane | 89 open connections (`UNROUTED.md`: pour-to-pour VIN/GND distribution, fragmented bottom plane); placement needs designer review |
 | RF PA (4 L, 35×60) | `RF_PA/` | 1 → **0** | 67 → 18 | 0 → 0 | 1 GND strap, paddle polygon → GND, zone priorities; RF tracks untouched | 1 clearance 0.123 mm in the source (VIN_M stub) |
 | Frequency Synthesizer (6 L, 100×100) | `FREQUENCY_SYNTHESIZER/` | 0 → **0** | 639 → 639 (capped; silk conflicts 147 → 103 measured) | 0 → 0 | copper untouched; 43 silk texts nudged; `DRC_DISPOSITION.md` | 7 courtyard overlaps to review; 0201 silk density |
+| Main Board rev. B PROPOSAL (FT601 wired) | `MAIN_BOARD_REVB/` | 0 (rev. A) → 59 | 1049 → 1071 | — | **netlist change**: 64 nets, 20 parts (USB-C, ESD, crystal…); USB/power partly routed by Freerouting | 32-bit FIFO bus unrouted (U42 bank-35 balls have no escape-via room); EAGLE schematic not updated |
+
 
 "DRC before" = `engineering/PCB/<BOARD>/reports/DRC_report.json`; "after" = `<BOARD>/exports/reports/DRC_report.json` (KiCad caps each violation type at 199 entries). Counts went *up* on the Main Board and Power Supply because the net-less copper polygons that previously hid behind one `shorting_items` entry each are now checked as real copper, and because newly placed/routed parts expose their footprint-level silk/pad issues — the per-board READMEs classify every type.
 

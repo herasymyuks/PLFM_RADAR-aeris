@@ -45,3 +45,12 @@ Tooling: `beta/pcb/tools/` (pcbnew Python scripts, `beta_drc.sh`, `beta_export_p
 - Hand routing (`manual_routing.json`): 4 GND vias 0.45/0.20 mm to the inner GND planes, +3V3_FT bus 0.3 mm, +3V3_FPGA feed 0.5 mm to X16 pin 1. **Unconnected 15 → 0.**
 - Freerouting run on the locked 10-layer DSN stopped (killed) during its fanout stage after ~15 min — not needed.
 - Overlapping same-net zones re-prioritised. Final DRC 1049 (0 unconnected): 125 shorting / 87 hole / 72 clearance dominated by the no-net thermal-via pads of U69/U7 and the 4 ambiguous BPF2 polygons (schematic/footprint level, see `README.md` §3), 130 dangling track ends, 35 dangling vias, silk/mask ≥ 199 each (report cap).
+
+### MAIN_BOARD_REVB — rev. B PROPOSAL, explicit NETLIST CHANGE (2026-10-09)
+- New directory `MAIN_BOARD_REVB/` created from the BETA `MAIN_BOARD/` board by `tools/beta_revb_ft601.py` (reproducible; rev. A board untouched).
+- **Netlist change (rev. B):** 64 new nets; 123 pad connections on U6 (FT601) and U42 (XC7A50T bank 35) per `engineering/DESIGN/HOST_LINK/ft601_pin_assignment.csv`; U6 VCC33/VCCIO → `+3V3_FT`, GND pads → GND, AVDD/VDDA → `FT_AVDD`, VD10/DV10 → `FT_VD10`, XI/XO, RREF, VBUS detect, D±, SS TX/RX. Full list: `MAIN_BOARD_REVB/NETLIST_DELTA.csv` and README §3.
+- 20 parts added (USB-C Amphenol 12401610E4#2A on the left edge, 2 × TPD4E05U06, 30 MHz crystal + 2 × 18 pF, RREF 3.24 k, VBUS divider 10 k/3.3 k, CC 2 × 5.1 k, SSTX AC caps 2 × 100 nF, FB + 2 caps AVDD, 4 × 4.7 µF VD10). Netclasses FT_BUS 0.204/0.1, USB_DIFF 0.204 gap 0.18, FT_PWR 0.3/0.1.
+- Freerouting 2.5.0 on a DSN restricted to the new nets (`tools/beta_dsn_restrict.py`; all existing copper `(type fix)`): 1 pass (25 min), FR result 62 unrouted. Merged: GND 89 tracks + 6 vias, signals 319 tracks + 70 vias; then 127 items of the 47 still-open bus nets removed again (`removed_unfinished_routes.json`).
+- Result: unconnected 0 (rev. A) → 129 (rev. B unrouted) → **59** (rev. B routed); DRC 1049 → 1071. Bus not routable without re-doing the U42 bank-35 breakout (36 of 47 balls have no escape-via position) — `MAIN_BOARD_REVB/UNROUTED.md`.
+- Full export package `MAIN_BOARD_REVB/exports/`; BOM `BOM_MAIN_BOARD_REVB_beta.csv`.
+- Not executed (tool permission denied in this session): second restricted routing pass for the open power nets, widening of 0.075 mm neck-downs, nudging C_XI/C_XO. The EAGLE schematic must be updated by the designer to match.

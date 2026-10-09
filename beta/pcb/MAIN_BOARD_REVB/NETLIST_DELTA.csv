@@ -1,0 +1,259 @@
+change,net,ref,pad,old_net,note
+NEW NET,FT_CLK,,,,
+CONNECT,FT_CLK,U6,58,,FT601 CLK
+CONNECT,FT_CLK,U42,C4,,IO_L12N_T1_MRCC_35 (LVCMOS33) out
+NEW NET,FT_DATA_0,,,,
+CONNECT,FT_DATA_0,U6,40,,FT601 DATA_0
+CONNECT,FT_DATA_0,U42,A2,,IO_L8N_T1_AD14N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_1,,,,
+CONNECT,FT_DATA_1,U6,41,,FT601 DATA_1
+CONNECT,FT_DATA_1,U42,A3,,IO_L4N_T0_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_2,,,,
+CONNECT,FT_DATA_2,U6,42,,FT601 DATA_2
+CONNECT,FT_DATA_2,U42,A4,,IO_L3N_T0_DQS_AD5N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_3,,,,
+CONNECT,FT_DATA_3,U6,43,,FT601 DATA_3
+CONNECT,FT_DATA_3,U42,A5,,IO_L3P_T0_DQS_AD5P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_4,,,,
+CONNECT,FT_DATA_4,U6,44,,FT601 DATA_4
+CONNECT,FT_DATA_4,U42,A7,,IO_L1N_T0_AD4N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_5,,,,
+CONNECT,FT_DATA_5,U6,45,,FT601 DATA_5
+CONNECT,FT_DATA_5,U42,B1,,IO_L9N_T1_DQS_AD7N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_6,,,,
+CONNECT,FT_DATA_6,U6,46,,FT601 DATA_6
+CONNECT,FT_DATA_6,U42,B2,,IO_L8P_T1_AD14P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_7,,,,
+CONNECT,FT_DATA_7,U6,47,,FT601 DATA_7
+CONNECT,FT_DATA_7,U42,B4,,IO_L4P_T0_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_8,,,,
+CONNECT,FT_DATA_8,U6,50,,FT601 DATA_8
+CONNECT,FT_DATA_8,U42,B5,,IO_L2N_T0_AD12N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_9,,,,
+CONNECT,FT_DATA_9,U6,51,,FT601 DATA_9
+CONNECT,FT_DATA_9,U42,B6,,IO_L2P_T0_AD12P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_10,,,,
+CONNECT,FT_DATA_10,U6,52,,FT601 DATA_10
+CONNECT,FT_DATA_10,U42,B7,,IO_L1P_T0_AD4P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_11,,,,
+CONNECT,FT_DATA_11,U6,53,,FT601 DATA_11
+CONNECT,FT_DATA_11,U42,C1,,IO_L9P_T1_DQS_AD7P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_12,,,,
+CONNECT,FT_DATA_12,U6,54,,FT601 DATA_12
+CONNECT,FT_DATA_12,U42,C2,,IO_L7N_T1_AD6N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_13,,,,
+CONNECT,FT_DATA_13,U6,55,,FT601 DATA_13
+CONNECT,FT_DATA_13,U42,C3,,IO_L7P_T1_AD6P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_14,,,,
+CONNECT,FT_DATA_14,U6,56,,FT601 DATA_14
+CONNECT,FT_DATA_14,U42,C6,,IO_L5N_T0_AD13N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_15,,,,
+CONNECT,FT_DATA_15,U6,57,,FT601 DATA_15
+CONNECT,FT_DATA_15,U42,C7,,IO_L5P_T0_AD13P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_16,,,,
+CONNECT,FT_DATA_16,U6,60,,FT601 DATA_16
+CONNECT,FT_DATA_16,U42,D1,,IO_L10N_T1_AD15N_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_17,,,,
+CONNECT,FT_DATA_17,U6,61,,FT601 DATA_17
+CONNECT,FT_DATA_17,U42,D3,,IO_L11N_T1_SRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_18,,,,
+CONNECT,FT_DATA_18,U6,62,,FT601 DATA_18
+CONNECT,FT_DATA_18,U42,D4,,IO_L12P_T1_MRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_19,,,,
+CONNECT,FT_DATA_19,U6,63,,FT601 DATA_19
+CONNECT,FT_DATA_19,U42,D6,,IO_L6P_T0_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_20,,,,
+CONNECT,FT_DATA_20,U6,64,,FT601 DATA_20
+CONNECT,FT_DATA_20,U42,E1,,IO_L15N_T2_DQS_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_21,,,,
+CONNECT,FT_DATA_21,U6,65,,FT601 DATA_21
+CONNECT,FT_DATA_21,U42,E2,,IO_L10P_T1_AD15P_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_22,,,,
+CONNECT,FT_DATA_22,U6,66,,FT601 DATA_22
+CONNECT,FT_DATA_22,U42,E3,,IO_L11P_T1_SRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_23,,,,
+CONNECT,FT_DATA_23,U6,67,,FT601 DATA_23
+CONNECT,FT_DATA_23,U42,E5,,IO_L13N_T2_MRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_24,,,,
+CONNECT,FT_DATA_24,U6,69,,FT601 DATA_24
+CONNECT,FT_DATA_24,U42,E6,,IO_0_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_25,,,,
+CONNECT,FT_DATA_25,U6,70,,FT601 DATA_25
+CONNECT,FT_DATA_25,U42,F2,,IO_L15P_T2_DQS_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_26,,,,
+CONNECT,FT_DATA_26,U6,71,,FT601 DATA_26
+CONNECT,FT_DATA_26,U42,F3,,IO_L14N_T2_SRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_27,,,,
+CONNECT,FT_DATA_27,U6,72,,FT601 DATA_27
+CONNECT,FT_DATA_27,U42,F4,,IO_L14P_T2_SRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_28,,,,
+CONNECT,FT_DATA_28,U6,73,,FT601 DATA_28
+CONNECT,FT_DATA_28,U42,F5,,IO_L13P_T2_MRCC_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_29,,,,
+CONNECT,FT_DATA_29,U6,74,,FT601 DATA_29
+CONNECT,FT_DATA_29,U42,G1,,IO_L17N_T2_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_30,,,,
+CONNECT,FT_DATA_30,U6,75,,FT601 DATA_30
+CONNECT,FT_DATA_30,U42,G2,,IO_L17P_T2_35 (LVCMOS33) bidir
+NEW NET,FT_DATA_31,,,,
+CONNECT,FT_DATA_31,U6,76,,FT601 DATA_31
+CONNECT,FT_DATA_31,U42,G4,,IO_L16N_T2_35 (LVCMOS33) bidir
+NEW NET,FT_BE_0,,,,
+CONNECT,FT_BE_0,U6,4,,FT601 BE_0
+CONNECT,FT_BE_0,U42,G5,,IO_L16P_T2_35 (LVCMOS33) bidir
+NEW NET,FT_BE_1,,,,
+CONNECT,FT_BE_1,U6,5,,FT601 BE_1
+CONNECT,FT_BE_1,U42,H1,,IO_L20N_T3_35 (LVCMOS33) bidir
+NEW NET,FT_BE_2,,,,
+CONNECT,FT_BE_2,U6,6,,FT601 BE_2
+CONNECT,FT_BE_2,U42,H2,,IO_L20P_T3_35 (LVCMOS33) bidir
+NEW NET,FT_BE_3,,,,
+CONNECT,FT_BE_3,U6,7,,FT601 BE_3
+CONNECT,FT_BE_3,U42,H3,,IO_L21N_T3_DQS_35 (LVCMOS33) bidir
+NEW NET,FT_TXE_N,,,,
+CONNECT,FT_TXE_N,U6,8,,FT601 TXE_N
+CONNECT,FT_TXE_N,U42,H4,,IO_L18N_T2_35 (LVCMOS33) out
+NEW NET,FT_RXF_N,,,,
+CONNECT,FT_RXF_N,U6,9,,FT601 RXF_N
+CONNECT,FT_RXF_N,U42,H5,,IO_L18P_T2_35 (LVCMOS33) out
+NEW NET,FT_WR_N,,,,
+CONNECT,FT_WR_N,U6,11,,FT601 WR_N
+CONNECT,FT_WR_N,U42,J1,,IO_L22N_T3_35 (LVCMOS33) in
+NEW NET,FT_RD_N,,,,
+CONNECT,FT_RD_N,U6,12,,FT601 RD_N
+CONNECT,FT_RD_N,U42,J3,,IO_L21P_T3_DQS_35 (LVCMOS33) in
+NEW NET,FT_OE_N,,,,
+CONNECT,FT_OE_N,U6,13,,FT601 OE_N
+CONNECT,FT_OE_N,U42,J5,,IO_L19P_T3_35 (LVCMOS33) in
+NEW NET,FT_SIWU_N,,,,
+CONNECT,FT_SIWU_N,U6,10,,FT601 SIWU_N
+CONNECT,FT_SIWU_N,U42,K1,,IO_L22P_T3_35 (LVCMOS33) in
+NEW NET,FT_RESET_N,,,,
+CONNECT,FT_RESET_N,U6,15,,FT601 RESET_N
+CONNECT,FT_RESET_N,U42,K2,,IO_L24N_T3_35 (LVCMOS33) in
+NEW NET,FT_WAKEUP_N,,,,
+CONNECT,FT_WAKEUP_N,U6,16,,FT601 WAKEUP_N
+CONNECT,FT_WAKEUP_N,U42,K3,,IO_L24P_T3_35 (LVCMOS33) in
+NEW NET,FT_GPIO0,,,,
+CONNECT,FT_GPIO0,U6,17,,FT601 GPIO0
+CONNECT,FT_GPIO0,U42,K5,,IO_25_35 (LVCMOS33) out
+NEW NET,FT_GPIO1,,,,
+CONNECT,FT_GPIO1,U6,18,,FT601 GPIO1
+CONNECT,FT_GPIO1,U42,L2,,IO_L23N_T3_35 (LVCMOS33) out
+CONNECT,+3V3_FT,U6,20,VCC33_2,VCC33
+CONNECT,+3V3_FT,U6,24,VCC33_3,VCC33
+CONNECT,+3V3_FT,U6,38,VCC33,VCC33
+CONNECT,+3V3_FT,U6,14,VCCIO_2,VCCIO
+CONNECT,+3V3_FT,U6,49,VCCIO_3,VCCIO
+CONNECT,+3V3_FT,U6,59,VCCIO_4,VCCIO
+CONNECT,+3V3_FT,U6,68,VCCIO,VCCIO
+CONNECT,GND,U6,77,,GND / exposed pad
+CONNECT,GND,U6,1,,GND / exposed pad
+CONNECT,GND,U6,26,,GND / exposed pad
+CONNECT,GND,U6,29,,GND / exposed pad
+CONNECT,GND,U6,36,,GND / exposed pad
+NEW NET,FT_AVDD,,,,
+CONNECT,FT_AVDD,U6,2,AVDD,AVDD/VDDA via FB_A from +3V3_FT
+CONNECT,FT_AVDD,U6,28,VDDA,AVDD/VDDA via FB_A from +3V3_FT
+NEW NET,FT_VD10,,,,
+CONNECT,FT_VD10,U6,3,,VD10/DV10 1.0 V core — VERIFY datasheet (internal regulator output assumed)
+CONNECT,FT_VD10,U6,30,,VD10/DV10 1.0 V core — VERIFY datasheet (internal regulator output assumed)
+CONNECT,FT_VD10,U6,33,,VD10/DV10 1.0 V core — VERIFY datasheet (internal regulator output assumed)
+CONNECT,FT_VD10,U6,48,,VD10/DV10 1.0 V core — VERIFY datasheet (internal regulator output assumed)
+CONNECT,FT_VD10,U6,39,,VD10/DV10 1.0 V core — VERIFY datasheet (internal regulator output assumed)
+NEW NET,FT_XI,,,,
+CONNECT,FT_XI,U6,21,,XI
+NEW NET,FT_XO,,,,
+CONNECT,FT_XO,U6,22,,XO
+NEW NET,FT_RREF,,,,
+CONNECT,FT_RREF,U6,27,,RREF
+NEW NET,FT_VBUS_DET,,,,
+CONNECT,FT_VBUS_DET,U6,37,VBUS,VBUS detect (divider)
+NEW NET,USB_DP,,,,
+CONNECT,USB_DP,U6,23,,DP
+NEW NET,USB_DM,,,,
+CONNECT,USB_DM,U6,25,,DM
+NEW NET,USB_SSTX_P,,,,
+CONNECT,USB_SSTX_P,U6,32,,TODP (to AC-coupling cap)
+NEW NET,USB_SSTX_N,,,,
+CONNECT,USB_SSTX_N,U6,31,,TODN (to AC-coupling cap)
+NEW NET,USB_SSRX_P,,,,
+CONNECT,USB_SSRX_P,U6,35,,RIDP
+NEW NET,USB_SSRX_N,,,,
+CONNECT,USB_SSRX_N,U6,34,,RIDN
+CONNECT (new part),GND,J_USB3,A1,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),GND,J_USB3,A12,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),GND,J_USB3,B1,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),GND,J_USB3,B12,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),GND,J_USB3,SH,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+NEW NET,USB_VBUS,,,,
+CONNECT (new part),USB_VBUS,J_USB3,A4,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_VBUS,J_USB3,A9,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_VBUS,J_USB3,B4,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_VBUS,J_USB3,B9,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+NEW NET,USB_CC1,,,,
+CONNECT (new part),USB_CC1,J_USB3,A5,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+NEW NET,USB_CC2,,,,
+CONNECT (new part),USB_CC2,J_USB3,B5,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_DP,J_USB3,A6,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_DP,J_USB3,B6,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_DM,J_USB3,A7,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_DM,J_USB3,B7,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+NEW NET,USB_SSTX_C_P,,,,
+CONNECT (new part),USB_SSTX_C_P,J_USB3,A2,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+NEW NET,USB_SSTX_C_N,,,,
+CONNECT (new part),USB_SSTX_C_N,J_USB3,A3,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_SSRX_P,J_USB3,B11,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_SSRX_N,J_USB3,B10,,"only the TX1/RX1 SuperSpeed lane is wired (no orientation mux): SS works in one plug orientation, USB 2.0 in both — VERIFY acceptable"
+CONNECT (new part),USB_SSTX_C_P,D_ESD1,1,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSTX_C_P,D_ESD1,10,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSTX_C_N,D_ESD1,2,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSTX_C_N,D_ESD1,9,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSRX_P,D_ESD1,4,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSRX_P,D_ESD1,7,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSRX_N,D_ESD1,5,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_SSRX_N,D_ESD1,6,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),GND,D_ESD1,3,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),GND,D_ESD1,8,,"pin-out per TPD4E05U06 DQA flow-through (1,2,4,5 IO; 6,7,9,10 NC pass-through; 3,8 GND) — VERIFY"
+CONNECT (new part),USB_DP,D_ESD2,1,,second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) — channels 3/4 unused
+CONNECT (new part),USB_DP,D_ESD2,10,,second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) — channels 3/4 unused
+CONNECT (new part),USB_DM,D_ESD2,2,,second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) — channels 3/4 unused
+CONNECT (new part),USB_DM,D_ESD2,9,,second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) — channels 3/4 unused
+CONNECT (new part),GND,D_ESD2,3,,second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) — channels 3/4 unused
+CONNECT (new part),GND,D_ESD2,8,,second array for D+/D- (the design BOM lists one 4-channel array for SS+HS = 6 lines) — channels 3/4 unused
+CONNECT (new part),USB_SSTX_P,C_SSTX_P,1,,"USB 3 TX AC coupling — added (spec requirement), VERIFY"
+CONNECT (new part),USB_SSTX_C_P,C_SSTX_P,2,,"USB 3 TX AC coupling — added (spec requirement), VERIFY"
+CONNECT (new part),USB_SSTX_N,C_SSTX_N,1,,"USB 3 TX AC coupling — added (spec requirement), VERIFY"
+CONNECT (new part),USB_SSTX_C_N,C_SSTX_N,2,,"USB 3 TX AC coupling — added (spec requirement), VERIFY"
+CONNECT (new part),USB_CC1,R_CC1,1,,Type-C Rd 5.1 kΩ (device) — added because a USB-C receptacle was chosen
+CONNECT (new part),GND,R_CC1,2,,Type-C Rd 5.1 kΩ (device) — added because a USB-C receptacle was chosen
+CONNECT (new part),USB_CC2,R_CC2,1,,Type-C Rd 5.1 kΩ (device)
+CONNECT (new part),GND,R_CC2,2,,Type-C Rd 5.1 kΩ (device)
+CONNECT (new part),USB_VBUS,R_VBUS_1,1,,VERIFY VBUS pin limit
+CONNECT (new part),FT_VBUS_DET,R_VBUS_1,2,,VERIFY VBUS pin limit
+CONNECT (new part),FT_VBUS_DET,R_VBUS_2,1,,VERIFY VBUS pin limit
+CONNECT (new part),GND,R_VBUS_2,2,,VERIFY VBUS pin limit
+CONNECT (new part),FT_RREF,R_RREF,1,,value per FT60x datasheet — VERIFY
+CONNECT (new part),GND,R_RREF,2,,value per FT60x datasheet — VERIFY
+CONNECT (new part),FT_VD10,C_VD10_1,1,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),GND,C_VD10_1,2,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),FT_VD10,C_VD10_2,1,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),GND,C_VD10_2,2,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),FT_VD10,C_VD10_3,1,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),GND,C_VD10_3,2,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),FT_VD10,C_VD10_4,1,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),GND,C_VD10_4,2,,VD10/DV10 decoupling — VERIFY
+CONNECT (new part),+3V3_FT,FB_A,1,,+3V3_FT -> AVDD/VDDA
+CONNECT (new part),FT_AVDD,FB_A,2,,+3V3_FT -> AVDD/VDDA
+CONNECT (new part),FT_AVDD,C_AVDD_1,1,,
+CONNECT (new part),GND,C_AVDD_1,2,,
+CONNECT (new part),FT_AVDD,C_AVDD_2,1,,
+CONNECT (new part),GND,C_AVDD_2,2,,
+CONNECT (new part),FT_XI,Y_FT,1,,"ABM8 land pattern (3.2×2.5, 4 pads; ABM8G footprint of the KiCad library) — VERIFY"
+CONNECT (new part),FT_XO,Y_FT,3,,"ABM8 land pattern (3.2×2.5, 4 pads; ABM8G footprint of the KiCad library) — VERIFY"
+CONNECT (new part),GND,Y_FT,2,,"ABM8 land pattern (3.2×2.5, 4 pads; ABM8G footprint of the KiCad library) — VERIFY"
+CONNECT (new part),GND,Y_FT,4,,"ABM8 land pattern (3.2×2.5, 4 pads; ABM8G footprint of the KiCad library) — VERIFY"
+CONNECT (new part),FT_XI,C_XI,1,,load cap — VERIFY against crystal CL
+CONNECT (new part),GND,C_XI,2,,load cap — VERIFY against crystal CL
+CONNECT (new part),FT_XO,C_XO,1,,load cap — VERIFY against crystal CL
+CONNECT (new part),GND,C_XO,2,,load cap — VERIFY against crystal CL

@@ -1,0 +1,3032 @@
+(session "MAIN_BOARD_REVB_ft601"
+  (base_design "MAIN_BOARD_REVB_ft601")
+  (placement
+    (resolution um 10)
+    (component "TACTILE_SWITCH_SMD_4.6X2.8MM"
+      (place S1 984100 1099500 front 90)
+    )
+    (component C0201
+      (place C7 576200 1538200 front 90)
+      (place C70 1375791 2318990 front 225)
+      (place C303 2094500 547700 front 90)
+      (place C248 1374800 1530800 front 315)
+      (place C18 928300 958800 front 270)
+      (place C39 635450 2141700 front 90)
+      (place C175 1346001 1262559 front 135)
+      (place C212 2372399 1580396 front 135)
+      (place C128 1392686 2024139 front 315)
+      (place C41 662450 2144800 front 0)
+      (place C40 654750 2156200 front 180)
+      (place C64 726100 1448900 front 0)
+      (place C22 620800 945700 front 180)
+      (place C121 1603245 1471307 front 225)
+      (place C286 1383800 430600 front 180)
+      (place C125 1634141 2345424 front 135)
+      (place C302 2043500 547200 front 90)
+      (place C297 1546200 361800 front 0)
+      (place C2 645200 1570800 front 0)
+      (place C61 755600 1449300 front 0)
+      (place C4 558700 1534700 front 90)
+      (place C19 928200 984200 front 90)
+      (place C282 1581800 431600 front 180)
+      (place C27 870977 1082374 front 90)
+      (place C236 2107785 2026899 front 135)
+      (place C71 1343897 2287587 front 225)
+      (place C228 2418628 2023996 front 225)
+      (place C271 937700 320900 front 0)
+      (place C161 1642324 1590920 front 135)
+      (place C42 654800 2160700 front 180)
+      (place C160 1658935 1264495 front 225)
+      (place C33 614090 1002442 front 90)
+      (place C141 786700 2137200 front 270)
+      (place C180 626200 1722400 front 0)
+      (place C30 709094 1150346 front 0)
+      (place C126 1361879 2055010 front 315)
+      (place C147 2098277 2309522 front 225)
+      (place C256 452552 224240 front 90)
+      (place C253 1353087 1285743 front 315)
+      (place C229 2112983 2031701 front 135)
+      (place C9 598700 1537700 front 90)
+      (place C166 2151700 2058200 front 45)
+      (place C295 1546200 354800 front 0)
+      (place C36 645300 1582550 front 270)
+      (place C198 2371224 2339978 front 135)
+      (place C165 2149381 2022479 front 315)
+      (place C15 585950 1638550 front 0)
+      (place C67 1349071 2329505 front 45)
+      (place C217 2118803 1242861 front 315)
+      (place C249 2408596 2331036 front 315)
+      (place C268 784000 1449500 front 0)
+      (place C10 603950 1537700 front 90)
+      (place C1 645200 1564300 front 0)
+      (place C197 2402489 2308860 front 135)
+      (place C250 1341733 1575891 front 45)
+      (place C163 2118697 2053444 front 315)
+      (place C138 1350186 2027374 front 135)
+      (place C133 1668275 2043715 front 45)
+      (place C202 2086586 1560606 front 225)
+      (place C222 2103099 1258238 front 135)
+      (place C81 1129700 1785151 front 270)
+      (place C168 1341199 1258361 front 135)
+      (place C123 1396952 1369141 front 45)
+      (place C293 658500 1579000 front 180)
+      (place C146 2106572 2330012 front 45)
+      (place C152 1656577 1576179 front 315)
+      (place C299 1989800 306300 front 270)
+      (place C11 613450 1537700 front 90)
+      (place C17 591121 1927863 front 135)
+      (place C172 2422374 2065091 front 45)
+      (place C102 1398314 2129252 front 45)
+      (place C13 638200 1554700 front 90)
+      (place C307 2197500 548200 front 90)
+      (place C66 1353646 2324929 front 45)
+      (place C134 1624984 2041193 front 45)
+      (place C240 1618745 1584390 front 135)
+      (place C281 829067 894082 front 0)
+      (place C73 1643929 2326354 front 315)
+      (place C174 1653784 1269028 front 225)
+      (place C79 1129494 1805560 front 90)
+      (place C129 1394700 2060900 front 45)
+      (place C149 2135379 2318582 front 225)
+      (place C44 578100 1481000 front 90)
+      (place C85 1838300 1797600 front 0)
+      (place C98 1499850 1377150 front 270)
+      (place C176 626450 1748700 front 0)
+      (place C93 2254650 2224850 front 90)
+      (place C221 2414887 1577092 front 315)
+      (place C263 1081300 432100 front 180)
+      (place C233 1661987 1305663 front 45)
+      (place C245 1321366 1565208 front 225)
+      (place C154 391908 1938725 front 225)
+      (place C277 1045200 356000 front 0)
+      (place C74 1649505 2330929 front 315)
+      (place C120 1551405 1318656 front 135)
+      (place C309 756900 2142600 front 90)
+      (place C83 1159103 1821685 front 270)
+      (place C173 2380800 2072800 front 135)
+      (place C247 1333608 1537266 front 225)
+      (place C203 2426744 1285408 front 45)
+      (place C92 2250150 2224900 front 90)
+      (place C235 2413431 2028799 front 225)
+      (place C23 661700 1144200 front 90)
+      (place C151 2139200 2287300 front 315)
+      (place C60 767200 1452600 front 90)
+      (place C298 1987500 547700 front 90)
+      (place C131 1652823 2030383 front 225)
+      (place C310 1833000 552700 front 90)
+      (place C127 772300 2137200 front 270)
+      (place C104 1601239 2232550 front 225)
+      (place C55 396292 1934341 front 225)
+      (place C69 1331576 2314141 front 225)
+      (place C53 584000 1411300 front 0)
+      (place C112 614102 1951056 front 135)
+      (place C284 1481800 430600 front 180)
+      (place C143 1607315 2334965 front 135)
+      (place C257 454580 514986 front 90)
+      (place C54 587500 1330750 front 180)
+      (place C52 590600 1392900 front 90)
+      (place C290 1437200 319900 front 0)
+      (place C8 593950 1537700 front 90)
+      (place C270 783900 1455700 front 0)
+      (place C241 1610800 1543200 front 225)
+      (place C207 2096513 1579493 front 45)
+      (place C37 539800 2148050 front 0)
+      (place C56 563450 1367050 front 0)
+      (place C101 1505900 1363050 front 270)
+      (place C132 1663229 2047985 front 45)
+      (place C232 1630779 1274697 front 45)
+      (place C265 980800 431600 front 180)
+      (place C276 1045800 398200 front 90)
+      (place C234 1623300 1310300 front 135)
+      (place C219 2092833 1538670 front 225)
+      (place C304 2146500 548200 front 90)
+      (place C153 387312 1943321 front 225)
+      (place C225 2113902 1284556 front 315)
+      (place C273 1039700 320400 front 0)
+      (place C177 626450 1735850 front 0)
+      (place C296 1543000 397200 front 90)
+      (place C110 604804 1941616 front 135)
+      (place C28 824135 1150428 front 0)
+      (place C137 1354916 2032328 front 135)
+      (place C199 2368200 2301700 front 225)
+      (place C94 2256850 1376700 front 270)
+      (place C280 1684800 430100 front 180)
+      (place C244 2399503 2350865 front 135)
+      (place C242 2413399 2336234 front 315)
+      (place C171 2391417 2034459 front 45)
+      (place C46 585700 1482750 front 90)
+      (place C130 1647870 2035114 front 225)
+      (place C29 759486 1150428 front 0)
+      (place C6 570450 1538200 front 90)
+      (place C25 873216 960001 front 0)
+      (place C272 825000 2163500 front 90)
+      (place C210 2431942 1280605 front 45)
+      (place C34 613537 937441 front 90)
+      (place C289 381000 1768750 front 0)
+      (place C220 2136700 1529300 front 315)
+      (place C300 2031700 311000 front 0)
+      (place C68 1337000 2309717 front 225)
+      (place C279 763791 893536 front 180)
+      (place C238 2427998 2043314 front 45)
+      (place C213 2368700 1542200 front 225)
+      (place C215 2107296 1262040 front 135)
+      (place C106 2158535 2128894 front 45)
+      (place C139 1370182 2018574 front 315)
+      (place C148 2093330 2313890 front 225)
+      (place C20 927300 1032300 front 270)
+      (place C156 378296 1952266 front 225)
+      (place C167 1661775 1580981 front 315)
+      (place C230 2127102 2016530 front 315)
+      (place C204 2389892 1275745 front 45)
+      (place C179 626400 1729400 front 0)
+      (place C209 2081388 1565409 front 225)
+      (place C144 1605700 2299200 front 225)
+      (place C294 1647700 320400 front 0)
+      (place C183 1667315 1284071 front 45)
+      (place C96 2262350 1360300 front 270)
+      (place C86 2263650 2229950 front 90)
+      (place C278 1045200 362800 front 0)
+      (place C31 656633 1152647 front 90)
+      (place C26 870922 1012606 front 270)
+      (place C118 2206463 1519752 front 315)
+      (place C140 1363913 2012527 front 315)
+      (place C169 1647127 1595117 front 135)
+      (place C274 827400 1423600 front 270)
+      (place C117 2362351 1471386 front 225)
+      (place C288 1337200 320400 front 0)
+      (place C306 1936000 550200 front 90)
+      (place C119 2156847 1370061 front 45)
+      (place C63 738400 1452300 front 90)
+      (place C45 593100 1480800 front 90)
+      (place C227 2150200 1296200 front 45)
+      (place C84 1159345 1770161 front 270)
+      (place C246 1364537 1568183 front 225)
+      (place C254 1384276 1254543 front 315)
+      (place C62 755500 1455600 front 0)
+      (place C116 2312235 1318301 front 135)
+      (place C136 1619300 2074200 front 135)
+      (place C12 618950 1537700 front 90)
+      (place C107 2208996 2281443 front 315)
+      (place C287 381000 1762500 front 0)
+      (place C158 369210 1961565 front 225)
+      (place C87 2259150 2229900 front 90)
+      (place C269 836700 323400 front 0)
+      (place C109 595470 1932282 front 135)
+      (place C196 1357085 1243355 front 315)
+      (place C124 1628717 2340000 front 135)
+      (place C97 2257100 1360350 front 270)
+      (place C72 1381600 2285100 front 315)
+      (place C275 1136200 320400 front 0)
+      (place C35 714092 894614 front 180)
+      (place C43 586000 1420750 front 180)
+      (place C205 2420613 1306445 front 45)
+      (place C181 626250 1716650 front 0)
+      (place C89 1509650 2229800 front 90)
+      (place C305 1883500 551200 front 90)
+      (place C82 1136626 1785151 front 270)
+      (place C239 1649946 1553322 front 135)
+      (place C291 381000 1756000 front 0)
+      (place C157 373665 1956827 front 225)
+      (place C32 613388 1057110 front 90)
+      (place C142 1638190 2303905 front 135)
+      (place C231 2122116 2012200 front 315)
+      (place C113 618663 1955687 front 135)
+      (place C162 1672164 1279604 front 45)
+      (place C50 176300 1824950 front 90)
+      (place C208 2416157 1266494 front 225)
+      (place C105 1551702 2079110 front 135)
+      (place C88 1514900 2229850 front 90)
+      (place C237 2432668 2038300 front 45)
+      (place C65 726200 1455600 front 0)
+      (place C211 2403221 1549518 front 135)
+      (place C21 926700 1057700 front 90)
+      (place C301 1995800 306300 front 270)
+      (place C216 2395211 1586809 front 135)
+      (place C24 867700 1095200 front 0)
+      (place C14 529950 1564800 front 0)
+      (place C99 1505100 1376950 front 270)
+      (place C80 1136037 1805560 front 90)
+      (place C218 2124156 1569672 front 225)
+      (place C51 583900 1392600 front 90)
+      (place C95 2261850 1376500 front 270)
+      (place C267 883300 431100 front 180)
+      (place C170 1361900 1248540 front 315)
+      (place C178 626450 1742600 front 0)
+      (place C108 600243 1937055 front 135)
+      (place C155 382751 1947882 front 225)
+      (place C214 2409690 1572289 front 315)
+      (place C201 2411355 1270691 front 225)
+      (place C59 801400 2137400 front 270)
+      (place C47 562200 1457300 front 0)
+      (place C114 2311432 2079103 front 135)
+      (place C285 381000 1774750 front 0)
+      (place C16 532800 1582300 front 270)
+      (place C103 1447786 2280916 front 315)
+      (place C111 609364 1946247 front 135)
+      (place C90 1497900 2224250 front 90)
+      (place C91 1502650 2224200 front 90)
+      (place C122 1448792 1521896 front 315)
+      (place C150 2104018 2287043 front 225)
+      (place C223 2400014 1592007 front 135)
+      (place C226 2144742 1253770 front 315)
+      (place C182 626300 1710650 front 0)
+      (place C224 2123000 1247664 front 315)
+      (place C292 1538700 320900 front 0)
+      (place C206 2380800 1312800 front 135)
+      (place C115 2360798 2232833 front 225)
+      (place C252 1326168 1561010 front 225)
+      (place C251 2394305 2346063 front 135)
+      (place C164 951400 1074700 front 90)
+      (place C243 1336535 1580694 front 45)
+      (place C5 564700 1538200 front 90)
+      (place C100 1510650 1363050 front 270)
+      (place C308 757300 2132000 front 270)
+      (place C261 1182300 430600 front 180)
+      (place C145 2111624 2325380 front 45)
+      (place C38 584950 2140700 front 90)
+      (place C200 2101316 1575295 front 45)
+      (place C135 1656097 2072293 front 45)
+      (place C255 1391700 1297200 front 45)
+    )
+    (component R0201
+      (place R81 1489500 1376700 front 90)
+      (place R95 315100 477800 front 180)
+      (place R129 946000 318800 front 270)
+      (place R151 1544700 374300 front 0)
+      (place R54 174650 1852950 front 90)
+      (place R108 344000 171300 front 270)
+      (place R127 875000 433700 front 90)
+      (place R160 876200 1834400 front 0)
+      (place R90 646500 478200 front 0)
+      (place R44 479600 246900 front 270)
+      (place R173 635000 1567500 front 90)
+      (place R85 615900 471400 front 270)
+      (place R104 645400 180700 front 0)
+      (place R31 511800 2139900 front 0)
+      (place R11 467750 1725250 front 180)
+      (place R84 1000 -465500 front 0)
+      (place R140 690300 1698450 front 180)
+      (place R26 559400 2011400 front 90)
+      (place R155 359200 1652900 front 0)
+      (place R20 582200 1404500 front 180)
+      (place R57 1478650 1376650 front 270)
+      (place R124 1174500 432700 front 90)
+      (place R30 610600 2012100 front 90)
+      (place R135 1473200 433700 front 90)
+      (place R22 587550 1341750 front 180)
+      (place R65 83350 1875850 front 270)
+      (place R105 645300 263300 front 180)
+      (place R136 1375200 433200 front 90)
+      (place R33 648350 2144500 front 90)
+      (place R64 80700 1883600 front 180)
+      (place R119 313700 179300 front 180)
+      (place R121 346100 261800 front 180)
+      (place R80 1484000 1376700 front 90)
+      (place R69 600700 1827100 front 0)
+      (place R14 586050 1432750 front 180)
+      (place R148 1546800 318300 front 270)
+      (place R23 521400 2011300 front 90)
+      (place R34 562300 1356900 front 0)
+      (place R110 767000 1158800 front 270)
+      (place R60 1000 -323000 front 0)
+      (place R118 315800 269800 front 270)
+      (place R50 211350 1779900 front 270)
+      (place R17 590700 1489200 front 180)
+      (place R91 646200 562300 front 180)
+      (place R82 345900 469000 front 270)
+      (place R18 559300 1441600 front 0)
+      (place R74 2227762 1290228 front 90)
+      (place R141 690300 1691700 front 180)
+      (place R145 1000 -513000 front 0)
+      (place R166 540500 1340300 front 270)
+      (place R29 597600 2011900 front 90)
+      (place R70 2279600 2226100 front 270)
+      (place R114 723000 1159300 front 270)
+      (place R132 1055291 395270 front 180)
+      (place R159 876200 1824900 front 0)
+      (place R48 2280350 2135100 front 270)
+      (place R171 865800 980700 front 180)
+      (place R46 1519517 2250248 front 270)
+      (place R39 501400 182000 front 270)
+      (place R41 489400 536600 front 270)
+      (place R21 591600 1404500 front 180)
+      (place R133 1676700 432700 front 90)
+      (place R100 643000 172800 front 270)
+      (place R163 876200 1862400 front 0)
+      (place R167 618200 974800 front 0)
+      (place R152 2029200 302200 front 90)
+      (place R59 317400 469500 front 270)
+      (place R72 2240650 1465800 front 90)
+      (place R146 1000 -560500 front 0)
+      (place R144 600700 1840800 front 0)
+      (place R68 85850 1797750 front 270)
+      (place R156 295700 1652900 front 0)
+      (place R62 82100 1832600 front 180)
+      (place R131 1144300 317800 front 270)
+      (place R4 598100 1807400 front 90)
+      (place R58 1494900 1376950 front 270)
+      (place R150 1553273 394898 front 180)
+      (place R112 751500 1159300 front 270)
+      (place R115 763600 2131800 front 90)
+      (place R71 2285100 2226150 front 270)
+      (place R157 232200 1652900 front 0)
+      (place R5 531600 1729400 front 180)
+      (place R24 534400 2011000 front 90)
+      (place R106 613000 263700 front 0)
+      (place R162 876200 1853400 front 0)
+      (place R161 876200 1844400 front 0)
+      (place R6 558000 1730400 front 180)
+      (place R63 81150 1857850 front 180)
+      (place R55 2274100 2225950 front 90)
+      (place R122 313200 261700 front 0)
+      (place R51 261750 1804900 front 0)
+      (place R125 1074000 434700 front 90)
+      (place R172 865800 986200 front 180)
+      (place R89 613300 478300 front 180)
+      (place R32 587550 1336000 front 180)
+      (place R86 643900 470700 front 270)
+      (place R67 84850 1824700 front 270)
+      (place R147 1446300 317300 front 270)
+      (place R8 489500 1730100 front 180)
+      (place R117 697800 2128700 front 180)
+      (place R137 1344800 317800 front 270)
+      (place R92 613600 561700 front 0)
+      (place R101 643000 271300 front 270)
+      (place R96 348200 477700 front 0)
+      (place R52 261100 1831200 front 270)
+      (place R109 344000 270300 front 270)
+      (place R78 2268750 2226050 front 270)
+      (place R9 507900 1729600 front 180)
+      (place R170 791700 900700 front 90)
+      (place R143 600700 1834050 front 0)
+      (place R45 1519600 2137450 front 270)
+      (place R77 1484206 1321986 front 90)
+      (place R98 315800 561700 front 0)
+      (place R79 2246000 1375950 front 90)
+      (place R53 175100 1842500 front 270)
+      (place R88 615900 569300 front 270)
+      (place R12 595700 1787200 front 270)
+      (place R47 1525017 2250298 front 270)
+      (place R153 2003300 304800 front 270)
+      (place R35 612100 1356800 front 0)
+      (place R27 572400 2011600 front 90)
+      (place R139 690300 1704950 front 180)
+      (place R99 615400 172200 front 270)
+      (place R111 951400 1085600 front 90)
+      (place R134 1573700 434200 front 90)
+      (place R16 580100 1489400 front 180)
+      (place R10 478500 1730100 front 180)
+      (place R93 345900 570600 front 270)
+      (place R165 634700 1339600 front 270)
+      (place R56 2251650 1376100 front 270)
+      (place R3 575600 1731100 front 180)
+      (place R142 373450 1875300 front 0)
+      (place R87 643900 570500 front 270)
+      (place R43 485900 247400 front 270)
+      (place R120 346600 179200 front 0)
+      (place R128 844500 320800 front 270)
+      (place R49 83200 1806600 front 180)
+      (place R83 1000 -418000 front 0)
+      (place R76 1497633 1328986 front 90)
+      (place R113 737500 1159300 front 270)
+      (place R138 690300 1711450 front 180)
+      (place R164 876200 1871400 front 0)
+      (place R102 615500 271300 front 270)
+      (place R169 797200 900700 front 90)
+      (place R28 584900 2011800 front 90)
+      (place R66 83850 1849400 front 270)
+      (place R103 612900 180300 front 180)
+      (place R19 613200 1441500 front 0)
+      (place R7 518500 1729900 front 180)
+      (place R97 348500 562300 front 180)
+      (place R75 1481150 1466400 front 90)
+      (place R15 586050 1426250 front 180)
+      (place R61 1000 -370500 front 0)
+      (place R73 2239864 1318853 front 90)
+      (place R158 876200 1815900 front 0)
+      (place R149 1655800 317300 front 270)
+      (place R107 316500 171800 front 270)
+      (place R42 483600 536600 front 270)
+      (place R40 502400 474800 front 270)
+      (place R94 318400 569400 front 270)
+      (place R2 595000 1775000 front 270)
+      (place R126 973500 434200 front 90)
+      (place R154 422700 1652900 front 0)
+      (place R123 492000 184300 front 270)
+      (place R130 1046800 317300 front 270)
+      (place R25 546900 2011200 front 90)
+      (place R168 618200 980300 front 0)
+      (place R116 763700 2142600 front 270)
+    )
+    (component "16_QFN"
+      (place "RF_SW_1" 1379000 2041500 front 315)
+      (place "RF_SW_13" 1370500 1272000 front 315)
+      (place "RF_SW_9" 2131000 1271000 front 315)
+      (place "RF_SW_5" 2136000 2039500 front 315)
+      (place "RF_SW_3" 1361600 2301600 front 225)
+      (place "RF_SW_7" 2121500 2301000 front 225)
+      (place "RF_SW_11" 2110500 1552500 front 225)
+      (place "RF_SW_15" 1351000 1551000 front 225)
+      (place "RF_SW_2" 1638500 2058500 front 45)
+      (place "RF_SW_10" 2403500 1293000 front 45)
+      (place "RF_SW_6" 2405000 2051500 front 45)
+      (place "RF_SW_14" 1644500 1292000 front 45)
+      (place "RF_SW_8" 2385000 2322500 front 135)
+      (place "RF_SW_12" 2386000 1563000 front 135)
+      (place "RF_SW_16" 1632500 1567000 front 135)
+      (place "RF_SW_4" 1621000 2317600 front 135)
+      (place U$1 1161800 1795500 front 270)
+    )
+    (component "1X03"
+      (place JP4 704700 783400 front 270)
+      (place JP15 2097200 499700 front 270)
+      (place JP16 1833200 502100 front 270)
+      (place JP19 2198700 501400 front 270)
+      (place JP14 2149200 501300 front 270)
+      (place JP5 2043700 499800 front 270)
+      (place JP11 1938200 499500 front 270)
+      (place JP10 649200 784100 front 270)
+      (place JP6 1988700 498700 front 270)
+      (place JP12 1885200 501900 front 270)
+      (place JP17 659500 1253800 front 180)
+    )
+    (component "QFN76_FTD"
+      (place U6 273000 2090000 front 0)
+    )
+    (component C0402
+      (place C342 922187 301357 front 270)
+      (place C320 2072400 2901200 front 270)
+      (place C318 1673800 2897300 front 270)
+      (place C58 551000 1349700 front 270)
+      (place C266 1627900 299100 front 270)
+      (place C335 979300 1365800 front 270)
+      (place C314 271492 1569274 front 270)
+      (place C259 1024853 301728 front 270)
+      (place C331 995049 2266484 front 270)
+      (place C325 2076300 786800 front 270)
+      (place C49 546200 1433900 front 270)
+      (place C350 1318580 300603 front 270)
+      (place C349 1526200 299200 front 270)
+      (place C343 820250 302600 front 270)
+      (place C313 254400 1569300 front 270)
+      (place C339 1596755 385659 front 270)
+      (place C328 1649300 780800 front 270)
+      (place C327 1666900 781100 front 270)
+      (place C332 977865 2266484 front 270)
+      (place C324 2055900 786400 front 270)
+      (place C337 396900 377200 front 270)
+      (place C321 2091300 2901300 front 270)
+      (place C317 1691900 2897500 front 270)
+      (place C78 1099900 385400 front 270)
+      (place C76 441750 377746 front 270)
+      (place C346 1425772 300103 front 270)
+      (place C258 1124900 300600 front 270)
+      (place C334 991900 1366000 front 270)
+      (place C260 996010 453512 front 90)
+      (place C344 1199571 452357 front 90)
+      (place C348 1496579 450156 front 90)
+      (place C48 625500 1433400 front 90)
+      (place C347 1699777 452119 front 90)
+      (place C351 1598247 451119 front 90)
+      (place C345 1095368 453357 front 90)
+      (place C262 896985 452676 front 90)
+      (place L6 674350 2152250 front 90)
+      (place L7 623600 2151900 front 90)
+      (place C57 623400 1349500 front 90)
+      (place C264 1394012 449971 front 90)
+      (place C341 1942258 307283 front 180)
+      (place C3 586100 1525900 front 180)
+      (place C185 50000 2320000 front 0)
+      (place L5 893344 1090203 front 0)
+      (place C186 90000 2320000 front 0)
+    )
+    (component CJTTPHHSTTH1
+      (place J21 769400 1567612 front 90)
+      (place J19 752000 1798200 front 270)
+    )
+    (component "1420731211"
+      (place J22 827300 1368500 front 0)
+      (place J23 825000 2218100 front 0)
+      (place J20 520000 2230500 front 0)
+      (place J1 670000 1859000 front 0)
+      (place J18 670100 1952400 front 0)
+      (place J54 1427000 1211700 front 45)
+      (place J41 2343100 1228600 front 45)
+      (place J33 2186500 2370100 front 45)
+      (place J29 1573400 1988900 front 45)
+      (place J39 2455500 2256100 front 45)
+      (place J43 2454600 1500200 front 45)
+      (place J32 2051500 2234100 front 45)
+      (place J40 2454500 1341600 front 45)
+      (place J45 2169500 1615100 front 45)
+      (place J51 1695900 1508900 front 45)
+      (place J36 2473000 2116100 front 45)
+      (place J38 2320000 2391100 front 45)
+      (place J48 1703000 1346600 front 45)
+      (place J37 2339400 1982200 front 45)
+      (place J53 1414200 1617900 front 45)
+      (place J52 1287000 1491400 front 45)
+      (place J46 2189400 1209300 front 45)
+      (place J44 2050500 1497100 front 45)
+      (place J55 1301700 1335900 front 45)
+      (place J25 1427501 2370199 front 45)
+      (place J28 1708100 2124600 front 45)
+      (place J24 1291913 2235516 front 45)
+      (place J49 1582500 1226100 front 45)
+      (place J47 2065200 1333200 front 45)
+      (place J31 1690400 2251400 front 45)
+      (place J35 2067500 2105600 front 45)
+      (place J42 2331300 1622100 front 135)
+      (place J34 2188400 1983500 front 135)
+      (place J50 1583300 1619400 front 135)
+      (place J26 1444400 1972400 front 135)
+      (place J30 1555300 2386400 front 135)
+      (place J27 1310400 2106900 front 225)
+    )
+    (component "MA10-2"
+      (place SV1 500300 1159800 front 270)
+    )
+    (component "22-23-2021"
+      (place X54 2468000 995000 front 90)
+      (place X4 2465300 617200 front 90)
+      (place X12 2464800 777800 front 90)
+      (place X11 2468800 1074700 front 90)
+      (place X6 2465300 439400 front 90)
+      (place X17 55200 1561700 front 270)
+      (place X10 57300 1644600 front 270)
+      (place X55 49500 589800 front 270)
+      (place X24 45200 869000 front 270)
+      (place X19 49700 472500 front 270)
+      (place X16 60200 2212800 front 270)
+      (place X9 46200 2536500 front 270)
+      (place X8 59700 1723400 front 270)
+      (place X18 55200 1415600 front 270)
+      (place X56 49500 171200 front 270)
+      (place "X_14" 704000 297000 front 0)
+      (place "X_9" 554000 147000 front 0)
+      (place "X_8" 407000 594500 front 0)
+      (place X15 1866100 909700 front 0)
+      (place "X_16" 705000 595000 front 0)
+      (place "X_13" 554000 297000 front 0)
+      (place X7 1230500 919700 front 0)
+      (place "X_6" 405000 295000 front 0)
+      (place "X_10" 704000 147000 front 0)
+      (place X21 1875200 787700 front 0)
+      (place "X_15" 555000 595000 front 0)
+      (place "X_7" 257000 594500 front 0)
+      (place "X_12" 705000 445000 front 0)
+      (place "X_11" 555000 445000 front 0)
+      (place "X_5" 255000 295000 front 0)
+      (place X22 1804000 2766000 front 180)
+      (place "X_2" 405000 145000 front 180)
+      (place X1 1909000 2766000 front 180)
+      (place "X_3" 257000 444500 front 180)
+      (place "X_4" 407000 444500 front 180)
+      (place X13 2020600 2772300 front 180)
+      (place "X_1" 255000 145000 front 180)
+      (place X5 2426700 2780300 front 180)
+      (place X14 1185000 2787800 front 180)
+      (place X20 1865400 2856300 front 180)
+    )
+    (component "C_0402_1005Metric"
+      (place "C_AVDD_2" 192000 2126000 front 90)
+      (place "C_VD10_3" 287000 2019000 front 90)
+      (place "C_VD10_2" 275000 2019000 front 90)
+      (place "C_VD10_4" 299000 2019000 front 90)
+      (place "C_AVDD_1" 203000 2126000 front 90)
+      (place "C_VD10_1" 203000 2104000 front 90)
+      (place "C_XO" 252000 1992000 front 0)
+      (place "C_XI" 196000 1987500 front 0)
+      (place "C_SSTX_N" 165000 2100000 front 0)
+      (place "C_SSTX_P" 165000 2112000 front 0)
+    )
+    (component "SOD-123_ONS"
+      (place U38 1643000 2388434 front 135)
+      (place U55 1670290 1638650 front 135)
+      (place U65 2415174 1642706 front 135)
+      (place U67 2411187 2398693 front 135)
+      (place U39 1691646 2343788 front 135)
+      (place U64 2463668 1588213 front 135)
+      (place U56 1731797 1590144 front 135)
+      (place U68 2458693 2349187 front 135)
+      (place U63 2475865 2019577 front 45)
+      (place U54 1678303 1220955 front 45)
+      (place U52 2434414 1221842 front 45)
+      (place U41 1666624 1990644 front 45)
+      (place U51 2482920 1267348 front 45)
+      (place U53 1721809 1263461 front 45)
+      (place U40 1710130 2037151 front 45)
+      (place U66 2431200 1981320 front 45)
+      (place U47 2030054 1589626 front 225)
+      (place U48 2079561 1637133 front 225)
+      (place U57 1268363 1582303 front 225)
+      (place U46 2093548 2381120 front 225)
+      (place U45 2032895 2321875 front 225)
+      (place U58 1321869 1635810 front 225)
+      (place U17 1284900 2322500 front 225)
+      (place U37 1338300 2373400 front 225)
+      (place U44 1290632 2012389 front 315)
+      (place U43 1356138 1953883 front 315)
+      (place U49 2100361 1201067 front 315)
+      (place U61 2101590 1975122 front 315)
+      (place U59 1333684 1200375 front 315)
+      (place U60 1287178 1245882 front 315)
+      (place U50 2055855 1247574 front 315)
+      (place U62 2066084 2017628 front 315)
+      (place U15 1108500 1823700 front 270)
+      (place U14 1108500 1766200 front 270)
+    )
+    (component dummyfp6
+      (place "UNK_HOLE_6" 1160000 1140000 front 0)
+      (place "UNK_HOLE_4" 2560000 2500000 front 0)
+      (place "UNK_HOLE_7" 1160000 2500000 front 0)
+      (place "UNK_HOLE_0" 40000 40000 front 0)
+      (place "UNK_HOLE_3" 40000 2960000 front 0)
+      (place "UNK_HOLE_5" 2560000 1140000 front 0)
+      (place "UNK_HOLE_2" 2560000 2960000 front 0)
+      (place "UNK_HOLE_1" 2560000 40000 front 0)
+    )
+    (component "22-23-2031"
+      (place X3 1150213 550001 front 0)
+      (place X39 948342 550739 front 0)
+      (place X46 1549110 549526 front 0)
+      (place X45 1648947 549535 front 0)
+      (place X47 1450304 549517 front 0)
+      (place X40 848749 550832 front 0)
+      (place X38 1050044 551021 front 0)
+      (place X48 1349392 549895 front 0)
+      (place X44 1148502 199244 front 180)
+      (place X52 1649161 199699 front 180)
+      (place X43 1050633 198635 front 180)
+      (place X41 851348 200223 front 180)
+      (place X42 949833 199417 front 180)
+      (place X50 1450173 200800 front 180)
+      (place X49 1350426 200265 front 180)
+      (place X51 1550081 198648 front 180)
+    )
+    (component C1206
+      (place C159 60000 2350000 front 0)
+      (place C283 81000 242000 front 0)
+      (place C329 97800 126400 front 270)
+      (place C322 1829800 776900 front 270)
+      (place C311 117300 1561400 front 270)
+      (place C315 1919200 2866600 front 90)
+    )
+    (component "32005-201"
+      (place X53 53300 1075600 front 0)
+    )
+    (component "Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm"
+      (place "Y_FT" 225000 1996000 front 0)
+    )
+    (component R0402
+      (place R37 538100 1529900 front 0)
+      (place R36 538300 1543500 front 180)
+      (place R13 577900 1507000 front 270)
+      (place R1 592300 1507100 front 270)
+      (place R38 551600 1508300 front 90)
+    )
+    (component "XTAL_NX3225GD-8MHZ-STD-CRA-3_N"
+      (place XTAL1 905800 1047500 front 270)
+      (place XTAL3 906800 972100 front 270)
+    )
+    (component "DGK0008A-MFG"
+      (place U73 1050026 452444 front 0)
+      (place U81 1548441 452147 front 0)
+      (place U74 949744 452226 front 0)
+      (place U11 1150020 451424 front 0)
+      (place U82 1448305 451024 front 0)
+      (place U83 1348753 450638 front 0)
+      (place U80 1649878 451761 front 0)
+      (place U75 850236 451835 front 0)
+      (place U78 1072203 300127 front 180)
+      (place U85 1470214 300543 front 180)
+      (place U77 968558 300345 front 180)
+      (place U79 1168748 299736 front 180)
+      (place U84 1370279 300169 front 180)
+      (place U87 1679769 299292 front 180)
+      (place U76 868410 302801 front 180)
+      (place U86 1570583 300678 front 180)
+    )
+    (component BPF2
+      (place U$3 827200 1469700 front 0)
+      (place U$2 1008600 2120100 front 180)
+    )
+    (component C0805
+      (place C77 1073800 380900 front 270)
+      (place C338 1570800 381400 front 270)
+      (place C316 1714300 2891900 front 270)
+      (place C323 2030800 782400 front 270)
+      (place C312 232300 1564900 front 270)
+      (place C336 374800 373900 front 270)
+      (place C319 2048300 2895400 front 270)
+      (place C333 1009800 1360400 front 270)
+      (place C75 419800 374400 front 270)
+      (place C330 1015800 2262400 front 270)
+      (place C326 1690300 777400 front 270)
+      (place C184 120000 2350000 front 0)
+      (place C340 1939151 329697 front 180)
+    )
+    (component "R_0402_1005Metric"
+      (place "R_VBUS_2" 337000 2019000 front 90)
+      (place "R_VBUS_1" 325000 2019000 front 90)
+      (place "R_RREF" 263000 2019000 front 90)
+      (place "R_CC1" 110000 2140000 front 0)
+      (place "R_CC2" 110000 2025000 front 0)
+    )
+    (component L0201
+      (place L8 733100 1452200 front 270)
+      (place L26 794000 2140400 front 0)
+      (place L10 716600 1455500 front 0)
+      (place L3 746900 1449200 front 0)
+      (place L25 779700 2134100 front 0)
+      (place L28 774900 1455700 front 0)
+      (place L9 716600 1448900 front 0)
+      (place L2 762300 1452500 front 270)
+      (place L22 779600 2140200 front 0)
+      (place L24 775000 1449400 front 0)
+      (place L4 746700 1455600 front 0)
+      (place L27 794200 2134300 front 0)
+    )
+    (component PW14
+      (place "OPA_3" 629000 222000 front 90)
+      (place "OPA_1" 330000 220000 front 90)
+      (place "OPA_4" 630000 520000 front 90)
+      (place "OPA_2" 332000 519500 front 90)
+    )
+    (component "BGA256C100P16X16_1700X1700X155"
+      (place U42 496800 1832800 front 0)
+    )
+    (component "CC-24-8_ADI"
+      (place "ADTR1107_10" 2350000 1330000 front 315)
+      (place "ADTR1107_2" 1590000 2090000 front 315)
+      (place "ADTR1107_14" 1590000 1330000 front 315)
+      (place "ADTR1107_6" 2350000 2090000 front 315)
+      (place "ADTR1107_15" 1410000 1510000 front 135)
+      (place "ADTR1107_7" 2170000 2270000 front 135)
+      (place "ADTR1107_3" 1410000 2270000 front 135)
+      (place "ADTR1107_11" 2170000 1510000 front 135)
+      (place "ADTR1107_13" 1410000 1330000 front 225)
+      (place "ADTR1107_1" 1410000 2090000 front 225)
+      (place "ADTR1107_9" 2170000 1330000 front 225)
+      (place "ADTR1107_5" 2170000 2090000 front 225)
+      (place "ADTR1107_12" 2350000 1510000 front 45)
+      (place "ADTR1107_16" 1590000 1510000 front 45)
+      (place "ADTR1107_8" 2350000 2270000 front 45)
+      (place "ADTR1107_4" 1590000 2270000 front 45)
+    )
+    (component PW16
+      (place U10 1000449 372530 front 0)
+      (place U88 1499865 371184 front 0)
+      (place U89 2006000 352600 front 270)
+    )
+    (component "1X08"
+      (place JP7 435200 941200 front 0)
+    )
+    (component L5650M
+      (place L14 1755200 798200 front 180)
+      (place L15 1075350 2261450 front 180)
+      (place L21 1147700 650200 front 180)
+      (place L11 1778500 2892200 front 180)
+      (place L16 1071000 1370200 front 180)
+      (place L18 1201200 64800 front 0)
+      (place L1 176900 1577300 front 0)
+      (place L12 1983600 2892300 front 0)
+      (place L17 310100 374800 front 0)
+      (place L13 1969700 792300 front 0)
+      (place L19 80000 2400000 front 0)
+      (place L23 1268400 649800 front 0)
+    )
+    (component "CC-88-1_ADI"
+      (place "ADAR2_0" 2260000 2180000 front 180)
+      (place "ADAR1_0" 1500000 2180000 front 180)
+      (place "ADAR3_0" 2260000 1420000 front 0)
+      (place "ADAR4_0" 1500000 1420000 front 0)
+    )
+    (component "SJ_2"
+      (place SJ1 476800 1558100 front 90)
+    )
+    (component "DG1677-2_MNC"
+      (place U16 1877500 1800000 front 180)
+    )
+    (component "BGA24_MT25QL_MRN"
+      (place U9 220400 1838200 front 180)
+    )
+    (component "2X06"
+      (place JP1 1036200 987900 front 90)
+    )
+    (component "LED-0603"
+      (place D4 751300 1184600 front 90)
+      (place D5 766800 1184500 front 90)
+      (place D3 718800 1184700 front 90)
+      (place D2 735300 1184800 front 90)
+    )
+    (component "2X07"
+      (place JP13 835800 797200 front 180)
+    )
+    (component "1X04"
+      (place JP8 484500 870200 front 0)
+      (place JP18 334500 865000 front 180)
+      (place JP9 587200 771800 front 270)
+    )
+    (component "RGE24_2P7X2P7"
+      (place U7 486600 505400 front 0)
+      (place U69 483500 214400 front 0)
+    )
+    (component "UDB_12_ADI"
+      (place U13 827600 1445500 front 180)
+      (place U5 824900 2140100 front 0)
+    )
+    (component "CP_56_5_ADI"
+      (place U1 586000 1592500 front 270)
+    )
+    (component "USON-10_2.5x1.0mm_P0.5mm"
+      (place "D_ESD2" 125000 2060000 front 0)
+      (place "D_ESD1" 125000 2100000 front 0)
+    )
+    (component "2X04"
+      (place JP3 42700 1844200 front 90)
+    )
+    (component "USB_C_Receptacle_Amphenol_12401610E4-2A"
+      (place "J_USB3" 40000 2080000 front 270)
+    )
+    (component "1X06"
+      (place JP2 459700 808700 front 0)
+    )
+    (component "L_0603_1608Metric"
+      (place "FB_A" 180000 2146000 front 0)
+    )
+    (component "CP_16_3_ADI"
+      (place U4 585850 1454850 front 90)
+      (place U8 587200 1364700 front 90)
+    )
+    (component "1X02"
+      (place JP20 785000 1915000 front 90)
+    )
+    (component "RW_28_ADI"
+      (place U3 603900 2078900 front 90)
+    )
+    (component "LQFP-144_STM"
+      (place U2 744100 1022300 front 180)
+    )
+  )
+  (was_is
+  )
+  (routes 
+    (resolution um 10)
+    (parser
+      (host_cad "KiCad's Pcbnew")
+      (host_version "10.0.6")
+    )
+    (library_out 
+      (padstack "Via[0-9]_350:150_um"
+        (shape
+          (circle F.Cu 3500 0 0)
+        )
+        (shape
+          (circle In1.Cu 3500 0 0)
+        )
+        (shape
+          (circle In2.Cu 3500 0 0)
+        )
+        (shape
+          (circle In3.Cu 3500 0 0)
+        )
+        (shape
+          (circle In4.Cu 3500 0 0)
+        )
+        (shape
+          (circle In5.Cu 3500 0 0)
+        )
+        (shape
+          (circle In6.Cu 3500 0 0)
+        )
+        (shape
+          (circle In7.Cu 3500 0 0)
+        )
+        (shape
+          (circle In8.Cu 3500 0 0)
+        )
+        (shape
+          (circle B.Cu 3500 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_450:200_um"
+        (shape
+          (circle F.Cu 4500 0 0)
+        )
+        (shape
+          (circle In1.Cu 4500 0 0)
+        )
+        (shape
+          (circle In2.Cu 4500 0 0)
+        )
+        (shape
+          (circle In3.Cu 4500 0 0)
+        )
+        (shape
+          (circle In4.Cu 4500 0 0)
+        )
+        (shape
+          (circle In5.Cu 4500 0 0)
+        )
+        (shape
+          (circle In6.Cu 4500 0 0)
+        )
+        (shape
+          (circle In7.Cu 4500 0 0)
+        )
+        (shape
+          (circle In8.Cu 4500 0 0)
+        )
+        (shape
+          (circle B.Cu 4500 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_400:200_um"
+        (shape
+          (circle F.Cu 4000 0 0)
+        )
+        (shape
+          (circle In1.Cu 4000 0 0)
+        )
+        (shape
+          (circle In2.Cu 4000 0 0)
+        )
+        (shape
+          (circle In3.Cu 4000 0 0)
+        )
+        (shape
+          (circle In4.Cu 4000 0 0)
+        )
+        (shape
+          (circle In5.Cu 4000 0 0)
+        )
+        (shape
+          (circle In6.Cu 4000 0 0)
+        )
+        (shape
+          (circle In7.Cu 4000 0 0)
+        )
+        (shape
+          (circle In8.Cu 4000 0 0)
+        )
+        (shape
+          (circle B.Cu 4000 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_550:350_um"
+        (shape
+          (circle F.Cu 5500 0 0)
+        )
+        (shape
+          (circle In1.Cu 5500 0 0)
+        )
+        (shape
+          (circle In2.Cu 5500 0 0)
+        )
+        (shape
+          (circle In3.Cu 5500 0 0)
+        )
+        (shape
+          (circle In4.Cu 5500 0 0)
+        )
+        (shape
+          (circle In5.Cu 5500 0 0)
+        )
+        (shape
+          (circle In6.Cu 5500 0 0)
+        )
+        (shape
+          (circle In7.Cu 5500 0 0)
+        )
+        (shape
+          (circle In8.Cu 5500 0 0)
+        )
+        (shape
+          (circle B.Cu 5500 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_500:300_um"
+        (shape
+          (circle F.Cu 5000 0 0)
+        )
+        (shape
+          (circle In1.Cu 5000 0 0)
+        )
+        (shape
+          (circle In2.Cu 5000 0 0)
+        )
+        (shape
+          (circle In3.Cu 5000 0 0)
+        )
+        (shape
+          (circle In4.Cu 5000 0 0)
+        )
+        (shape
+          (circle In5.Cu 5000 0 0)
+        )
+        (shape
+          (circle In6.Cu 5000 0 0)
+        )
+        (shape
+          (circle In7.Cu 5000 0 0)
+        )
+        (shape
+          (circle In8.Cu 5000 0 0)
+        )
+        (shape
+          (circle B.Cu 5000 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_750:500_um"
+        (shape
+          (circle F.Cu 7500 0 0)
+        )
+        (shape
+          (circle In1.Cu 7500 0 0)
+        )
+        (shape
+          (circle In2.Cu 7500 0 0)
+        )
+        (shape
+          (circle In3.Cu 7500 0 0)
+        )
+        (shape
+          (circle In4.Cu 7500 0 0)
+        )
+        (shape
+          (circle In5.Cu 7500 0 0)
+        )
+        (shape
+          (circle In6.Cu 7500 0 0)
+        )
+        (shape
+          (circle In7.Cu 7500 0 0)
+        )
+        (shape
+          (circle In8.Cu 7500 0 0)
+        )
+        (shape
+          (circle B.Cu 7500 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_900:600_um"
+        (shape
+          (circle F.Cu 9000 0 0)
+        )
+        (shape
+          (circle In1.Cu 9000 0 0)
+        )
+        (shape
+          (circle In2.Cu 9000 0 0)
+        )
+        (shape
+          (circle In3.Cu 9000 0 0)
+        )
+        (shape
+          (circle In4.Cu 9000 0 0)
+        )
+        (shape
+          (circle In5.Cu 9000 0 0)
+        )
+        (shape
+          (circle In6.Cu 9000 0 0)
+        )
+        (shape
+          (circle In7.Cu 9000 0 0)
+        )
+        (shape
+          (circle In8.Cu 9000 0 0)
+        )
+        (shape
+          (circle B.Cu 9000 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_1800:1200_um"
+        (shape
+          (circle F.Cu 18000 0 0)
+        )
+        (shape
+          (circle In1.Cu 18000 0 0)
+        )
+        (shape
+          (circle In2.Cu 18000 0 0)
+        )
+        (shape
+          (circle In3.Cu 18000 0 0)
+        )
+        (shape
+          (circle In4.Cu 18000 0 0)
+        )
+        (shape
+          (circle In5.Cu 18000 0 0)
+        )
+        (shape
+          (circle In6.Cu 18000 0 0)
+        )
+        (shape
+          (circle In7.Cu 18000 0 0)
+        )
+        (shape
+          (circle In8.Cu 18000 0 0)
+        )
+        (shape
+          (circle B.Cu 18000 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-9]_1500:1000_um"
+        (shape
+          (circle F.Cu 15000 0 0)
+        )
+        (shape
+          (circle In1.Cu 15000 0 0)
+        )
+        (shape
+          (circle In2.Cu 15000 0 0)
+        )
+        (shape
+          (circle In3.Cu 15000 0 0)
+        )
+        (shape
+          (circle In4.Cu 15000 0 0)
+        )
+        (shape
+          (circle In5.Cu 15000 0 0)
+        )
+        (shape
+          (circle In6.Cu 15000 0 0)
+        )
+        (shape
+          (circle In7.Cu 15000 0 0)
+        )
+        (shape
+          (circle In8.Cu 15000 0 0)
+        )
+        (shape
+          (circle B.Cu 15000 0 0)
+        )
+        (attach off)
+      )
+    )
+    (network_out 
+      (net GND
+        (wire
+          (path F.Cu 1000
+            77940 2114740
+            85179 2107500
+            90200 2107500
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            79617 2121300
+            79617 2119016
+            76640 2116039
+            77940 2114740
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            77940 2114740
+            73200 2110000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            273000 2045550
+            273000 2039969
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            275000 2023800
+            275000 2037969
+            273000 2039969
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            273000 2054407
+            272800 2054407
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            310871 2021494
+            301000 2031365
+            301000 2045550
+          )
+        )
+        (via "Via[0-9]_350:150_um" 310871 2021494
+        )
+        (wire
+          (path F.Cu 1000
+            337000 2024100
+            337000 2030440
+            338061 2031501
+            338061 2035035
+            337707 2035389
+            337707 2035905
+            337000 2036612
+            337000 2046596
+            339865 2049461
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            90200 2107500
+            90200 2114027
+            92187 2114027
+            94101 2115941
+            94101 2118647
+            93924 2118824
+            115100 2140000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            128850 2100000
+            132238 2100000
+            133896 2098342
+            137429 2098342
+            138659 2099572
+            142888 2099572
+            143316 2100000
+            145555 2100000
+            147117 2098438
+          )
+        )
+        (via "Via[0-9]_350:150_um" 147117 2098438
+        )
+        (wire
+          (path F.Cu 1000
+            71100 2038700
+            71100 2044232
+            72865 2045997
+            72865 2048703
+            71615 2049953
+            71615 2051032
+            71100 2051547
+            71100 2052900
+            73200 2055000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            105535 2052383
+            106739 2051178
+            106739 2033361
+            115100 2025000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            90200 2052500
+            105417 2052500
+            105535 2052383
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            105535 2052383
+            111157 2058005
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            73200 2055000
+            75700 2052500
+            90200 2052500
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            203000 2108800
+            208020 2113820
+            210637 2113820
+            212697 2115880
+            212697 2118794
+            210986 2120505
+            210986 2126000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            217582 2014503
+            214000 2010921
+            214000 2004500
+          )
+        )
+        (via "Via[0-9]_350:150_um" 217582 2014503
+        )
+        (wire
+          (path F.Cu 1000
+            214000 2004500
+            231000 1987500
+            236000 1987500
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            273000 2059204
+            273000 2090000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            273000 2054407
+            273000 2059204
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            273000 2059204
+            262482 2059204
+          )
+        )
+        (wire
+          (path F.Cu 750
+            261000 2045550
+            261000 2051006
+          )
+        )
+        (wire
+          (path F.Cu 750
+            262482 2059204
+            262482 2052488
+            261000 2051006
+          )
+        )
+        (via "Via[0-9]_350:150_um" 339865 2049461
+        )
+        (wire
+          (path F.Cu 1000
+            210986 2130800
+            203000 2130800
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            210986 2126000
+            210986 2130800
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            217582 2136856
+            217042 2136856
+            210986 2130800
+          )
+        )
+        (via "Via[0-9]_350:150_um" 217582 2136856
+        )
+        (wire
+          (path F.Cu 1000
+            210986 2126000
+            222969 2126000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            273000 2045550
+            273000 2054407
+          )
+        )
+        (via "Via[0-9]_350:150_um" 272800 2054407
+        )
+        (wire
+          (path F.Cu 1000
+            299000 2023800
+            287000 2023800
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            275000 2023800
+            287000 2023800
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            203000 2130800
+            192000 2130800
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            200800 1987500
+            200800 1991300
+            214000 2004500
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            256800 1992000
+            251666 1986866
+            236634 1986866
+            236000 1987500
+          )
+        )
+        (wire
+          (path F.Cu 750
+            111157 2058005
+            119155 2058005
+            121150 2060000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            128850 2060000
+            121150 2060000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            128850 2100000
+            121150 2100000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            71100 2121300
+            79617 2121300
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            261000 2045550
+            261000 2039393
+            263000 2037393
+            263000 2024100
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            228550 2126000
+            222969 2126000
+          )
+        )
+      )
+      (net "+3V3_AN4_F"
+        (wire
+          (path In1.Cu 1000
+            2146638 540489
+            2072880 540489
+            2069296 536905
+          )
+        )
+      )
+      (net "+1V0_FPGA"
+        (wire
+          (path In3.Cu 1000
+            519424 1867598
+            515512 1871510
+          )
+        )
+      )
+      (net "FT_AVDD"
+        (wire
+          (path F.Cu 2030
+            269000 2038467
+            269000 2045550
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            269559 2037340
+            269559 2037908
+            269000 2038467
+          )
+        )
+        (via "Via[0-9]_450:200_um" 269559 2037340
+        )
+        (wire
+          (path In3.Cu 3000
+            185308 2134951
+            194557 2134951
+            265268 2064240
+            265268 2041631
+            269559 2037340
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            185308 2134951
+            185773 2134951
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            185773 2134951
+            185773 2127427
+            192000 2121200
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            187875 2146000
+            185773 2143898
+            185773 2134951
+          )
+        )
+        (via "Via[0-9]_450:200_um" 185308 2134951
+        )
+        (wire
+          (path F.Cu 3000
+            203000 2121200
+            192000 2121200
+          )
+        )
+      )
+      (net "FT_VD10"
+        (wire
+          (path F.Cu 3000
+            221484 2118000
+            221484 2117684
+            217375 2113575
+            217355 2113575
+            214255 2110475
+            214255 2110455
+            213379 2109579
+            213359 2109579
+            210124 2106344
+            210124 2106324
+            203000 2099200
+          )
+        )
+        (wire
+          (path F.Cu 2030
+            221484 2118000
+            228550 2118000
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            299000 2014200
+            287000 2014200
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            275000 2014200
+            287000 2014200
+          )
+        )
+      )
+      (net "FT_BE_3"
+        (wire
+          (path F.Cu 2040
+            220688 2100739
+            221949 2102000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            228550 2102000
+            221949 2102000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 220688 2100739
+        )
+      )
+      (net "FT_RXF_N"
+        (wire
+          (path F.Cu 1530
+            220569 2093538
+            221742 2093538
+            222204 2094000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            228550 2094000
+            222204 2094000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 220569 2093538
+        )
+        (wire
+          (path F.Cu 2040
+            494495 1832800
+            466800 1832800
+            461800 1837800
+          )
+        )
+        (via "Via[0-9]_350:150_um" 494495 1832800
+        )
+      )
+      (net "FT_WR_N"
+        (wire
+          (path F.Cu 2040
+            235978 2085173
+            235151 2086000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            228550 2086000
+            235151 2086000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 235978 2085173
+        )
+      )
+      (net "FT_RD_N"
+        (wire
+          (path F.Cu 2040
+            220506 2082440
+            221509 2082440
+            221949 2082000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            228550 2082000
+            221949 2082000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 220506 2082440
+        )
+      )
+      (net "FT_OE_N"
+        (wire
+          (path F.Cu 2040
+            448817 1852800
+            454192 1852800
+            456963 1850029
+            456963 1832637
+            461800 1827800
+          )
+        )
+        (via "Via[0-9]_350:150_um" 448817 1852800
+        )
+      )
+      (net "+3V3_FT"
+        (wire
+          (path F.Cu 1000
+            309000 2039969
+            308576 2039545
+            308576 2037030
+            311607 2033999
+            312599 2033999
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            251892 2034642
+            252037 2034787
+            252037 2039006
+            253000 2039969
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            172125 2153648
+            259267 2153648
+            269725 2143190
+            269725 2141908
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            269000 2134450
+            269000 2141183
+            269725 2141908
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            253000 2045550
+            253000 2039969
+          )
+        )
+        (via "Via[0-9]_350:150_um" 251892 2034642
+        )
+        (wire
+          (path F.Cu 750
+            309635 2094982
+            311012 2094982
+            311994 2094000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 309635 2094982
+        )
+        (wire
+          (path F.Cu 1000
+            237000 2051131
+            237500 2051631
+            252500 2051631
+            253000 2051131
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            305000 2134450
+            305000 2128869
+          )
+        )
+        (wire
+          (path F.Cu 750
+            317450 2094000
+            311994 2094000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            305997 2112179
+            305997 2098620
+            309635 2094982
+          )
+        )
+        (wire
+          (path F.Cu 750
+            305044 2114549
+            305044 2113132
+            305997 2112179
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            305000 2128869
+            305044 2128825
+            305044 2114549
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            309000 2045550
+            309000 2039969
+          )
+        )
+        (via "Via[0-9]_350:150_um" 312599 2033999
+        )
+        (wire
+          (path F.Cu 1000
+            237000 2045550
+            237000 2051131
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            253000 2045550
+            253000 2051131
+          )
+        )
+        (via "Via[0-9]_350:150_um" 269725 2141908
+        )
+        (wire
+          (path F.Cu 1000
+            221202 2075767
+            222969 2074000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            228550 2074000
+            222969 2074000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 221202 2075767
+        )
+        (wire
+          (path F.Cu 1000
+            172125 2153648
+            172125 2146000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 172125 2153648
+        )
+      )
+      (net "FT_RESET_N"
+        (wire
+          (path F.Cu 1530
+            216984 2069538
+            221742 2069538
+            222204 2070000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            228550 2070000
+            222204 2070000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 216984 2069538
+        )
+      )
+      (net "FT_GPIO0"
+        (wire
+          (path F.Cu 2040
+            222444 2062000
+            222444 2063025
+            220715 2064754
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            228550 2062000
+            222444 2062000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 220715 2064754
+        )
+      )
+      (net "FT_GPIO1"
+        (wire
+          (path F.Cu 2040
+            236392 2059701
+            235153 2058462
+          )
+        )
+        (wire
+          (path In2.Cu 2040
+            287458 1893750
+            246887 1934321
+            246887 2049206
+            236392 2059701
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            228550 2058000
+            234896 2058000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            235153 2058462
+            234896 2058205
+            234896 2058000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 236392 2059701
+        )
+        (via "Via[0-9]_450:200_um" 287458 1893750
+        )
+        (wire
+          (path In7.Cu 2040
+            389822 1816080
+            312152 1893750
+            287458 1893750
+          )
+        )
+        (via "Via[0-9]_450:200_um" 389822 1816080
+        )
+        (wire
+          (path F.Cu 2040
+            431800 1807800
+            426637 1812963
+            392939 1812963
+            389822 1816080
+          )
+        )
+      )
+      (net "FT_XI"
+        (wire
+          (path In2.Cu 1000
+            221795 1979705
+            241000 1998910
+            241000 2038702
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            241000 2045550
+            241000 2038702
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            221795 1979705
+            214000 1987500
+          )
+        )
+        (via "Via[0-9]_350:150_um" 221795 1979705
+        )
+        (wire
+          (path F.Cu 1000
+            191200 1987500
+            196188 1982512
+            209012 1982512
+            214000 1987500
+          )
+        )
+        (via "Via[0-9]_350:150_um" 241000 2038702
+        )
+      )
+      (net "FT_XO"
+        (wire
+          (path F.Cu 1000
+            247200 1992000
+            236000 2003200
+            236000 2004500
+          )
+        )
+      )
+      (net "USB_DP"
+        (wire
+          (path F.Cu 2040
+            249000 2038949
+            236266 2026215
+            231877 2026215
+          )
+        )
+        (wire
+          (path In1.Cu 2040
+            108786 2082364
+            175728 2082364
+            231877 2026215
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            249000 2045550
+            249000 2038949
+          )
+        )
+        (via "Via[0-9]_450:200_um" 231877 2026215
+        )
+        (wire
+          (path F.Cu 2040
+            108786 2082364
+            108650 2082500
+            90200 2082500
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            121150 2070000
+            108786 2082364
+          )
+        )
+        (via "Via[0-9]_450:200_um" 108786 2082364
+        )
+        (wire
+          (path F.Cu 2040
+            73200 2080000
+            73825 2080000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            77455 2080975
+            78980 2082500
+            90200 2082500
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            73825 2080000
+            74800 2080975
+            77455 2080975
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2070000
+            121150 2070000
+          )
+        )
+      )
+      (net "USB_DM"
+        (wire
+          (path In3.Cu 2040
+            114591 2064025
+            134642 2043974
+            250382 2043974
+            256988 2037368
+          )
+        )
+        (wire
+          (path In3.Cu 2040
+            65750 2081107
+            97509 2081107
+            114591 2064025
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            65750 2081107
+            69643 2085000
+            73200 2085000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 65750 2081107
+        )
+        (wire
+          (path F.Cu 2040
+            114591 2064025
+            101116 2077500
+            90200 2077500
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            114591 2064025
+            120175 2064025
+            121150 2065000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 114591 2064025
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2065000
+            121150 2065000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            257000 2045550
+            257000 2037380
+            256988 2037368
+          )
+        )
+        (via "Via[0-9]_450:200_um" 256988 2037368
+        )
+      )
+      (net "FT_RREF"
+        (wire
+          (path F.Cu 1000
+            265000 2045550
+            265000 2039969
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            265000 2039969
+            265292 2039677
+            265292 2033384
+            268027 2030649
+            268027 2018927
+            263000 2013900
+          )
+        )
+      )
+      (net "USB_SSTX_N"
+        (wire
+          (path In1.Cu 2040
+            160200 2092979
+            185472 2092979
+            230088 2048363
+            270728 2048363
+            281991 2037100
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            281000 2038949
+            281991 2037958
+            281991 2037100
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            281000 2045550
+            281000 2038949
+          )
+        )
+        (via "Via[0-9]_450:200_um" 281991 2037100
+        )
+        (wire
+          (path F.Cu 2040
+            160200 2092979
+            160200 2100000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 160200 2092979
+        )
+      )
+      (net "USB_SSTX_P"
+        (wire
+          (path F.Cu 2040
+            153573 2112000
+            160200 2112000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 153573 2112000
+        )
+      )
+      (net "USB_SSRX_N"
+        (wire
+          (path F.Cu 2040
+            293000 2045550
+            293000 2040759
+            289070 2036829
+          )
+        )
+        (wire
+          (path In7.Cu 2040
+            106348 2090504
+            107420 2090504
+            147789 2050135
+            269191 2050135
+            277072 2042254
+            283645 2042254
+            289070 2036829
+          )
+        )
+        (via "Via[0-9]_450:200_um" 289070 2036829
+        )
+        (wire
+          (path F.Cu 1530
+            113558 2090975
+            120175 2090975
+            121150 2090000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            106348 2090504
+            106819 2090975
+            113558 2090975
+          )
+        )
+        (via "Via[0-9]_450:200_um" 106348 2090504
+        )
+        (wire
+          (path In3.Cu 2040
+            63907 2099220
+            65195 2099220
+            70712 2093703
+            103149 2093703
+            106348 2090504
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            73200 2100000
+            72420 2099220
+            63907 2099220
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2090000
+            121150 2090000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 63907 2099220
+        )
+      )
+      (net "USB_SSRX_P"
+        (wire
+          (path F.Cu 2040
+            297000 2038949
+            296364 2038313
+            296364 2037332
+          )
+        )
+        (wire
+          (path In5.Cu 2040
+            135387 2090845
+            176097 2050135
+            268445 2050135
+            276391 2042189
+            291507 2042189
+            296364 2037332
+          )
+        )
+        (wire
+          (path In3.Cu 2040
+            135387 2090845
+            112776 2090845
+            106361 2097260
+            72689 2097260
+            64711 2105238
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            73200 2105000
+            64949 2105000
+            64711 2105238
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            128850 2095000
+            131232 2095000
+            135387 2090845
+          )
+        )
+        (via "Via[0-9]_450:200_um" 135387 2090845
+        )
+        (via "Via[0-9]_450:200_um" 64711 2105238
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2095000
+            121150 2095000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            297000 2045550
+            297000 2038949
+          )
+        )
+        (via "Via[0-9]_450:200_um" 296364 2037332
+        )
+      )
+      (net "FT_VBUS_DET"
+        (wire
+          (path F.Cu 1000
+            305000 2039969
+            305000 2036979
+            317879 2024100
+            325000 2024100
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            325000 2024100
+            326800 2024100
+            337000 2013900
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            305000 2045550
+            305000 2039969
+          )
+        )
+      )
+      (net "FT_DATA_0"
+        (wire
+          (path F.Cu 1530
+            323796 2058000
+            323809 2057987
+            325327 2057987
+            325327 2058555
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            427327 1912273
+            431800 1907800
+          )
+        )
+        (via "Via[0-9]_450:200_um" 427327 1912273
+        )
+        (wire
+          (path F.Cu 1530
+            317450 2058000
+            323796 2058000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 325327 2058555
+        )
+      )
+      (net "FT_DATA_1"
+        (wire
+          (path F.Cu 2040
+            441800 1907800
+            441800 1929997
+            440204 1931593
+          )
+        )
+        (via "Via[0-9]_450:200_um" 440204 1931593
+        )
+      )
+      (net "FT_DATA_3"
+        (wire
+          (path F.Cu 2040
+            461228 1949112
+            462537 1947803
+            462537 1908537
+            461800 1907800
+          )
+        )
+        (via "Via[0-9]_450:200_um" 461228 1949112
+        )
+      )
+      (net "FT_DATA_4"
+        (wire
+          (path F.Cu 2040
+            481800 1914041
+            481800 1907800
+          )
+        )
+        (via "Via[0-9]_350:150_um" 481800 1914041
+        )
+      )
+      (net "FT_DATA_5"
+        (wire
+          (path F.Cu 2040
+            416135 1903465
+            421800 1897800
+          )
+        )
+        (via "Via[0-9]_350:150_um" 416135 1903465
+        )
+      )
+      (net "FT_DATA_8"
+        (wire
+          (path F.Cu 1530
+            323796 2098000
+            325345 2096451
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            317450 2098000
+            323796 2098000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 325345 2096451
+        )
+      )
+      (net "FT_DATA_9"
+        (wire
+          (path F.Cu 2040
+            331621 2097322
+            326943 2102000
+            317450 2102000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 331621 2097322
+        )
+      )
+      (net "FT_DATA_11"
+        (wire
+          (path F.Cu 1530
+            416791 1886836
+            412388 1882433
+            409225 1882433
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            416791 1886836
+            420836 1886836
+            421800 1887800
+          )
+        )
+      )
+      (net "FT_DATA_12"
+        (wire
+          (path F.Cu 2040
+            407321 1904349
+            419033 1892637
+            426963 1892637
+            431800 1887800
+          )
+        )
+        (via "Via[0-9]_450:200_um" 407321 1904349
+        )
+        (wire
+          (path F.Cu 1530
+            325517 2114458
+            324254 2114458
+            323796 2114000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            317450 2114000
+            323796 2114000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 325517 2114458
+        )
+      )
+      (net "FT_DATA_13"
+        (wire
+          (path F.Cu 2040
+            436646 1918414
+            436646 1892954
+            441800 1887800
+          )
+        )
+        (via "Via[0-9]_450:200_um" 436646 1918414
+        )
+        (wire
+          (path F.Cu 2040
+            310849 2118000
+            310849 2116067
+            309497 2114715
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            317450 2118000
+            310849 2118000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 309497 2114715
+        )
+      )
+      (net "FT_DATA_15"
+        (wire
+          (path F.Cu 2040
+            496800 1911723
+            496800 1885581
+            493815 1882596
+            487004 1882596
+            481800 1887800
+          )
+        )
+        (via "Via[0-9]_450:200_um" 496800 1911723
+        )
+      )
+      (net "FT_CLK"
+        (wire
+          (path F.Cu 2040
+            313167 2141051
+            309000 2141051
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            309000 2134450
+            309000 2141051
+          )
+        )
+        (via "Via[0-9]_450:200_um" 313167 2141051
+        )
+      )
+      (net "FT_DATA_16"
+        (wire
+          (path F.Cu 2040
+            421800 1877800
+            417553 1873553
+            417553 1873008
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            301000 2142287
+            301000 2134450
+          )
+        )
+        (via "Via[0-9]_450:200_um" 301000 2142287
+        )
+        (via "Via[0-9]_450:200_um" 417553 1873008
+        )
+      )
+      (net "FT_DATA_17"
+        (wire
+          (path F.Cu 2040
+            411456 1871837
+            411456 1874631
+            419625 1882800
+            436800 1882800
+            441800 1877800
+          )
+        )
+        (via "Via[0-9]_450:200_um" 411456 1871837
+        )
+        (wire
+          (path F.Cu 2040
+            296238 2127087
+            297000 2127849
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            297000 2134450
+            297000 2127849
+          )
+        )
+        (via "Via[0-9]_350:150_um" 296238 2127087
+        )
+      )
+      (net "FT_DATA_18"
+        (wire
+          (path F.Cu 2040
+            293000 2141051
+            291855 2142196
+            291855 2142296
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            293000 2134450
+            293000 2141051
+          )
+        )
+        (via "Via[0-9]_450:200_um" 291855 2142296
+        )
+      )
+      (net "FT_DATA_23"
+        (wire
+          (path F.Cu 2040
+            276329 2142447
+            273000 2139118
+            273000 2134450
+          )
+        )
+        (via "Via[0-9]_450:200_um" 276329 2142447
+        )
+      )
+      (net "FT_DATA_24"
+        (wire
+          (path F.Cu 2040
+            265000 2141051
+            265000 2141734
+            264207 2142527
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            265000 2134450
+            265000 2141051
+          )
+        )
+        (via "Via[0-9]_450:200_um" 264207 2142527
+        )
+      )
+      (net "FT_DATA_25"
+        (wire
+          (path F.Cu 2040
+            263543 2127084
+            261000 2129627
+            261000 2134450
+          )
+        )
+        (via "Via[0-9]_350:150_um" 263543 2127084
+        )
+      )
+      (net "FT_DATA_26"
+        (wire
+          (path F.Cu 2040
+            257000 2127849
+            257765 2127084
+            257622 2126941
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            257000 2134450
+            257000 2127849
+          )
+        )
+        (via "Via[0-9]_350:150_um" 257622 2126941
+        )
+      )
+      (net "FT_DATA_27"
+        (wire
+          (path F.Cu 2040
+            254245 2142296
+            253000 2141051
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            253000 2134450
+            253000 2141051
+          )
+        )
+        (via "Via[0-9]_450:200_um" 254245 2142296
+        )
+      )
+      (net "FT_DATA_29"
+        (wire
+          (path F.Cu 2040
+            245000 2141051
+            246145 2142196
+            246145 2142296
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            245000 2134450
+            245000 2141051
+          )
+        )
+        (via "Via[0-9]_450:200_um" 246145 2142296
+        )
+      )
+      (net "FT_DATA_30"
+        (wire
+          (path F.Cu 2040
+            243031 2127035
+            241000 2129066
+            241000 2134450
+          )
+        )
+        (via "Via[0-9]_350:150_um" 243031 2127035
+        )
+      )
+      (net "FT_DATA_31"
+        (wire
+          (path F.Cu 2040
+            237000 2134450
+            237000 2126317
+            236674 2126317
+          )
+        )
+        (via "Via[0-9]_450:200_um" 236674 2126317
+        )
+      )
+      (net "RF_RX"
+        (wire
+          (path In1.Cu 1000
+            879500 1513000
+            884500 1513000
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            894000 1513000
+            889500 1513000
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            884500 1513000
+            889500 1513000
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            874500 1513000
+            879500 1513000
+          )
+        )
+      )
+      (net "RF_RX_FIL"
+        (wire
+          (path In1.Cu 1000
+            949000 1513000
+            944000 1513000
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            954000 1513000
+            949000 1513000
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            959000 1513000
+            954000 1513000
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            959000 1513000
+            963500 1513000
+          )
+        )
+      )
+      (net "STM32_SDA3"
+        (wire
+          (path In5.Cu 1000
+            447900 916400
+            438693 925607
+            438693 953184
+            444068 958559
+            453941 958559
+            460000 952500
+          )
+        )
+        (via "Via[0-9]_350:150_um" 447900 916400
+        )
+      )
+      (net "RF_TX_FIL"
+        (wire
+          (path In1.Cu 1000
+            946000 2076500
+            951000 2076500
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            961000 2076500
+            956000 2076500
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            956000 2076500
+            951000 2076500
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            941500 2076500
+            946000 2076500
+          )
+        )
+      )
+      (net "USB_VBUS"
+        (wire
+          (path In5.Cu 3000
+            97640 2067995
+            134152 2031483
+            237129 2031483
+            239168 2029444
+            309838 2029444
+            319503 2019779
+            319503 2018867
+          )
+        )
+        (wire
+          (path In1.Cu 3000
+            65569 2091551
+            74084 2091551
+            97640 2067995
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            68523 2094505
+            65569 2091551
+          )
+        )
+        (wire
+          (path F.Cu 2250
+            68523 2094505
+            72705 2094505
+            73200 2095000
+          )
+        )
+        (via "Via[0-9]_450:200_um" 65569 2091551
+        )
+        (wire
+          (path F.Cu 2250
+            90200 2092500
+            83940 2092500
+            83845 2092405
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            83845 2092405
+            81744 2094505
+          )
+        )
+        (wire
+          (path F.Cu 2250
+            81744 2094505
+            73695 2094505
+            73200 2095000
+          )
+        )
+        (wire
+          (path F.Cu 2250
+            97640 2067995
+            90695 2067995
+            90200 2067500
+          )
+        )
+        (via "Via[0-9]_450:200_um" 97640 2067995
+        )
+        (wire
+          (path F.Cu 2250
+            73200 2070000
+            79460 2070000
+            79556 2070096
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            79556 2070096
+            81656 2067995
+          )
+        )
+        (wire
+          (path F.Cu 2250
+            81656 2067995
+            89705 2067995
+            90200 2067500
+          )
+        )
+        (wire
+          (path F.Cu 3000
+            319503 2018867
+            324470 2013900
+            325000 2013900
+          )
+        )
+        (via "Via[0-9]_450:200_um" 319503 2018867
+        )
+      )
+      (net "USB_CC1"
+        (wire
+          (path In2.Cu 1000
+            96548 2088995
+            101986 2094433
+            101986 2133684
+            100285 2135385
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            100285 2135385
+            104900 2140000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 100285 2135385
+        )
+        (wire
+          (path F.Cu 750
+            96548 2088995
+            91695 2088995
+            90200 2087500
+          )
+        )
+        (via "Via[0-9]_350:150_um" 96548 2088995
+        )
+      )
+      (net "USB_SSTX_C_N"
+        (wire
+          (path F.Cu 2040
+            161957 2106000
+            163800 2106000
+            169800 2100000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            131858 2105627
+            132231 2106000
+            161957 2106000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2105000
+            131231 2105000
+            131858 2105627
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            100477 2098475
+            113714 2098475
+            113714 2101130
+            117584 2105000
+            121150 2105000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2105000
+            121150 2105000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            100477 2098475
+            91175 2098475
+            90200 2097500
+          )
+        )
+      )
+      (net "RF_TX"
+        (wire
+          (path In1.Cu 1000
+            881500 2076500
+            886500 2076500
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            876500 2076500
+            881500 2076500
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            886500 2076500
+            891500 2076500
+          )
+        )
+        (wire
+          (path In1.Cu 1000
+            876500 2076500
+            872000 2076500
+          )
+        )
+      )
+      (net "USB_SSTX_C_P"
+        (wire
+          (path F.Cu 1530
+            101358 2109025
+            107145 2109025
+            109046 2107124
+            112385 2107124
+            114286 2109025
+            120175 2109025
+            121150 2110000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2110000
+            136508 2117658
+            164142 2117658
+            169800 2112000
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            97507 2103475
+            101358 2107326
+            101358 2109025
+          )
+        )
+        (wire
+          (path F.Cu 2040
+            128850 2110000
+            121150 2110000
+          )
+        )
+        (wire
+          (path F.Cu 1530
+            90200 2102500
+            91175 2103475
+            97507 2103475
+          )
+        )
+        (via "Via[0-9]_450:200_um" 97507 2103475
+        )
+      )
+      (net "USB_CC2"
+        (wire
+          (path In1.Cu 1000
+            67510 2052070
+            84024 2052070
+            99365 2036729
+            99365 2025000
+          )
+        )
+        (wire
+          (path F.Cu 1000
+            67510 2052070
+            67510 2073505
+          )
+        )
+        (wire
+          (path F.Cu 750
+            67510 2073505
+            71705 2073505
+            73200 2075000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 67510 2052070
+        )
+        (wire
+          (path F.Cu 1000
+            99365 2025000
+            104900 2025000
+          )
+        )
+        (via "Via[0-9]_350:150_um" 99365 2025000
+        )
+      )
+    )
+  )
+)

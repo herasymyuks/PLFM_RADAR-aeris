@@ -15,6 +15,9 @@ path to work in place). They never touch `4_Schematics and Boards Layout/` or `e
 | `beta_bridge_unconnected.py` | KiCad Python | straight same-net bridges / vias for gaps listed in a DRC JSON (zone↔zone, pad↔zone…); `--revert LOG --drc JSON` removes the ones that caused clearance/crossing violations |
 | `beta_gnd_stitch.py` | KiCad Python | 2-layer GND stitching: vias where bottom-fill islands overlap top fills, via + stub for unconnected SMD pads of the net (hole-aware), revertable log |
 | `beta_silk_nudge.py` | KiCad Python | move silkscreen reference/value texts off pads and other silk (spiral search); `--dry-run` counts conflicts (uncapped, unlike the KiCad report) |
+| `beta_revb_ft601.py` | KiCad Python | Main Board rev. B: create nets, assign U6/U42 pads, add the FT601 support parts from the KiCad library, write netclasses, `NETLIST_DELTA.csv` (explicit netlist change) |
+| `beta_dsn_restrict.py` | CPython 3 | restrict a DSN to selected nets (other nets keep their wires as obstacles but lose their pins) |
+| `beta_net_lengths.py` | KiCad Python | routed length / vias / layers per net and group skew vs a ±tolerance |
 | `beta_bom_mpn.py` | CPython 3 | BETA BOM with proposed MPNs and confidence levels from `docs/BOM/BOM_<BOARD>.csv` |
 | `beta_drc.sh` | bash + kicad-cli | refill zones, save board, DRC text + JSON, one-line summary |
 | `beta_export_package.sh` | bash + kicad-cli | full manufacturing/drawing package (same export set as `tools/kicad_pcb_pipeline.sh`) into `exports/` |
