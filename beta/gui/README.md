@@ -9,8 +9,12 @@
   unit-tested only. The raw 35-byte RTL packet path (option A, FT601) stays available with
   `--raw-ft601`, but on the board the FT601 is not wired (`docs/PCB/MAIN_BOARD.md`).
 * FPGA register access (`REG W/R` over CDC, "FPGA registers / ADC calibration" tab) follows
-  `beta/fpga/rtl/radar_control_regs.v`. No firmware implements the commands yet, and the
-  top-level RTL ties the register write port off. See CHANGELOG "Discrepancies".
+  `beta/fpga/rtl/radar_control_regs.v`. The text protocol is **the same as the firmware's**
+  (`beta/stm32/Core/Src/host_bridge_proto.c`): one command per USB transfer, replies
+  `REG 0x%04X 0x%08X\r\n` / `REG ERR\r\n`, a write echoes the written value, and the
+  firmware holds a single command slot, so the GUI sends one command at a time and waits for
+  the reply (timeout + retransmit). Not bench-tested; the top-level RTL still ties the
+  register write port off. See CHANGELOG "Discrepancies".
 * The STM32 USB CDC path (settings upload, status/GPS reception) is implemented from
   the firmware sources but is **unverified on a board**; the firmware RX path itself is
   reported dead in `docs/STM32/`.
@@ -150,5 +154,6 @@ pointed at `pyinstaller_launcher.py` instead.
 12. **Register map mismatch**: HOST_LINK_DESIGN.md section 7 and `radar_control_regs.v`
     disagree. The GUI follows the RTL; run, mixers, NCO and blind calibration are not
     available.
-13. **REG text protocol** (line format, error cases) is a GUI-side proposal; there is no
-    firmware implementation and no request ID (replies are matched in order).
+13. **REG text protocol** matches the firmware implementation line for line, but neither side
+    has been exercised on hardware. No request ID exists: the client keeps one command in
+    flight and relies on timeout/retransmit.

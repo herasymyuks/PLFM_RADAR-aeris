@@ -97,11 +97,51 @@ Originals in `9_Firmware/9_3_GUI/` were read only; nothing there was modified.
 1. **HOST_LINK_DESIGN.md §7 register table ≠ RTL.** §7 describes 32-bit registers: 0x0 = run/long_chirp/mixers, 0x2 = NCO tuning word, 0x4 = packed calibration control, status at 0x5/0x7/0x8..0xC. `radar_control_regs.v` has 16-bit registers: 0x0 = use_long_chirp/adc_pwdn/usb_enable, 0x2 = DECIM, 0x4..0x8 = calibration control, status at 0x9..0xC, ID at 0xF. The beta follows the RTL. **Run, mixers enable and the NCO word are not offered** because no RTL implements them.
 2. **Blind calibration** is implemented in `adc_capture_calib.v` (`ctrl_blind`, `blind_coef/thr/max`), but no register in `radar_control_regs.v` drives it. The panel shows it as unavailable.
 3. **`radar_system_top.v:321-323` ties `reg_we`/`reg_addr`/`reg_wdata` of `ctl_regs` to constants.** Even with the SPI bridge decoding commands 0x02/0x03, register writes do not reach the register file on the current RTL.
-4. **No firmware implements the REG text commands.** `beta/stm32/LIB/USBHandler.cpp` ignores all input in READY_FOR_DATA. The lexical rules in `register_cmd.py` (line terminator `\n`, hex or decimal numbers, write replies echo the read-back value, `REG ERR` on an unmapped address) are a **GUI-side proposal** the firmware owner must mirror.
-5. In-order replies are assumed (one CDC link, sequential SPI). There is no request ID in the protocol, so a dropped reply misattributes every later one until `pending` drains.
+4. ~~No firmware implements the REG text commands.~~ **Resolved the same day**: `beta/stm32/Core/Src/host_bridge_proto.c` (`hb_cmd_parse`/`hb_cmd_execute`), `LIB/USBHandler.cpp` (`captureTextCommand` single slot) and `main.cpp` (main-loop reply) now implement them. `protocol/register_cmd.py` was re-aligned to the firmware (see the entry below); the GUI's line rules are now "same as firmware", not a proposal.
+5. There is no request ID in the protocol; replies are matched to the single in-flight command. A lost reply is handled by the client's timeout/retransmit, not by sequence numbers.
 
 ### Verification performed
 - `pytest -q`: **72 passed**, 0 skipped.
 - `python -m aeris10_gui --selftest`: bridge link: 3 frames, 0 CRC errors, 31 REG replies, read-all OK. `--selftest --raw-ft601`: 6144 packets, 0 drops, read-all OK.
 - `./build_app.sh`: PyInstaller 6.22.3 rebuild OK (135 MB `--onedir`). The bundle passes `--demo --selftest` (bridge) and `--demo --selftest --raw-ft601`, both exit 0.
 - Environment note: Homebrew had upgraded `tcl-tk` to 9.1, which broke `_tkinter` (`libtcl9.0.dylib` not found) and silently skipped the UI tests. Fixed with `brew reinstall python-tk@3.14` (Tk 9.1 now loads).
+
+## 2026-10-09 (later) — REG commands aligned with the firmware implementation
+
+Firmware read: `beta/stm32/Core/Src/host_bridge_proto.c`, `beta/stm32/Core/Src/host_bridge.c`
+(`HostBridge_ExecuteTextCommand`), `beta/stm32/LIB/USBHandler.cpp` (`captureTextCommand`,
+`takePendingCommand`), `beta/stm32/Core/Src/main.cpp:1713-1726`.
+
+### Changed (`protocol/register_cmd.py`)
+- Replies parsed/formatted exactly as the firmware prints them: `REG 0x%04X 0x%08X\r\n`
+  and `REG ERR\r\n`. A **write reply echoes the written value** (`hb_cmd_execute` echoes
+  `c.value`); the earlier GUI proposal (read-back) is gone. `DemoRegisterFile` does the same.
+- Device-side parser (`parse_command`, used by the demo register file) mirrors `hb_cmd_parse`
+  / `parse_u32`: `REG` upper case at byte 0 of the transfer, `W`/`R` either case, `0x`/`0X`
+  hex with at most 8 digits or decimal, address <= 0xFFFF, trailing junk is an error, the line
+  is cut at the first `\0`/`\r`/`\n` (**one command per USB transfer**; later lines are
+  discarded). New `is_text_command()` = `hb_cmd_is_text_command`.
+- `RegisterClient` now enforces the **firmware single slot**: exactly one command in flight;
+  the next queued command is written only after the reply (or after `timeout` s, with
+  `retries` retransmits, then recorded as `("…", "timeout")` in `errors`). `pending` still
+  lists everything unanswered; new `in_flight`, `sent`, `retransmits`, `poll(now)`.
+- New `parse_bridge_status()` / `BridgeStatus` for the SPI command 0x04 payload (four
+  little-endian u16: status bits frame-ready / ADAR CS conflict / FIFO overflow /
+  calibration lock, version, frames, reserved). No text form exists in the firmware yet.
+- `ui/sources.py` `DemoSource` emulates the firmware slot: a `REG` transfer is captured,
+  executed at the next poll (main loop), and a second transfer before that is dropped
+  (`dropped_commands` counter). `--selftest` now steps until the read-all is fully answered
+  and prints `sent` / `dropped_by_slot`.
+- `ui/main_window.py` calls `reg_client.poll()` every tick (timeouts); panel shows sent /
+  retransmits / timeouts.
+
+### Tests
+- `tests/test_register_cmd.py` rewritten (11): firmware-literal reply strings incl. `\r\n`
+  and upper-case zero-padded hex, device-parser rules (`REG R 0x1\nREG R 0x2\n` executes only
+  the first), a `FakeFirmware` with the single slot proving the client never triggers a drop
+  (one command per main-loop iteration, 44 commands for write + read + read-all), the
+  counter-example (unpaced sender loses the second command), timeout → 2 retransmits →
+  error → next command, status bytes.
+- `tests/test_bridge_source.py`: demo source slot semantics (second transfer dropped, replies
+  arrive one per poll, write echoes the value). `tests/test_ui_smoke.py`: register panel
+  loops `step()` until the read-all is answered; asserts 0 drops, `sent == polls`.

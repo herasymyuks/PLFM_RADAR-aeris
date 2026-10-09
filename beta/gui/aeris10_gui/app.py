@@ -48,19 +48,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             win._after_id = None
         win.reg_client.read_all(READ_ALL_ADDRESSES)       # demo register file answers via the CDC stream
         completed = 0
-        for _ in range(args.frames * 2 + 2):
+        # one REG command per poll (firmware single slot): keep stepping until the read-all is answered
+        for _ in range(args.frames + 200):
             completed += win.step()
             root.update()
-            if completed >= args.frames:
+            if completed >= args.frames and not win.reg_client.pending:
                 break
         dec = win.source.decoder
-        reg_ok = win.reg_client.values.get(0xF) == 0xBE7A and not win.reg_client.pending and not win.reg_client.errors
+        rc_client = win.reg_client
+        reg_ok = rc_client.values.get(0xF) == 0xBE7A and not rc_client.pending and not rc_client.errors
         status_msgs = dec.status_parser.stats["status"]
         win.stop()
         root.destroy()
         ok = completed >= args.frames and status_msgs > 0 and reg_ok and dec.error_count() == 0
         print(f"selftest: link={link} frames={completed} link_stats={dec.stats()} "
-              f"reg_read_all={'OK' if reg_ok else 'FAIL'} -> {'OK' if ok else 'FAIL'}")
+              f"reg_read_all={'OK' if reg_ok else 'FAIL'} (sent={rc_client.sent}, "
+              f"dropped_by_slot={getattr(win.source, 'dropped_commands', 'n/a')}) -> {'OK' if ok else 'FAIL'}")
         return 0 if ok else 1
     win = MainWindow(root, demo=demo, settings=settings, port=args.port, update_ms=args.update_ms, link=link)
     if not demo:

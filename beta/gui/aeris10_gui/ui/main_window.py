@@ -305,7 +305,9 @@ class MainWindow:
                 if self.reg_client is not None:
                     self.reg_client.on_reply(msg)
                 reg_replies += 1
-        if reg_replies:
+        if self.reg_client is not None:
+            self.reg_client.poll()                    # reply timeout / retransmit of the in-flight REG command
+        if reg_replies or (self.reg_client is not None and self.reg_client.in_flight is None and self.reg_client.sent):
             self.register_panel.render()
         completed = 0
         now = time.time()

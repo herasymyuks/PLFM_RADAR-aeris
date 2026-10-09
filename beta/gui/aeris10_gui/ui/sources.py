@@ -120,6 +120,8 @@ class DemoSource(DataSource):
         self.running = False
         self.last_frame = None
         self._reg_out = bytearray()
+        self._cmd_slot: Optional[bytes] = None      # firmware single command slot (USBHandler::cmd_pending)
+        self.dropped_commands = 0
 
     def start(self, settings: RadarSettings, *, pad_to_64: bool = False) -> None:
         self.sim.settings = settings
@@ -130,12 +132,25 @@ class DemoSource(DataSource):
         self.running = False
 
     def send_line(self, data: bytes) -> None:
+        """Emulates the firmware: one transfer = one command; dropped while the previous one is pending;
+        executed (and answered) at the next poll, i.e. the next main-loop iteration."""
         if not self.running:
             raise IOError("demo source not started")
-        self._reg_out += self.sim.regs.handle_stream(data)
+        if not data.startswith(b"REG"):
+            return                                  # not a text command: the settings state machine would see it
+        if self._cmd_slot is not None:
+            self.dropped_commands += 1
+            return
+        self._cmd_slot = bytes(data)
+
+    def _execute_slot(self) -> None:
+        if self._cmd_slot is not None:
+            self._reg_out += self.sim.regs.handle_transfer(self._cmd_slot)
+            self._cmd_slot = None
 
     def raw_cdc_chunk(self) -> bytes:
         """One poll worth of simulated CDC bytes (exposed for tests)."""
+        self._execute_slot()
         replies, self._reg_out = bytes(self._reg_out), bytearray()
         if self.link == LINK_BRIDGE:
             self.last_frame, bf = self.sim.next_bridge_frame(time.time())
@@ -148,6 +163,7 @@ class DemoSource(DataSource):
             return PollResult()
         if self.link == LINK_BRIDGE:
             return self.decoder.decode(self.raw_cdc_chunk(), timestamp=time.time())
+        self._execute_slot()
         replies, self._reg_out = bytes(self._reg_out), bytearray()
         self.last_frame = self.sim.next_frame(time.time())
         self.sim.regs.on_frame()

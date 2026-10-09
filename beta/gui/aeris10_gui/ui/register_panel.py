@@ -107,7 +107,7 @@ class RegisterPanel:
         except (RegisterCommandError, IOError) as e:
             self.msg.config(text=f"REG command failed: {e}")
             return False
-        self.msg.config(text=f"sent; {len(c.pending)} reply(ies) outstanding")
+        self.msg.config(text=f"queued; {len(c.pending)} command(s) outstanding (one in flight at a time, firmware single slot)")
         return True
 
     def _write_entry(self, addr: int, var: tk.StringVar) -> None:
@@ -171,7 +171,8 @@ class RegisterPanel:
                     lines.append(f"  lane {lane}: tap={f['tap']:2d}  window=[{f['win_lo']:2d}, {f['win_hi']:2d}]")
             if 0xB in vals:
                 lines.append(f"pattern-check errors (CAL_ERR): {vals[0xB]}")
-            lines.append(f"outstanding requests: {len(c.pending)}   REG ERR replies: {len(c.errors)}   unmatched: {c.unexpected}")
+            lines.append(f"outstanding: {len(c.pending)}   sent: {c.sent}   retransmits: {c.retransmits}   "
+                         f"REG ERR / timeouts: {len(c.errors)}   unmatched: {c.unexpected}")
         self.text.configure(state="normal")
         self.text.delete("1.0", "end")
         self.text.insert("end", "\n".join(lines) + "\n")

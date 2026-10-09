@@ -95,10 +95,14 @@ def test_register_panel_read_all_and_calibration():
         panel.v_slip.set("2")
         panel.manual_bitslip()
         panel.read_all()
-        win.step()
-        root.update()
         c = win.reg_client
-        assert c.pending == [] and c.errors == []
+        steps = 0
+        while c.pending and steps < 100:              # one REG command per poll (firmware single slot)
+            win.step()
+            steps += 1
+        root.update()
+        assert c.pending == [] and c.errors == [] and c.retransmits == 0
+        assert win.source.dropped_commands == 0 and c.sent == steps
         assert c.values[0x1] == 4096 and c.values[0xF] == 0xBE7A
         assert c.values[0x9] & 0xFF == 0xFF                  # simulated lock mask after auto calibration
         assert c.lane_info[3] & 0x1F == 9                    # manual tap loaded into lane 3

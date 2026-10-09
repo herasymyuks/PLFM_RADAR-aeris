@@ -111,8 +111,15 @@ class DemoRegisterFile:
     def cfar_threshold(self) -> int:
         return self.regs[0x1]
 
-    # --- ASCII command handling (device side of protocol.register_cmd) ------------------------
+    # --- ASCII command handling (device side, mirrors hb_cmd_execute) -------------------------
     def handle_line(self, line: str) -> bytes:
+        """One firmware-style execution: parse, SPI access, reply.
+
+        A write replies with the *written* value (``hb_cmd_execute`` echoes
+        ``c.value``); the FPGA bridge would NACK nothing for an unmapped
+        address, but the demo returns ``REG ERR`` for addresses outside the
+        register file so the GUI can see the difference.
+        """
         try:
             op, addr, value = rc.parse_command(line)
         except rc.RegisterCommandError:
@@ -121,10 +128,17 @@ class DemoRegisterFile:
             return rc.format_error()
         if op == "W":
             self.write(addr, value)
+            return rc.format_reply(addr, value)
         return rc.format_reply(addr, self.read(addr))
 
+    def handle_transfer(self, data: bytes) -> bytes:
+        """``captureTextCommand`` + ``hb_cmd_execute`` for ONE USB transfer: only the first line counts."""
+        if not rc.is_text_command(data):
+            return b""
+        return self.handle_line(data.decode("latin-1"))
+
     def handle_stream(self, data: bytes) -> bytes:
-        """Process every complete line in ``data``; returns the concatenated replies."""
+        """Convenience for tests: execute every line as if each arrived in its own transfer."""
         out = bytearray()
         for line in data.decode("latin-1").splitlines():
             if line.strip():

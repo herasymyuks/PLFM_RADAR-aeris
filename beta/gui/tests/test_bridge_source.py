@@ -118,15 +118,21 @@ def test_pipeline_on_bridge_frames_finds_targets():
     assert power.shape == (64, 32) and det_map.sum() == len(bf.detections)
 
 
-def test_demo_source_bridge_answers_reg_commands():
+def test_demo_source_emulates_firmware_single_slot():
     src = DemoSource(link=LINK_BRIDGE)
     src.start(RadarSettings(max_distance=5000, map_size=5000))
-    src.send_line(b"REG R 0xF\nREG W 0x4 0x1\nREG R 0x9\n")
-    r = src.poll()
-    assert len(r.bridge_frames) == 1
-    regs = [m for m in r.messages if isinstance(m, RegisterReply)]
-    assert [(m.addr, m.value) for m in regs] == [(0xF, 0xBE7A), (0x4, 0), (0x9, 0x1FF)]
-    assert any(isinstance(m, SystemStatus) for m in r.messages)
+    src.send_line(b"REG R 0xF\n")
+    src.send_line(b"REG W 0x4 0x1\n")                 # second transfer before the "main loop" ran: dropped
+    assert src.dropped_commands == 1
+    replies = []
+    for cmd in (None, b"REG W 0x4 0x1\n", b"REG R 0x9\n"):
+        if cmd:
+            src.send_line(cmd)
+        r = src.poll()                                 # one frame + status + the reply of the slot
+        assert len(r.bridge_frames) == 1 and any(isinstance(m, SystemStatus) for m in r.messages)
+        replies += [m for m in r.messages if isinstance(m, RegisterReply)]
+    assert [(m.addr, m.value) for m in replies] == [(0xF, 0xBE7A), (0x4, 1), (0x9, 0x1FF)]   # write echoes value
+    assert all(m.raw.startswith("REG 0x000") for m in replies)
 
 
 def test_link_decoder_rejects_unknown_link():
