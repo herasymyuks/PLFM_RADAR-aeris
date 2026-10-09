@@ -3,8 +3,10 @@
   "f_res_GHz": 11.0925,
   "S11_res_dB": -37.6,
   "S11_f0_dB": -18.0,
-  "BW_10dB_MHz": 2362,
+  "BW_10dB_MHz": 128,
   "Dmax_row_dBi": 11.51,
   "date": "2026-10-09",
-  "note": "selected by best S11 at 10.5 GHz; the transmission-line length (scale 1.0) is kept"
+  "note": "selected by best S11 at 10.5 GHz (L_SCALE 1.0); the S11 curve is a comb of narrow resonances: contiguous -10 dB band around f0 is small, match between the dips is only -6..-8 dB",
+  "BW_10dB_MHz_contiguous": 128,
+  "worst_S11_10.3_10.7_GHz_dB": -6.2
 }
