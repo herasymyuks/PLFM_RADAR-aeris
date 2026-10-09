@@ -156,7 +156,7 @@ One guide exists for each drawing that could not be generated from repository ev
 | R-PCB-05 | BOM completion with MPNs | OPEN |
 | R-PCB-06 | Stack-up confirmation | BLOCKED |
 | R-MECH-01 | Obtain enclosure, antenna, pedestal CAD and part numbers | BLOCKED |
-| R-MECH-02 | Write `10_docs/assembly_guide.md` and exploded view | PARTIALLY DONE 2026-10-09 (ASSEMBLY_SEQUENCE.md, PARTS_LIST.md, CONCEPTUAL exploded view; real geometry needs R-MECH-01) |
+| R-MECH-02 | Write `10_docs/assembly_guide.md` (missing in the repository) and exploded view | PARTIALLY DONE 2026-10-09 (ASSEMBLY_SEQUENCE.md, PARTS_LIST.md, CONCEPTUAL exploded view; real geometry needs R-MECH-01) |
 | R-DOC-01 | Repository hygiene | OPEN, owner decisions |
 | R-DOC-02 | Datasheet collection | OPEN |
 | R-DOC-03 | Recover `STM32_ALGO.docx` | BLOCKED |

@@ -206,7 +206,7 @@ PROPOSED fabrication stack-up (BETA, nothing confirmed by the designer or PCBWay
 
 ## 4.7 BOM summary
 
-Source BOM (`docs/BOM/BOM_MAIN_BOARD.csv`, generated from the schematic): 776 references, 98 line items, **0 MPN attributes**, 244 references without value (source: `docs/BOM/README.md` §Summary). The BETA BOM `beta/pcb/MAIN_BOARD/BOM_MAIN_BOARD_beta.csv` adds `manufacturer, mpn, mpn_confidence, dnp, note` columns with proposed part numbers (`tools/beta_bom_mpn.py`). Confidence count obtained with
+Source BOM (`docs/BOM/BOM_MAIN_BOARD.csv`, generated from the schematic): 776 references, 98 line items, **0 MPN attributes**, 244 references without value (source: `docs/BOM/README.md` §Summary). The BETA BOM `beta/pcb/MAIN_BOARD/BOM_MAIN_BOARD_beta.csv` adds `manufacturer, mpn, mpn_confidence, dnp, note` columns with proposed part numbers (`beta/pcb/tools/beta_bom_mpn.py`). Confidence count obtained with
 
 `python3 -c "import csv,collections;print(collections.Counter(r['mpn_confidence'] for r in csv.DictReader(open('beta/pcb/MAIN_BOARD/BOM_MAIN_BOARD_beta.csv'))))"`
 

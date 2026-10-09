@@ -28,7 +28,7 @@ Existing assets are referenced by path (see `ASSET_INDEX.md` for status). "To re
 | F10.8 | 10 | `engineering/DESIGN/MECHANICAL/CAD/detail/aeris10_detail_xray_front_iso.png`, `aeris10_detail_iso_rear.png`, `engineering/DESIGN/MECHANICAL/CAD/aeris10_head_xray_iso.png` | PROPOSED DESIGN |
 | F10.9 | 10 | to render: `engineering/DESIGN/CALCS/thermal_map_B-gated-drain.svg` → PNG (svg_sheets_to_pdf.py) | PROPOSED DESIGN (calculated) |
 | F10.10 | 10 | `engineering/MECHANICAL/CAD/pcb_set_plan_view.png`, `engineering/ASSEMBLY/EXPLODED_VIEWS/aeris10_exploded_conceptual.png` | SOURCE-DERIVED / CONCEPTUAL |
-| F11.1 | 11 | `engineering/SOFTWARE_DIAGRAMS/FPGA/fpga_module_hierarchy.png` (regenerate from `beta/fpga/rtl` with `tools/gen_verilog_hierarchy.py --rtl beta/fpga/rtl --out manual/figures/fpga_beta` + `dot -Tpng`) | SOURCE-DERIVED / BETA |
+| F11.1 | 11 | `engineering/SOFTWARE_DIAGRAMS/FPGA/fpga_module_hierarchy.png` (regenerate from `beta/fpga/rtl` with `python3 tools/gen_verilog_hierarchy.py --rtl beta/fpga/rtl --out manual/figures/fpga_beta` + `dot -Tpng`) | SOURCE-DERIVED / BETA |
 | F12.1–12.2 | 12 | `engineering/SOFTWARE_DIAGRAMS/STM32/stm32_firmware_architecture.png`, `stm32_usb_cdc_flow.png` | PARTIAL |
 | F13.1–13.2 | 13 | `engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_modules.png`, `python_gui_architecture.png` | SOURCE-DERIVED |
 | F13.3 | 13 | to render: GUI screenshot in demo mode — `cd beta/gui && .venv/bin/python -m aeris10_gui --demo --screenshot manual/figures/gui_demo.png` (add a `--screenshot` option if absent: run 3 frames, `root.update()`, `canvas.postscript` or `ImageGrab` via Pillow; document) | BETA |

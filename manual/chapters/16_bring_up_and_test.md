@@ -204,7 +204,7 @@ Copied from `docs/TESTING/ACCEPTANCE_CRITERIA.md` ("Each criterion is objective,
 | AC-P5 | A unit-test suite exists and passes | pytest log | NOT MET (upstream); see AC-X3 |
 | AC-P6 | One hardware GUI decodes the real firmware/FPGA packet format end-to-end | capture + decoded targets | NOT RUN |
 | AC-P7 | Packaged demo runs on a machine without Python | installer test log | NOT RUN |
-| AC-B1 | Fresh ERC and DRC reports with 0 unapproved errors for each board | reports under `docs/PCB/reports/` | NOT MET |
+| AC-B1 | Fresh ERC and DRC reports with 0 unapproved errors for each board | reports under `docs/PCB/reports/` (directory to be created) | NOT MET |
 | AC-B2 | `RATSNEST` "Nothing to do" and 0 elements outside the outline for Main and Power | EAGLE status line | NOT MET |
 | AC-B3 | sch/brd consistent, single EAGLE version per board | consistency check pass | NOT MET (Main, Power) |
 | AC-B4 | Gerber + drill + fab + assembly + P&P + BOM(MPN) + schematic PDF for all four boards | `tools/check_manufacturing_files.py` exit 0 | **PARTIALLY MET** (generated packages exist for all four boards; designer-released EAGLE export, MPNs, vendor fab notes NOT MET) |
@@ -213,8 +213,8 @@ Copied from `docs/TESTING/ACCEPTANCE_CRITERIA.md` ("Each criterion is objective,
 | AC-B7 | (Physical) impedance coupons 50 Ω ± 10 %, 100 Ω ± 8 % | TDR report | NOT RUN |
 | AC-B8 | Design conflicts K1, K2, K3, K4, K7 closed | decision records | NOT MET |
 | AC-M1 | Outline/hole drawings for all PCBs | `engineering/MECHANICAL/` DXF, STEP, plan view, dimension sheets | **MET** (thickness ASSUMED) |
-| AC-M2 | Enclosure, antenna and pedestal CAD committed with drawings | STEP + PDF under `10_docs/Hardware/` | NOT MET (PROPOSED designs exist under `engineering/DESIGN/`, chapter 10) |
-| AC-M3 | Assembly guide `10_docs/assembly_guide.md` | file exists, link check passes | NOT MET (this manual's chapter 15 is the proposed content) |
+| AC-M2 | Enclosure, antenna and pedestal CAD committed with drawings | STEP + PDF under `10_docs/Hardware/` (missing in the repository) | NOT MET (PROPOSED designs exist under `engineering/DESIGN/`, chapter 10) |
+| AC-M3 | Assembly guide `10_docs/assembly_guide.md` (missing in the repository) | file exists, link check passes | NOT MET (this manual's chapter 15 is the proposed content) |
 | AC-M4 | Exploded view with balloons matching BOM | PDF | PARTIAL (CONCEPTUAL view with balloons; real geometry BLOCKED, MDR-06) |
 | AC-M5 | Mass table per assembly | measured or CAD-derived values | NOT MET (estimates only) |
 | AC-D1 | Documentation tree of `claude.md` §13 present | `tools/check_missing_files.py` DOC-* all present | **MET** |

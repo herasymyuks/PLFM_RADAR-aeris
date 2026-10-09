@@ -982,7 +982,7 @@ PROPOSED fabrication stack-up (BETA, nothing confirmed by the designer or PCBWay
 
 ## 4.7 BOM summary
 
-Source BOM (`docs/BOM/BOM_MAIN_BOARD.csv`, generated from the schematic): 776 references, 98 line items, **0 MPN attributes**, 244 references without value (source: `docs/BOM/README.md` §Summary). The BETA BOM `beta/pcb/MAIN_BOARD/BOM_MAIN_BOARD_beta.csv` adds `manufacturer, mpn, mpn_confidence, dnp, note` columns with proposed part numbers (`tools/beta_bom_mpn.py`). Confidence count obtained with
+Source BOM (`docs/BOM/BOM_MAIN_BOARD.csv`, generated from the schematic): 776 references, 98 line items, **0 MPN attributes**, 244 references without value (source: `docs/BOM/README.md` §Summary). The BETA BOM `beta/pcb/MAIN_BOARD/BOM_MAIN_BOARD_beta.csv` adds `manufacturer, mpn, mpn_confidence, dnp, note` columns with proposed part numbers (`beta/pcb/tools/beta_bom_mpn.py`). Confidence count obtained with
 
 `python3 -c "import csv,collections;print(collections.Counter(r['mpn_confidence'] for r in csv.DictReader(open('beta/pcb/MAIN_BOARD/BOM_MAIN_BOARD_beta.csv'))))"`
 
@@ -1186,7 +1186,7 @@ Before/after (source: `beta/pcb/POWER_SUPPLY/README.md` §1):
 | zones_intersect | 21 | 1 |
 | **DRC violations total** | 160 | 328 |
 
-Unconnected items 308 → 89 (−71 %); footprints outside the outline 132 → 0. What was done, in order (source: `beta/pcb/POWER_SUPPLY/README.md` §2): netclass `Default` set to track 0.25 mm / clearance 0.2 mm / via 0.5/0.3 mm for new copper only; 110 parts placed inside the outline in 29 net clusters and 22 KK connectors placed on the nearest board edge (`tools/beta_place_outside.py`, `placement_moves*.json`); Freerouting 2.5.0 pass 1 with the existing 916 tracks/vias fixed (+1 336 tracks, +168 vias; 308 → 102); 45 same-net zones re-prioritised and a board-wide B.Cu GND zone added (zones_intersect 21 → 1); 29 straight same-net bridges kept out of 102 tried (102 → 96); Freerouting pass 2 (+36 tracks, +3 vias; 96 → 96); GND stitching, 22 of 50 vias kept (96 → 89); refill, DRC, export.
+Unconnected items 308 → 89 (−71 %); footprints outside the outline 132 → 0. What was done, in order (source: `beta/pcb/POWER_SUPPLY/README.md` §2): netclass `Default` set to track 0.25 mm / clearance 0.2 mm / via 0.5/0.3 mm for new copper only; 110 parts placed inside the outline in 29 net clusters and 22 KK connectors placed on the nearest board edge (`beta/pcb/tools/beta_place_outside.py`, `placement_moves*.json`); Freerouting 2.5.0 pass 1 with the existing 916 tracks/vias fixed (+1 336 tracks, +168 vias; 308 → 102); 45 same-net zones re-prioritised and a board-wide B.Cu GND zone added (zones_intersect 21 → 1); 29 straight same-net bridges kept out of 102 tried (102 → 96); Freerouting pass 2 (+36 tracks, +3 vias; 96 → 96); GND stitching, 22 of 50 vias kept (96 → 89); refill, DRC, export.
 
 **The placement by script is topological, not thermal/EMC** — regulator clusters sit where free space was nearest to their connectors; a designer must review inductor orientation, input/output capacitor proximity and heat spreading before any routing clean-up (source: `beta/pcb/POWER_SUPPLY/README.md` §3).
 
@@ -1394,7 +1394,7 @@ Copper was **not modified** (source: `beta/pcb/FREQUENCY_SYNTHESIZER/README.md`)
 | track_dangling | 35 | 35 |
 | **DRC violations total** | 639 | 639 |
 
-Change: 43 silkscreen reference texts moved to the nearest free position (≤ 3 mm, 0.05 mm step; `tools/beta_silk_nudge.py`, `silk_nudges.json`); 103 texts remain in conflict because the 0201-dense board has no free spot within 3 mm (`silk_conflicts_remaining.json`). Disposition of all 639 items (source: `beta/pcb/FREQUENCY_SYNTHESIZER/DRC_DISPOSITION.md` §1): 7 courtyard overlaps REAL (review) — pairs C25↔L10, L12↔C45, L12↔C33, C27↔L10, L11↔C29, L11↔C31, L9↔C21; the pads do not touch, designer to confirm that the L5650M inductor body does not collide with the adjacent capacitors at assembly; 35 dangling GND arc stubs 0.002–0.212 mm inside the GND pour — COSMETIC; silkscreen 147 → 103 texts in conflict (measured uncapped) — COSMETIC, fab clips silk on pads; solder-mask bridges — FAB REVIEW (PCBWay minimum mask dam 0.1 mm, CAM merges apertures). Recommendation for the production revision: hide 0201/0402 reference designators on silk.
+Change: 43 silkscreen reference texts moved to the nearest free position (≤ 3 mm, 0.05 mm step; `beta/pcb/tools/beta_silk_nudge.py`, `silk_nudges.json`); 103 texts remain in conflict because the 0201-dense board has no free spot within 3 mm (`silk_conflicts_remaining.json`). Disposition of all 639 items (source: `beta/pcb/FREQUENCY_SYNTHESIZER/DRC_DISPOSITION.md` §1): 7 courtyard overlaps REAL (review) — pairs C25↔L10, L12↔C45, L12↔C33, C27↔L10, L11↔C29, L11↔C31, L9↔C21; the pads do not touch, designer to confirm that the L5650M inductor body does not collide with the adjacent capacitors at assembly; 35 dangling GND arc stubs 0.002–0.212 mm inside the GND pour — COSMETIC; silkscreen 147 → 103 texts in conflict (measured uncapped) — COSMETIC, fab clips silk on pads; solder-mask bridges — FAB REVIEW (PCBWay minimum mask dam 0.1 mm, CAM merges apertures). Recommendation for the production revision: hide 0201/0402 reference designators on silk.
 
 ## 6.5 Layer plots and 3-D renders
 
@@ -3356,7 +3356,7 @@ Full per-layer tables are in chapters 4–7 §Stack-up. Common proposal items fo
 
 ## 14.4 BOMs with MPN confidence
 
-The source schematics carry **no MPN attribute on any part** (0/98, 0/28, 0/40, 0/11 lines; source: `docs/BOM/README.md`). `docs/BOM/BOM_<BOARD>.csv` is generated by `tools/gen_eagle_bom.py` directly from the `.sch` files; `beta/pcb/<BOARD>/BOM_<BOARD>_beta.csv` adds `manufacturer, mpn, mpn_confidence, dnp, note` with proposals from `tools/beta_bom_mpn.py` (Murata GRM / Yageo RC / Murata LQP03 / TDK VLP families for passives, orderable IC codes for the device sets — source: `beta/pcb/README.md`).
+The source schematics carry **no MPN attribute on any part** (0/98, 0/28, 0/40, 0/11 lines; source: `docs/BOM/README.md`). `docs/BOM/BOM_<BOARD>.csv` is generated by `tools/gen_eagle_bom.py` directly from the `.sch` files; `beta/pcb/<BOARD>/BOM_<BOARD>_beta.csv` adds `manufacturer, mpn, mpn_confidence, dnp, note` with proposals from `beta/pcb/tools/beta_bom_mpn.py` (Murata GRM / Yageo RC / Murata LQP03 / TDK VLP families for passives, orderable IC codes for the device sets — source: `beta/pcb/README.md`).
 
 | Board | Physical references | Line items | References without value | HIGH (deviceset = MPN) | MEDIUM (standard passive from value+package) | LOW (guess / non-standard value / conflict) | EMPTY (no value) |
 |---|---|---|---|---|---|---|---|
@@ -3381,7 +3381,7 @@ All four boards are EAGLE XML files: Main Board 7.4.0 (sch + brd), Frequency Syn
 | P-KICAD-01 | Alternative open-source export | KiCad File → Import → Non-KiCad Project → EAGLE; re-enter the 10-layer stack for the Main Board in Board Setup; `kicad-cli pcb export gerbers` / `export drill` | `board-F_Cu.gbr … board-PTH.drl, board-NPTH.drl, board-job.gbrjob` | re-DRC and compare with the EAGLE output before use (importer approximates polygons/thermals) |
 | P-EAGLE-06 | BOM export | schematic → File → Run ULP → `bom.ulp` → Parts/Values, CSV, all attributes; compare with `docs/BOM/BOM_<BOARD>.csv` | `<Board>_BOM.csv` | every line has MPN + package; passives valued (244/80/6/47 missing today); DNP column |
 | P-EAGLE-07 | Pick-and-place and drawings | board → Run ULP → `mountsmd.ulp` (+ `mount.ulp` for THT); assembly drawing = layers 20, 21, 25, 51 (+ bottom) → Print → PDF 1:1; fab drawing = layers 20 + 44 + 45 + dimensions on 48 + text block (layer count, material, thickness, copper, finish, colours, impedance table from the PCBWay note, min track 0.1 mm, min drill 0.15 mm Main/Synth/PA, 0.3 mm Power) | `<board>-smd.mnt`, `-tht.mnt` (`RefDes,Value,Package,X,Y,Rot,Side`), `<board>_assembly_top/bottom.pdf`, `<board>_fab.pdf` | Synth: regenerate the `.mnt` pair to supersede the four duplicate files |
-| P-EAGLE-08 | Schematic PDF | schematic → File → Print → PDF, all sheets, fit to page, black, caption | `<board>_schematic.pdf` under `docs/PCB/schematics/` | — (SOURCE-DERIVED renders exist in `engineering/ELECTRICAL/schematics/` meanwhile) |
+| P-EAGLE-08 | Schematic PDF | schematic → File → Print → PDF, all sheets, fit to page, black, caption | `<board>_schematic.pdf` under `docs/PCB/schematics/` (directory to be created) | — (SOURCE-DERIVED renders exist in `engineering/ELECTRICAL/schematics/` meanwhile) |
 | P-EAGLE-09 | Netlist export without EAGLE | `python3 tools/extract_eagle_netlist.py <sch> --part <REF> --out <csv>` / `--list-parts`; EAGLE alternative File → Export → Netlist | CSV net ↔ pin ↔ pad | used for the connection reports of chapters 4–7 |
 
 Expected manufacturing package structure per board (source: `00_COMMON_EAGLE_PROCEDURES.md` §Manufacturing package structure):
@@ -3982,7 +3982,7 @@ Copied from `docs/TESTING/ACCEPTANCE_CRITERIA.md` ("Each criterion is objective,
 | AC-P5 | A unit-test suite exists and passes | pytest log | NOT MET (upstream); see AC-X3 |
 | AC-P6 | One hardware GUI decodes the real firmware/FPGA packet format end-to-end | capture + decoded targets | NOT RUN |
 | AC-P7 | Packaged demo runs on a machine without Python | installer test log | NOT RUN |
-| AC-B1 | Fresh ERC and DRC reports with 0 unapproved errors for each board | reports under `docs/PCB/reports/` | NOT MET |
+| AC-B1 | Fresh ERC and DRC reports with 0 unapproved errors for each board | reports under `docs/PCB/reports/` (directory to be created) | NOT MET |
 | AC-B2 | `RATSNEST` "Nothing to do" and 0 elements outside the outline for Main and Power | EAGLE status line | NOT MET |
 | AC-B3 | sch/brd consistent, single EAGLE version per board | consistency check pass | NOT MET (Main, Power) |
 | AC-B4 | Gerber + drill + fab + assembly + P&P + BOM(MPN) + schematic PDF for all four boards | `tools/check_manufacturing_files.py` exit 0 | **PARTIALLY MET** (generated packages exist for all four boards; designer-released EAGLE export, MPNs, vendor fab notes NOT MET) |
@@ -3991,8 +3991,8 @@ Copied from `docs/TESTING/ACCEPTANCE_CRITERIA.md` ("Each criterion is objective,
 | AC-B7 | (Physical) impedance coupons 50 Ω ± 10 %, 100 Ω ± 8 % | TDR report | NOT RUN |
 | AC-B8 | Design conflicts K1, K2, K3, K4, K7 closed | decision records | NOT MET |
 | AC-M1 | Outline/hole drawings for all PCBs | `engineering/MECHANICAL/` DXF, STEP, plan view, dimension sheets | **MET** (thickness ASSUMED) |
-| AC-M2 | Enclosure, antenna and pedestal CAD committed with drawings | STEP + PDF under `10_docs/Hardware/` | NOT MET (PROPOSED designs exist under `engineering/DESIGN/`, chapter 10) |
-| AC-M3 | Assembly guide `10_docs/assembly_guide.md` | file exists, link check passes | NOT MET (this manual's chapter 15 is the proposed content) |
+| AC-M2 | Enclosure, antenna and pedestal CAD committed with drawings | STEP + PDF under `10_docs/Hardware/` (missing in the repository) | NOT MET (PROPOSED designs exist under `engineering/DESIGN/`, chapter 10) |
+| AC-M3 | Assembly guide `10_docs/assembly_guide.md` (missing in the repository) | file exists, link check passes | NOT MET (this manual's chapter 15 is the proposed content) |
 | AC-M4 | Exploded view with balloons matching BOM | PDF | PARTIAL (CONCEPTUAL view with balloons; real geometry BLOCKED, MDR-06) |
 | AC-M5 | Mass table per assembly | measured or CAD-derived values | NOT MET (estimates only) |
 | AC-D1 | Documentation tree of `claude.md` §13 present | `tools/check_missing_files.py` DOC-* all present | **MET** |
@@ -4201,7 +4201,7 @@ One guide exists for each drawing that could not be generated from repository ev
 | R-PCB-05 | BOM completion with MPNs | OPEN |
 | R-PCB-06 | Stack-up confirmation | BLOCKED |
 | R-MECH-01 | Obtain enclosure, antenna, pedestal CAD and part numbers | BLOCKED |
-| R-MECH-02 | Write `10_docs/assembly_guide.md` and exploded view | PARTIALLY DONE 2026-10-09 (ASSEMBLY_SEQUENCE.md, PARTS_LIST.md, CONCEPTUAL exploded view; real geometry needs R-MECH-01) |
+| R-MECH-02 | Write `10_docs/assembly_guide.md` (missing in the repository) and exploded view | PARTIALLY DONE 2026-10-09 (ASSEMBLY_SEQUENCE.md, PARTS_LIST.md, CONCEPTUAL exploded view; real geometry needs R-MECH-01) |
 | R-DOC-01 | Repository hygiene | OPEN, owner decisions |
 | R-DOC-02 | Datasheet collection | OPEN |
 | R-DOC-03 | Recover `STM32_ALGO.docx` | BLOCKED |

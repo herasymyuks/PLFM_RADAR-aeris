@@ -5,7 +5,7 @@ Date 2026-10-09 · Antidrone Ukraine · antidrone.cc · build .
 | Check | Command | Result |
 |---|---|---|
 | Chapters present, no stubs, figures exist, links resolve | `python3 tools/build_manual.py --check` | chapters: 22, figures: 69, problems: 0 |
-| Repository-wide link check restricted to manual/ | `python3 tools/check_doc_links.py` | 17 broken links under manual/ |
+| Repository-wide link check restricted to manual/ | `python3 tools/check_doc_links.py` | 0 broken links under manual/ (after path fixes) |
 | Figure log (status per caption, missing files) | `python3 tools/gen_figure_log.py` | 69 figures, 0 missing; 30 SOURCE-DERIVED, 20 PROPOSED DESIGN, 7 BETA, 7 PARTIAL, 3 ORIGINAL PROJECT FILE, 2 CONCEPTUAL, 0 VERIFIED |
 | Build outputs | `python3 tools/build_manual.py` | `manual/AERIS10_MANUAL.md` (   97614 words), `manual/build/AERIS10_MANUAL.html` (64 MB, images embedded), `manual/build/AERIS10_MANUAL.pdf` (191 pages A4, 44 MB; pdfimages: 86 embedded images) |
 | Authorship on every page | pdftotext count of "antidrone.cc" | 218 occurrences (title page, running header/footer, figure plots) |
