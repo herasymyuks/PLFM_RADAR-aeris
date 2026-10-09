@@ -1,0 +1,74 @@
+scanned 143 source files under 9_Firmware/9_1_Microcontroller
+
+[HAL] headers not present in repository (50):
+  stm32f7xx_hal.h                          <- 18 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/main.h:30, 9_Firmware/9_1_Microcontroller/Core/Src/main.cpp:68, 9_Firmware/9_1_Microcontroller/LIB/ADAR1000_Manager.cpp:3, 9_Firmware/9_1_Microcontroller/LIB/ADAR1000_Manager.h:5 ...
+  stm32f7xx_hal_adc.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:291
+  stm32f7xx_hal_can.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:295
+  stm32f7xx_hal_cec.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:299
+  stm32f7xx_hal_cortex.h                   <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:287
+  stm32f7xx_hal_crc.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:303
+  stm32f7xx_hal_cryp.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:307
+  stm32f7xx_hal_dac.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:315
+  stm32f7xx_hal_dcmi.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:319
+  stm32f7xx_hal_def.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/stm32_irq.c:47
+  stm32f7xx_hal_dfsdm.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:443
+  stm32f7xx_hal_dma.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:283
+  stm32f7xx_hal_dma2d.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:311
+  stm32f7xx_hal_dsi.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:447
+  stm32f7xx_hal_eth.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:323
+  stm32f7xx_hal_eth_legacy.h               <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:327
+  stm32f7xx_hal_exti.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:275
+  stm32f7xx_hal_flash.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:331
+  stm32f7xx_hal_gpio.h                     <- 3 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:279, 9_Firmware/9_1_Microcontroller/LIB/adar1000.c:33, 9_Firmware/9_1_Microcontroller/LIB/adar1000.h:40
+  stm32f7xx_hal_hash.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:351
+  stm32f7xx_hal_hcd.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:439
+  stm32f7xx_hal_i2c.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:355
+  stm32f7xx_hal_i2s.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:359
+  stm32f7xx_hal_irda.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:423
+  stm32f7xx_hal_iwdg.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:363
+  stm32f7xx_hal_jpeg.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:451
+  stm32f7xx_hal_lptim.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:367
+  stm32f7xx_hal_ltdc.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:371
+  stm32f7xx_hal_mdios.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:455
+  stm32f7xx_hal_mmc.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:399
+  stm32f7xx_hal_nand.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:343
+  stm32f7xx_hal_nor.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:339
+  stm32f7xx_hal_pcd.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:435
+  stm32f7xx_hal_pwr.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:375
+  stm32f7xx_hal_qspi.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:379
+  stm32f7xx_hal_rcc.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:271
+  stm32f7xx_hal_rng.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:383
+  stm32f7xx_hal_rtc.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:387
+  stm32f7xx_hal_sai.h                      <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:391
+  stm32f7xx_hal_sd.h                       <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:395
+  stm32f7xx_hal_sdram.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:347
+  stm32f7xx_hal_smartcard.h                <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:427
+  stm32f7xx_hal_smbus.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:459
+  stm32f7xx_hal_spdifrx.h                  <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:403
+  stm32f7xx_hal_spi.h                      <- 3 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:407, 9_Firmware/9_1_Microcontroller/LIB/adar1000.c:32, 9_Firmware/9_1_Microcontroller/LIB/adar1000.h:39
+  stm32f7xx_hal_sram.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:335
+  stm32f7xx_hal_tim.h                      <- 2 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:411, 9_Firmware/9_1_Microcontroller/LIB/stm32_irq.c:48
+  stm32f7xx_hal_uart.h                     <- 2 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:415, 9_Firmware/9_1_Microcontroller/LIB/stm32_irq.c:45
+  stm32f7xx_hal_usart.h                    <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:419
+  stm32f7xx_hal_wwdg.h                     <- 1 file(s): 9_Firmware/9_1_Microcontroller/Core/Inc/stm32f7xx_hal_conf.h:431
+
+[CMSIS] headers not present in repository (1):
+  stm32f7xx.h                              <- 4 file(s): 9_Firmware/9_1_Microcontroller/Core/Src/system_stm32f7xx.c:47, 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usb_device.h:14, 9_Firmware/9_1_Microcontroller/USB_DEVICE/Target/usbd_conf.c:21, 9_Firmware/9_1_Microcontroller/USB_DEVICE/Target/usbd_conf.h:26
+
+[USB_DEVICE] headers not present in repository (3):
+  usbd_cdc.h                               <- 3 file(s): 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usb_device.c:13, 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usbd_cdc_if.h:14, 9_Firmware/9_1_Microcontroller/USB_DEVICE/Target/usbd_conf.c:25
+  usbd_core.h                              <- 3 file(s): 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usb_device.c:11, 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usbd_desc.c:19, 9_Firmware/9_1_Microcontroller/USB_DEVICE/Target/usbd_conf.c:24
+  usbd_def.h                               <- 3 file(s): 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usb_device.h:16, 9_Firmware/9_1_Microcontroller/USB_DEVICE/App/usbd_desc.h:14, 9_Firmware/9_1_Microcontroller/USB_DEVICE/Target/usbd_conf.c:23
+
+[UNKNOWN] headers not present in repository (11):
+  aducm3029_irq.h                          <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:44
+  aducm3029_uart.h                         <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:43
+  linux_socket.h                           <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:70
+  lwip_socket.h                            <- 3 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio.c:58, 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:75, 9_Firmware/9_1_Microcontroller/LIB/iio_app.h:44
+  maxim_irq.h                              <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:56
+  maxim_uart.h                             <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:57
+  parameters.h                             <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:39
+  tcp_socket.h                             <- 5 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio.c:52, 9_Firmware/9_1_Microcontroller/LIB/iio.c:57, 9_Firmware/9_1_Microcontroller/LIB/iio.h:41, 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:66 ...
+  wifi.h                                   <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:64
+  xilinx_irq.h                             <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:48
+  xilinx_uart.h                            <- 1 file(s): 9_Firmware/9_1_Microcontroller/LIB/iio_app.c:47

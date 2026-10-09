@@ -1,0 +1,7 @@
+T1 ad9523_setup() completes against the register mock (NOTE: ad9523_init() must NOT be
+   called after filling pdata - it resets every field; this is defect C8 in the original main.cpp)
+T2 serial port config: SDO active (4-wire) requested, no soft-reset left asserted
+T3 channel distribution registers 0x192+3*ch (24-bit): divider, driver mode, power-down
+T4 derived frequencies with VCO = 100 MHz x N(4*9+0=36) = 3.6 GHz
+T5 IO_UPDATE issued and status/sync paths executed
+TEST PASSED (0 failure(s), 139 SPI frames)

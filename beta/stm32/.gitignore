@@ -1,0 +1,5 @@
+# build trees
+build/
+tests/build/
+# third-party STM32CubeF7 checkout (nested git repo; recreate with setup_cube.sh, pinned in DECISIONS.md D-15)
+cube/

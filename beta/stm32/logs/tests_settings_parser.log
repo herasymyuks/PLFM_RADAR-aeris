@@ -1,0 +1,10 @@
+T1 unpadded: flag (4 B) then settings (82 B) as two writes
+T2 GUI framing: 64-B zero-padded flag frame, then 64 + 64(padded) settings frames
+T3 flag and settings concatenated in one write
+T4 'SET' marker straddling a packet boundary ('S','E' | 'T',...)
+T5 byte-at-a-time delivery
+T6 short packets (< 4 B) before the flag must not crash or trigger
+T7 invalid values are rejected and a later valid packet is accepted
+T8 RadarSettings::parseFromUSB rejects wrong markers / short input
+T9 big-endian decode against a hand-encoded constant (1.0 = 0x3FF0000000000000)
+TEST PASSED (0 failure(s))
