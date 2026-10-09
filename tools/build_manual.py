@@ -70,6 +70,8 @@ def md_to_html(md: str) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true"); ap.add_argument("--no-pdf", action="store_true")
+    ap.add_argument("--max-px", type=int, default=0, help="downscale embedded raster images to this width (needs Pillow); writes *_light outputs")
+    ap.add_argument("--suffix", default="")
     a = ap.parse_args()
     problems, parts, fig_n = [], [], 0
     order = chapter_order()
@@ -120,7 +122,17 @@ def main() -> int:
         mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg"}.get(ext[1:], "application/octet-stream")
         if ext == ".pdf":
             return f'<p><a href="{src}">{html.escape(alt)} (PDF)</a></p>'
-        data = base64.b64encode(open(p, "rb").read()).decode()
+        raw = open(p, "rb").read()
+        if a.max_px and ext in (".png", ".jpg", ".jpeg"):
+            try:
+                from PIL import Image; import io
+                im = Image.open(io.BytesIO(raw))
+                if im.width > a.max_px:
+                    im = im.convert("RGB").resize((a.max_px, int(im.height * a.max_px / im.width)))
+                    buf = io.BytesIO(); im.save(buf, format="JPEG", quality=80, optimize=True); raw = buf.getvalue(); mime = "image/jpeg"
+            except ImportError:
+                pass
+        data = base64.b64encode(raw).decode()
         return f'<figure><img src="data:{mime};base64,{data}" alt="{html.escape(alt)}"><figcaption>{html.escape(alt)}</figcaption></figure>'
     body = md_to_html(master)
     body = re.sub(r'<img alt="([^"]*)" src="([^"]+)">', embed, body)
@@ -140,11 +152,11 @@ def main() -> int:
            ".run-head{position:fixed;top:0;left:0;right:0;font-size:9px;color:#555;border-bottom:1px solid #ccc;padding:2px 0}"
            ".run-foot{position:fixed;bottom:0;left:0;right:0;font-size:9px;color:#555;border-top:1px solid #ccc;padding:2px 0}"
            ".title-page{text-align:center;page-break-after:always}@media screen{.run-head,.run-foot{position:static;text-align:right}}")
-    hp = os.path.join(OUT, "AERIS10_MANUAL.html")
+    hp = os.path.join(OUT, f"AERIS10_MANUAL{a.suffix}.html")
     open(hp, "w", encoding="utf-8").write(f"<!doctype html><html><head><meta charset='utf-8'><title>AERIS-10 Manual — {AUTHOR}</title><meta name='author' content='{AUTHOR}'><meta name='description' content='AERIS-10 radar complete engineering and assembly manual — Antidrone Ukraine, antidrone.cc'><style>{css}</style></head><body>{body}</body></html>")
     print("wrote", hp, f"({os.path.getsize(hp)//1024} kB, {fig_n} figures)")
     if not a.no_pdf and os.path.exists(CHROME):
-        pdf = os.path.join(OUT, "AERIS10_MANUAL.pdf")
+        pdf = os.path.join(OUT, f"AERIS10_MANUAL{a.suffix}.pdf")
         r = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={pdf}", "file://" + hp], capture_output=True, text=True, timeout=600)
         print("wrote", pdf if os.path.isfile(pdf) else "PDF FAILED " + r.stderr[-300:])
     return 1 if problems else 0
