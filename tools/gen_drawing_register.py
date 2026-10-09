@@ -124,6 +124,12 @@ add("DSN-MECH-3D", "Radar head + pedestal parametric 3-D model (FreeCAD native, 
 for n, t in [("01", "Head plan section"), ("02", "Head front elevation"), ("03", "Head side section incl. pedestal"), ("04", "Internal layout per tier with connector positions"), ("05", "Pedestal plan")]:
     base = {"01": "head_plan_section", "02": "head_front_elevation", "03": "head_side_section", "04": "internal_layout_rear", "05": "pedestal_plan"}[n]
     add(f"DSN-MECH-{n}", t, "tools/design_layout.py (D-07…D-13) + KiCad P&P", f"{DZ}/MECHANICAL/drawings/DSN-MECH-{n}_{base}.svg", [f"{DZ}/MECHANICAL/drawings/png/DSN-MECH-{n}_{base}.png", f"{DZ}/MECHANICAL/drawings/DSN-MECH-01-05_head_pedestal_drawings.pdf"], "PROPOSED DESIGN", "as DSN-MECH-3D")
+add("DSN-LINK-01", "FPGA → host data path: option A FT601 pin plan (bank 35) + option B SPI bridge (RTL, STM32 driver, GUI parser)", "Main Board netlist (free bank-35 pins, DIG_5..7, SPI1), RTL geometry, firmware timing", f"{DZ}/HOST_LINK/HOST_LINK_DESIGN.md",
+    [f"{DZ}/HOST_LINK/ft601_pin_assignment.csv", f"{DZ}/HOST_LINK/ft601_bank35.xdc", f"{DZ}/HOST_LINK/ft601_added_parts_BOM.csv", f"{DZ}/HOST_LINK/option_b_signal_map.csv",
+     f"{DZ}/HOST_LINK/rtl/rd_map_packer.v", f"{DZ}/HOST_LINK/rtl/host_bridge_spi.v", f"{DZ}/HOST_LINK/rtl/tb_host_bridge.v", f"{DZ}/HOST_LINK/stm32/host_bridge.c", f"{DZ}/HOST_LINK/gui/bridge_frame.py", f"{DZ}/HOST_LINK/README.md"],
+    "PROPOSED DESIGN", "option A needs Main Board rev. B + FT601 datasheet checks; option B bench test; packer integration into beta/fpga")
+add("DSN-ANT-01-SIM", "openEMS simulation of one antenna row (S11, directivity, tuning log)", "openems_patch_row.py run with openEMS built from source", f"{DZ}/ANTENNA/simulation/TUNING_LOG.md",
+    [f"{DZ}/ANTENNA/simulation/s11.csv", f"{DZ}/ANTENNA/simulation/s11_row.png", f"{DZ}/ANTENNA/simulation/tuning_result.json"], "PROPOSED DESIGN", "16-row coupling, squint vs. frequency, measurement")
 add("DSN-HAR-01", "Harness schedule with computed lengths (144 cables)", "interconnection_table.md + P&P + proposed layout", f"{DZ}/HARNESS/harness_schedule.csv", [f"{DZ}/HARNESS/HARNESS_SCHEDULE.md"], "PROPOSED DESIGN", "Power-rail pairs not matched by net name; stepper driver location; PA-instance mapping")
 add("ASM-DRW-01", "Assembly drawings (per board)", "KiCad fab/silk plots", f"{E}/ASSEMBLY/ASSEMBLY_DRAWINGS/README.md", [], "SOURCE-DERIVED", "component heights; bottom views mirrored only")
 

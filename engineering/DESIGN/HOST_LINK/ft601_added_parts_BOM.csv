@@ -1,0 +1,10 @@
+ref,qty,description,proposed_part,note
+J_USB3,1,"USB 3.1 Gen1 receptacle (Type-C, USB 2.0 + one SuperSpeed pair used) or USB 3.0 micro-B",GCT USB4085-GF-A (Type-C) / Amphenol GSB4211111WEU (micro-B 3.0),VERIFY pin-out; SS pairs TODP/TODN ↔ RIDP/RIDN per FT601 datasheet
+Y_FT,1,"Crystal 30 MHz ±30 ppm, 18 pF",Abracon ABM8-30.000MHZ-B2-T,FT601 XI/XO (pads 21/22) + 2 × 18 pF (VERIFY load per datasheet)
+R_RREF,1,Resistor 3.24 kΩ 1 % 0402,Yageo RC0402FR-073K24L,"FT601 RREF (pad 27) — value per FT60x datasheet, VERIFY"
+C_VD10,4,Capacitor 4.7 µF 6.3 V 0402 + 100 nF,Murata GRM155R60J475ME47D,"1.0 V core pins VD10/VD10_2..4/DV10 (pads 3,30,33,39,48): FT60x internal regulator output, decouple each — VERIFY"
+C_AVDD,2,Capacitor 100 nF / 1 µF 0402,Murata GRM155R71C104KA88D,"AVDD/VDDA (pads 2, 28) analogue 3.3 V via ferrite from +3V3_FT"
+FB_A,1,Ferrite bead 600 Ω@100 MHz 0603,Murata BLM18PG601SN1D,+3V3_FT → AVDD
+D_ESD,1,USB 3.0 ESD array (SS + HS),TI TPD4E05U06,on connector side of the SS and D± pairs
+R_VBUS,2,"Resistor divider 10 k / 3.3 k (VBUS detect, pad 37)",Yageo RC0402,VERIFY VBUS pin voltage limit in datasheet
+L19/C184-C186,0,already in the schematic: +3V3_FT = +3V3_FPGA via L19; 10 µF + 100 nF + 1 nF,—,"present (U6 pads 20, 24, 38 VCC33; 14, 49, 59, 68 VCCIO) — nets to be connected"

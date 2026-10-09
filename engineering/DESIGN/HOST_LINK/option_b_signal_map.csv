@@ -1,0 +1,8 @@
+signal,schematic_net,stm32_pin,fpga_pin,direction,note
+FPGA_CS_N (option B),DIG_5,STM32 PD13 (today configured INPUT in main.cpp:2313-2317 → becomes OUTPUT),U42 H11 (IO_L19P_T3_A22_15),STM32 → FPGA,active-low chip select for the bridge; ADAR1000 pass-through is gated off while low
+DRDY (option B),DIG_6,"STM32 PD14 (INPUT, EXTI14)",U42 G12 (IO_L19N_T3_A21_VREF_15),FPGA → STM32,a complete frame is in the FPGA TX FIFO
+spare / ACK,DIG_7,STM32 PD15,U42 H12 (IO_L20P_T3_A20_15),FPGA → STM32,reserved (frame dropped / overflow flag)
+SCLK,STM32_SCLK1,STM32 PA5 (SPI1_SCK),U42 J16 (IO_L23N_T3_FWE_B_15),STM32 → FPGA,"existing net, 3.3 V; ≤ 27 MHz (SPI1 on APB2 108 MHz, prescaler 4)"
+MOSI,STM32_MOSI1,STM32 PA7 (SPI1_MOSI),U42 H13 (IO_L20N_T3_A19_15),STM32 → FPGA,existing; carries the bridge command byte
+MISO,STM32_MISO1,STM32 PA6 (SPI1_MISO),U42 G14 (IO_L21P_T3_DQS_15),FPGA → STM32,"existing; frame bytes, MSB first, mode 0"
+ADAR_n_CS_3V3,ADAR_1..4_CS_3V3,STM32 GPIO,U42 bank 15,STM32 → FPGA,unchanged; must all be HIGH during a bridge transfer (firmware guarantees; RTL also checks)

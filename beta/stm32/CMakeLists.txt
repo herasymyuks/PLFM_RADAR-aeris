@@ -54,6 +54,7 @@ add_compile_definitions(STM32F746xx USE_HAL_DRIVER HSE_VALUE=8000000U)
 # ---- Sources ----
 set(APP_SRC
   ${CORE}/Src/main.cpp
+  ${CORE}/Src/host_bridge.c
   ${CORE}/Src/stm32f7xx_hal_msp.c
   ${CORE}/Src/stm32f7xx_it.c
   ${CORE}/Src/system_stm32f7xx.c

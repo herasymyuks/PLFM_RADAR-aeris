@@ -215,3 +215,9 @@ void OTG_FS_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
+
+/* DSN-LINK-01 option B: DRDY on PD14 (EXTI14) */
+void EXTI15_10_IRQHandler(void)
+{
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_14);
+}

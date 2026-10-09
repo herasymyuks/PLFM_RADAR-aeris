@@ -70,3 +70,6 @@ Originals in `9_Firmware/9_3_GUI/` were read only; nothing there was modified.
 * `python -m aeris10_gui --selftest --frames 3`: OK (3 frames, 6144 packets, 0 resync drops, 3 status strings).
 * `./build_app.sh`: PyInstaller 6.22.3 `--onedir` bundle built; `dist/aeris10-gui/aeris10-gui --demo --selftest` exit 0.
 * Not performed: any hardware test; Windows/Linux; Python < 3.14.
+
+## 2026-10-09 — host-link option B (DSN-LINK-01)
+- Added `aeris10_gui/protocol/bridge_frame.py`: parser/serialiser for the FPGA→STM32→CDC range-Doppler frame (sync A5 5A, 16-byte header, 2048 × uint8 log-magnitude, detection list, CRC-16/CCITT-FALSE) and `BridgeStreamParser` (resync, status-text pass-through). Reference vector `tests/vectors/bridge_frame_from_rtl_tb.hex` is dumped by the Verilog testbench `engineering/DESIGN/HOST_LINK/rtl/tb_host_bridge.v`. Tests: `tests/test_bridge_frame.py` (9). Not yet wired into `ui/sources.py` (the hardware source still expects the raw RTL packet stream).

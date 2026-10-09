@@ -53,7 +53,7 @@ Rev A · 2026-10-09 · generator `tools/design_antenna_array.py` · parameters `
 - Native editable board: `kicad/aeris10_patch_array.kicad_pcb` (KiCad 8+/10; stackup with RO4350B entered)
 - Drawing: `aeris10_patch_array_layout.svg` (+ PDF/PNG)
 - KiCad exports: `kicad_exports/` (Gerber, drill, PDF, SVG, STEP, 3-D render) — generated with kicad-cli where available
-- Simulation model: `openems_patch_row.py` (one row, PEC patches on RO4350B, lumped port at the 50 Ω lead) — NOT executed here
+- Simulation model: `openems_patch_row.py` (one row) — **executed with openEMS built from source**: see `simulation/TUNING_LOG.md` (S11 −18 dB at 10.5 GHz, −10 dB band 9.9–12.3 GHz, row directivity 11.5 dBi)
 
 ## 6. Slotted-waveguide variant (Extended) — sizing only, CONCEPTUAL
 

@@ -55,6 +55,7 @@ extern "C" {
 extern "C" {
 
 #include "adf4382a_manager.h"
+#include "host_bridge.h"   /* DSN-LINK-01 option B: FPGA→STM32 SPI bridge (BETA) */
 #include "adf4382.h"
 #include "no_os_delay.h"
 #include "no_os_error.h"
@@ -1216,6 +1217,7 @@ int main(void)
   MX_I2C2_Init();
   MX_I2C3_Init();
   MX_SPI1_Init();
+  HostBridge_Init();   /* DSN-LINK-01: PD13 = FPGA_CS_N, PD14 = DRDY (EXTI), SPI1 shared with the ADAR1000 path */
   MX_SPI4_Init();
   MX_UART5_Init();
   MX_USART3_UART_Init();
@@ -1708,6 +1710,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HostBridge_Poll();   /* DSN-LINK-01: forward one range-Doppler frame per DRDY over CDC */
 	  //////////////////////////////////////////////////////////////////////////////////////
 	  //////////////////////// Check system health at the start of each loop////////////////
 	  //////////////////////////////////////////////////////////////////////////////////////

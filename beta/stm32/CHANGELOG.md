@@ -100,3 +100,6 @@ shows whole-file hunks; use `diff -u --strip-trailing-cr` to see the real change
 | `tests/*` | new host unit tests | NEW |
 | `README.md`, `DECISIONS.md`, `CUBEMX_SETTINGS.md`, this file | new | docs |
 | `cube/` | STM32CubeF7 sparse checkout, pinned commits in `DECISIONS.md` D-15 / `setup_cube.sh` (git-ignored) | third-party |
+
+## 2026-10-09 — host-link option B (DSN-LINK-01)
+- New `Core/Src/host_bridge.c`, `Core/Inc/host_bridge.h` (copies of `engineering/DESIGN/HOST_LINK/stm32/`): SPI1 bridge to the FPGA using the already-routed DIG_5 (PD13 → FPGA_CS_N, reconfigured as output), DIG_6 (PD14 → DRDY, EXTI14 rising), DIG_7 (PD15 spare). `HostBridge_Init()` after `MX_SPI1_Init()` (main.cpp), `HostBridge_Poll()` at the top of the main loop; `EXTI15_10_IRQHandler` added to `stm32f7xx_it.c`; `HAL_GPIO_EXTI_Callback` defined in host_bridge.c (no other user). Frame (≤ 2162 B) is CRC-checked and forwarded unchanged with `CDC_Transmit_FS`. SPI1 stays at the ADAR1000 setting (6.75 MHz, mode 0) → ≈ 2.5 ms per frame; the firmware must not start an ADAR1000 transaction while `HostBridge_Busy()`. Build: 0 errors; RAM 17 296 B, FLASH 91 948 B. Not run on hardware.
