@@ -203,5 +203,5 @@ Register-specific vocabularies kept as in their sources:
 | FPGA- / STM- / GUI- / PCB- / MECH- / REPO- | FPGA-00…15, STM-01…19, GUI-01…08, MECH-01…06, REPO-01…05 | missing-component manifest IDs checked by `tools/check_missing_files.py` | `docs/03_MISSING_COMPONENTS.md` |
 | C | C1–C7 | STM32 firmware conflicts/defects (HSE, ADF4382 pins, platform ops, USB RX, start-flag padding, GPS_Init, AD9523 CS/SPI speed) | `docs/STM32/STM32_PROJECT_RECONSTRUCTION.md` STM-T04 |
 | F0–F10 | — | firmware power-enable sequence steps as coded | `engineering/ELECTRICAL/power_distribution/power_rails.md` §3; chapter 3 §4.2 |
-| MAN | MAN-01…03 | observations raised by this manual while compiling the sources | chapter 17 §6 |
+| MAN | MAN-01…04 | observations raised by this manual while compiling the sources | chapter 17 §6 |
 | Figure numbers | F<chapter>.<n> | figure slots of `manual/FIGURE_PLAN.md`; the build tool prefixes a running "Figure n —" | `manual/FIGURE_PLAN.md` |

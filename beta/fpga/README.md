@@ -305,7 +305,7 @@ map's write port is the hook for it.
    writable over the bridge as CFAR_THR); removal of the 116 unconstrained debug/status bits from
    the top before a board build. (Register-map host interface: done, command set v2; `det_wr`
    back-port: done - `engineering/DESIGN/HOST_LINK/rtl/` carries the v2 bridge and the extended unit TB.)
-8. GUI `beta/gui/aeris10_gui/protocol/register_map.py` still assumes 4-bit addresses (`ADDR_MASK = 0xF`)
+8. GUI `beta/gui/aeris10_gui/protocol/register_map.py` still assumes 4-bit addresses (`ADDR_MASK = 0xF`) — RESOLVED 2026-10-09: beta/gui register_map.py now ADDR_MASK = 0x1F with 0x0D/0x0E/0x10
    and carries a "DISCREPANCY" note about section 7 that is now resolved; it needs 0x04 bit4,
    0x0D, 0x0E, 0x10 and a 5-bit address mask.
 

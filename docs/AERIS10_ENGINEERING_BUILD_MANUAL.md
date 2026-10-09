@@ -1,6 +1,6 @@
 # AERIS-10 — Engineering Reconstruction, Build Preparation & Documentation Manual
 
-Version 1.3 — 2026-10-09 (1.2: proposed designs; 1.1: drawings package; 1.0: 2026-10-08). Produced from the repository `PLFM_RADAR` as found (original content dated 2026-03-14), without modifying any original file. Every statement cites repository evidence or an executed command; items that could not be verified are marked UNRESOLVED / REQUIRES VERIFICATION. The authoring environment had Python 3.14.7, Icarus Verilog 13.0, Verilator 5.052, and — from version 1.1 — KiCad 10.0.6 (kicad-cli), Graphviz 16.1 and Google Chrome (headless, for SVG→PDF/PNG); no Vivado, ARM toolchain or EAGLE. Nothing was synthesised, compiled for the target or tested on hardware; CAD exports were produced through a KiCad conversion of the EAGLE files (Part XI), not by EAGLE itself.
+Version 1.4 — 2026-10-09 (1.3: beta completions; 1.2: proposed designs; 1.1: drawings package; 1.0: 2026-10-08). Produced from the repository `PLFM_RADAR` as found (original content dated 2026-03-14), without modifying any original file. Every statement cites repository evidence or an executed command; items that could not be verified are marked UNRESOLVED / REQUIRES VERIFICATION. The authoring environment had Python 3.14.7, Icarus Verilog 13.0, Verilator 5.052, and — from version 1.1 — KiCad 10.0.6 (kicad-cli), Graphviz 16.1 and Google Chrome (headless, for SVG→PDF/PNG); no Vivado, ARM toolchain or EAGLE. Nothing was synthesised, compiled for the target or tested on hardware; CAD exports were produced through a KiCad conversion of the EAGLE files (Part XI), not by EAGLE itself.
 
 **Readiness in one sentence:** the repository is a documented design study with schematics for four boards, partially routed layouts, non-building FPGA RTL, non-building STM32 firmware, one offline-runnable Python demo, and no mechanical design. No subsystem can be built reproducibly today; the blockers, their evidence and the recovery procedures are enumerated in this manual and its companion documents.
 
@@ -321,3 +321,10 @@ Everything that was missing now exists at least in a BETA state under `beta/` (i
 | `engineering/DESIGN/MECHANICAL` (detail) | 51-part FreeCAD model (tray with flanges, front plate, lid, window stack, PA plate with tapped holes and brackets, carrier rails, standoffs, gland plate; pedestal plates, bearing, pulleys, slip ring, motor bracket, mast flange); flat patterns with bend allowance; assembly section with fasteners; parts list with fastener totals | model builds; register file check 0 problems | bend reliefs/welds, lid stiffening, part numbers, sealing test |
 
 Tooling installed on the authoring machine for this phase (all user-level): KiCad 10.0.6, FreeCAD 1.1.4, openEMS (source build, `~/opt/openEMS`), Arm GNU Toolchain 14.2 (tarball), OpenJDK 27 + Freerouting 2.5.0, Graphviz, poppler.
+
+
+---
+
+# Part XIV — Complete Illustrated Manual (version 1.4)
+
+The complete engineering & assembly manual compiled from this reconstruction (22 chapters, 69 figures, 191 pages; authored by Antidrone Ukraine · antidrone.cc) is `manual/AERIS10_MANUAL.md` with rendered `manual/build/AERIS10_MANUAL.pdf` / `.html`; build kit and validation in `manual/` (`MANUAL_BUILD_SPEC.md`, `00_OUTLINE.md`, `FIGURE_LOG.md`, `MANUAL_VALIDATION.md`).

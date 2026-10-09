@@ -13,3 +13,7 @@ This directory is the input kit for a Claude Design run that assembles the compl
 | `tools/build_manual.py` | `--check` validates chapters/figures/links; without flags builds `AERIS10_MANUAL.md`, `build/AERIS10_MANUAL.html` (images embedded) and `build/AERIS10_MANUAL.pdf` (headless Chrome) |
 
 Workflow: write chapters → render missing figures into `manual/figures/` → `python3 tools/build_manual.py --check` (0 problems) → `python3 tools/build_manual.py` → fill `FIGURE_LOG.md` and `MANUAL_VALIDATION.md`.
+
+## Build status (2026-10-09)
+
+All 22 chapters written (97.6 k words, 69 figures); `build/AERIS10_MANUAL.pdf` (191 pages) and `.html` built; validation in `MANUAL_VALIDATION.md`, figures in `FIGURE_LOG.md`. Rebuild after any chapter edit: `python3 tools/build_manual.py --check && python3 tools/gen_figure_log.py && python3 tools/build_manual.py`.

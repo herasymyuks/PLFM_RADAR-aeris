@@ -74,7 +74,7 @@ Each entry: what was decided, the evidence, what remains unverified. IDs are ref
 
 ## D-18 — Bridge v2 framing assumptions (HOST_LINK_DESIGN.md §7)
 - Write: 8 clocked bytes `02 a0 a1 d0 d1 d2 d3 00`, ack expected on MISO during the 8th byte ("after the last data byte"). Read: 7 bytes `03 a0 a1 00 00 00 00`, data LE in bytes 3..6 (no turnaround byte — §7 shows none). Status: 9 bytes, `04` + 8 reply bytes = status u16, version u16, frames u16, reserved u16 (all LE; §7 gives no width for the status word — u16 assumed). 0xEE in the ack position = unknown command → NACK.
-- **The beta FPGA RTL (`beta/fpga/rtl/host_bridge_spi.v`) does not implement 0x02..0x04 yet** (grep 2026-10-09): STM32 side is ready, end-to-end untested.
+- **The beta FPGA RTL (`beta/fpga/rtl/host_bridge_spi.v`) implements 0x02..0x04 since 2026-10-09 (beta/fpga host_bridge_spi.v v2) yet** (grep 2026-10-09): STM32 side is ready, end-to-end untested.
 
 ## D-19 — ADAR1000 VM tables from data sheet Tables 10-13; VM_GAIN = 0
 - 128 rows (0 … 357.1875° in 2.8125° steps) from Rev. B pp. 35-36; every row parsed, none missing or duplicated. Register words: bit 5 = polarity (1 = positive), bits 4:0 = magnitude (Tables 47/48). Consistency check: data sheet example "0x014 = 0x36 / 0x015 = 0x35 (positive, magnitude 16/15)" equals the 45° row (I 0x36, Q 0x35) — "Magnitude 16" in the example text means 0x16.
