@@ -31,7 +31,7 @@ Nothing in this sequence has been executed on hardware. Steps marked ⚠ depend 
 8. **Host link** — mini-USB X53 → PC; GUI_V5 enumerates CDC; send settings packet (⚠ firmware RX callback never bound, defect C4). Radar data path FPGA→host does not exist (FT601 unwired, K3).
 9. **Antenna** — ⚠ no design; connect only after an antenna/feed design exists.
 
-## C. Mechanical assembly (CONCEPTUAL — to be rewritten once enclosure CAD exists)
+## C. Mechanical assembly (PROPOSED — detailed parts in `engineering/DESIGN/MECHANICAL/MECHANICAL_PARTS_LIST.md`, section DSN-MECH-07)
 
 | Step | Action | Fasteners | Inspection |
 |---|---|---|---|

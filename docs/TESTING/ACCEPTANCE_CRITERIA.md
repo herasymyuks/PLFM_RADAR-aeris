@@ -85,3 +85,14 @@ Each criterion is objective, references the test ID in `VALIDATION_PLAN.md`, and
 | AC-E6 | Proposed designs (DSN-*) registered with native editable files and exports present | `tools/gen_drawing_register.py --check` | **MET** (11 PROPOSED entries, 0 file problems) |
 | AC-E7 | Antenna proposal simulated (|S11| < −10 dB at f0 ± B/2) and coupon measured | openEMS log + VNA data | NOT RUN |
 | AC-E8 | Owner approval of decisions D-01…D-15 recorded | signed decision log | NOT MET |
+
+## H. BETA tree (added 2026-10-09) — criteria evaluated on `beta/`, not on the originals
+
+| ID | Criterion | Evidence | Status |
+|---|---|---|---|
+| AC-X1 | beta RTL parses/elaborates/lints with 0 errors and all testbenches pass | `beta/fpga/logs/` | **MET** (BETA) |
+| AC-X2 | beta firmware compiles and links; host tests pass | `beta/stm32/build_out/`, `logs/` | **MET** (BETA) |
+| AC-X3 | beta GUI test suite passes; packaged app starts | `beta/gui` pytest 55 passed | **MET** (BETA) |
+| AC-X4 | beta boards: 0 unconnected on Main/RF PA/Synth; Power ≤ 100 open with documented reasons | `beta/pcb/*/exports/reports/DRC_report.json` | **MET** (BETA; Power 89 listed) |
+| AC-X5 | host-link bridge testbench, firmware build and GUI parser agree on one frame vector | `tb_frame.hex` shared | **MET** (BETA) |
+| AC-X6 | antenna row S11 < −10 dB at f0 in simulation | `TUNING_LOG.md` | **MET** (−18 dB; band 128 MHz) |

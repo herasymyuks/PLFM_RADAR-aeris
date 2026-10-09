@@ -166,3 +166,16 @@ Add datasheets for parts actually used (`docs/03_MISSING_COMPONENTS.md` PCB-ALL-
 | R-DSN-05 — Harness schedule | DONE (PROPOSED) | `engineering/DESIGN/HARNESS/` |
 | R-DSN-06 — Owner decisions D-01, D-07, D-12, D-13, D-14 | BLOCKED (owner) | `engineering/DESIGN/00_DESIGN_BASIS.md` §2–3 |
 | R-DSN-07 — Simulate/measure the antenna, test one gate channel, measure component heights | OPEN | `ANTENNA_DESIGN_CALC.md` §7; `PA_SUPPLY_22V/README.md` |
+
+## BETA completions (added 2026-10-09, version 1.3)
+
+| Task | Status | Evidence |
+|---|---|---|
+| R-BETA-01 FPGA RTL builds + missing modules + testbenches | DONE (BETA) | `beta/fpga/build.sh` 0 failures |
+| R-BETA-02 STM32 firmware builds + defect fixes + host tests | DONE (BETA) | `beta/stm32/build.sh` exit 0, tests 4/4 |
+| R-BETA-03 GUI package + tests + packaging | DONE (BETA) | `beta/gui` pytest 55 passed |
+| R-BETA-04 PCB routing completion + BOM MPN + fab notes | DONE (BETA; Power 89 open) | `beta/pcb/*/README.md` |
+| R-BETA-05 FPGA→host path (DSN-LINK-01) | DONE (option B code), OPEN (bench, rev. B) | `engineering/DESIGN/HOST_LINK/` |
+| R-BETA-06 Antenna simulation | DONE (one row) | `engineering/DESIGN/ANTENNA/simulation/` |
+| R-BETA-07 Enclosure detail (flat patterns, fasteners, parts list) | DONE (PROPOSED) | `engineering/DESIGN/MECHANICAL/` |
+| R-BETA-08 Vivado synthesis, flashing, fabrication, bench tests | BLOCKED (tools/hardware not on this machine) | — |
