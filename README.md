@@ -49,7 +49,7 @@ The AERIS-10 main sub-systems are:
   - **2x Microwave Mixers (LT5552)** - For up-conversion and IF-down-conversion
   - **4x 4-Channel Phase Shifters (ADAR1000)** - For RX and TX chain beamforming
   - **16x Front End Chips (ADTR1107)** - Used for both Low Noise Amplifying (RX) and Power Amplifying (TX) stages
-  - **XC7A100T FPGA** - Handles RADAR Signal Processing:
+  - **XC7A50T-2FTG256I FPGA** (per the Main Board schematic, U42; earlier documentation said XC7A100T — see `docs/FPGA/FPGA_PROJECT_RECONSTRUCTION.md`) - Handles RADAR Signal Processing:
     - PLFM Chirps generation via the DAC
     - Raw ADC data read
     - Automatic Gain Control (AGC)
@@ -136,9 +136,11 @@ The AERIS-10 main sub-systems are:
 
 ### Hardware Assembly
 
-1. **Order PCBs**: All Gerber files are available in `/4_Schematics and Boards Layout`
-2. **Source Components**: Bill of materials (BOM) in `/4_Schematics and Boards Layout/4_7_Production Files`
-3. **Assembly**: Follow the assembly guide in `/10_docs/assembly_guide.md`
-4. **Antenna**: Choose appropriate array for your version
-5. **Enclosure**: 3D printable files in `/10_docs/Hardware/Enclosure`
+1. **Order PCBs**: the designer-released EAGLE export does not exist in `4_Schematics and Boards Layout/4_7_Production Files` (only the Synthesizer P&P/BOM). KiCad-converted manufacturing packages (Gerber, drill, drawings, STEP, DRC) for all four boards are in `engineering/PCB/<BOARD>/` (status in each README — Main and Power Board layouts are unfinished in the source); BETA completions in `beta/pcb/`.
+2. **Source Components**: bills of materials with reference designators in `docs/BOM/` (no manufacturer part numbers in the source schematics; BETA BOMs with proposed MPNs in `beta/pcb/`).
+3. **Assembly**: `engineering/ASSEMBLY/ASSEMBLY_SEQUENCE.md`, `PARTS_LIST.md` and the CONCEPTUAL exploded view (the `10_docs/assembly_guide.md` referenced earlier was never committed).
+4. **Antenna**: no antenna CAD exists in the repository; a PROPOSED 16×8 patch-array panel (KiCad) is in `engineering/DESIGN/ANTENNA/`.
+5. **Enclosure**: no enclosure files exist (the `10_docs/Hardware/Enclosure` folder referenced earlier was never committed); a PROPOSED head/pedestal design (FreeCAD/STEP, drawings) is in `engineering/DESIGN/MECHANICAL/`.
+
+> **Reconstruction status (2026-10-09):** see `docs/AERIS10_ENGINEERING_BUILD_MANUAL.md` (master manual), `engineering/DRAWING_REGISTER.md` and `beta/README.md`. Run `bash tools/run_all_checks.sh` for the current validation state.
 
