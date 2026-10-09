@@ -1,0 +1,201 @@
+[
+ {
+  "action": "remove",
+  "uuid": "06db95cd-3fd6-43b7-816e-b2ff9b15041e",
+  "net": "GND"
+ },
+ {
+  "action": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   5.65,
+   -232
+  ],
+  "to": [
+   5.65,
+   -230.8
+  ]
+ },
+ {
+  "action": "via",
+  "net": "GND",
+  "at": [
+   5.65,
+   -230.8
+  ],
+  "dia": 0.45,
+  "drill": 0.2
+ },
+ {
+  "action": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   9.65,
+   -232
+  ],
+  "to": [
+   9.65,
+   -230.8
+  ]
+ },
+ {
+  "action": "via",
+  "net": "GND",
+  "at": [
+   9.65,
+   -230.8
+  ],
+  "dia": 0.45,
+  "drill": 0.2
+ },
+ {
+  "action": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   7.4,
+   -235
+  ],
+  "to": [
+   7.4,
+   -237.0
+  ]
+ },
+ {
+  "action": "via",
+  "net": "GND",
+  "at": [
+   7.4,
+   -237.0
+  ],
+  "dia": 0.45,
+  "drill": 0.2
+ },
+ {
+  "action": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   12.95,
+   -235
+  ],
+  "to": [
+   12.95,
+   -237.0
+  ]
+ },
+ {
+  "action": "via",
+  "net": "GND",
+  "at": [
+   12.95,
+   -237.0
+  ],
+  "dia": 0.45,
+  "drill": 0.2
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.3,
+  "frm": [
+   4.35,
+   -232
+  ],
+  "to": [
+   4.35,
+   -233.3
+  ]
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.3,
+  "frm": [
+   8.35,
+   -232
+  ],
+  "to": [
+   8.35,
+   -233.3
+  ]
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.3,
+  "frm": [
+   11.05,
+   -235
+  ],
+  "to": [
+   11.05,
+   -233.3
+  ]
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.3,
+  "frm": [
+   4.35,
+   -233.3
+  ],
+  "to": [
+   11.05,
+   -233.3
+  ]
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   4.6,
+   -235
+  ],
+  "to": [
+   3.3,
+   -235
+  ]
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   3.3,
+   -235
+  ],
+  "to": [
+   3.3,
+   -223.5
+  ]
+ },
+ {
+  "action": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   3.3,
+   -223.5
+  ],
+  "to": [
+   6.02,
+   -222.55
+  ]
+ }
+]

@@ -1,0 +1,94 @@
+** Drc report for RF_PA.kicad_pcb **
+** Created on 2026-10-09T14:02:04 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 18 DRC violations **
+[clearance]: Clearance violation ( clearance 0.1500 mm; actual 0.1230 mm)
+    Local override; error
+    @(14.3365 mm, -15.2045 mm): Polygon [GND] on F.Cu
+    @(17.4550 mm, -15.6275 mm): Track [VIN_M] on F.Cu, length 0.0294 mm
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(35.0000 mm, -60.0000 mm): Segment on Edge.Cuts
+    @(29.6690 mm, -54.1200 mm): Reference field of UNK22V0
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(12.6250 mm, -37.2900 mm): Segment of X3 on F.Silkscreen
+    @(10.1000 mm, -40.7500 mm): PCB text 'VIN-' on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(9.9500 mm, -43.6000 mm): PCB text 'VIN+' on F.Silkscreen
+    @(12.6250 mm, -37.2900 mm): Segment of X3 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(23.2136 mm, -51.9650 mm): Segment of UNK22V0 on F.Silkscreen
+    @(21.7658 mm, -51.3300 mm): Footprint text of UNK22V0 (2)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(21.7658 mm, -51.3300 mm): Footprint text of UNK22V0 (2)
+    @(22.8326 mm, -52.3460 mm): Segment of UNK22V0 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(21.7658 mm, -51.3300 mm): Footprint text of UNK22V0 (2)
+    @(22.8326 mm, -56.9180 mm): Segment of UNK22V0 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(26.8458 mm, -51.3300 mm): Footprint text of UNK22V0 (1)
+    @(27.4300 mm, -51.9650 mm): Segment of UNK22V0 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(27.4300 mm, -58.8230 mm): Segment of UNK22V0 on F.Silkscreen
+    @(26.8458 mm, -51.3300 mm): Footprint text of UNK22V0 (1)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(26.8458 mm, -51.3300 mm): Footprint text of UNK22V0 (1)
+    @(27.4300 mm, -51.9650 mm): Segment of UNK22V0 on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(17.0700 mm, -44.9100 mm): Segment of X3 on F.Silkscreen
+    @(15.8000 mm, -41.1000 mm): PTH pad 2 [VIN_M] of X3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(17.0700 mm, -44.9100 mm): Segment of X3 on F.Silkscreen
+    @(15.8000 mm, -38.5600 mm): PTH pad 3 [GND] of X3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(17.0700 mm, -44.9100 mm): Segment of X3 on F.Silkscreen
+    @(15.8000 mm, -43.6400 mm): PTH pad 1 [VD] of X3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(21.2700 mm, -13.3700 mm): Segment of J2 on F.Silkscreen
+    @(26.0500 mm, -10.4500 mm): Zone [<no net>] on F.Mask, priority 6
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(11.0470 mm, -13.3700 mm): Segment of J1 on F.Silkscreen
+    @(26.0500 mm, -10.4500 mm): Zone [<no net>] on F.Mask, priority 6
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(14.2000 mm, -14.4000 mm): Footprint text of U$1 (*)
+    @(18.7250 mm, -10.8750 mm): Zone [<no net>] on F.Mask, priority 6
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(10.0700 mm, -32.1200 mm): Segment of X2 on F.Silkscreen
+    @(8.8000 mm, -30.8500 mm): PTH pad 1 [VG] of X2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(10.0700 mm, -32.1200 mm): Segment of X2 on F.Silkscreen
+    @(8.8000 mm, -28.3100 mm): PTH pad 2 [GND] of X2
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Text height out of range
+    - Text thickness out of range
+    - Footprint component type doesn't match footprint pads
+    - Footprint not found in libraries
+    - Footprint doesn't match copy in library
+
+** End of Report **

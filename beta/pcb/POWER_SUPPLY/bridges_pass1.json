@@ -1,0 +1,2066 @@
+[
+ {
+  "uuid": "5b6d64ce-a74f-40a9-8373-7a7d36b7e2d0",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   123.060161,
+   -80.0318
+  ],
+  "to": [
+   123.060161,
+   -80.0318
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "b6b7609a-9c72-488c-beb1-f99732dfa41b",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   109.125,
+   -86.25
+  ],
+  "to": [
+   109.225561,
+   -86.517277
+  ],
+  "length_mm": 0.286,
+  "between": [
+   "Pad 1 [GND] of U33 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "c2d8f399-2814-48ce-b9d4-6d630d441080",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   120.7,
+   -85.8
+  ],
+  "to": [
+   120.86,
+   -89.85
+  ],
+  "length_mm": 4.053,
+  "between": [
+   "Pad 1 [GND] of R56 on F.Cu",
+   "Pad 8 [GND] of U34 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "788c2df1-4951-434d-8af5-97b6de11dd1d",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   122.025,
+   -90.975
+  ],
+  "to": [
+   121.14,
+   -90.7
+  ],
+  "length_mm": 0.927,
+  "between": [
+   "Pad 21 [GND] of U34 on F.Cu",
+   "Pad 8 [GND] of U34 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "5b7873db-1394-4903-b8c8-062bed985fda",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   119.975,
+   -93.025
+  ],
+  "to": [
+   120.86,
+   -93.3
+  ],
+  "length_mm": 0.927,
+  "between": [
+   "Pad 21 [GND] of U34 on F.Cu",
+   "Pad 18 [GND] of U34 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "32dc5f3d-3584-4b4e-bd91-c99b1896a0ba",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   126.228984,
+   -80.957588
+  ],
+  "to": [
+   125.4,
+   -81.5
+  ],
+  "length_mm": 0.991,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Pad 2 [GND] of C155 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "ad7d3c39-3091-4348-a9ab-aaec4e5cfa4d",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   124.3,
+   -82.5
+  ],
+  "to": [
+   120.7,
+   -84.2
+  ],
+  "length_mm": 3.981,
+  "between": [
+   "Pad 2 [GND] of C155 on F.Cu",
+   "Pad 1 [GND] of R56 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "6b7b644c-8378-42d5-8261-ef9edd879931",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   126.228984,
+   -80.957588
+  ],
+  "to": [
+   125.4,
+   -81.5
+  ],
+  "length_mm": 0.991,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Pad 2 [GND] of C155 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "a962d668-7a92-4afd-926e-c1f3083c0a3e",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   132.7,
+   -85.2
+  ],
+  "to": [
+   132.7,
+   -83.75
+  ],
+  "length_mm": 1.45,
+  "between": [
+   "Pad 1 [GND] of R42 on F.Cu",
+   "Pad 1 [GND] of C127 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "9502f7d4-8fd0-4d09-82cb-76b9d9de37b4",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   132.7,
+   -85.2
+  ],
+  "to": [
+   135.601926,
+   -85.001637
+  ],
+  "length_mm": 2.909,
+  "between": [
+   "Pad 1 [GND] of R42 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "2949da25-93bb-441d-85f9-89c2ba38d231",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   131.4,
+   -80.75
+  ],
+  "to": [
+   131.4,
+   -82.25
+  ],
+  "length_mm": 1.5,
+  "between": [
+   "Pad 1 [GND] of C126 on F.Cu",
+   "Pad 1 [GND] of C127 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "e3e07da9-660e-4233-a927-770230e5cbbf",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   137.925602,
+   -35.739292
+  ],
+  "to": [
+   137.925602,
+   -35.739292
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [GND] on F.Cu, priority 7",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "49bcf3d0-5bf4-4241-b8b3-8406735bb42b",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   141.1952,
+   -91.1254
+  ],
+  "to": [
+   141.325241,
+   -90.592416
+  ],
+  "length_mm": 0.549,
+  "between": [
+   "Pad 4 [GND] of U27 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "b2fad62e-8c66-4c1e-8123-3cd9b7e852aa",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   141.4,
+   -85.25
+  ],
+  "to": [
+   141.0682,
+   -85.504429
+  ],
+  "length_mm": 0.418,
+  "between": [
+   "Pad 1 [GND] of C124 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "11ec409e-a22c-4f2e-a1cf-dc3916970839",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   141.4,
+   -86.75
+  ],
+  "to": [
+   141.1952,
+   -91.1254
+  ],
+  "length_mm": 4.38,
+  "between": [
+   "Pad 1 [GND] of C124 on F.Cu",
+   "Pad 4 [GND] of U27 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "c96de725-3db6-4c87-9a20-48301b0552c0",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   146.125,
+   -93.25
+  ],
+  "to": [
+   143.964937,
+   -93.896086
+  ],
+  "length_mm": 2.255,
+  "between": [
+   "Pad 1 [GND] of U26 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "251c2486-9902-4ea5-8d4f-eae5d23bc627",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   147.7,
+   -82.25
+  ],
+  "to": [
+   147.8085,
+   -81.333426
+  ],
+  "length_mm": 0.923,
+  "between": [
+   "Pad 1 [GND] of C125 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "ab93e115-e209-4911-a007-7429eb1bff8b",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   154.7,
+   -85.25
+  ],
+  "to": [
+   158.163805,
+   -84.411301
+  ],
+  "length_mm": 3.564,
+  "between": [
+   "Pad 1 [GND] of C137 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "537a725c-1c34-44c1-9469-bbb7c781e97f",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   159.7,
+   -86.75
+  ],
+  "to": [
+   163.4,
+   -86.75
+  ],
+  "length_mm": 3.7,
+  "between": [
+   "Pad 1 [GND] of C136 on F.Cu",
+   "Pad 1 [GND] of C135 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "b44c33ed-a570-475d-bd7d-20b35d02c1a3",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   163.1952,
+   -91.1254
+  ],
+  "to": [
+   163.4,
+   -86.75
+  ],
+  "length_mm": 4.38,
+  "between": [
+   "Pad 4 [GND] of U29 on F.Cu",
+   "Pad 1 [GND] of C135 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "e3dbdce8-4521-41ec-96c1-46d05adbb024",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   164.7,
+   -85.25
+  ],
+  "to": [
+   164.7,
+   -83.8
+  ],
+  "length_mm": 1.45,
+  "between": [
+   "Pad 1 [GND] of C135 on F.Cu",
+   "Pad 1 [GND] of R48 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "0164160d-81fe-4830-b541-ba887bc700bd",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   164.3,
+   -80.5
+  ],
+  "to": [
+   164.7,
+   -82.2
+  ],
+  "length_mm": 1.746,
+  "between": [
+   "Pad 2 [GND] of C131 on F.Cu",
+   "Pad 1 [GND] of R48 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "c2b03885-1e85-4cac-bbc9-984e905ec1ac",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   164.15,
+   -90.78
+  ],
+  "to": [
+   164.0,
+   -91.1254
+  ],
+  "length_mm": 0.377,
+  "between": [
+   "Pad 9 [GND] of U29 on F.Cu",
+   "Pad 4 [GND] of U29 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "a55bea96-05ca-4085-aae1-1cc8301bc563",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   168.125,
+   -93.25
+  ],
+  "to": [
+   165.432531,
+   -93.723878
+  ],
+  "length_mm": 2.734,
+  "between": [
+   "Pad 1 [GND] of U28 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "bf5cdafd-de0f-44ef-a94b-21bd7f571045",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   169.7,
+   -85.2
+  ],
+  "to": [
+   169.7,
+   -83.75
+  ],
+  "length_mm": 1.45,
+  "between": [
+   "Pad 1 [GND] of R46 on F.Cu",
+   "Pad 1 [GND] of C138 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "f6346ded-72b1-4258-8fc5-079cdcba9ddf",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   169.7,
+   -82.25
+  ],
+  "to": [
+   169.602398,
+   -79.8988
+  ],
+  "length_mm": 2.353,
+  "between": [
+   "Pad 1 [GND] of C138 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "389ac6bb-243f-41d1-893c-825ca4bde82c",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   175.1952,
+   -79.3746
+  ],
+  "to": [
+   174.345923,
+   -81.44207
+  ],
+  "length_mm": 2.235,
+  "between": [
+   "Pad 4 [GND] of U30 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "467e380b-2b92-4f23-bc1a-f2e2581ff545",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   176.7,
+   -73.25
+  ],
+  "to": [
+   176.7,
+   -71.75
+  ],
+  "length_mm": 1.5,
+  "between": [
+   "Pad 1 [GND] of C140 on F.Cu",
+   "Pad 1 [GND] of C141 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "db25ade4-0fab-4f8a-b19d-89c98dc4c8e5",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   176.15,
+   -78.78
+  ],
+  "to": [
+   176.0,
+   -79.1254
+  ],
+  "length_mm": 0.377,
+  "between": [
+   "Pad 9 [GND] of U30 on F.Cu",
+   "Pad 4 [GND] of U30 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "05b2e8eb-0e0d-49d0-93c7-c13045de209a",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   177.85,
+   -81.22
+  ],
+  "to": [
+   180.4,
+   -80.75
+  ],
+  "length_mm": 2.593,
+  "between": [
+   "Pad 9 [GND] of U30 on F.Cu",
+   "Pad 1 [GND] of C142 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "7e5b6433-ea88-4bc6-90f8-f1df11c54494",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   179.449278,
+   -72.682531
+  ],
+  "to": [
+   176.7,
+   -73.25
+  ],
+  "length_mm": 2.807,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Pad 1 [GND] of C140 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "6c3e3a5b-8509-4544-81c1-3a4f39c713a3",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   180.196573,
+   -74.255949
+  ],
+  "to": [
+   180.4,
+   -76.2
+  ],
+  "length_mm": 1.955,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Pad 1 [GND] of R50 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "9504161c-6489-467b-9f1b-51106e13e46f",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   180.4,
+   -77.8
+  ],
+  "to": [
+   180.4,
+   -79.25
+  ],
+  "length_mm": 1.45,
+  "between": [
+   "Pad 1 [GND] of R50 on F.Cu",
+   "Pad 1 [GND] of C142 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "307a964b-d6b4-4e8a-a80e-d7e44dbb85c1",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   179.96897,
+   -117.329343
+  ],
+  "to": [
+   179.96897,
+   -117.329343
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Zone [GND] on F.Cu, priority 19"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "f8cd4814-a1c0-4c6c-ba80-c82d4984d063",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   222.069716,
+   -65.10365
+  ],
+  "to": [
+   222.35,
+   -65.1246
+  ],
+  "length_mm": 0.281,
+  "between": [
+   "Via [GND] on F.Cu - B.Cu",
+   "Pad 4 [GND] of U5 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "ed217c37-c671-4f4b-979a-bdc4623d8fcd",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   217.553994,
+   -109.314891
+  ],
+  "to": [
+   217.553994,
+   -109.314891
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [GND] on F.Cu, priority 22",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "346bc819-d8f7-4c36-8382-ff9ccbc9af62",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   226.4,
+   -89.8
+  ],
+  "to": [
+   226.125,
+   -92.65
+  ],
+  "length_mm": 2.863,
+  "between": [
+   "Pad 1 [GND] of R52 on F.Cu",
+   "Pad 1 [GND] of U31 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "fa9ab8b1-b25a-498f-9856-89915523561d",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   237.7,
+   -91.2
+  ],
+  "to": [
+   237.3,
+   -89.5
+  ],
+  "length_mm": 1.746,
+  "between": [
+   "Pad 1 [GND] of R54 on F.Cu",
+   "Pad 2 [GND] of C145 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "c7d4ece0-c8b5-40ed-b642-98b91e5de848",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   238.14,
+   -100.3
+  ],
+  "to": [
+   239.025,
+   -100.025
+  ],
+  "length_mm": 0.927,
+  "between": [
+   "Pad 18 [GND] of U32 on F.Cu",
+   "Pad 21 [GND] of U32 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "909bb848-dda7-4e92-a440-9f93c2999366",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   237.86,
+   -97.7
+  ],
+  "to": [
+   236.975,
+   -97.975
+  ],
+  "length_mm": 0.927,
+  "between": [
+   "Pad 8 [GND] of U32 on F.Cu",
+   "Pad 21 [GND] of U32 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "3ed462d6-7f71-47db-ac17-c30f3b663770",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   237.86,
+   -96.85
+  ],
+  "to": [
+   237.7,
+   -92.8
+  ],
+  "length_mm": 4.053,
+  "between": [
+   "Pad 8 [GND] of U32 on F.Cu",
+   "Pad 1 [GND] of R54 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "baed9279-043d-4f2c-aadb-bac696bbeb02",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   239.721541,
+   -86.705222
+  ],
+  "to": [
+   238.4,
+   -88.5
+  ],
+  "length_mm": 2.229,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Pad 2 [GND] of C145 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "2615e9fb-00a0-44cd-86f0-c6f9c6f3385b",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   123.060161,
+   -80.0318
+  ],
+  "to": [
+   123.060161,
+   -80.0318
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [GND] on F.Cu, priority 23",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "cd28d177-afb1-4c35-b4b7-bb03aecd2aff",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   243.4,
+   -142.75
+  ],
+  "to": [
+   243.333217,
+   -142.006594
+  ],
+  "length_mm": 0.746,
+  "between": [
+   "Pad 1 [GND] of C114 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "e2eb6758-e495-42cc-b4cc-00e275c11816",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   244.7,
+   -142.75
+  ],
+  "to": [
+   248.1952,
+   -147.1254
+  ],
+  "length_mm": 5.6,
+  "between": [
+   "Pad 1 [GND] of C114 on F.Cu",
+   "Pad 4 [GND] of U25 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "efec1bc0-2829-44dc-8d71-366b4a37baa0",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   249.0,
+   -147.1254
+  ],
+  "to": [
+   249.014923,
+   -146.572598
+  ],
+  "length_mm": 0.553,
+  "between": [
+   "Pad 4 [GND] of U25 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "59ac8aba-d970-4e8e-b9c9-17679b1d4fed",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   249.7,
+   -138.25
+  ],
+  "to": [
+   249.3,
+   -136.5
+  ],
+  "length_mm": 1.795,
+  "between": [
+   "Pad 1 [GND] of C115 on F.Cu",
+   "Pad 2 [GND] of C111 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "08580ab2-7e0b-45de-98f9-ad63323d73c1",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   250.85,
+   -149.22
+  ],
+  "to": [
+   253.125,
+   -149.25
+  ],
+  "length_mm": 2.275,
+  "between": [
+   "Pad 9 [GND] of U25 on F.Cu",
+   "Pad 1 [GND] of U24 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "bd20c461-3e32-48f5-a7d6-fab69edafe25",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   253.4,
+   -139.75
+  ],
+  "to": [
+   253.4,
+   -141.25
+  ],
+  "length_mm": 1.5,
+  "between": [
+   "Pad 1 [GND] of C117 on F.Cu",
+   "Pad 1 [GND] of C116 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "398e7277-412a-45cc-8590-ad1f5baa5a9e",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   254.7,
+   -138.25
+  ],
+  "to": [
+   254.678481,
+   -136.291786
+  ],
+  "length_mm": 1.958,
+  "between": [
+   "Pad 1 [GND] of C117 on F.Cu",
+   "Zone [GND] on F.Cu, priority 23"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d05a9eae-4b86-46c5-9024-00e3fededec3",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   254.7,
+   -80.2
+  ],
+  "to": [
+   254.7,
+   -78.75
+  ],
+  "length_mm": 1.45,
+  "between": [
+   "Pad 1 [GND] of R36 on F.Cu",
+   "Pad 1 [GND] of C107 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "da9d9cf2-9622-43b2-98de-a8c02133452e",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   254.7,
+   -77.25
+  ],
+  "to": [
+   254.7,
+   -75.75
+  ],
+  "length_mm": 1.5,
+  "between": [
+   "Pad 1 [GND] of C107 on F.Cu",
+   "Pad 1 [GND] of C53 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "51d67b86-c2d5-4238-8264-ffaff2aa03fb",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   259.0,
+   -86.1254
+  ],
+  "to": [
+   259.15,
+   -85.78
+  ],
+  "length_mm": 0.377,
+  "between": [
+   "Pad 4 [GND] of U23 on F.Cu",
+   "Pad 9 [GND] of U23 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "61be46a1-5a1a-4ee2-93b8-ee2c18af278d",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   258.1952,
+   -86.1254
+  ],
+  "to": [
+   258.4,
+   -81.75
+  ],
+  "length_mm": 4.38,
+  "between": [
+   "Pad 4 [GND] of U23 on F.Cu",
+   "Pad 1 [GND] of C108 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "525aa8c8-bc84-4800-9731-ca06932acb14",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   259.7,
+   -80.25
+  ],
+  "to": [
+   259.7,
+   -78.75
+  ],
+  "length_mm": 1.5,
+  "between": [
+   "Pad 1 [GND] of C108 on F.Cu",
+   "Pad 1 [GND] of C52 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "90f63de0-c31b-435d-b658-ef554ba24abb",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   259.7,
+   -77.25
+  ],
+  "to": [
+   259.3,
+   -75.5
+  ],
+  "length_mm": 1.795,
+  "between": [
+   "Pad 1 [GND] of C52 on F.Cu",
+   "Pad 2 [GND] of C49 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "7ec3bfed-cc59-4e16-ab02-6568e57bfba1",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   260.85,
+   -88.22
+  ],
+  "to": [
+   263.125,
+   -88.25
+  ],
+  "length_mm": 2.275,
+  "between": [
+   "Pad 9 [GND] of U23 on F.Cu",
+   "Pad 1 [GND] of U9 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "20911815-146a-4963-a9d8-021b1126ea53",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   47.503806,
+   -102.080866
+  ],
+  "to": [
+   12.553112,
+   -91.081701
+  ],
+  "length_mm": 36.641,
+  "between": [
+   "Track [VIN] on F.Cu, length 5.0000 mm",
+   "Zone [VIN] on F.Cu, priority 30"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "e2ddac3b-7827-48de-aeb6-262b93163fbf",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   63.745815,
+   -180.189572
+  ],
+  "to": [
+   46.024,
+   -208.35
+  ],
+  "length_mm": 33.273,
+  "between": [
+   "Zone [VIN] on F.Cu, priority 22",
+   "Zone [VIN] on F.Cu, priority 28"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "da8cce19-3d32-4682-a95a-15d1ef7119a5",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   119.025614,
+   -125.122598
+  ],
+  "to": [
+   111.456786,
+   -146.259802
+  ],
+  "length_mm": 22.451,
+  "between": [
+   "Track [VIN] on F.Cu, length 1.0767 mm",
+   "Track [VIN] on F.Cu, length 1.9550 mm"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "b6a0461b-db8d-4b40-a0e2-c630e0626fbd",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   136.2,
+   -30.3
+  ],
+  "to": [
+   105.6,
+   -30.3
+  ],
+  "length_mm": 30.6,
+  "between": [
+   "Zone [VIN] on F.Cu, priority 12",
+   "Zone [VIN] on F.Cu, priority 16"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "87cbee8b-ba29-4d00-96bd-4a70c62750d0",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   137.98491,
+   -32.198173
+  ],
+  "to": [
+   137.98491,
+   -32.198173
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [VIN] on F.Cu, priority 12",
+   "Zone [VIN] on F.Cu, priority 12"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "f57b854a-991e-49c5-9adb-3a09fb89a11f",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   163.1,
+   -170.65
+  ],
+  "to": [
+   163.1,
+   -170.65
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [VIN] on F.Cu, priority 25",
+   "Zone [VIN] on F.Cu, priority 29"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "dbf42ee5-2b5b-4278-80d0-ad72e6c56130",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   158.025614,
+   -119.222598
+  ],
+  "to": [
+   155.7,
+   -125.25
+  ],
+  "length_mm": 6.46,
+  "between": [
+   "Track [VIN] on F.Cu, length 2.6870 mm",
+   "Pad 1 [VIN] of C50 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "6f058c91-ac67-4b74-954e-77aa6178b88b",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   179.2051,
+   -30.276
+  ],
+  "to": [
+   144.0,
+   -30.3
+  ],
+  "length_mm": 35.205,
+  "between": [
+   "Zone [VIN] on F.Cu, priority 21",
+   "Zone [VIN] on F.Cu, priority 12"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "ca213058-989e-4240-b680-b654901d11b2",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   179.43,
+   -32.94
+  ],
+  "to": [
+   179.155886,
+   -80.127402
+  ],
+  "length_mm": 47.188,
+  "between": [
+   "Pad 1 [VIN] of C22 on F.Cu",
+   "Track [VIN] on F.Cu, length 0.5000 mm"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "af95fbb3-8e99-40e1-8b00-bd6d1a4040ee",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   221.141552,
+   -108.4
+  ],
+  "to": [
+   221.05,
+   -139.65
+  ],
+  "length_mm": 31.25,
+  "between": [
+   "Zone [VIN] on F.Cu, priority 9",
+   "Zone [VIN] on F.Cu, priority 8"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d14b6d6a-a7c9-4311-9dd0-0b94c370a24a",
+  "kind": "track",
+  "net": "VIN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   253.125,
+   -146.750004
+  ],
+  "to": [
+   220.995,
+   -141.700004
+  ],
+  "length_mm": 32.524,
+  "between": [
+   "Pad 3 [VIN] of U24 on F.Cu",
+   "Pad 3 [VIN] of U10 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "7f2f8bf2-3c62-476b-b5a9-c32d67e55128",
+  "kind": "track",
+  "net": "+3V4",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   96.040071,
+   -117.128971
+  ],
+  "to": [
+   96.040071,
+   -117.128971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V4] on F.Cu, priority 6",
+   "Zone [+3V4] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "5c412e51-78c8-4217-b0b0-9ed4d85fe96b",
+  "kind": "track",
+  "net": "+1V8_FPGA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   130.63,
+   -52.68
+  ],
+  "to": [
+   133.744443,
+   -49.283147
+  ],
+  "length_mm": 4.609,
+  "between": [
+   "Track [+1V8_FPGA] on F.Cu, length 15.1400 mm",
+   "Track [+1V8_FPGA] on F.Cu, length 18.7000 mm"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "8baca1d7-151b-4327-a263-a68870bffe0b",
+  "kind": "track",
+  "net": "+3V3_ADAR_12",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   175.230071,
+   -115.478971
+  ],
+  "to": [
+   175.230071,
+   -115.478971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_ADAR_12] on F.Cu, priority 6",
+   "Zone [+3V3_ADAR_12] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "faebcfce-8ffc-43e7-8dc0-618598b23259",
+  "kind": "track",
+  "net": "+3V3_ADAR_12",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   175.230071,
+   -115.478971
+  ],
+  "to": [
+   175.230071,
+   -115.478971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_ADAR_12] on F.Cu, priority 6",
+   "Zone [+3V3_ADAR_12] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "f04c7673-d96c-4a6d-870d-e83848875582",
+  "kind": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   175.077629,
+   -41.518277
+  ],
+  "to": [
+   175.077629,
+   -41.518277
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_FPGA] on F.Cu, priority 6",
+   "Zone [+3V3_FPGA] on F.Cu, priority 6"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "46f5d8cd-6f3f-46b7-95ef-2552995fd6cd",
+  "kind": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   175.077629,
+   -41.518277
+  ],
+  "to": [
+   175.077629,
+   -41.518277
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_FPGA] on F.Cu, priority 6",
+   "Zone [+3V3_FPGA] on F.Cu, priority 6"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "c1e13afc-7712-428e-ba36-2bcf18aeecbe",
+  "kind": "track",
+  "net": "+5V0_PA_3",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   175.300071,
+   -186.228971
+  ],
+  "to": [
+   175.300071,
+   -186.228971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V0_PA_3] on F.Cu, priority 6",
+   "Zone [+5V0_PA_3] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "49c4152d-ede6-4fcc-918e-a9efee61246e",
+  "kind": "track",
+  "net": "+3V3",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   61.070071,
+   -39.578971
+  ],
+  "to": [
+   61.070071,
+   -39.578971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3] on F.Cu, priority 6",
+   "Zone [+3V3] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "d584927b-3501-41f8-9eca-658a41edacb1",
+  "kind": "track",
+  "net": "+3V3",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   62.69,
+   -47.02
+  ],
+  "to": [
+   61.690284,
+   -49.59306
+  ],
+  "length_mm": 2.76,
+  "between": [
+   "Pad 1 [+3V3] of C13 on F.Cu",
+   "Track [+3V3] on F.Cu, length 1.7678 mm"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "71ddacdb-4e95-4932-9db6-91ac358777f2",
+  "kind": "track",
+  "net": "+5V5_PA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   101.800071,
+   -231.828971
+  ],
+  "to": [
+   101.800071,
+   -231.828971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V5_PA] on F.Cu, priority 6",
+   "Zone [+5V5_PA] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "0625ae25-3209-49fd-b11a-6f72f1b0e855",
+  "kind": "track",
+  "net": "+5V5_PA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   98.043452,
+   -291.286559
+  ],
+  "to": [
+   73.163605,
+   -247.577164
+  ],
+  "length_mm": 50.294,
+  "between": [
+   "PTH pad 1 [+5V5_PA] of X3",
+   "Track [+5V5_PA] on F.Cu, length 20.6012 mm"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "682c322a-2012-4606-b3f4-dff88a86b749",
+  "kind": "track",
+  "net": "+5V5_PA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   101.800071,
+   -231.828971
+  ],
+  "to": [
+   101.800071,
+   -231.828971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V5_PA] on F.Cu, priority 6",
+   "Zone [+5V5_PA] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "4e1b89d1-c480-4d6c-bf10-359329ffc06c",
+  "kind": "track",
+  "net": "+1V0_FPGA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   95.520071,
+   -39.328971
+  ],
+  "to": [
+   95.520071,
+   -39.328971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+1V0_FPGA] on F.Cu, priority 6",
+   "Zone [+1V0_FPGA] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "fb395b5e-cab6-4a3d-b3af-e9d2419993ce",
+  "kind": "track",
+  "net": "+1V0_FPGA",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   95.520071,
+   -39.328971
+  ],
+  "to": [
+   95.520071,
+   -39.328971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+1V0_FPGA] on F.Cu, priority 6",
+   "Zone [+1V0_FPGA] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "d47d23c4-f7cb-462f-ad77-dbf3357c9d4e",
+  "kind": "track",
+  "net": "+3V3_SW",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   209.580071,
+   -149.128971
+  ],
+  "to": [
+   209.580071,
+   -149.128971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_SW] on F.Cu, priority 6",
+   "Zone [+3V3_SW] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "7ad37dfd-7fa6-4605-9632-ba38eed026ef",
+  "kind": "track",
+  "net": "+3V3_AN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   224.025349,
+   -64.188
+  ],
+  "to": [
+   226.1,
+   -63.75
+  ],
+  "length_mm": 2.12,
+  "between": [
+   "Zone [+3V3_AN] on F.Cu, priority 6",
+   "Pad 2 [+3V3_AN] of C25 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "579619e0-763e-4764-8f58-877ad2506159",
+  "kind": "track",
+  "net": "+3V3_AN",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   227.6,
+   -63.75
+  ],
+  "to": [
+   232.18,
+   -63.7
+  ],
+  "length_mm": 4.58,
+  "between": [
+   "Pad 2 [+3V3_AN] of C25 on F.Cu",
+   "PTH pad 1 [+3V3_AN] of X12"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "bd17569f-9e11-4f50-93dc-b70eae3fc61d",
+  "kind": "track",
+  "net": "+5V0_PA_2",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   138.624328,
+   -187.031954
+  ],
+  "to": [
+   138.624328,
+   -187.031954
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V0_PA_2] on F.Cu, priority 6",
+   "Zone [+5V0_PA_2] on F.Cu, priority 6"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "cbd5f0c7-9b1b-4e00-9e66-39fba0ae59e1",
+  "kind": "track",
+  "net": "+3V3_VDD_SW",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   59.830071,
+   -187.528971
+  ],
+  "to": [
+   59.830071,
+   -187.528971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_VDD_SW] on F.Cu, priority 6",
+   "Zone [+3V3_VDD_SW] on F.Cu, priority 6"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "b21d3a98-6f10-4867-99e6-04e09eba507d",
+  "kind": "track",
+  "net": "+3V3_VDD_SW",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   59.830071,
+   -187.528971
+  ],
+  "to": [
+   59.830071,
+   -187.528971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_VDD_SW] on F.Cu, priority 6",
+   "Zone [+3V3_VDD_SW] on F.Cu, priority 6"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "a744424f-18f7-4bed-b2fe-85a14db58853",
+  "kind": "track",
+  "net": "+3V3_ADAR_34",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   211.680071,
+   -115.678971
+  ],
+  "to": [
+   211.680071,
+   -115.678971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+3V3_ADAR_34] on F.Cu, priority 6",
+   "Zone [+3V3_ADAR_34] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "b3cadd51-9847-4743-9683-d4d59b46dffc",
+  "kind": "track",
+  "net": "+5V0_0",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   214.040071,
+   -40.178971
+  ],
+  "to": [
+   214.040071,
+   -40.178971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V0_0] on F.Cu, priority 7",
+   "Zone [+5V0_0] on F.Cu, priority 7"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "901d4cd3-0ce0-41c9-89dc-a7deaa2dde61",
+  "kind": "track",
+  "net": "+5V0_0",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   217.158332,
+   -50.41236
+  ],
+  "to": [
+   215.481397,
+   -53.548079
+  ],
+  "length_mm": 3.556,
+  "between": [
+   "Track [+5V0_0] on F.Cu, length 3.1820 mm",
+   "Track [+5V0_0] on F.Cu, length 2.0700 mm"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "3de56151-a07b-43e3-b834-34aec30db06d",
+  "kind": "track",
+  "net": "+5V0_0",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   219.864453,
+   -63.444443
+  ],
+  "to": [
+   217.6,
+   -61.85
+  ],
+  "length_mm": 2.769,
+  "between": [
+   "Track [+5V0_0] on F.Cu, length 0.5000 mm",
+   "Pad 2 [+5V0_0] of C28 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "43d9a057-e1f9-4c0c-9a8e-5a68f350ebec",
+  "kind": "track",
+  "net": "+5V0_PA_1",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   102.240071,
+   -186.528971
+  ],
+  "to": [
+   102.240071,
+   -186.528971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V0_PA_1] on F.Cu, priority 6",
+   "Zone [+5V0_PA_1] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "99f09623-8609-4c71-b5e5-0dad0a0a0f86",
+  "kind": "track",
+  "net": "+5V0_ADAR",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   148.58764,
+   -126.541668
+  ],
+  "to": [
+   133.347164,
+   -134.456395
+  ],
+  "length_mm": 17.173,
+  "between": [
+   "Track [+5V0_ADAR] on F.Cu, length 15.2000 mm",
+   "Track [+5V0_ADAR] on F.Cu, length 6.5266 mm"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "e0f14370-32d0-4d02-94a2-9ce9c13285a8",
+  "kind": "track",
+  "net": "+5V0_ADAR",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   132.790071,
+   -116.528971
+  ],
+  "to": [
+   132.790071,
+   -116.528971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V0_ADAR] on F.Cu, priority 6",
+   "Zone [+5V0_ADAR] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "aeea5e85-2921-4c14-ab03-a0611153c138",
+  "kind": "track",
+  "net": "+5V0_ADAR",
+  "layer": "F.Cu",
+  "width": 1.0,
+  "frm": [
+   132.790071,
+   -116.528971
+  ],
+  "to": [
+   132.790071,
+   -116.528971
+  ],
+  "length_mm": 0.0,
+  "between": [
+   "Zone [+5V0_ADAR] on F.Cu, priority 6",
+   "Zone [+5V0_ADAR] on F.Cu, priority 6"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "net": "+3V3_ADAR_12",
+  "items": [
+   "PTH pad 1 [+3V3_ADAR_12] of X14",
+   "Track [+3V3_ADAR_12] on F.Cu, length 6.0528 mm"
+  ],
+  "reason": "no shared-layer geometry or overlap for a straight bridge"
+ },
+ {
+  "net": "+5V0_PA_3",
+  "items": [
+   "PTH pad 1 [+5V0_PA_3] of X33",
+   "Track [+5V0_PA_3] on F.Cu, length 8.5277 mm"
+  ],
+  "reason": "no shared-layer geometry or overlap for a straight bridge"
+ },
+ {
+  "net": "+3V3_SW",
+  "items": [
+   "Track [+3V3_SW] on F.Cu, length 6.6000 mm",
+   "Track [+3V3_SW] on B.Cu, length 30.3151 mm"
+  ],
+  "reason": "no shared-layer geometry or overlap for a straight bridge"
+ },
+ {
+  "net": "+3V3_ADAR_34",
+  "items": [
+   "Track [+3V3_ADAR_34] on B.Cu, length 4.1544 mm",
+   "Track [+3V3_ADAR_34] on F.Cu, length 6.9500 mm"
+  ],
+  "reason": "no shared-layer geometry or overlap for a straight bridge"
+ },
+ {
+  "net": "+5V0_PA_1",
+  "items": [
+   "Track [+5V0_PA_1] on F.Cu, length 4.8790 mm",
+   "Track [+5V0_PA_1] on B.Cu, length 4.9558 mm"
+  ],
+  "reason": "no shared-layer geometry or overlap for a straight bridge"
+ },
+ {
+  "net": "+5V0_ADAR",
+  "items": [
+   "Track [+5V0_ADAR] on F.Cu, length 9.1343 mm",
+   "Pad 1 [+5V0_ADAR] of U$13 on F.Cu"
+  ],
+  "reason": "no shared-layer geometry or overlap for a straight bridge"
+ }
+]

@@ -1,0 +1,45 @@
+Drill report for MAIN_BOARD.kicad_pcb
+Created on 2026-10-09T14:16:53
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  In3.Cu                    in3
+    L5 :  In4.Cu                    in4
+    L6 :  In5.Cu                    in5
+    L7 :  In6.Cu                    in6
+    L8 :  In7.Cu                    in7
+    L9 :  In8.Cu                    in8
+    L10:  B.Cu                      back
+
+
+Drill file 'MAIN_BOARD-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.150mm  0.0059"  (1045 holes))
+    T2  0.200mm  0.0079"  (1371 holes))
+    T3  0.254mm  0.0100"  (18 holes))
+    T4  0.300mm  0.0118"  (332 holes))
+    T5  0.350mm  0.0138"  (113 holes))
+    T6  0.500mm  0.0197"  (21 holes))
+    T7  0.600mm  0.0236"  (7 holes))
+    T8  0.640mm  0.0252"  (4 holes))
+    T9  0.840mm  0.0331"  (8 holes))
+    T10  1.000mm  0.0394"  (4 holes))
+    T11  1.000mm  0.0394"  (128 holes))
+    T12  1.016mm  0.0400"  (115 holes))
+    T13  1.194mm  0.0470"  (148 holes))
+    T14  1.200mm  0.0472"  (4 holes))
+
+    Total plated holes count 3318
+
+
+Drill file 'MAIN_BOARD-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  0.900mm  0.0354"  (2 holes))
+    T2  3.200mm  0.1260"  (8 holes))
+
+    Total unplated holes count 10

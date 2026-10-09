@@ -1,0 +1,29 @@
+# Export log — RF_PA (BETA)
+
+kicad-cli 10.0.6, 2026-10-09T11:03:32Z
+
+| Step | Exit | Command |
+|---|---|---|
+| drc | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb drc --format report --severity-all --all-track-errors --refill-zones --save-board --units mm -o beta/pcb/RF_PA/exports/reports/DRC_report.txt beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| drc-json | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb drc --format json --severity-all --all-track-errors --units mm -o beta/pcb/RF_PA/exports/reports/DRC_report.json beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| stats | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export stats -o beta/pcb/RF_PA/exports/reports/board_statistics.md beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| gerbers | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export gerbers --check-zones --subtract-soldermask -l F.Cu\,In1.Cu\,In2.Cu\,B.Cu\,F.Mask\,B.Mask\,F.Paste\,B.Paste\,F.SilkS\,B.SilkS\,Edge.Cuts\,F.Fab\,B.Fab -o beta/pcb/RF_PA/exports/gerber/ beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| drill | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export drill --format excellon --excellon-units mm --excellon-separate-th --generate-map --map-format pdf --generate-report --report-path beta/pcb/RF_PA/exports/drill/drill_report.txt -o beta/pcb/RF_PA/exports/drill/ beta/pcb/RF_P` |
+| pdf-copper | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pdf --check-zones --mode-multipage --cl Edge.Cuts -l F.Cu\,In1.Cu\,In2.Cu\,B.Cu --ibt -o beta/pcb/RF_PA/exports/drawings/RF_PA_copper_layers.pdf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| pdf-asm-top | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pdf --mode-single --sp -l F.Fab\,F.SilkS\,Edge.Cuts --ibt --black-and-white -o beta/pcb/RF_PA/exports/drawings/RF_PA_assembly_top.pdf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| pdf-asm-bot | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pdf --mode-single --sp -m -l B.Fab\,B.SilkS\,Edge.Cuts --ibt --black-and-white -o beta/pcb/RF_PA/exports/drawings/RF_PA_assembly_bottom_mirrored.pdf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| pdf-top | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pdf --check-zones --mode-single -l F.Cu\,F.SilkS\,Edge.Cuts --ibt -o beta/pcb/RF_PA/exports/drawings/RF_PA_top_layer.pdf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| pdf-bottom | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pdf --check-zones --mode-single -m -l B.Cu\,B.SilkS\,Edge.Cuts --ibt -o beta/pcb/RF_PA/exports/drawings/RF_PA_bottom_layer_mirrored.pdf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| pdf-outline | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pdf --mode-single -l Edge.Cuts\,Dwgs.User\,Cmts.User --ibt --black-and-white -o beta/pcb/RF_PA/exports/drawings/RF_PA_outline.pdf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| svg | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export svg --check-zones --mode-multi --page-size-mode 2 -l F.Cu\,In1.Cu\,In2.Cu\,B.Cu\,F.SilkS\,B.SilkS\,F.Mask\,B.Mask\,Edge.Cuts\,F.Fab\,B.Fab -o beta/pcb/RF_PA/exports/svg/ beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| svg-top | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export svg --check-zones --mode-single --page-size-mode 2 -l F.Cu\,F.SilkS\,Edge.Cuts -o beta/pcb/RF_PA/exports/svg/RF_PA_top_composite.svg beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| svg-bottom | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export svg --check-zones --mode-single --page-size-mode 2 -m -l B.Cu\,B.SilkS\,Edge.Cuts -o beta/pcb/RF_PA/exports/svg/RF_PA_bottom_composite_mirrored.svg beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| dxf-outline | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export dxf --mode-single --ou mm --uc -l Edge.Cuts -o beta/pcb/RF_PA/exports/mechanical/RF_PA_outline.dxf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| dxf-fab | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export dxf --mode-single --ou mm -l Edge.Cuts\,F.Fab\,F.SilkS -o beta/pcb/RF_PA/exports/mechanical/RF_PA_top_fab.dxf beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| step | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export step --board-only --force -o beta/pcb/RF_PA/exports/mechanical/RF_PA_board_only.step beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| pos | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export pos --format csv --units mm --side both -o beta/pcb/RF_PA/exports/assembly/RF_PA_pick_and_place.csv beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| ipc2581 | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export ipc2581 -o beta/pcb/RF_PA/exports/ipc/RF_PA.xml beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| ipcd356 | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export ipcd356 -o beta/pcb/RF_PA/exports/ipc/RF_PA_netlist.d356 beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| render-top | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb render --side top --background opaque --quality high -w 2400 -h 1800 -o beta/pcb/RF_PA/exports/3d/RF_PA_render_top.png beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| render-bottom | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb render --side bottom --background opaque --quality high -w 2400 -h 1800 -o beta/pcb/RF_PA/exports/3d/RF_PA_render_bottom.png beta/pcb/RF_PA/RF_PA.kicad_pcb ` |
+| render-iso | 0 | `/Users/void/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb render --side top --rotate -45\,0\,30 --perspective --background opaque --quality high -w 2400 -h 1800 -o beta/pcb/RF_PA/exports/3d/RF_PA_render_isometric.png beta/pcb/RF_PA/RF_PA.kicad_pcb ` |

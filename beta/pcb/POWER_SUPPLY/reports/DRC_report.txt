@@ -1,0 +1,1660 @@
+** Drc report for POWER_SUPPLY.kicad_pcb **
+** Created on 2026-10-09T14:27:38 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 328 DRC violations **
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(224.7350 mm, -32.4500 mm): Pad 3 [VIN] of U12 on F.Cu
+    @(224.7350 mm, -33.4000 mm): Track [N$34] on F.Cu, length 1.2350 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(224.7350 mm, -33.4000 mm): Track [N$34] on F.Cu, length 1.2350 mm
+    @(224.7350 mm, -34.3500 mm): Pad 1 [GND] of U12 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(186.1550 mm, -34.4500 mm): Pad 1 [GND] of U4 on F.Cu
+    @(186.1550 mm, -33.5000 mm): Track [N$10] on F.Cu, length 1.1050 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(186.1550 mm, -33.5000 mm): Track [N$10] on F.Cu, length 1.1050 mm
+    @(186.1550 mm, -32.5500 mm): Pad 3 [VIN] of U4 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(70.6350 mm, -32.8500 mm): Track [N$7] on F.Cu, length 1.1850 mm
+    @(70.6350 mm, -33.8000 mm): Pad 1 [GND] of U3 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(70.6350 mm, -32.8500 mm): Track [N$7] on F.Cu, length 1.1850 mm
+    @(70.6350 mm, -31.9000 mm): Pad 3 [VIN] of U3 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(163.5976 mm, -92.7500 mm): Pad 1 [N$96] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(175.5976 mm, -80.7500 mm): Pad 1 [N$14] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(163.5976 mm, -92.2500 mm): Pad 2 [+3V3_LO_2] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(175.5976 mm, -80.2500 mm): Pad 2 [+5V0_LO] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(163.5976 mm, -91.7500 mm): Pad 3 [N$98] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(175.5976 mm, -79.7500 mm): Pad 3 [N$62] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(166.4024 mm, -91.2500 mm): Pad 5 [N$99] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(166.4024 mm, -91.7500 mm): Pad 6 [N$100] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(178.4024 mm, -79.2500 mm): Pad 5 [N$63] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(166.4024 mm, -92.2500 mm): Pad 7 [+5V0_4] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(178.4024 mm, -79.7500 mm): Pad 6 [N$67] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(248.5976 mm, -148.7500 mm): Pad 1 [N$76] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(166.4024 mm, -92.7500 mm): Pad 8 [+5V0_4] of U29 on F.Cu
+    @(165.0000 mm, -92.0000 mm): Pad 9 [GND] of U29 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(178.4024 mm, -80.2500 mm): Pad 7 [VIN] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(248.5976 mm, -148.2500 mm): Pad 2 [+1V8_CLOCK] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(248.5976 mm, -147.7500 mm): Pad 3 [N$78] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(178.4024 mm, -80.7500 mm): Pad 8 [VIN] of U30 on F.Cu
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(251.4024 mm, -147.2500 mm): Pad 5 [N$79] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(141.5976 mm, -92.7500 mm): Pad 1 [N$86] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(141.5976 mm, -92.2500 mm): Pad 2 [+3V3_LO_1] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(251.4024 mm, -147.7500 mm): Pad 6 [N$80] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(141.5976 mm, -91.7500 mm): Pad 3 [N$88] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(251.4024 mm, -148.2500 mm): Pad 7 [EN_+1V8_CLOCK] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(144.4024 mm, -91.2500 mm): Pad 5 [N$89] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(144.4024 mm, -91.7500 mm): Pad 6 [N$90] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(251.4024 mm, -148.7500 mm): Pad 8 [+5V0_2] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Pad 9 [GND] of U25 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(222.7524 mm, -63.5000 mm): Pad 1 [N$13] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(144.4024 mm, -92.2500 mm): Pad 7 [+5V0_3] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(222.7524 mm, -64.0000 mm): Pad 2 [+3V3_AN] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(258.5976 mm, -87.7500 mm): Pad 1 [N$66] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(144.4024 mm, -92.7500 mm): Pad 8 [+5V0_3] of U27 on F.Cu
+    @(143.0000 mm, -92.0000 mm): Pad 9 [GND] of U27 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(222.7524 mm, -64.5000 mm): Pad 3 [N$15] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(258.5976 mm, -87.2500 mm): Pad 2 [+3V3_CLOCK] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(258.5976 mm, -86.7500 mm): Pad 3 [N$68] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(219.9476 mm, -65.0000 mm): Pad 5 [N$25] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(219.9476 mm, -64.5000 mm): Pad 6 [N$27] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(261.4024 mm, -86.2500 mm): Pad 5 [N$69] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(261.4024 mm, -86.7500 mm): Pad 6 [N$70] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(219.9476 mm, -64.0000 mm): Pad 7 [+5V0_0] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(261.4024 mm, -87.2500 mm): Pad 7 [EN_+3V3_CLOCK] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(219.9476 mm, -63.5000 mm): Pad 8 [+5V0_0] of U5 on F.Cu
+    @(221.3500 mm, -64.2500 mm): Pad 9 [GND] of U5 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)
+    Local override; error
+    @(261.4024 mm, -87.7500 mm): Pad 8 [+5V0_1] of U23 on F.Cu
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(237.5936 mm, -98.5936 mm): PTH pad V [<no net>] of U32
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(237.5936 mm, -99.4064 mm): PTH pad V_1 [<no net>] of U32
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(238.4064 mm, -99.4064 mm): PTH pad V_3 [<no net>] of U32
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(238.4064 mm, -98.5936 mm): PTH pad V_2 [<no net>] of U32
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(121.4064 mm, -91.5936 mm): PTH pad V_2 [<no net>] of U34
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(121.4064 mm, -92.4064 mm): PTH pad V_3 [<no net>] of U34
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(120.5936 mm, -91.5936 mm): PTH pad V [<no net>] of U34
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.3392 mm)
+    Local override; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(120.5936 mm, -92.4064 mm): PTH pad V_1 [<no net>] of U34
+[zones_intersect]: Copper zones intersect (intersecting zones must have distinct priorities)
+    Local override; error
+    @(151.8500 mm, -225.7500 mm): Zone [GND] on F.Cu, priority 23
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(120.5936 mm, -91.5936 mm): PTH pad V [<no net>] of U34
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(120.5936 mm, -92.4064 mm): PTH pad V_1 [<no net>] of U34
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(121.4064 mm, -91.5936 mm): PTH pad V_2 [<no net>] of U34
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(121.4064 mm, -92.4064 mm): PTH pad V_3 [<no net>] of U34
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(237.5936 mm, -98.5936 mm): PTH pad V [<no net>] of U32
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(237.5936 mm, -99.4064 mm): PTH pad V_1 [<no net>] of U32
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(238.4064 mm, -98.5936 mm): PTH pad V_2 [<no net>] of U32
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2540 mm)
+    Rule: board setup constraints; error
+    @(238.4064 mm, -99.4064 mm): PTH pad V_3 [<no net>] of U32
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(120.5936 mm, -91.5936 mm): PTH pad V [<no net>] of U34
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(120.5936 mm, -92.4064 mm): PTH pad V_1 [<no net>] of U34
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(121.4064 mm, -92.4064 mm): PTH pad V_3 [<no net>] of U34
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(121.4064 mm, -91.5936 mm): PTH pad V_2 [<no net>] of U34
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(237.5936 mm, -98.5936 mm): PTH pad V [<no net>] of U32
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(238.4064 mm, -98.5936 mm): PTH pad V_2 [<no net>] of U32
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(238.4064 mm, -99.4064 mm): PTH pad V_3 [<no net>] of U32
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+    @(237.5936 mm, -99.4064 mm): PTH pad V_1 [<no net>] of U32
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(189.3000 mm, -171.2000 mm): Via [GND] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(234.5000 mm, -222.7500 mm): Via [GND] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(259.3500 mm, -102.6000 mm): Via [GND] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(44.8500 mm, -212.0000 mm): Track [VIN] on F.Cu, length 3.4500 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(236.7114 mm, -95.4185 mm): Via [N$91] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(239.0000 mm, -89.0614 mm): Via [N$91] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(142.4828 mm, -88.0330 mm): Via [N$89] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(258.9830 mm, -121.6670 mm): Via [+3V3_ADAR_12] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(146.6728 mm, -84.6770 mm): Via [+5V0_3] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(252.3742 mm, -140.3056 mm): Via [+5V0_2] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(234.2317 mm, -159.9245 mm): Via [+3V3_SW] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(118.3128 mm, -85.4945 mm): Via [N$102] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(264.6086 mm, -148.1407 mm): Via [+3V3_ADAR_34] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(246.9855 mm, -143.3985 mm): Via [N$76] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(240.0973 mm, -92.5209 mm): Via [N$101] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(162.1148 mm, -87.7752 mm): Via [N$98] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(167.7259 mm, -83.0135 mm): Via [+5V0_4] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(179.6024 mm, -79.3176 mm): Via [N$67] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(192.0121 mm, -179.6404 mm): Via [EN_+5V0_PA3] on F.Cu - B.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(133.0700 mm, -134.5712 mm): Track [+5V0_ADAR] on F.Cu, length 6.5266 mm
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(122.9401 mm, -18.2125 mm): Via [+5V0_ADAR] on F.Cu - B.Cu
+[via_dangling]: Via is not connected or connected on only one layer
+    Local override; warning
+    @(175.6284 mm, -75.4750 mm): Via [N$62] on F.Cu - B.Cu
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(133.2300 mm, -188.5328 mm): Footprint text of U$15 (*)
+    @(133.2300 mm, -188.5328 mm): Footprint text of U$15 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(129.1072 mm, -90.7300 mm): Footprint text of U$18 (*)
+    @(129.1072 mm, -90.7300 mm): Footprint text of U$18 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(119.3650 mm, -82.6350 mm): Reference field of C160
+    @(123.3650 mm, -82.6350 mm): Reference field of C155
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(109.0188 mm, -87.2098 mm): Footprint text of U33 (Designator9)
+    @(114.7300 mm, -86.2700 mm): Reference field of R55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(131.7300 mm, -87.2700 mm): Reference field of R42
+    @(132.7140 mm, -87.5296 mm): Segment of U$18 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(55.7100 mm, -41.4828 mm): Footprint text of U$3 (*)
+    @(55.7100 mm, -41.4828 mm): Footprint text of U$3 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(113.3650 mm, -79.6350 mm): Reference field of C163
+    @(117.3650 mm, -79.6350 mm): Reference field of C159
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(109.3650 mm, -79.6350 mm): Reference field of C162
+    @(113.3650 mm, -79.6350 mm): Reference field of C163
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(110.2888 mm, -83.4760 mm): Segment of U33 on F.Silkscreen
+    @(109.7300 mm, -83.2700 mm): Reference field of C154
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(128.3600 mm, -41.0828 mm): Footprint text of U$2 (*)
+    @(128.3600 mm, -41.0828 mm): Footprint text of U$2 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(90.1600 mm, -41.2328 mm): Footprint text of U$1 (*)
+    @(90.1600 mm, -41.2328 mm): Footprint text of U$1 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(121.3650 mm, -79.6350 mm): Reference field of C161
+    @(117.3650 mm, -79.6350 mm): Reference field of C159
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(11.7200 mm, -87.7158 mm): Footprint text of X1 (2)
+    @(6.1320 mm, -88.7826 mm): Segment of X1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(11.7200 mm, -92.7958 mm): Footprint text of X1 (1)
+    @(11.0850 mm, -93.3800 mm): Segment of X1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(4.2270 mm, -93.3800 mm): Segment of X1 on F.Silkscreen
+    @(11.7200 mm, -92.7958 mm): Footprint text of X1 (1)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(11.0850 mm, -93.3800 mm): Segment of X1 on F.Silkscreen
+    @(11.7200 mm, -92.7958 mm): Footprint text of X1 (1)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(11.0850 mm, -89.1636 mm): Segment of X1 on F.Silkscreen
+    @(11.7200 mm, -87.7158 mm): Footprint text of X1 (2)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(10.7040 mm, -88.7826 mm): Segment of X1 on F.Silkscreen
+    @(11.7200 mm, -87.7158 mm): Footprint text of X1 (2)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(4.1270 mm, -196.5080 mm): Reference field of X30
+    @(9.2070 mm, -197.5230 mm): Segment of X31 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(54.4700 mm, -189.4328 mm): Footprint text of U$8 (*)
+    @(54.4700 mm, -189.4328 mm): Footprint text of U$8 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(96.4400 mm, -233.7328 mm): Footprint text of U$17 (*)
+    @(96.4400 mm, -233.7328 mm): Footprint text of U$17 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(96.8800 mm, -188.4328 mm): Footprint text of U$14 (*)
+    @(96.8800 mm, -188.4328 mm): Footprint text of U$14 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(110.7140 mm, -87.5296 mm): Segment of U$21 on F.Silkscreen
+    @(114.7300 mm, -86.2700 mm): Reference field of R55
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(107.1072 mm, -90.7300 mm): Footprint text of U$21 (*)
+    @(107.1072 mm, -90.7300 mm): Footprint text of U$21 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(90.6800 mm, -119.0328 mm): Footprint text of U$11 (*)
+    @(90.6800 mm, -119.0328 mm): Footprint text of U$11 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(169.9400 mm, -188.1328 mm): Footprint text of U$16 (*)
+    @(169.9400 mm, -188.1328 mm): Footprint text of U$16 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(169.8700 mm, -117.3828 mm): Footprint text of U$6 (*)
+    @(169.8700 mm, -117.3828 mm): Footprint text of U$6 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(151.1072 mm, -90.7300 mm): Footprint text of U$19 (*)
+    @(151.1072 mm, -90.7300 mm): Footprint text of U$19 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(152.5804 mm, -94.2860 mm): Segment of U$19 on F.Silkscreen
+    @(146.0188 mm, -94.2098 mm): Footprint text of U26 (Designator9)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(206.3200 mm, -117.5828 mm): Footprint text of U$7 (*)
+    @(206.3200 mm, -117.5828 mm): Footprint text of U$7 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(156.6400 mm, -34.1800 mm): Reference field of R4
+    @(157.9100 mm, -31.6500 mm): Reference field of R3
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(175.3744 mm, -78.3744 mm): Segment of U30 on F.Silkscreen
+    @(175.7300 mm, -78.2700 mm): Reference field of R49
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(178.6256 mm, -78.3744 mm): Segment of U30 on F.Silkscreen
+    @(175.7300 mm, -78.2700 mm): Reference field of R49
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(208.6800 mm, -42.0828 mm): Footprint text of U$12 (*)
+    @(208.6800 mm, -42.0828 mm): Footprint text of U$12 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(170.5100 mm, -42.2328 mm): Footprint text of U$4 (*)
+    @(170.5100 mm, -42.2328 mm): Footprint text of U$4 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(132.7140 mm, -87.5296 mm): Segment of U$18 on F.Silkscreen
+    @(136.7300 mm, -87.2700 mm): Reference field of R44
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(110.7140 mm, -87.5296 mm): Segment of U$21 on F.Silkscreen
+    @(109.0188 mm, -87.2098 mm): Footprint text of U33 (Designator9)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(127.4300 mm, -118.4328 mm): Footprint text of U$13 (*)
+    @(127.4300 mm, -118.4328 mm): Footprint text of U$13 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(154.7140 mm, -87.5296 mm): Segment of U$19 on F.Silkscreen
+    @(153.7300 mm, -87.2700 mm): Reference field of C137
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(145.3650 mm, -80.6350 mm): Reference field of C121
+    @(141.3650 mm, -80.6350 mm): Reference field of C120
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(158.7300 mm, -87.2700 mm): Reference field of C136
+    @(154.7140 mm, -87.5296 mm): Segment of U$19 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(248.7300 mm, -82.2700 mm): Reference field of C106
+    @(249.7140 mm, -82.5296 mm): Segment of U$5 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(249.7140 mm, -82.5296 mm): Segment of U$5 on F.Silkscreen
+    @(253.7300 mm, -82.2700 mm): Reference field of R36
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(236.3650 mm, -89.6350 mm): Reference field of C145
+    @(240.3650 mm, -89.6350 mm): Reference field of C152
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(270.1270 mm, -76.5080 mm): Reference field of X11
+    @(275.2070 mm, -77.5230 mm): Segment of X2 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(275.2070 mm, -96.5230 mm): Segment of X34 on F.Silkscreen
+    @(270.1270 mm, -95.5080 mm): Reference field of X26
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(270.1270 mm, -145.5080 mm): Reference field of X9
+    @(275.2070 mm, -146.5230 mm): Segment of X15 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(270.1270 mm, -153.5080 mm): Reference field of X15
+    @(275.2070 mm, -154.5230 mm): Segment of X10 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(270.1270 mm, -161.5080 mm): Reference field of X10
+    @(275.2070 mm, -162.5230 mm): Segment of X29 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(263.0188 mm, -89.2098 mm): Footprint text of U9 (Designator9)
+    @(270.1270 mm, -88.5230 mm): Segment of X26 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(231.7300 mm, -93.2700 mm): Reference field of R53
+    @(226.0188 mm, -94.2098 mm): Footprint text of U31 (Designator9)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(231.7300 mm, -93.2700 mm): Reference field of R53
+    @(227.7140 mm, -94.5296 mm): Segment of U$20 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(227.7140 mm, -94.5296 mm): Segment of U$20 on F.Silkscreen
+    @(226.0188 mm, -94.2098 mm): Footprint text of U31 (Designator9)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(226.7300 mm, -90.2700 mm): Reference field of R52
+    @(227.2888 mm, -90.4760 mm): Segment of U31 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(246.1072 mm, -85.7300 mm): Footprint text of U$5 (*)
+    @(246.1072 mm, -85.7300 mm): Footprint text of U$5 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(246.1072 mm, -85.7300 mm): Footprint text of U$5 (*)
+    @(242.3650 mm, -86.6350 mm): Reference field of C153
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(246.1072 mm, -85.7300 mm): Footprint text of U$5 (*)
+    @(242.3650 mm, -86.6350 mm): Reference field of C153
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(242.3650 mm, -86.6350 mm): Reference field of C153
+    @(238.3650 mm, -86.6350 mm): Reference field of C149
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(230.3650 mm, -86.6350 mm): Reference field of C151
+    @(226.3650 mm, -86.6350 mm): Reference field of C146
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(238.3650 mm, -86.6350 mm): Reference field of C149
+    @(234.3650 mm, -86.6350 mm): Reference field of C150
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(224.1072 mm, -97.7300 mm): Footprint text of U$20 (*)
+    @(224.1072 mm, -97.7300 mm): Footprint text of U$20 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(236.1072 mm, -146.7300 mm): Footprint text of U$9 (*)
+    @(236.1072 mm, -146.7300 mm): Footprint text of U$9 (*)
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(238.7300 mm, -143.2700 mm): Reference field of C118
+    @(239.7140 mm, -143.5296 mm): Segment of U$9 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(239.7140 mm, -143.5296 mm): Segment of U$9 on F.Silkscreen
+    @(243.7300 mm, -143.2700 mm): Reference field of C114
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(204.2200 mm, -151.0328 mm): Footprint text of U$10 (*)
+    @(204.2200 mm, -151.0328 mm): Footprint text of U$10 (*)
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(148.4000 mm, -164.5800 mm): Segment of X20 on F.Silkscreen
+    @(147.1300 mm, -163.3100 mm): PTH pad 1 [-5V0_ADAR34] of X20
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(148.4000 mm, -164.5800 mm): Segment of X20 on F.Silkscreen
+    @(147.1300 mm, -160.7700 mm): PTH pad 2 [GND] of X20
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(148.8888 mm, -182.1098 mm): Footprint text of U15 (Designator9)
+    @(153.7800 mm, -183.2200 mm): Pad 1 [N$44] of C83 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.7300 mm, -87.2700 mm): Reference field of R42
+    @(132.6500 mm, -92.0000 mm): Pad 1 [+5V0_3] of U$18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.7300 mm, -84.2700 mm): Reference field of C127
+    @(132.0500 mm, -86.0000 mm): Pad 1 [GND] of R42 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.7300 mm, -84.2700 mm): Reference field of C127
+    @(133.9500 mm, -86.0000 mm): Pad 2 [N$85] of R42 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.3800 mm, -55.6000 mm): Segment of X16 on F.Silkscreen
+    @(62.6500 mm, -54.3300 mm): PTH pad 1 [+3V3] of X16
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.3800 mm, -55.6000 mm): Segment of X16 on F.Silkscreen
+    @(65.1900 mm, -54.3300 mm): PTH pad 2 [GND] of X16
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(70.0288 mm, -35.0598 mm): Footprint text of U3 (Designator9)
+    @(75.5300 mm, -36.1700 mm): Pad 2 [N$7] of C12 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(109.7300 mm, -83.2700 mm): Reference field of C154
+    @(112.3750 mm, -84.0500 mm): Pad 4 [N$97] of U33 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(109.7300 mm, -83.2700 mm): Reference field of C154
+    @(109.6250 mm, -84.0500 mm): Pad 3 [VIN] of U33 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(114.7300 mm, -83.2700 mm): Reference field of R58
+    @(115.0500 mm, -85.0000 mm): Pad 1 [N$97] of R55 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(114.7300 mm, -83.2700 mm): Reference field of R58
+    @(116.9500 mm, -85.0000 mm): Pad 2 [+5V0_5] of R55 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(104.5388 mm, -35.1098 mm): Footprint text of U1 (Designator9)
+    @(110.3800 mm, -34.6400 mm): Pad 1 [N$2] of C1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(104.5388 mm, -35.1098 mm): Footprint text of U1 (Designator9)
+    @(110.3800 mm, -36.5400 mm): Pad 2 [N$1] of C1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(89.9600 mm, -56.3700 mm): Segment of X4 on F.Silkscreen
+    @(91.2300 mm, -55.1000 mm): PTH pad 1 [+1V0_FPGA] of X4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(89.9600 mm, -56.3700 mm): Segment of X4 on F.Silkscreen
+    @(93.7700 mm, -55.1000 mm): PTH pad 2 [GND] of X4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(4.1270 mm, -193.9680 mm): Segment of X30 on F.Silkscreen
+    @(5.3970 mm, -192.6980 mm): PTH pad 1 [+3V3_VDD_SW] of X30
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(4.1270 mm, -193.9680 mm): Segment of X30 on F.Silkscreen
+    @(7.9370 mm, -192.6980 mm): PTH pad 2 [GND] of X30
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(65.3600 mm, -179.2200 mm): Reference field of C46
+    @(64.4800 mm, -179.5400 mm): Pad 1 [VIN] of C45 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(65.3600 mm, -179.2200 mm): Reference field of C46
+    @(64.4800 mm, -181.4400 mm): Pad 2 [GND] of C45 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(4.1270 mm, -201.9680 mm): Segment of X31 on F.Silkscreen
+    @(5.3970 mm, -200.6980 mm): PTH pad 1 [+5V0_PA_1] of X31
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(4.1270 mm, -201.9680 mm): Segment of X31 on F.Silkscreen
+    @(7.9370 mm, -200.6980 mm): PTH pad 2 [GND] of X31
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(97.1270 mm, -293.9680 mm): Segment of X3 on F.Silkscreen
+    @(98.3970 mm, -292.6980 mm): PTH pad 1 [+5V5_PA] of X3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(97.1270 mm, -293.9680 mm): Segment of X3 on F.Silkscreen
+    @(100.9370 mm, -292.6980 mm): PTH pad 2 [GND] of X3
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(142.1270 mm, -293.9680 mm): Segment of X32 on F.Silkscreen
+    @(143.3970 mm, -292.6980 mm): PTH pad 1 [+5V0_PA_2] of X32
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(142.1270 mm, -293.9680 mm): Segment of X32 on F.Silkscreen
+    @(145.9370 mm, -292.6980 mm): PTH pad 2 [GND] of X32
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(111.9988 mm, -227.3598 mm): Footprint text of U17 (Designator9)
+    @(117.4300 mm, -228.5200 mm): Pad 1 [N$50] of C76 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(70.0488 mm, -182.9598 mm): Footprint text of U8 (Designator9)
+    @(75.4300 mm, -184.2700 mm): Pad 1 [N$23] of C42 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(88.9500 mm, -241.1400 mm): Segment of X19 on F.Silkscreen
+    @(87.6800 mm, -239.8700 mm): PTH pad 1 [-5V5_PA] of X19
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(88.9500 mm, -241.1400 mm): Segment of X19 on F.Silkscreen
+    @(87.6800 mm, -237.3300 mm): PTH pad 2 [GND] of X19
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(109.0188 mm, -87.2098 mm): Footprint text of U33 (Designator9)
+    @(110.6500 mm, -92.0000 mm): Pad 1 [+5V0_5] of U$21 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(76.2000 mm, -138.8900 mm): Segment of X24 on F.Silkscreen
+    @(74.9300 mm, -137.6200 mm): PTH pad 1 [-3V4] of X24
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(76.2000 mm, -138.8900 mm): Segment of X24 on F.Silkscreen
+    @(74.9300 mm, -135.0800 mm): PTH pad 2 [GND] of X24
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(112.4000 mm, -139.5200 mm): Segment of X21 on F.Silkscreen
+    @(111.1300 mm, -138.2500 mm): PTH pad 1 [-5V0_ADAR12] of X21
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(112.4000 mm, -139.5200 mm): Segment of X21 on F.Silkscreen
+    @(111.1300 mm, -135.7100 mm): PTH pad 2 [GND] of X21
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(96.3000 mm, -133.9500 mm): Segment of X23 on F.Silkscreen
+    @(97.5700 mm, -132.6800 mm): PTH pad 1 [+3V4] of X23
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(96.3000 mm, -133.9500 mm): Segment of X23 on F.Silkscreen
+    @(100.1100 mm, -132.6800 mm): PTH pad 2 [GND] of X23
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(185.5588 mm, -181.5598 mm): Footprint text of U16 (Designator9)
+    @(190.7300 mm, -182.7700 mm): Pad 1 [N$47] of C89 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(208.2000 mm, -186.8500 mm): Segment of X18 on F.Silkscreen
+    @(206.9300 mm, -188.1200 mm): PTH pad 1 [-3V3_SW] of X18
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(208.2000 mm, -186.8500 mm): Segment of X18 on F.Silkscreen
+    @(204.3900 mm, -188.1200 mm): PTH pad 2 [GND] of X18
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(185.3888 mm, -111.0598 mm): Footprint text of U6 (Designator9)
+    @(189.8800 mm, -112.6200 mm): Pad 1 [N$17] of C30 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(146.0188 mm, -94.2098 mm): Footprint text of U26 (Designator9)
+    @(154.6500 mm, -92.0000 mm): Pad 1 [+5V0_4] of U$19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(174.1270 mm, -8.9680 mm): Segment of X6 on F.Silkscreen
+    @(175.3970 mm, -7.6980 mm): PTH pad 1 [+5V0_LO] of X6
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(174.1270 mm, -8.9680 mm): Segment of X6 on F.Silkscreen
+    @(177.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X6
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(162.1270 mm, -8.9680 mm): Segment of X7 on F.Silkscreen
+    @(163.3970 mm, -7.6980 mm): PTH pad 1 [+3V3_LO_2] of X7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(162.1270 mm, -8.9680 mm): Segment of X7 on F.Silkscreen
+    @(165.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X7
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(155.1270 mm, -8.9680 mm): Segment of X25 on F.Silkscreen
+    @(156.3970 mm, -7.6980 mm): PTH pad 1 [+5V0_4] of X25
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(155.1270 mm, -8.9680 mm): Segment of X25 on F.Silkscreen
+    @(158.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X25
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(143.1270 mm, -8.9680 mm): Segment of X8 on F.Silkscreen
+    @(144.3970 mm, -7.6980 mm): PTH pad 1 [+3V3_LO_1] of X8
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(143.1270 mm, -8.9680 mm): Segment of X8 on F.Silkscreen
+    @(146.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X8
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(161.8100 mm, -56.5700 mm): Segment of X27 on F.Silkscreen
+    @(163.0800 mm, -55.3000 mm): PTH pad 1 [+3V3_FPGA] of X27
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(161.8100 mm, -56.5700 mm): Segment of X27 on F.Silkscreen
+    @(165.6200 mm, -55.3000 mm): PTH pad 2 [GND] of X27
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(133.0600 mm, -56.0700 mm): Segment of X5 on F.Silkscreen
+    @(136.8700 mm, -54.8000 mm): PTH pad 2 [GND] of X5
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(133.0600 mm, -56.0700 mm): Segment of X5 on F.Silkscreen
+    @(134.3300 mm, -54.8000 mm): PTH pad 1 [+1V8_FPGA] of X5
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(142.9088 mm, -35.0598 mm): Footprint text of U2 (Designator9)
+    @(149.7800 mm, -36.2200 mm): Pad 2 [N$3] of C6 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.1270 mm, -8.9680 mm): Segment of X17 on F.Silkscreen
+    @(134.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X17
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.1270 mm, -8.9680 mm): Segment of X17 on F.Silkscreen
+    @(132.3970 mm, -7.6980 mm): PTH pad 1 [+5V0_3] of X17
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(124.1270 mm, -8.9680 mm): Segment of X13 on F.Silkscreen
+    @(125.3970 mm, -7.6980 mm): PTH pad 1 [+5V0_ADAR] of X13
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(124.1270 mm, -8.9680 mm): Segment of X13 on F.Silkscreen
+    @(127.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X13
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(117.1270 mm, -8.9680 mm): Segment of X35 on F.Silkscreen
+    @(118.3970 mm, -7.6980 mm): PTH pad 1 [+3V3_XO] of X35
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(117.1270 mm, -8.9680 mm): Segment of X35 on F.Silkscreen
+    @(120.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X35
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(110.1270 mm, -8.9680 mm): Segment of X28 on F.Silkscreen
+    @(111.3970 mm, -7.6980 mm): PTH pad 1 [+5V0_5] of X28
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(110.1270 mm, -8.9680 mm): Segment of X28 on F.Silkscreen
+    @(113.9370 mm, -7.6980 mm): PTH pad 2 [GND] of X28
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -78.2700 mm): Reference field of R49
+    @(178.4024 mm, -79.7500 mm): Pad 6 [N$67] of U30 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(180.7300 mm, -78.2700 mm): Reference field of R50
+    @(181.0500 mm, -80.0000 mm): Pad 1 [GND] of C142 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -78.2700 mm): Reference field of R49
+    @(177.0000 mm, -80.0000 mm): Pad 9 [GND] of U30 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -78.2700 mm): Reference field of R49
+    @(178.4024 mm, -79.2500 mm): Pad 5 [N$63] of U30 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -75.2700 mm): Reference field of C140
+    @(176.0500 mm, -77.0000 mm): Pad 1 [N$63] of R49 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -75.2700 mm): Reference field of C140
+    @(177.9500 mm, -77.0000 mm): Pad 2 [N$67] of R49 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(168.7300 mm, -84.2700 mm): Reference field of C138
+    @(169.0500 mm, -86.0000 mm): Pad 1 [GND] of R46 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(168.7300 mm, -84.2700 mm): Reference field of C138
+    @(170.9500 mm, -86.0000 mm): Pad 2 [N$95] of R46 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(213.7400 mm, -55.7000 mm): Segment of X22 on F.Silkscreen
+    @(215.0100 mm, -54.4300 mm): PTH pad 1 [+5V0_0] of X22
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(213.7400 mm, -55.7000 mm): Segment of X22 on F.Silkscreen
+    @(217.5500 mm, -54.4300 mm): PTH pad 2 [GND] of X22
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(180.7300 mm, -78.2700 mm): Reference field of R50
+    @(182.9500 mm, -80.0000 mm): Pad 2 [N$67] of C142 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(180.7300 mm, -75.2700 mm): Reference field of C139
+    @(181.0500 mm, -77.0000 mm): Pad 1 [GND] of R50 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(180.7300 mm, -75.2700 mm): Reference field of C139
+    @(182.9500 mm, -77.0000 mm): Pad 2 [N$63] of R50 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -72.2700 mm): Reference field of C141
+    @(176.0500 mm, -74.0000 mm): Pad 1 [GND] of C140 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(175.7300 mm, -72.2700 mm): Reference field of C141
+    @(177.9500 mm, -74.0000 mm): Pad 2 [+5V0_LO] of C140 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(185.5488 mm, -35.7098 mm): Footprint text of U4 (Designator9)
+    @(189.8800 mm, -37.4700 mm): Pad 1 [N$11] of C18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(136.7300 mm, -87.2700 mm): Reference field of R44
+    @(137.3500 mm, -92.0000 mm): Pad 2 [N$83] of U$18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(143.0488 mm, -112.0098 mm): Footprint text of U13 (Designator9)
+    @(147.3300 mm, -113.4700 mm): Pad 1 [N$38] of C71 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(153.7300 mm, -87.2700 mm): Reference field of C137
+    @(154.6500 mm, -92.0000 mm): Pad 1 [+5V0_4] of U$19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(153.7300 mm, -84.2700 mm): Reference field of R47
+    @(154.0500 mm, -86.0000 mm): Pad 1 [GND] of C137 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(153.7300 mm, -81.2700 mm): Reference field of R45
+    @(154.0500 mm, -83.0000 mm): Pad 1 [N$99] of R47 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(153.7300 mm, -81.2700 mm): Reference field of R45
+    @(155.9500 mm, -83.0000 mm): Pad 2 [N$100] of R47 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(141.7300 mm, -84.2700 mm): Reference field of C119
+    @(142.0500 mm, -86.0000 mm): Pad 1 [GND] of C124 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(141.7300 mm, -84.2700 mm): Reference field of C119
+    @(143.9500 mm, -86.0000 mm): Pad 2 [N$86] of C124 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(146.7300 mm, -84.2700 mm): Reference field of C125
+    @(147.0500 mm, -86.0000 mm): Pad 1 [N$85] of R41 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(146.7300 mm, -84.2700 mm): Reference field of C125
+    @(148.9500 mm, -86.0000 mm): Pad 2 [+5V0_3] of R41 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(158.7300 mm, -87.2700 mm): Reference field of C136
+    @(159.3500 mm, -92.0000 mm): Pad 2 [N$93] of U$19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(158.7300 mm, -84.2700 mm): Reference field of C134
+    @(159.0500 mm, -86.0000 mm): Pad 1 [GND] of C136 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(153.7300 mm, -87.2700 mm): Reference field of C137
+    @(159.3500 mm, -92.0000 mm): Pad 2 [N$93] of U$19 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(153.7300 mm, -84.2700 mm): Reference field of R47
+    @(155.9500 mm, -86.0000 mm): Pad 2 [N$100] of C137 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(158.7300 mm, -84.2700 mm): Reference field of C134
+    @(160.9500 mm, -86.0000 mm): Pad 2 [N$98] of C136 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(163.7300 mm, -84.2700 mm): Reference field of R48
+    @(164.0500 mm, -86.0000 mm): Pad 1 [GND] of C135 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(163.7300 mm, -84.2700 mm): Reference field of R48
+    @(165.9500 mm, -86.0000 mm): Pad 2 [+3V3_LO_2] of C135 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(136.7300 mm, -84.2700 mm): Reference field of C128
+    @(137.0500 mm, -86.0000 mm): Pad 1 [GND] of R44 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(136.7300 mm, -84.2700 mm): Reference field of C128
+    @(138.9500 mm, -86.0000 mm): Pad 2 [N$89] of R44 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(136.7300 mm, -81.2700 mm): Reference field of R43
+    @(138.9500 mm, -83.0000 mm): Pad 2 [+5V0_3] of C128 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.7300 mm, -81.2700 mm): Reference field of C126
+    @(132.0500 mm, -83.0000 mm): Pad 1 [GND] of C127 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(131.7300 mm, -81.2700 mm): Reference field of C126
+    @(133.9500 mm, -83.0000 mm): Pad 2 [N$90] of C127 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(136.7300 mm, -81.2700 mm): Reference field of R43
+    @(137.0500 mm, -83.0000 mm): Pad 1 [GND] of C128 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(109.0188 mm, -87.2098 mm): Footprint text of U33 (Designator9)
+    @(115.3500 mm, -92.0000 mm): Pad 2 [N$81] of U$21 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(158.7300 mm, -81.2700 mm): Reference field of C129
+    @(159.0500 mm, -83.0000 mm): Pad 1 [GND] of C134 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(158.7300 mm, -81.2700 mm): Reference field of C129
+    @(160.9500 mm, -83.0000 mm): Pad 2 [N$96] of C134 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -127.9680 mm): Segment of X14 on F.Silkscreen
+    @(271.3970 mm, -126.6980 mm): PTH pad 1 [+3V3_ADAR_12] of X14
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -127.9680 mm): Segment of X14 on F.Silkscreen
+    @(273.9370 mm, -126.6980 mm): PTH pad 2 [GND] of X14
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -140.2700 mm): Reference field of C115
+    @(249.0500 mm, -142.0000 mm): Pad 1 [N$75] of R37 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -82.2700 mm): Reference field of C106
+    @(254.3500 mm, -87.0000 mm): Pad 2 [N$26] of U$5 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -82.2700 mm): Reference field of C106
+    @(249.6500 mm, -87.0000 mm): Pad 1 [+5V0_1] of U$5 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(263.7300 mm, -79.2700 mm): Reference field of C29
+    @(264.0500 mm, -81.0000 mm): Pad 1 [N$65] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(263.7300 mm, -79.2700 mm): Reference field of C29
+    @(265.9500 mm, -81.0000 mm): Pad 2 [+5V0_1] of R17 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -73.9680 mm): Segment of X11 on F.Silkscreen
+    @(271.3970 mm, -72.6980 mm): PTH pad 1 [+3V3_CLOCK] of X11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -73.9680 mm): Segment of X11 on F.Silkscreen
+    @(273.9370 mm, -72.6980 mm): PTH pad 2 [GND] of X11
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -82.2700 mm): Reference field of R36
+    @(254.3500 mm, -87.0000 mm): Pad 2 [N$26] of U$5 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -100.9680 mm): Segment of X34 on F.Silkscreen
+    @(271.3970 mm, -99.6980 mm): PTH pad 1 [+3V3_ADTR] of X34
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -100.9680 mm): Segment of X34 on F.Silkscreen
+    @(273.9370 mm, -99.6980 mm): PTH pad 2 [GND] of X34
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -140.2700 mm): Reference field of C115
+    @(250.9500 mm, -142.0000 mm): Pad 2 [+5V0_2] of R37 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -150.9680 mm): Segment of X15 on F.Silkscreen
+    @(271.3970 mm, -149.6980 mm): PTH pad 1 [+3V3_ADAR_34] of X15
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -150.9680 mm): Segment of X15 on F.Silkscreen
+    @(273.9370 mm, -149.6980 mm): PTH pad 2 [GND] of X15
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -142.9680 mm): Segment of X9 on F.Silkscreen
+    @(271.3970 mm, -141.6980 mm): PTH pad 1 [+5V0_2] of X9
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -142.9680 mm): Segment of X9 on F.Silkscreen
+    @(273.9370 mm, -141.6980 mm): PTH pad 2 [GND] of X9
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -79.2700 mm): Reference field of C107
+    @(255.9500 mm, -81.0000 mm): Pad 2 [N$69] of R36 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(258.7300 mm, -79.2700 mm): Reference field of C52
+    @(259.0500 mm, -81.0000 mm): Pad 1 [GND] of C108 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(258.7300 mm, -79.2700 mm): Reference field of C52
+    @(260.9500 mm, -81.0000 mm): Pad 2 [+5V0_1] of C108 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -79.2700 mm): Reference field of C107
+    @(254.0500 mm, -81.0000 mm): Pad 1 [GND] of R36 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -76.2700 mm): Reference field of C53
+    @(254.0500 mm, -78.0000 mm): Pad 1 [GND] of C107 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -76.2700 mm): Reference field of C53
+    @(255.9500 mm, -78.0000 mm): Pad 2 [N$70] of C107 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -158.9680 mm): Segment of X10 on F.Silkscreen
+    @(271.3970 mm, -157.6980 mm): PTH pad 1 [+1V8_CLOCK] of X10
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -158.9680 mm): Segment of X10 on F.Silkscreen
+    @(273.9370 mm, -157.6980 mm): PTH pad 2 [GND] of X10
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -166.9680 mm): Segment of X29 on F.Silkscreen
+    @(271.3970 mm, -165.6980 mm): PTH pad 1 [+3V3_SW] of X29
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -166.9680 mm): Segment of X29 on F.Silkscreen
+    @(273.9370 mm, -165.6980 mm): PTH pad 2 [GND] of X29
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -81.9680 mm): Segment of X2 on F.Silkscreen
+    @(271.3970 mm, -80.6980 mm): PTH pad 1 [+5V0_1] of X2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -81.9680 mm): Segment of X2 on F.Silkscreen
+    @(273.9370 mm, -80.6980 mm): PTH pad 2 [GND] of X2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(263.0188 mm, -89.2098 mm): Footprint text of U9 (Designator9)
+    @(273.9370 mm, -91.6980 mm): PTH pad 2 [GND] of X26
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -92.9680 mm): Segment of X26 on F.Silkscreen
+    @(271.3970 mm, -91.6980 mm): PTH pad 1 [+5V0_ADTR] of X26
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -92.9680 mm): Segment of X26 on F.Silkscreen
+    @(273.9370 mm, -91.6980 mm): PTH pad 2 [GND] of X26
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(226.0188 mm, -94.2098 mm): Footprint text of U31 (Designator9)
+    @(232.3500 mm, -99.0000 mm): Pad 2 [N$71] of U$20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(231.7300 mm, -90.2700 mm): Reference field of C144
+    @(232.0500 mm, -92.0000 mm): Pad 1 [N$91] of R53 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(231.7300 mm, -90.2700 mm): Reference field of C144
+    @(233.9500 mm, -92.0000 mm): Pad 2 [+3V3_ADTR] of R53 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(226.7300 mm, -90.2700 mm): Reference field of R52
+    @(229.3750 mm, -91.0500 mm): Pad 4 [N$77] of U31 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(231.6600 mm, -64.2200 mm): Segment of X12 on F.Silkscreen
+    @(232.9300 mm, -62.9500 mm): PTH pad 1 [+3V3_AN] of X12
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(231.6600 mm, -64.2200 mm): Segment of X12 on F.Silkscreen
+    @(235.4700 mm, -62.9500 mm): PTH pad 2 [GND] of X12
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(226.7300 mm, -90.2700 mm): Reference field of R52
+    @(226.6250 mm, -91.0500 mm): Pad 3 [VIN] of U31 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -79.2700 mm): Reference field of R35
+    @(250.9500 mm, -81.0000 mm): Pad 2 [N$68] of C106 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -79.2700 mm): Reference field of R35
+    @(249.0500 mm, -81.0000 mm): Pad 1 [GND] of C106 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -76.2700 mm): Reference field of R18
+    @(249.0500 mm, -78.0000 mm): Pad 1 [N$69] of R35 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(248.7300 mm, -76.2700 mm): Reference field of R18
+    @(250.9500 mm, -78.0000 mm): Pad 2 [N$70] of R35 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(226.0188 mm, -94.2098 mm): Footprint text of U31 (Designator9)
+    @(227.6500 mm, -99.0000 mm): Pad 1 [+5V0_ADTR] of U$20 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(238.7300 mm, -143.2700 mm): Reference field of C118
+    @(239.6500 mm, -148.0000 mm): Pad 1 [+5V0_2] of U$9 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(238.7300 mm, -140.2700 mm): Reference field of R38
+    @(239.0500 mm, -142.0000 mm): Pad 1 [GND] of C118 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(238.7300 mm, -137.2700 mm): Reference field of R40
+    @(239.0500 mm, -139.0000 mm): Pad 1 [GND] of R38 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(221.8588 mm, -111.2598 mm): Footprint text of U7 (Designator9)
+    @(227.3300 mm, -112.4700 mm): Pad 1 [N$20] of C36 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(243.7300 mm, -140.2700 mm): Reference field of C109
+    @(245.9500 mm, -142.0000 mm): Pad 2 [N$76] of C114 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -140.2700 mm): Reference field of C117
+    @(254.0500 mm, -142.0000 mm): Pad 1 [GND] of C116 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(253.7300 mm, -140.2700 mm): Reference field of C117
+    @(255.9500 mm, -142.0000 mm): Pad 2 [N$78] of C116 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(243.7300 mm, -137.2700 mm): Reference field of R39
+    @(245.9500 mm, -139.0000 mm): Pad 2 [N$73] of C109 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(238.7300 mm, -143.2700 mm): Reference field of C118
+    @(244.3500 mm, -148.0000 mm): Pad 2 [N$73] of U$9 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(243.7300 mm, -143.2700 mm): Reference field of C114
+    @(244.3500 mm, -148.0000 mm): Pad 2 [N$73] of U$9 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(238.7300 mm, -140.2700 mm): Reference field of R38
+    @(240.9500 mm, -142.0000 mm): Pad 2 [+5V0_2] of C118 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(243.7300 mm, -140.2700 mm): Reference field of C109
+    @(244.0500 mm, -142.0000 mm): Pad 1 [GND] of C114 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(243.7300 mm, -137.2700 mm): Reference field of R39
+    @(244.0500 mm, -139.0000 mm): Pad 1 [N$74] of C109 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(238.7300 mm, -137.2700 mm): Reference field of R40
+    @(240.9500 mm, -139.0000 mm): Pad 2 [N$75] of R38 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -187.9680 mm): Segment of X33 on F.Silkscreen
+    @(271.3970 mm, -186.6980 mm): PTH pad 1 [+5V0_PA_3] of X33
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(270.1270 mm, -187.9680 mm): Segment of X33 on F.Silkscreen
+    @(273.9370 mm, -186.6980 mm): PTH pad 2 [GND] of X33
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(219.8888 mm, -144.5598 mm): Footprint text of U10 (Designator9)
+    @(224.9800 mm, -145.8700 mm): Pad 1 [N$29] of C54 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(219.8888 mm, -144.5598 mm): Footprint text of U10 (Designator9)
+    @(228.0200 mm, -144.3400 mm): Pad 1 [GND] of R20 on F.Cu
+
+** Found 89 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+    @(121.0000 mm, -93.7250 mm): Pad 18 [GND] of U34 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(121.0000 mm, -90.2750 mm): Pad 8 [GND] of U34 on F.Cu
+    @(121.0000 mm, -92.0000 mm): Pad 21 [GND] of U34 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(121.0000 mm, -90.2750 mm): Pad 8 [GND] of U34 on F.Cu
+    @(120.0500 mm, -85.0000 mm): Pad 1 [GND] of R56 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(124.8500 mm, -82.0000 mm): Pad 2 [GND] of C155 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(124.8500 mm, -82.0000 mm): Pad 2 [GND] of C155 on F.Cu
+    @(120.0500 mm, -85.0000 mm): Pad 1 [GND] of R56 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(124.8500 mm, -82.0000 mm): Pad 2 [GND] of C155 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.0500 mm, -86.0000 mm): Pad 1 [GND] of R42 on F.Cu
+    @(132.0500 mm, -83.0000 mm): Pad 1 [GND] of C127 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(132.0500 mm, -80.0000 mm): Track [GND] on F.Cu, length 1.0000 mm
+    @(132.0500 mm, -83.0000 mm): Pad 1 [GND] of C127 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(137.0500 mm, -86.0000 mm): Pad 1 [GND] of R44 on F.Cu
+    @(141.0500 mm, -86.0000 mm): Via [GND] on F.Cu - B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(144.0000 mm, -33.5000 mm): Zone [GND] on F.Cu, priority 7
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.5976 mm, -91.2500 mm): Pad 4 [GND] of U27 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.5976 mm, -91.2500 mm): Pad 4 [GND] of U27 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(146.6250 mm, -92.9500 mm): Pad 1 [GND] of U26 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(147.0500 mm, -83.0000 mm): Pad 1 [GND] of C125 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(159.0500 mm, -86.0000 mm): Pad 1 [GND] of C136 on F.Cu
+    @(164.0500 mm, -86.0000 mm): Pad 1 [GND] of C135 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(159.0500 mm, -86.0000 mm): Pad 1 [GND] of C136 on F.Cu
+    @(154.0500 mm, -86.0000 mm): Pad 1 [GND] of C137 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(163.5976 mm, -91.2500 mm): Pad 4 [GND] of U29 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(163.5976 mm, -91.2500 mm): Pad 4 [GND] of U29 on F.Cu
+    @(164.0500 mm, -86.0000 mm): Pad 1 [GND] of C135 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(164.0500 mm, -86.0000 mm): Pad 1 [GND] of C135 on F.Cu
+    @(164.0500 mm, -83.0000 mm): Pad 1 [GND] of R48 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(164.0500 mm, -83.0000 mm): Pad 1 [GND] of R48 on F.Cu
+    @(164.8500 mm, -80.0000 mm): Track [GND] on F.Cu, length 1.0000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(168.6250 mm, -92.9500 mm): Pad 1 [GND] of U28 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(168.8500 mm, -80.0000 mm): Pad 2 [GND] of C130 on F.Cu
+    @(169.0500 mm, -83.0000 mm): Pad 1 [GND] of C138 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(169.0500 mm, -83.0000 mm): Pad 1 [GND] of C138 on F.Cu
+    @(169.0500 mm, -86.0000 mm): Pad 1 [GND] of R46 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(176.0500 mm, -74.0000 mm): Pad 1 [GND] of C140 on F.Cu
+    @(176.0500 mm, -71.0000 mm): Pad 1 [GND] of C141 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(176.0500 mm, -74.0000 mm): Pad 1 [GND] of C140 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(177.0000 mm, -80.0000 mm): Via [GND] on F.Cu - B.Cu
+    @(175.5976 mm, -79.2500 mm): Pad 4 [GND] of U30 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(181.0500 mm, -77.0000 mm): Pad 1 [GND] of R50 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(181.0500 mm, -77.0000 mm): Pad 1 [GND] of R50 on F.Cu
+    @(181.0500 mm, -80.0000 mm): Pad 1 [GND] of C142 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(186.7000 mm, -109.4500 mm): Zone [GND] on F.Cu, priority 19
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(223.1500 mm, -109.6500 mm): Zone [GND] on F.Cu, priority 22
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(227.0500 mm, -89.0000 mm): Pad 1 [GND] of R52 on F.Cu
+    @(226.6250 mm, -92.9500 mm): Pad 1 [GND] of U31 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(237.8500 mm, -89.0000 mm): Pad 2 [GND] of C145 on F.Cu
+    @(237.0500 mm, -92.0000 mm): Pad 1 [GND] of R54 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(237.8500 mm, -89.0000 mm): Pad 2 [GND] of C145 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(238.0000 mm, -100.7250 mm): Pad 18 [GND] of U32 on F.Cu
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(238.0000 mm, -97.2750 mm): Pad 8 [GND] of U32 on F.Cu
+    @(238.0000 mm, -99.0000 mm): Pad 21 [GND] of U32 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(238.0000 mm, -97.2750 mm): Pad 8 [GND] of U32 on F.Cu
+    @(237.0500 mm, -92.0000 mm): Pad 1 [GND] of R54 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(243.4000 mm, -142.7500 mm): Track [GND] on F.Cu, length 0.7464 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(248.5976 mm, -147.2500 mm): Pad 4 [GND] of U25 on F.Cu
+    @(250.0000 mm, -148.0000 mm): Via [GND] on F.Cu - B.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(249.0500 mm, -139.0000 mm): Pad 1 [GND] of C115 on F.Cu
+    @(249.8500 mm, -136.0000 mm): Pad 2 [GND] of C111 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(250.0000 mm, -148.0000 mm): Via [GND] on F.Cu - B.Cu
+    @(253.6250 mm, -148.9500 mm): Pad 1 [GND] of U24 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(254.0500 mm, -139.0000 mm): Pad 1 [GND] of C117 on F.Cu
+    @(254.0500 mm, -142.0000 mm): Pad 1 [GND] of C116 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(254.0500 mm, -139.0000 mm): Pad 1 [GND] of C117 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(254.0500 mm, -81.0000 mm): Pad 1 [GND] of R36 on F.Cu
+    @(254.0500 mm, -78.0000 mm): Track [GND] on F.Cu, length 1.0000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(258.5976 mm, -86.2500 mm): Pad 4 [GND] of U23 on F.Cu
+    @(259.0500 mm, -81.0000 mm): Pad 1 [GND] of C108 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(259.0500 mm, -81.0000 mm): Pad 1 [GND] of C108 on F.Cu
+    @(259.0500 mm, -78.0000 mm): Pad 1 [GND] of C52 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(259.8500 mm, -75.0000 mm): Pad 2 [GND] of C49 on F.Cu
+    @(259.0500 mm, -78.0000 mm): Pad 1 [GND] of C52 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(260.0000 mm, -87.0000 mm): Pad 9 [GND] of U23 on F.Cu
+    @(258.5976 mm, -86.2500 mm): Pad 4 [GND] of U23 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(263.6250 mm, -87.9500 mm): Pad 1 [GND] of U9 on F.Cu
+    @(280.0762 mm, 0.0762 mm): Zone [GND] on F.Cu, priority 23
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(71.2500 mm, -175.9000 mm): Zone [VIN] on F.Cu, priority 22
+    @(215.5500 mm, -208.3500 mm): Zone [VIN] on F.Cu, priority 28
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(111.4324 mm, -146.3824 mm): Track [VIN] on F.Cu, length 1.9550 mm
+    @(119.0500 mm, -125.0000 mm): Track [VIN] on F.Cu, length 1.0767 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(144.0000 mm, -28.9000 mm): Zone [VIN] on F.Cu, priority 12
+    @(105.6000 mm, -28.9500 mm): Zone [VIN] on F.Cu, priority 16
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(144.0000 mm, -28.9000 mm): Zone [VIN] on F.Cu, priority 12
+    @(144.0000 mm, -28.9000 mm): Zone [VIN] on F.Cu, priority 12
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(144.0000 mm, -28.9000 mm): Zone [VIN] on F.Cu, priority 12
+    @(186.8500 mm, -28.6500 mm): Zone [VIN] on F.Cu, priority 21
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(187.6000 mm, -169.0500 mm): Zone [VIN] on F.Cu, priority 25
+    @(163.1000 mm, -139.6500 mm): Zone [VIN] on F.Cu, priority 29
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(157.0733 mm, -128.0233 mm): Track [VIN] on F.Cu, length 2.8614 mm
+    @(158.0500 mm, -119.1000 mm): Track [VIN] on F.Cu, length 2.6870 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(180.1800 mm, -32.2900 mm): Pad 1 [VIN] of C22 on F.Cu
+    @(179.1315 mm, -80.2500 mm): Track [VIN] on F.Cu, length 0.5000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(221.0500 mm, -138.4500 mm): Zone [VIN] on F.Cu, priority 8
+    @(163.1000 mm, -139.6500 mm): Zone [VIN] on F.Cu, priority 29
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(222.4650 mm, -108.1000 mm): Pad 3 [VIN] of U7 on F.Cu
+    @(222.8281 mm, -132.8737 mm): Track [VIN] on B.Cu, length 31.2548 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(99.0000 mm, -113.6500 mm): Zone [+3V4] on F.Cu, priority 6
+    @(99.0000 mm, -113.6500 mm): Zone [+3V4] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(135.8000 mm, -35.7000 mm): Zone [+1V8_FPGA] on F.Cu, priority 6
+    @(135.8000 mm, -35.7000 mm): Zone [+1V8_FPGA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(178.2000 mm, -112.1000 mm): Zone [+3V3_ADAR_12] on F.Cu, priority 6
+    @(178.2000 mm, -112.1000 mm): Zone [+3V3_ADAR_12] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(178.2000 mm, -112.1000 mm): Zone [+3V3_ADAR_12] on F.Cu, priority 6
+    @(178.2000 mm, -112.1000 mm): Zone [+3V3_ADAR_12] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(258.9830 mm, -121.6670 mm): Track [+3V3_ADAR_12] on B.Cu, length 6.3063 mm
+    @(196.2800 mm, -109.7700 mm): Track [+3V3_ADAR_12] on F.Cu, length 12.1000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(178.4000 mm, -36.8000 mm): Zone [+3V3_FPGA] on F.Cu, priority 6
+    @(178.4000 mm, -36.8000 mm): Zone [+3V3_FPGA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(178.4000 mm, -36.8000 mm): Zone [+3V3_FPGA] on F.Cu, priority 6
+    @(178.4000 mm, -36.8000 mm): Zone [+3V3_FPGA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(178.3000 mm, -182.6000 mm): Zone [+5V0_PA_3] on F.Cu, priority 6
+    @(178.3000 mm, -182.6000 mm): Zone [+5V0_PA_3] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(271.3970 mm, -186.6980 mm): PTH pad 1 [+5V0_PA_3] of X33
+    @(197.1300 mm, -191.1700 mm): Track [+5V0_PA_3] on F.Cu, length 8.5277 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(63.7000 mm, -35.9000 mm): Zone [+3V3] on F.Cu, priority 6
+    @(63.7000 mm, -35.9000 mm): Zone [+3V3] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(104.7500 mm, -228.4000 mm): Zone [+5V5_PA] on F.Cu, priority 6
+    @(104.7500 mm, -228.4000 mm): Zone [+5V5_PA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(104.7500 mm, -228.4000 mm): Zone [+5V5_PA] on F.Cu, priority 6
+    @(104.7500 mm, -228.4000 mm): Zone [+5V5_PA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(97.1500 mm, -35.7500 mm): Zone [+1V0_FPGA] on F.Cu, priority 6
+    @(97.1500 mm, -35.7500 mm): Zone [+1V0_FPGA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(97.1500 mm, -35.7500 mm): Zone [+1V0_FPGA] on F.Cu, priority 6
+    @(97.1500 mm, -35.7500 mm): Zone [+1V0_FPGA] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(212.6000 mm, -145.6000 mm): Zone [+3V3_SW] on F.Cu, priority 6
+    @(212.6000 mm, -145.6000 mm): Zone [+3V3_SW] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(235.7500 mm, -159.7000 mm): Track [+3V3_SW] on F.Cu, length 6.6468 mm
+    @(234.2317 mm, -159.9245 mm): Track [+3V3_SW] on B.Cu, length 30.3151 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(238.0250 mm, -65.2604 mm): Zone [+3V3_AN] on F.Cu, priority 6
+    @(238.0250 mm, -65.2604 mm): Zone [+3V3_AN] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(141.6500 mm, -183.2000 mm): Zone [+5V0_PA_2] on F.Cu, priority 6
+    @(141.6500 mm, -183.2000 mm): Zone [+5V0_PA_2] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(62.8000 mm, -184.0500 mm): Zone [+3V3_VDD_SW] on F.Cu, priority 6
+    @(62.8000 mm, -184.0500 mm): Zone [+3V3_VDD_SW] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(62.8000 mm, -184.0500 mm): Zone [+3V3_VDD_SW] on F.Cu, priority 6
+    @(62.8000 mm, -184.0500 mm): Zone [+3V3_VDD_SW] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(214.6500 mm, -112.2500 mm): Zone [+3V3_ADAR_34] on F.Cu, priority 6
+    @(214.6500 mm, -112.2500 mm): Zone [+3V3_ADAR_34] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(264.6086 mm, -148.1407 mm): Track [+3V3_ADAR_34] on B.Cu, length 4.1544 mm
+    @(234.5300 mm, -116.9200 mm): Track [+3V3_ADAR_34] on F.Cu, length 12.9825 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(216.9500 mm, -36.7000 mm): Zone [+5V0_0] on F.Cu, priority 7
+    @(216.9500 mm, -36.7000 mm): Zone [+5V0_0] on F.Cu, priority 7
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(219.9476 mm, -64.0000 mm): Track [+5V0_0] on F.Cu, length 0.5000 mm
+    @(216.9500 mm, -61.1000 mm): Pad 2 [+5V0_0] of C28 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(95.3685 mm, -194.6585 mm): Track [+5V0_PA_1] on B.Cu, length 4.9558 mm
+    @(105.7500 mm, -197.8500 mm): Track [+5V0_PA_1] on F.Cu, length 4.8790 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(105.2000 mm, -183.0500 mm): Zone [+5V0_PA_1] on F.Cu, priority 6
+    @(105.2000 mm, -183.0500 mm): Zone [+5V0_PA_1] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(122.9401 mm, -18.2125 mm): Track [+5V0_ADAR] on F.Cu, length 9.1343 mm
+    @(128.7000 mm, -114.8900 mm): Pad 1 [+5V0_ADAR] of U$13 on F.Cu
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(135.8000 mm, -113.1000 mm): Zone [+5V0_ADAR] on F.Cu, priority 6
+    @(135.8000 mm, -113.1000 mm): Zone [+5V0_ADAR] on F.Cu, priority 6
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(133.0700 mm, -134.5712 mm): Track [+5V0_ADAR] on F.Cu, length 6.5266 mm
+    @(148.6500 mm, -126.5000 mm): Track [+5V0_ADAR] on F.Cu, length 15.2000 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(135.8000 mm, -113.1000 mm): Zone [+5V0_ADAR] on F.Cu, priority 6
+    @(135.8000 mm, -113.1000 mm): Zone [+5V0_ADAR] on F.Cu, priority 6
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Text height out of range
+    - Text thickness out of range
+    - Footprint component type doesn't match footprint pads
+    - Footprint not found in libraries
+    - Footprint doesn't match copy in library
+
+** End of Report **

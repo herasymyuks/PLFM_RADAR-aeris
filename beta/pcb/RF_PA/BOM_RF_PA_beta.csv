@@ -1,0 +1,12 @@
+item,qty,references,value,deviceset,device,package,manufacturer,mpn,mpn_confidence,dnp,note
+1,2,J1 J2,,142-0731-211,,1420731211,Cinch Connectivity (Johnson),142-0731-211,HIGH,no,SMA end-launch jack
+2,1,X2,,22-23-2021,,22-23-2021,Molex,22-23-2021,HIGH,no,"KK 254 header, 2 pos"
+3,1,X3,,22-23-2031,,22-23-2031,Molex,22-23-2031,HIGH,no,"KK 254 header, 3 pos"
+4,1,22V,,AK300/2,,AK300/2,PTR Messtechnik,AK300/2,HIGH,no,screw terminal 2 pos (library con-ptr500); verify current PTR part code AK300/2-5.0
+5,6,C2 C3 C6 C7 C8 C9,0.1µF,C-EU,C0402,C0402,Murata,GRM155R71C104KA88D,MEDIUM,no,0402 X7R (50 V / 16 V for 100 nF)
+6,3,C1 C4 C5,10µF,C-EU,C1206,C1206,Murata,GRM31CR61E106KA12L,MEDIUM,no,1206 X5R 25 V
+7,1,U$1,,QPA2962_B,,QPA2962_B,Qorvo,QPA2962,HIGH,no,power amplifier (EAGLE deviceset suffix _B stripped)
+8,6,R2 R3 R5 R7 R8 R9,0R,R-EU_,R0402,R0402,Yageo,RC0402JR-070RL,MEDIUM,no,jumper 0 Ω
+9,1,R6,0R,R-EU_,R0603,R0603,Yageo,RC0603JR-070RL,MEDIUM,no,jumper 0 Ω
+10,2,R1 R4,10R,R-EU_,R0402,R0402,Yageo,RC0402FR-0710RL,MEDIUM,no,1 % thick film
+11,1,R10,5mR,WSL2816R1000FEH,,WSL2816_VIS,Vishay,WSL2816R1000FEH,MEDIUM,no,"deviceset = 0.1 Ω shunt, but schematic value is 5 mΩ — conflict, designer to confirm (WSL2816R0050FEA would be the 5 mΩ part)"

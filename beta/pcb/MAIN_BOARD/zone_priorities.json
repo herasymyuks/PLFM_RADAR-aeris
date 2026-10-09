@@ -1,0 +1,14 @@
+[
+ {
+  "net": "-3V3_SW",
+  "layer": "In5.Cu",
+  "bbox_mm": [
+   112.85,
+   -233.65,
+   142.8,
+   196.3
+  ],
+  "priority_from": 6,
+  "priority_to": 7
+ }
+]

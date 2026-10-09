@@ -1,0 +1,332 @@
+[
+ {
+  "ref": "X14",
+  "fp": "22-23-2021",
+  "cluster": "X14",
+  "edge": "right",
+  "frm": [
+   2.95,
+   613.75
+  ],
+  "to": [
+   272.667,
+   -126.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X30",
+  "fp": "22-23-2021",
+  "cluster": "X30",
+  "edge": "left",
+  "frm": [
+   2.95,
+   646.45
+  ],
+  "to": [
+   6.667,
+   -192.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X6",
+  "fp": "22-23-2021",
+  "cluster": "X6",
+  "edge": "bottom",
+  "frm": [
+   2.95,
+   526.55
+  ],
+  "to": [
+   176.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X8",
+  "fp": "22-23-2021",
+  "cluster": "X8",
+  "edge": "bottom",
+  "frm": [
+   2.95,
+   548.35
+  ],
+  "to": [
+   145.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X7",
+  "fp": "22-23-2021",
+  "cluster": "X7",
+  "edge": "bottom",
+  "frm": [
+   2.95,
+   537.45
+  ],
+  "to": [
+   164.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X26",
+  "fp": "22-23-2021",
+  "cluster": "X26",
+  "edge": "right",
+  "frm": [
+   2.95,
+   354.95
+  ],
+  "to": [
+   272.667,
+   -91.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X34",
+  "fp": "22-23-2021",
+  "cluster": "X34",
+  "edge": "right",
+  "frm": [
+   2.95,
+   690.05
+  ],
+  "to": [
+   272.667,
+   -99.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X9",
+  "fp": "22-23-2021",
+  "cluster": "X9",
+  "edge": "right",
+  "frm": [
+   2.95,
+   210.0
+  ],
+  "to": [
+   272.667,
+   -141.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X2",
+  "fp": "22-23-2021",
+  "cluster": "X2",
+  "edge": "right",
+  "frm": [
+   34.5,
+   100.55
+  ],
+  "to": [
+   272.667,
+   -80.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X17",
+  "fp": "22-23-2021",
+  "cluster": "X17",
+  "edge": "bottom",
+  "frm": [
+   11.3,
+   210.0
+  ],
+  "to": [
+   133.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X3",
+  "fp": "22-23-2021",
+  "cluster": "X3",
+  "edge": "top",
+  "frm": [
+   2.95,
+   591.95
+  ],
+  "to": [
+   99.667,
+   -292.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X13",
+  "fp": "22-23-2021",
+  "cluster": "X13",
+  "edge": "bottom",
+  "frm": [
+   2.95,
+   602.85
+  ],
+  "to": [
+   126.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X35",
+  "fp": "22-23-2021",
+  "cluster": "X35",
+  "edge": "bottom",
+  "frm": [
+   2.95,
+   700.95
+  ],
+  "to": [
+   119.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X31",
+  "fp": "22-23-2021",
+  "cluster": "X31",
+  "edge": "left",
+  "frm": [
+   2.95,
+   657.35
+  ],
+  "to": [
+   6.667,
+   -200.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X32",
+  "fp": "22-23-2021",
+  "cluster": "X32",
+  "edge": "top",
+  "frm": [
+   2.95,
+   668.25
+  ],
+  "to": [
+   144.667,
+   -292.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X15",
+  "fp": "22-23-2021",
+  "cluster": "X15",
+  "edge": "right",
+  "frm": [
+   2.95,
+   624.65
+  ],
+  "to": [
+   272.667,
+   -149.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X10",
+  "fp": "22-23-2021",
+  "cluster": "X10",
+  "edge": "right",
+  "frm": [
+   2.95,
+   559.25
+  ],
+  "to": [
+   272.667,
+   -157.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X29",
+  "fp": "22-23-2021",
+  "cluster": "X29",
+  "edge": "right",
+  "frm": [
+   2.95,
+   635.55
+  ],
+  "to": [
+   272.667,
+   -165.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X28",
+  "fp": "22-23-2021",
+  "cluster": "X28",
+  "edge": "bottom",
+  "frm": [
+   34.5,
+   454.55
+  ],
+  "to": [
+   112.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X25",
+  "fp": "22-23-2021",
+  "cluster": "X25",
+  "edge": "bottom",
+  "frm": [
+   34.5,
+   259.25
+  ],
+  "to": [
+   157.667,
+   -7.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X11",
+  "fp": "22-23-2021",
+  "cluster": "X11",
+  "edge": "right",
+  "frm": [
+   2.95,
+   570.15
+  ],
+  "to": [
+   272.667,
+   -72.698
+  ],
+  "status": "PLACED-EDGE"
+ },
+ {
+  "ref": "X33",
+  "fp": "22-23-2021",
+  "cluster": "X33",
+  "edge": "right",
+  "frm": [
+   2.95,
+   679.15
+  ],
+  "to": [
+   272.667,
+   -186.698
+  ],
+  "status": "PLACED-EDGE"
+ }
+]

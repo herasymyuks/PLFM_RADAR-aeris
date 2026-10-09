@@ -1,0 +1,542 @@
+[
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   -0.0762,
+   -300.0762,
+   280.1524,
+   300.1524
+  ],
+  "priority_from": 4,
+  "priority_to": 23
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   184.9,
+   -240.9,
+   8.1,
+   16.3
+  ],
+  "priority_from": 6,
+  "priority_to": 24
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   143.75,
+   -241.1,
+   8.1,
+   16.0
+  ],
+  "priority_from": 6,
+  "priority_to": 23
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   215.15,
+   -124.35,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 22
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   63.15,
+   -126.25,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 21
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   99.5,
+   -125.75,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 20
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   178.7,
+   -124.2,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 19
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   178.9,
+   -48.9,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 18
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   217.45,
+   -48.8,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 17
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   63.3,
+   -196.15,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 16
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   142.15,
+   -195.3,
+   8.0,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 15
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   177.3,
+   -157.5,
+   7.95,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 14
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   213.15,
+   -157.7,
+   7.95,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 13
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   105.3,
+   -240.5,
+   7.95,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 12
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   178.85,
+   -194.7,
+   7.95,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 11
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   136.35,
+   -125.2,
+   7.95,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 10
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   105.75,
+   -195.15,
+   7.95,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 9
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   97.8,
+   -47.95,
+   7.8,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 8
+ },
+ {
+  "net": "GND",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   136.2,
+   -47.8,
+   7.8,
+   15.4
+  ],
+  "priority_from": 6,
+  "priority_to": 7
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   2.55,
+   -188.3,
+   19.6,
+   168.1
+  ],
+  "priority_from": 6,
+  "priority_to": 30
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   153.5,
+   -170.65,
+   69.6,
+   35.6
+  ],
+  "priority_from": 6,
+  "priority_to": 29
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   46.0,
+   -221.85,
+   169.55,
+   13.5
+  ],
+  "priority_from": 6,
+  "priority_to": 28
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   49.05,
+   -30.3,
+   219.85,
+   8.1
+  ],
+  "priority_from": 6,
+  "priority_to": 27
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   48.0,
+   -106.65,
+   176.1,
+   8.1
+  ],
+  "priority_from": 6,
+  "priority_to": 26
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   45.5,
+   -177.15,
+   142.1,
+   8.1
+  ],
+  "priority_from": 6,
+  "priority_to": 25
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   99.65,
+   -109.8,
+   7.8,
+   4.8
+  ],
+  "priority_from": 6,
+  "priority_to": 24
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   63.3,
+   -110.3,
+   7.8,
+   4.8
+  ],
+  "priority_from": 6,
+  "priority_to": 23
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   63.45,
+   -180.2,
+   7.8,
+   4.3
+  ],
+  "priority_from": 6,
+  "priority_to": 22
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   179.05,
+   -32.85,
+   7.8,
+   4.2
+  ],
+  "priority_from": 6,
+  "priority_to": 21
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   217.6,
+   -32.75,
+   7.8,
+   3.7
+  ],
+  "priority_from": 6,
+  "priority_to": 20
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   64.35,
+   -32.2,
+   7.8,
+   3.45
+  ],
+  "priority_from": 6,
+  "priority_to": 19
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   105.4,
+   -224.55,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 18
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   177.4,
+   -141.55,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 17
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   97.8,
+   -32.25,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 16
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   105.85,
+   -179.2,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 15
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   142.3,
+   -179.35,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 14
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   136.45,
+   -109.25,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 13
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   136.2,
+   -32.2,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 12
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   178.85,
+   -108.25,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 11
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   143.9,
+   -224.55,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 10
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   215.3,
+   -108.4,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 9
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   213.25,
+   -141.75,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 8
+ },
+ {
+  "net": "VIN",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   184.85,
+   -224.15,
+   7.8,
+   3.3
+  ],
+  "priority_from": 6,
+  "priority_to": 7
+ },
+ {
+  "net": "+5V0_0",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   205.65,
+   -48.85,
+   11.3,
+   12.15
+  ],
+  "priority_from": 6,
+  "priority_to": 7
+ },
+ {
+  "net": "N$1",
+  "layer": "F.Cu",
+  "bbox_mm": [
+   103.0,
+   -33.35,
+   2.6,
+   0.9
+  ],
+  "priority_from": 6,
+  "priority_to": 7
+ }
+]

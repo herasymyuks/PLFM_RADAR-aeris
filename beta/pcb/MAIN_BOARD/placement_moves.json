@@ -1,0 +1,97 @@
+[
+ {
+  "ref": "L19",
+  "fp": "L5650M",
+  "cluster": "C185",
+  "anchor": [
+   43.8,
+   -187.7
+  ],
+  "anchor_kind": "small-net",
+  "frm": [
+   2.95,
+   63.35
+  ],
+  "to": [
+   8.0,
+   -240.0
+  ],
+  "status": "PLACED"
+ },
+ {
+  "ref": "C159",
+  "fp": "C1206",
+  "cluster": "C185",
+  "anchor": [
+   43.8,
+   -187.7
+  ],
+  "anchor_kind": "small-net",
+  "frm": [
+   1.45,
+   69.35
+  ],
+  "to": [
+   6.0,
+   -235.0
+  ],
+  "status": "PLACED"
+ },
+ {
+  "ref": "C184",
+  "fp": "C0805",
+  "cluster": "C185",
+  "anchor": [
+   43.8,
+   -187.7
+  ],
+  "anchor_kind": "small-net",
+  "frm": [
+   6.7,
+   69.35
+  ],
+  "to": [
+   12.0,
+   -235.0
+  ],
+  "status": "PLACED"
+ },
+ {
+  "ref": "C185",
+  "fp": "C0402",
+  "cluster": "C185",
+  "anchor": [
+   43.8,
+   -187.7
+  ],
+  "anchor_kind": "small-net",
+  "frm": [
+   0.45,
+   74.75
+  ],
+  "to": [
+   5.0,
+   -232.0
+  ],
+  "status": "PLACED"
+ },
+ {
+  "ref": "C186",
+  "fp": "C0402",
+  "cluster": "C185",
+  "anchor": [
+   43.8,
+   -187.7
+  ],
+  "anchor_kind": "small-net",
+  "frm": [
+   6.7,
+   74.75
+  ],
+  "to": [
+   9.0,
+   -232.0
+  ],
+  "status": "PLACED"
+ }
+]

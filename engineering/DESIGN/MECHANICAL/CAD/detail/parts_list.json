@@ -1,0 +1,415 @@
+{
+  "parts": [
+    {
+      "group": "HEAD",
+      "part": "Tray \u2014 base + sides + rear, 2.5 mm Al 5754, 3 bends R2.5, flanges 15 mm with M4 PEM nuts",
+      "material": "Al",
+      "mass_g_estimate": 1558.6,
+      "note": "8 lid holes M4, 10 front-plate holes M4, \u00d870 cable entry, intake slots",
+      "fasteners": "PEM S-M4-1 \u00d718"
+    },
+    {
+      "group": "HEAD",
+      "part": "Front plate 2.5 mm Al with radome window opening and intake louvres",
+      "material": "Al",
+      "mass_g_estimate": 346.1,
+      "note": "window 175\u00d7258, 16 M3 clamp holes",
+      "fasteners": "M4\u00d78 \u00d710 to tray front flanges"
+    },
+    {
+      "group": "HEAD",
+      "part": "Radome window PTFE 2 mm (outside the front plate)",
+      "material": "PTFE",
+      "mass_g_estimate": 246.3,
+      "note": "RF loss \u2248 0.1 dB at 10.5 GHz (PTFE \u03b5r 2.1, tan\u03b4 0.0002 \u2014 to be confirmed)",
+      "fasteners": ""
+    },
+    {
+      "group": "HEAD",
+      "part": "Window gasket EPDM 1.5 mm (ring 10 mm)",
+      "material": "EPDM",
+      "mass_g_estimate": 16.6,
+      "note": "",
+      "fasteners": ""
+    },
+    {
+      "group": "HEAD",
+      "part": "Window clamp frame 2 mm Al, 14 mm wide",
+      "material": "Al",
+      "mass_g_estimate": 68.9,
+      "note": "",
+      "fasteners": "M3\u00d710 \u00d716 + nyloc"
+    },
+    {
+      "group": "HEAD",
+      "part": "Lid 2.5 mm Al with exhaust slots",
+      "material": "Al",
+      "mass_g_estimate": 272.4,
+      "note": "",
+      "fasteners": "M4\u00d78 \u00d78"
+    },
+    {
+      "group": "HEAD",
+      "part": "Lid gasket EPDM 3 mm self-adhesive, 15 mm wide on the flanges",
+      "material": "EPDM",
+      "mass_g_estimate": 44.0,
+      "note": "compressed to 2 mm \u2192 IP54 target",
+      "fasteners": ""
+    },
+    {
+      "group": "HEAD",
+      "part": "PA heat spreader 300\u00d7300\u00d710 Al 6061, machined fin fields, M3 tapped (16\u00d77 PA + 6 antenna)",
+      "material": "Al",
+      "mass_g_estimate": 3400.4,
+      "note": "thermal pads 5\u00d75 under each QPA2962; antenna on 2.4 mm nylon spacers",
+      "fasteners": "M3\u00d76 \u00d7118 (PA 112 + antenna 6)"
+    },
+    {
+      "group": "HEAD",
+      "part": "Plate bracket L 25\u00d725\u00d73 Al at x=5 z=20",
+      "material": "Al",
+      "mass_g_estimate": 26.4,
+      "note": "bolts the plate to the side wall and to the front flange",
+      "fasteners": "M5\u00d712 \u00d72 + M5\u00d716 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Plate bracket L 25\u00d725\u00d73 Al at x=5 z=265.0",
+      "material": "Al",
+      "mass_g_estimate": 26.4,
+      "note": "bolts the plate to the side wall and to the front flange",
+      "fasteners": "M5\u00d712 \u00d72 + M5\u00d716 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Plate bracket L 25\u00d725\u00d73 Al at x=280 z=20",
+      "material": "Al",
+      "mass_g_estimate": 26.4,
+      "note": "bolts the plate to the side wall and to the front flange",
+      "fasteners": "M5\u00d712 \u00d72 + M5\u00d716 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Plate bracket L 25\u00d725\u00d73 Al at x=280 z=265.0",
+      "material": "Al",
+      "mass_g_estimate": 26.4,
+      "note": "bolts the plate to the side wall and to the front flange",
+      "fasteners": "M5\u00d712 \u00d72 + M5\u00d716 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board carrier rail bottom U15\u00d712\u00d71.5 Al, 280 mm",
+      "material": "Al",
+      "mass_g_estimate": 41.5,
+      "note": "bolted to the side walls (M4) \u2014 spans the full width when the board is narrower",
+      "fasteners": "M4\u00d78 \u00d72"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board carrier rail top U15\u00d712\u00d71.5 Al, 280 mm",
+      "material": "Al",
+      "mass_g_estimate": 41.5,
+      "note": "bolted to the side walls (M4) \u2014 spans the full width when the board is narrower",
+      "fasteners": "M4\u00d78 \u00d72"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (4,4)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (256,4)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (116,114)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (256,114)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (116,250)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (256,250)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (4,296)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Main Board standoff M3\u00d710 hex at (256,296)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Synth carrier rail bottom U15\u00d712\u00d71.5 Al, 120 mm",
+      "material": "Al",
+      "mass_g_estimate": 18.2,
+      "note": "bolted to the side walls (M4) \u2014 spans the full width when the board is narrower",
+      "fasteners": "M4\u00d78 \u00d72"
+    },
+    {
+      "group": "HEAD",
+      "part": "Synth carrier rail top U15\u00d712\u00d71.5 Al, 120 mm",
+      "material": "Al",
+      "mass_g_estimate": 18.2,
+      "note": "bolted to the side walls (M4) \u2014 spans the full width when the board is narrower",
+      "fasteners": "M4\u00d78 \u00d72"
+    },
+    {
+      "group": "HEAD",
+      "part": "Synth standoff M3\u00d710 hex at (5,5)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Synth standoff M3\u00d710 hex at (95,5)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Synth standoff M3\u00d710 hex at (5,95)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Synth standoff M3\u00d710 hex at (95,95)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board carrier rail bottom U15\u00d712\u00d71.5 Al, 300 mm",
+      "material": "Al",
+      "mass_g_estimate": 44.4,
+      "note": "bolted to the side walls (M4) \u2014 spans the full width when the board is narrower",
+      "fasteners": "M4\u00d78 \u00d72"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board carrier rail top U15\u00d712\u00d71.5 Al, 300 mm",
+      "material": "Al",
+      "mass_g_estimate": 44.4,
+      "note": "bolted to the side walls (M4) \u2014 spans the full width when the board is narrower",
+      "fasteners": "M4\u00d78 \u00d72"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (10,10)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (140,10)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (270,10)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (10,120)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (270,120)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (10,230)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (270,230)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Power Board standoff M3\u00d710 hex at (138,268)",
+      "material": "steel",
+      "mass_g_estimate": 2.2,
+      "note": "",
+      "fasteners": "M3\u00d76 \u00d71"
+    },
+    {
+      "group": "HEAD",
+      "part": "Cable-entry gland plate 100\u00d7100\u00d72 Al under the base (M32 + M20 glands)",
+      "material": "Al",
+      "mass_g_estimate": 48.0,
+      "note": "harness from the slip ring: VIN, 22 V, USB",
+      "fasteners": "M4\u00d78 \u00d74; glands M32 + M20 IP68"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Turntable plate \u00d8340\u00d78 Al, 8\u00d7M6 to the head base, 12\u00d7M6 to the bearing outer ring",
+      "material": "Al",
+      "mass_g_estimate": 1863.6,
+      "note": "",
+      "fasteners": "M6\u00d716 \u00d78, M6\u00d725 \u00d712"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Slewing bearing OD190/ID100\u00d720 (4-point contact, e.g. igus PRT-04-100 class)",
+      "material": "steel",
+      "mass_g_estimate": 3218.3,
+      "note": "part number to be selected (axial \u2265 50 kg, moment \u2265 60 N\u00b7m)",
+      "fasteners": ""
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Ring pulley GT3 180T \u00d8172 Al (machined/3D-printed), clamped under the turntable",
+      "material": "Al",
+      "mass_g_estimate": 0.0,
+      "note": "",
+      "fasteners": "M4\u00d710 \u00d76"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Pedestal top plate 360\u00d7360\u00d75 Al, 12\u00d7M6 to the bearing inner ring, bore \u00d890",
+      "material": "Al",
+      "mass_g_estimate": 1658.3,
+      "note": "",
+      "fasteners": "M6\u00d720 \u00d712"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Pedestal housing 360\u00d7360\u00d7125 folded 2.5 mm Al (4 bends), open top, connector panel cut-out",
+      "material": "Al",
+      "mass_g_estimate": 1574.8,
+      "note": "DC input (XT60/M12), USB-B bulkhead, vent",
+      "fasteners": "M5\u00d710 \u00d712 to the top plate"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Stepper NEMA 23 76 mm",
+      "material": "steel",
+      "mass_g_estimate": 1897.8,
+      "note": "",
+      "fasteners": "M5\u00d712 \u00d74"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Motor bracket 80\u00d780\u00d73 Al with slotted belt-tension holes",
+      "material": "Al",
+      "mass_g_estimate": 41.4,
+      "note": "slots \u00b15 mm for GT3 tension",
+      "fasteners": "M5\u00d710 \u00d74 to the top plate"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Motor pulley GT3 60T \u00d857, bore 6.35",
+      "material": "Al",
+      "mass_g_estimate": 83.5,
+      "note": "",
+      "fasteners": "grub M4 \u00d72"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Through-bore slip ring \u00d899\u00d760, bore 60, 12 circuits (4\u00d710 A, 4\u00d710 A, 4 signal)",
+      "material": "plastic",
+      "mass_g_estimate": 350.7,
+      "note": "e.g. Senring H3899 class \u2014 select",
+      "fasteners": ""
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Slip-ring stator bracket 140\u00d7140\u00d73 Al",
+      "material": "Al",
+      "mass_g_estimate": 95.1,
+      "note": "stator fixed to the pedestal, rotor flange to the turntable",
+      "fasteners": "M4\u00d78 \u00d74"
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Stepper driver TB6600 on DIN rail",
+      "material": "plastic",
+      "mass_g_estimate": 298.6,
+      "note": "",
+      "fasteners": ""
+    },
+    {
+      "group": "PEDESTAL",
+      "part": "Mast flange \u00d8150\u00d710 steel, 4\u00d7M10 PCD 110 (ASSUMPTION \u2014 mast interface undefined)",
+      "material": "steel",
+      "mass_g_estimate": 1360.0,
+      "note": "",
+      "fasteners": "M10\u00d730 \u00d74"
+    }
+  ],
+  "mass_head_g": 6359,
+  "mass_pedestal_g": 12442,
+  "note": "volume \u00d7 density estimates; sheet parts modelled as solids without bend reliefs; stepper 1.1 kg included as steel box"
+}

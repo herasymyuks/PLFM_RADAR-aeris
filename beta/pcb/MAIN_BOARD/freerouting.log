@@ -1,0 +1,62 @@
+2026-10-09 14:00:42.315 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+WARNING: Final field userProfileSettings in class app.freerouting.settings.GlobalSettings has been mutated reflectively by class com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2 in unnamed module @78186a70 (file:/Users/void/PLFM_RADAR/beta/pcb/tools/freerouting-2.5.0.jar)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+2026-10-09 14:00:42.350 WARN   [startup] freerouting.json contains a stale 'logging.file.location' value: '/Users/void/Library/Logs/freerouting/freerouting.log'. The actual log file is being written to '/Users/void/PLFM_RADAR/beta/pcb/MAIN_BOARD/en/freerouting.log' (as resolved at startup). The stale value will be corrected in freerouting.json on next save. If you see this in Docker, the old JSON was written by an earlier version that stored the host path; the fix is to delete freerouting.json so it is regenerated with the correct path.
+2026-10-09 14:00:42.572 INFO   Hardware: 18 CPU cores, 474 CPU score, 9216 MB RAM
+2026-10-09 14:00:42.572 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-10-09 14:00:43.612 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-10-09 14:00:43.618 INFO   Opening 'MAIN_BOARD.dsn'...
+2026-10-09 14:00:44.214 INFO   [4A8D62\C584AA] Loading board file 'MAIN_BOARD.dsn'...
+2026-10-09 14:00:45.269 INFO   Layer 'In1.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-10-09 14:00:45.270 INFO   Layer 'In4.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-10-09 14:00:45.270 INFO   Layer 'In5.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-10-09 14:00:45.270 INFO   Layer 'In6.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-10-09 14:00:45.270 INFO   Layer 'In8.Cu' contains a power plane / large copper pour covering >=30% of the board; associated net(s) configured for plane routing.
+2026-10-09 14:00:45.270 WARN   DSN file 'MAIN_BOARD.dsn' was loaded with 48 warning(s).
+2026-10-09 14:00:45.296 WARN   Design Error: Component 'R61' pin '2' (ID 904) is outside board outline at (3550,-370500).
+2026-10-09 14:00:45.296 WARN   Design Error: Component 'R61' pin '1' (ID 903) is outside board outline at (-1550,-370500).
+2026-10-09 14:00:45.296 WARN   Design Error: Component 'R83' pin '2' (ID 874) is outside board outline at (3550,-418000).
+2026-10-09 14:00:45.296 WARN   Design Error: Component 'R83' pin '1' (ID 873) is outside board outline at (-1550,-418000).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R146' pin '2' (ID 736) is outside board outline at (3550,-560500).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R146' pin '1' (ID 735) is outside board outline at (-1550,-560500).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R145' pin '2' (ID 696) is outside board outline at (3550,-513000).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R145' pin '1' (ID 695) is outside board outline at (-1550,-513000).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R60' pin '2' (ID 678) is outside board outline at (3550,-323000).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R60' pin '1' (ID 677) is outside board outline at (-1550,-323000).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R84' pin '2' (ID 630) is outside board outline at (3550,-465500).
+2026-10-09 14:00:45.297 WARN   Design Error: Component 'R84' pin '1' (ID 629) is outside board outline at (-1550,-465500).
+2026-10-09 14:01:54.586 WARN   Design Warning: Board has 619 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 619 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 18 pin-to-pin clearance violations (first 5 shown):
+          - U69.V_8 <-> U69.25 [net GND]
+          - U69.V_7 <-> U69.25 [net GND]
+          - U69.V_6 <-> U69.25 [net GND]
+          - U69.V_5 <-> U69.25 [net GND]
+          - U69.V_4 <-> U69.25 [net GND]
+          ... and 13 more
+      * 601 fixed trace/via clearance violations (first 5 shown):
+          - FixedVia#26615 [net GND] <-> FixedTrace#23447 [net RF_TX_FIL]
+          - FixedVia#26597 [net GND] <-> FixedTrace#22967 [net RF_IO_1]
+          - FixedVia#26556 [net GND] <-> FixedTrace#22612 [net RF_IO_2]
+          - FixedVia#26482 [net GND] <-> FixedTrace#22984 [net RF_IO_3]
+          - FixedVia#26479 [net GND] <-> FixedTrace#19695 [net RF_RX_FIL]
+          ... and 596 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 619 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-10-09 14:02:01.391 INFO   [4A8D62\C584AA] Starting routing of 'MAIN_BOARD' on 8 threads...
+2026-10-09 14:02:01.491 INFO   [4A8D62\C584AA] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=17.
+2026-10-09 14:04:24.747 INFO   [4A8D62\C584AA] Fanout stage started on board '053ba7cbd50b15ef33f722374dc43540' with 2289 of 3225 SMD pins needing fanout (667 already connected, 269 netless).
+2026-10-09 14:06:32.479 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'ADC_D0_N' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:06:39.945 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'ADC_D3_N' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:07:00.920 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'TX3_2' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:07:07.409 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'RX4_2' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:07:20.153 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'DET4_2' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:07:41.235 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'RX2_1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:07:48.488 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'RX4_1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:08:01.708 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'RF_IO_1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:08:09.888 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'DET2_1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:09:01.106 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'RF_IO_3' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:09:40.294 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'RF_IO_4' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 14:15:38.470 INFO   [4A8D62\C584AA] Fanout pass #1 on board '93545f89e0cae8be8c8fff880be6e0fc' completed in 610.37 seconds with 762 SMD pins fanouted, 0 not routed, 0 insert errors, +64 extra vias (1578 SMD pins still to check in pass, ripup costs=100).

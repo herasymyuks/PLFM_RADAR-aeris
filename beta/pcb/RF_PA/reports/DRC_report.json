@@ -1,0 +1,468 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-09T14:02:04",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Text height out of range",
+            "key": "text_height"
+        },
+        {
+            "description": "Text thickness out of range",
+            "key": "text_thickness"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        },
+        {
+            "description": "Footprint not found in libraries",
+            "key": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint doesn't match copy in library",
+            "key": "lib_footprint_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "RF_PA.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Clearance violation ( clearance 0.1500 mm; actual 0.1230 mm)",
+            "items": [
+                {
+                    "description": "Polygon [GND] on F.Cu",
+                    "pos": {
+                        "x": 14.3365,
+                        "y": -15.2045
+                    },
+                    "uuid": "e74fdf53-97dd-405f-99b2-dda420cd9868"
+                },
+                {
+                    "description": "Track [VIN_M] on F.Cu, length 0.0294 mm",
+                    "pos": {
+                        "x": 17.455,
+                        "y": -15.6275
+                    },
+                    "uuid": "ea3d2cf7-81a2-4d81-87f5-b121eaff4256"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 35.0,
+                        "y": -60.0
+                    },
+                    "uuid": "3ee84708-785e-441b-8ad2-1dc0907629a8"
+                },
+                {
+                    "description": "Reference field of UNK22V0",
+                    "pos": {
+                        "x": 29.669,
+                        "y": -54.12
+                    },
+                    "uuid": "13f562e1-242c-4f96-9ead-3df0ef32c500"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.625,
+                        "y": -37.29
+                    },
+                    "uuid": "3d054a30-9c97-4687-8021-0be7917e125b"
+                },
+                {
+                    "description": "PCB text 'VIN-' on F.Silkscreen",
+                    "pos": {
+                        "x": 10.1,
+                        "y": -40.75
+                    },
+                    "uuid": "b9eda494-4c28-43c2-8910-b76d2d228a6b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "PCB text 'VIN+' on F.Silkscreen",
+                    "pos": {
+                        "x": 9.95,
+                        "y": -43.6
+                    },
+                    "uuid": "23e2d816-e3ff-44ca-a219-79a6912ea14b"
+                },
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 12.625,
+                        "y": -37.29
+                    },
+                    "uuid": "3d054a30-9c97-4687-8021-0be7917e125b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 23.2136,
+                        "y": -51.965
+                    },
+                    "uuid": "025c24ad-ad19-4720-8868-12418c2ec7cd"
+                },
+                {
+                    "description": "Footprint text of UNK22V0 (2)",
+                    "pos": {
+                        "x": 21.7658,
+                        "y": -51.33
+                    },
+                    "uuid": "41d21095-b170-470f-b91e-d47147b059da"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (2)",
+                    "pos": {
+                        "x": 21.7658,
+                        "y": -51.33
+                    },
+                    "uuid": "41d21095-b170-470f-b91e-d47147b059da"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 22.8326,
+                        "y": -52.346
+                    },
+                    "uuid": "f82502a8-7025-4867-a620-2e15f394fd71"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (2)",
+                    "pos": {
+                        "x": 21.7658,
+                        "y": -51.33
+                    },
+                    "uuid": "41d21095-b170-470f-b91e-d47147b059da"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 22.8326,
+                        "y": -56.918
+                    },
+                    "uuid": "b096d4c3-fca7-4309-a3d1-27648ad7def2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (1)",
+                    "pos": {
+                        "x": 26.8458,
+                        "y": -51.33
+                    },
+                    "uuid": "2121d4e0-598c-472b-bfd7-b4239ee187f2"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 27.43,
+                        "y": -51.965
+                    },
+                    "uuid": "882c4949-5c82-48dc-8d64-3a73479d6189"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 27.43,
+                        "y": -58.823
+                    },
+                    "uuid": "0fb11229-fea7-4bb6-bf57-7310cd2f7562"
+                },
+                {
+                    "description": "Footprint text of UNK22V0 (1)",
+                    "pos": {
+                        "x": 26.8458,
+                        "y": -51.33
+                    },
+                    "uuid": "2121d4e0-598c-472b-bfd7-b4239ee187f2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Footprint text of UNK22V0 (1)",
+                    "pos": {
+                        "x": 26.8458,
+                        "y": -51.33
+                    },
+                    "uuid": "2121d4e0-598c-472b-bfd7-b4239ee187f2"
+                },
+                {
+                    "description": "Segment of UNK22V0 on F.Silkscreen",
+                    "pos": {
+                        "x": 27.43,
+                        "y": -51.965
+                    },
+                    "uuid": "2dc688fd-c7af-42a0-837d-b2a2cc714882"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 17.07,
+                        "y": -44.91
+                    },
+                    "uuid": "ea9058dd-e5bd-4dd3-a592-225e03e7fd38"
+                },
+                {
+                    "description": "PTH pad 2 [VIN_M] of X3",
+                    "pos": {
+                        "x": 15.8,
+                        "y": -41.1
+                    },
+                    "uuid": "c3424639-2c69-41ba-b642-826c1bcadc01"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 17.07,
+                        "y": -44.91
+                    },
+                    "uuid": "ea9058dd-e5bd-4dd3-a592-225e03e7fd38"
+                },
+                {
+                    "description": "PTH pad 3 [GND] of X3",
+                    "pos": {
+                        "x": 15.8,
+                        "y": -38.56
+                    },
+                    "uuid": "1e509276-dcc9-440a-b3de-7f1668299bf2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X3 on F.Silkscreen",
+                    "pos": {
+                        "x": 17.07,
+                        "y": -44.91
+                    },
+                    "uuid": "ea9058dd-e5bd-4dd3-a592-225e03e7fd38"
+                },
+                {
+                    "description": "PTH pad 1 [VD] of X3",
+                    "pos": {
+                        "x": 15.8,
+                        "y": -43.64
+                    },
+                    "uuid": "b2c5c0a9-122b-4fc6-bebe-f9773f7c7d1f"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of J2 on F.Silkscreen",
+                    "pos": {
+                        "x": 21.27,
+                        "y": -13.37
+                    },
+                    "uuid": "95511ebb-f9a9-43f2-8b38-e36d483e45c1"
+                },
+                {
+                    "description": "Zone [<no net>] on F.Mask, priority 6",
+                    "pos": {
+                        "x": 26.05,
+                        "y": -10.45
+                    },
+                    "uuid": "29baa1a2-96b0-4e2d-859d-a028dda5cc93"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of J1 on F.Silkscreen",
+                    "pos": {
+                        "x": 11.047,
+                        "y": -13.37
+                    },
+                    "uuid": "7c7e70f5-a71a-46fc-8421-c8976a7109b4"
+                },
+                {
+                    "description": "Zone [<no net>] on F.Mask, priority 6",
+                    "pos": {
+                        "x": 26.05,
+                        "y": -10.45
+                    },
+                    "uuid": "29baa1a2-96b0-4e2d-859d-a028dda5cc93"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Footprint text of U$1 (*)",
+                    "pos": {
+                        "x": 14.2,
+                        "y": -14.4
+                    },
+                    "uuid": "d5382dc3-64e5-4bc3-b388-41d7c3a3fbd0"
+                },
+                {
+                    "description": "Zone [<no net>] on F.Mask, priority 6",
+                    "pos": {
+                        "x": 18.725,
+                        "y": -10.875
+                    },
+                    "uuid": "583ab25c-4f1a-400b-a18d-45127bc6f64d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X2 on F.Silkscreen",
+                    "pos": {
+                        "x": 10.07,
+                        "y": -32.12
+                    },
+                    "uuid": "418320a0-4236-4bde-aa18-25158f8d36df"
+                },
+                {
+                    "description": "PTH pad 1 [VG] of X2",
+                    "pos": {
+                        "x": 8.8,
+                        "y": -30.85
+                    },
+                    "uuid": "a02cfc44-507b-485a-b7cd-0292703ec4a6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Segment of X2 on F.Silkscreen",
+                    "pos": {
+                        "x": 10.07,
+                        "y": -32.12
+                    },
+                    "uuid": "418320a0-4236-4bde-aa18-25158f8d36df"
+                },
+                {
+                    "description": "PTH pad 2 [GND] of X2",
+                    "pos": {
+                        "x": 8.8,
+                        "y": -28.31
+                    },
+                    "uuid": "7fb8ee3c-c1db-4aae-a109-0bea133acf71"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

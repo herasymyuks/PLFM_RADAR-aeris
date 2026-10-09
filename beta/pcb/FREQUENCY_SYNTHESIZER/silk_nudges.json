@@ -1,0 +1,1644 @@
+[
+ {
+  "fp": "R3",
+  "text": "R3",
+  "layer": "F.Silkscreen",
+  "frm": [
+   8.015,
+   -60.355
+  ],
+  "to": [
+   5.741379,
+   -59.961009
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R13",
+  "text": "R13",
+  "layer": "F.Silkscreen",
+  "frm": [
+   44.475,
+   -51.705
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C10",
+  "text": "C10",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.995,
+   -40.055
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "D1",
+  "text": "D1",
+  "layer": "F.Silkscreen",
+  "frm": [
+   41.115,
+   -59.88
+  ],
+  "to": [
+   40.656517,
+   -59.855815
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R14",
+  "text": "R14",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.375,
+   -56.805
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R32",
+  "text": "R32",
+  "layer": "F.Silkscreen",
+  "frm": [
+   64.825,
+   -51.535
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C75",
+  "text": "C75",
+  "layer": "F.Silkscreen",
+  "frm": [
+   65.355,
+   -59.195
+  ],
+  "to": [
+   66.391183,
+   -61.317801
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C74",
+  "text": "C74",
+  "layer": "F.Silkscreen",
+  "frm": [
+   65.405,
+   -56.975
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C4",
+  "text": "C4",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.845,
+   -44.025
+  ],
+  "to": [
+   47.693031,
+   -42.52
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C25",
+  "text": "C25",
+  "layer": "F.Silkscreen",
+  "frm": [
+   37.305,
+   -6.805
+  ],
+  "to": [
+   33.085137,
+   -4.136574
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C8",
+  "text": "C8",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.875,
+   -40.505
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C90",
+  "text": "C90",
+  "layer": "F.Silkscreen",
+  "frm": [
+   62.835,
+   -59.275
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "U9",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "frm": [
+   70.137104,
+   -67.667498
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C40",
+  "text": "C40",
+  "layer": "F.Silkscreen",
+  "frm": [
+   45.475,
+   -51.155
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R5",
+  "text": "R5",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.385,
+   -38.795
+  ],
+  "to": [
+   48.437176,
+   -35.88544
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C87",
+  "text": "C87",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.305,
+   -60.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C77",
+  "text": "C77",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.255,
+   -54.745
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C3",
+  "text": "C3",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.825,
+   -46.355
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C56",
+  "text": "C56",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.495,
+   -58.805
+  ],
+  "to": [
+   53.083595,
+   -60.819212
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C59",
+  "text": "C59",
+  "layer": "F.Silkscreen",
+  "frm": [
+   49.015,
+   -48.935
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C37",
+  "text": "C37",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.565,
+   -39.595
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C86",
+  "text": "C86",
+  "layer": "F.Silkscreen",
+  "frm": [
+   59.565,
+   -60.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C65",
+  "text": "C65",
+  "layer": "F.Silkscreen",
+  "frm": [
+   44.515,
+   -60.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "J5",
+  "text": "J5",
+  "layer": "F.Silkscreen",
+  "frm": [
+   64.56,
+   -17.8381
+  ],
+  "to": [
+   64.37897,
+   -19.100182
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C28",
+  "text": "C28",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.425,
+   -44.045
+  ],
+  "to": [
+   63.866756,
+   -44.912707
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C32",
+  "text": "C32",
+  "layer": "F.Silkscreen",
+  "frm": [
+   53.845,
+   -46.265
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R34",
+  "text": "R34",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.455,
+   -58.845
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "U2",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "frm": [
+   46.037,
+   -68.0226
+  ],
+  "to": [
+   43.13567,
+   -64.435136
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R16",
+  "text": "R16",
+  "layer": "F.Silkscreen",
+  "frm": [
+   53.415,
+   -53.075
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C70",
+  "text": "C70",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.45,
+   -50.66
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R39",
+  "text": "R39",
+  "layer": "F.Silkscreen",
+  "frm": [
+   62.585,
+   -42.015
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R36",
+  "text": "R36",
+  "layer": "F.Silkscreen",
+  "frm": [
+   56.475,
+   -56.795
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R26",
+  "text": "R26",
+  "layer": "F.Silkscreen",
+  "frm": [
+   58.835,
+   -51.795
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C30",
+  "text": "C30",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.075,
+   -47.465
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C84",
+  "text": "C84",
+  "layer": "F.Silkscreen",
+  "frm": [
+   68.065,
+   -54.325
+  ],
+  "to": [
+   70.5757,
+   -52.864312
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R18",
+  "text": "R18",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.075,
+   -52.705
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C13",
+  "text": "C13",
+  "layer": "F.Silkscreen",
+  "frm": [
+   46.035,
+   -50.985
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C19",
+  "text": "C19",
+  "layer": "F.Silkscreen",
+  "frm": [
+   53.495,
+   -24.905
+  ],
+  "to": [
+   51.433188,
+   -24.382629
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C68",
+  "text": "C68",
+  "layer": "F.Silkscreen",
+  "frm": [
+   62.375,
+   -50.995
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C41",
+  "text": "C41",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.625,
+   -42.515
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C9",
+  "text": "C9",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.125,
+   -37.255
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "D2",
+  "text": "D2",
+  "layer": "F.Silkscreen",
+  "frm": [
+   56.195,
+   -60.61
+  ],
+  "to": [
+   55.736517,
+   -60.585815
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C85",
+  "text": "C85",
+  "layer": "F.Silkscreen",
+  "frm": [
+   64.375,
+   -51.295
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "J9",
+  "text": "J9",
+  "layer": "F.Silkscreen",
+  "frm": [
+   9.85,
+   -82.37
+  ],
+  "to": [
+   9.66897,
+   -83.632082
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C50",
+  "text": "C50",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.275,
+   -53.755
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C62",
+  "text": "C62",
+  "layer": "F.Silkscreen",
+  "frm": [
+   50.495,
+   -51.255
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R38",
+  "text": "R38",
+  "layer": "F.Silkscreen",
+  "frm": [
+   56.875,
+   -55.245
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C43",
+  "text": "C43",
+  "layer": "F.Silkscreen",
+  "frm": [
+   55.925,
+   -47.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C92",
+  "text": "C92",
+  "layer": "F.Silkscreen",
+  "frm": [
+   17.565,
+   -67.285
+  ],
+  "to": [
+   17.534987,
+   -66.769352
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "FB2",
+  "text": "FB2",
+  "layer": "F.Silkscreen",
+  "frm": [
+   55.04,
+   -55.21
+  ],
+  "to": [
+   53.467295,
+   -57.505759
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R25",
+  "text": "R25",
+  "layer": "F.Silkscreen",
+  "frm": [
+   42.025,
+   -55.275
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R8",
+  "text": "R8",
+  "layer": "F.Silkscreen",
+  "frm": [
+   13.225,
+   -20.865
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C71",
+  "text": "C71",
+  "layer": "F.Silkscreen",
+  "frm": [
+   59.825,
+   -50.655
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "FB1",
+  "text": "FB1",
+  "layer": "F.Silkscreen",
+  "frm": [
+   69.87,
+   -56.07
+  ],
+  "to": [
+   69.400464,
+   -58.150364
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R20",
+  "text": "R20",
+  "layer": "F.Silkscreen",
+  "frm": [
+   49.975,
+   -51.515
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C14",
+  "text": "C14",
+  "layer": "F.Silkscreen",
+  "frm": [
+   45.455,
+   -50.985
+  ],
+  "to": [
+   44.858083,
+   -47.475252
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C78",
+  "text": "C78",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.555,
+   -51.695
+  ],
+  "to": [
+   55.949819,
+   -50.411341
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "L4",
+  "text": "L4",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.315,
+   -59.955
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C89",
+  "text": "C89",
+  "layer": "F.Silkscreen",
+  "frm": [
+   62.065,
+   -59.275
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R12",
+  "text": "R12",
+  "layer": "F.Silkscreen",
+  "frm": [
+   46.475,
+   -51.705
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C76",
+  "text": "C76",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.435,
+   -60.275
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "L8",
+  "text": "L8",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.635,
+   -59.945
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R22",
+  "text": "R22",
+  "layer": "F.Silkscreen",
+  "frm": [
+   42.415,
+   -57.325
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "L1",
+  "text": "L1",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.165,
+   -59.955
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R40",
+  "text": "R40",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.085,
+   -34.105
+  ],
+  "to": [
+   60.927313,
+   -32.6544
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C67",
+  "text": "C67",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.025,
+   -59.305
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "L6",
+  "text": "L6",
+  "layer": "F.Silkscreen",
+  "frm": [
+   59.135,
+   -61.035
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C34",
+  "text": "C34",
+  "layer": "F.Silkscreen",
+  "frm": [
+   49.835,
+   -38.225
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C83",
+  "text": "C83",
+  "layer": "F.Silkscreen",
+  "frm": [
+   66.985,
+   -54.975
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R33",
+  "text": "R33",
+  "layer": "F.Silkscreen",
+  "frm": [
+   63.905,
+   -51.535
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C82",
+  "text": "C82",
+  "layer": "F.Silkscreen",
+  "frm": [
+   65.435,
+   -48.505
+  ],
+  "to": [
+   67.578505,
+   -48.746365
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "L3",
+  "text": "L3",
+  "layer": "F.Silkscreen",
+  "frm": [
+   44.805,
+   -61.035
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R41",
+  "text": "R41",
+  "layer": "F.Silkscreen",
+  "frm": [
+   58.605,
+   -34.105
+  ],
+  "to": [
+   58.387176,
+   -31.19544
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C61",
+  "text": "C61",
+  "layer": "F.Silkscreen",
+  "frm": [
+   53.025,
+   -52.675
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C20",
+  "text": "C20",
+  "layer": "F.Silkscreen",
+  "frm": [
+   55.025,
+   -35.175
+  ],
+  "to": [
+   55.443568,
+   -33.366033
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C38",
+  "text": "C38",
+  "layer": "F.Silkscreen",
+  "frm": [
+   42.865,
+   -54.805
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C42",
+  "text": "C42",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.215,
+   -44.615
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C11",
+  "text": "C11",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.005,
+   -50.935
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "U7",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.337,
+   -68.0226
+  ],
+  "to": [
+   57.43567,
+   -64.435136
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C7",
+  "text": "C7",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.875,
+   -41.025
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R31",
+  "text": "R31",
+  "layer": "F.Silkscreen",
+  "frm": [
+   67.835,
+   -54.895
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C26",
+  "text": "C26",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.205,
+   -40.015
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C24",
+  "text": "C24",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.495,
+   -38.055
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C21",
+  "text": "C21",
+  "layer": "F.Silkscreen",
+  "frm": [
+   11.905,
+   -32.505
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R35",
+  "text": "R35",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.575,
+   -57.345
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "L5",
+  "text": "L5",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.035,
+   -61.035
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C2",
+  "text": "C2",
+  "layer": "F.Silkscreen",
+  "frm": [
+   31.105,
+   -14.155
+  ],
+  "to": [
+   31.523568,
+   -12.346033
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R6",
+  "text": "R6",
+  "layer": "F.Silkscreen",
+  "frm": [
+   17.015,
+   -14.005
+  ],
+  "to": [
+   15.173829,
+   -13.38389
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R29",
+  "text": "R29",
+  "layer": "F.Silkscreen",
+  "frm": [
+   67.555,
+   -54.725
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "L2",
+  "text": "L2",
+  "layer": "F.Silkscreen",
+  "frm": [
+   45.655,
+   -61.035
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C22",
+  "text": "C22",
+  "layer": "F.Silkscreen",
+  "frm": [
+   58.075,
+   -35.165
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C17",
+  "text": "C17",
+  "layer": "F.Silkscreen",
+  "frm": [
+   65.215,
+   -24.905
+  ],
+  "to": [
+   63.153188,
+   -24.382629
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "J6",
+  "text": "J6",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.79,
+   -18.27
+  ],
+  "to": [
+   52.60897,
+   -19.532082
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C44",
+  "text": "C44",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.965,
+   -46.185
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C16",
+  "text": "C16",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.435,
+   -44.015
+  ],
+  "to": [
+   47.136721,
+   -45.137312
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "U1",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "frm": [
+   51.946,
+   -53.0118
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C88",
+  "text": "C88",
+  "layer": "F.Silkscreen",
+  "frm": [
+   58.805,
+   -60.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C63",
+  "text": "C63",
+  "layer": "F.Silkscreen",
+  "frm": [
+   45.205,
+   -60.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C55",
+  "text": "C55",
+  "layer": "F.Silkscreen",
+  "frm": [
+   43.575,
+   -60.235
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R1",
+  "text": "R1",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.835,
+   -51.745
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "J12",
+  "text": "J12",
+  "layer": "F.Silkscreen",
+  "frm": [
+   70.561621,
+   -75.869084
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "X10",
+  "text": "X10",
+  "layer": "F.Silkscreen",
+  "frm": [
+   8.61,
+   -33.24
+  ],
+  "to": [
+   2.485137,
+   -29.936574
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R11",
+  "text": "R11",
+  "layer": "F.Silkscreen",
+  "frm": [
+   15.785,
+   -22.065
+  ],
+  "to": [
+   17.644841,
+   -23.09676
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C58",
+  "text": "C58",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.255,
+   -54.805
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R15",
+  "text": "R15",
+  "layer": "F.Silkscreen",
+  "frm": [
+   51.325,
+   -55.675
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R21",
+  "text": "R21",
+  "layer": "F.Silkscreen",
+  "frm": [
+   43.165,
+   -57.805
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R27",
+  "text": "R27",
+  "layer": "F.Silkscreen",
+  "frm": [
+   65.235,
+   -57.185
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C6",
+  "text": "C6",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.885,
+   -42.555
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C31",
+  "text": "C31",
+  "layer": "F.Silkscreen",
+  "frm": [
+   72.405,
+   -6.905
+  ],
+  "to": [
+   68.185137,
+   -4.236574
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "L7",
+  "text": "L7",
+  "layer": "F.Silkscreen",
+  "frm": [
+   62.535,
+   -59.945
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R24",
+  "text": "R24",
+  "layer": "F.Silkscreen",
+  "frm": [
+   42.955,
+   -54.725
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C64",
+  "text": "C64",
+  "layer": "F.Silkscreen",
+  "frm": [
+   45.935,
+   -60.365
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R37",
+  "text": "R37",
+  "layer": "F.Silkscreen",
+  "frm": [
+   57.475,
+   -54.795
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R30",
+  "text": "R30",
+  "layer": "F.Silkscreen",
+  "frm": [
+   66.995,
+   -53.885
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "J13",
+  "text": "J13",
+  "layer": "F.Silkscreen",
+  "frm": [
+   11.67,
+   -67.91
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C12",
+  "text": "C12",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.445,
+   -50.935
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C33",
+  "text": "C33",
+  "layer": "F.Silkscreen",
+  "frm": [
+   16.195,
+   -93.195
+  ],
+  "to": [
+   20.473406,
+   -96.585578
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "FB3",
+  "text": "FB3",
+  "layer": "F.Silkscreen",
+  "frm": [
+   50.6,
+   -50.45
+  ],
+  "to": [
+   54.887047,
+   -49.200878
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C1",
+  "text": "C1",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.735,
+   -59.275
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C48",
+  "text": "C48",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.475,
+   -51.175
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "J7",
+  "text": "J7",
+  "layer": "F.Silkscreen",
+  "frm": [
+   92.26,
+   -29.7
+  ],
+  "to": [
+   91.448006,
+   -30.235762
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R4",
+  "text": "R4",
+  "layer": "F.Silkscreen",
+  "frm": [
+   31.145,
+   -14.795
+  ],
+  "to": [
+   33.96536,
+   -14.256714
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "R28",
+  "text": "R28",
+  "layer": "F.Silkscreen",
+  "frm": [
+   65.265,
+   -55.985
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C36",
+  "text": "C36",
+  "layer": "F.Silkscreen",
+  "frm": [
+   60.525,
+   -35.375
+  ],
+  "to": [
+   63.516204,
+   -34.725351
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C73",
+  "text": "C73",
+  "layer": "F.Silkscreen",
+  "frm": [
+   66.735,
+   -54.795
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C39",
+  "text": "C39",
+  "layer": "F.Silkscreen",
+  "frm": [
+   43.195,
+   -52.705
+  ],
+  "to": [
+   40.902729,
+   -51.193027
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C79",
+  "text": "C79",
+  "layer": "F.Silkscreen",
+  "frm": [
+   59.835,
+   -51.475
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R9",
+  "text": "R9",
+  "layer": "F.Silkscreen",
+  "frm": [
+   13.185,
+   -22.055
+  ],
+  "to": [
+   12.647001,
+   -24.378857
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C72",
+  "text": "C72",
+  "layer": "F.Silkscreen",
+  "frm": [
+   66.635,
+   -53.845
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "U6",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "frm": [
+   66.306,
+   -53.0118
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "FB4",
+  "text": "FB4",
+  "layer": "F.Silkscreen",
+  "frm": [
+   64.26,
+   -49.79
+  ],
+  "to": [
+   65.151288,
+   -47.117092
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "IC1",
+  "text": "IC1",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.2456,
+   -47.655
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C5",
+  "text": "C5",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.885,
+   -43.025
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C15",
+  "text": "C15",
+  "layer": "F.Silkscreen",
+  "frm": [
+   86.145,
+   -30.795
+  ],
+  "to": [
+   86.647331,
+   -31.597641
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C60",
+  "text": "C60",
+  "layer": "F.Silkscreen",
+  "frm": [
+   52.315,
+   -53.965
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C80",
+  "text": "C80",
+  "layer": "F.Silkscreen",
+  "frm": [
+   62.885,
+   -51.295
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C69",
+  "text": "C69",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.825,
+   -50.965
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C91",
+  "text": "C91",
+  "layer": "F.Silkscreen",
+  "frm": [
+   61.335,
+   -59.275
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C57",
+  "text": "C57",
+  "layer": "F.Silkscreen",
+  "frm": [
+   51.055,
+   -56.965
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C66",
+  "text": "C66",
+  "layer": "F.Silkscreen",
+  "frm": [
+   48.475,
+   -59.305
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C49",
+  "text": "C49",
+  "layer": "F.Silkscreen",
+  "frm": [
+   47.475,
+   -50.695
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C47",
+  "text": "C47",
+  "layer": "F.Silkscreen",
+  "frm": [
+   28.995,
+   -88.605
+  ],
+  "to": [
+   31.288089,
+   -84.363258
+  ],
+  "status": "MOVED"
+ },
+ {
+  "fp": "C35",
+  "text": "C35",
+  "layer": "F.Silkscreen",
+  "frm": [
+   56.575,
+   -35.175
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "C81",
+  "text": "C81",
+  "layer": "F.Silkscreen",
+  "frm": [
+   63.335,
+   -51.295
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R17",
+  "text": "R17",
+  "layer": "F.Silkscreen",
+  "frm": [
+   51.845,
+   -52.215
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "R19",
+  "text": "R19",
+  "layer": "F.Silkscreen",
+  "frm": [
+   50.985,
+   -51.525
+  ],
+  "status": "NO-FREE-POSITION"
+ },
+ {
+  "fp": "J2",
+  "text": "J2",
+  "layer": "F.Silkscreen",
+  "frm": [
+   92.86,
+   -49.36
+  ],
+  "to": [
+   91.598006,
+   -49.395762
+  ],
+  "status": "MOVED"
+ }
+]

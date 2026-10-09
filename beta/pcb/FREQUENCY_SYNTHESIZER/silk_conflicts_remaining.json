@@ -1,0 +1,620 @@
+[
+ {
+  "fp": "R13",
+  "text": "R13",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C10",
+  "text": "C10",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R14",
+  "text": "R14",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R32",
+  "text": "R32",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C74",
+  "text": "C74",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C8",
+  "text": "C8",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C90",
+  "text": "C90",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "U9",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C40",
+  "text": "C40",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C87",
+  "text": "C87",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C77",
+  "text": "C77",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C3",
+  "text": "C3",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C59",
+  "text": "C59",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C37",
+  "text": "C37",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C86",
+  "text": "C86",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C65",
+  "text": "C65",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C32",
+  "text": "C32",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R34",
+  "text": "R34",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R16",
+  "text": "R16",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C70",
+  "text": "C70",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R39",
+  "text": "R39",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R36",
+  "text": "R36",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R26",
+  "text": "R26",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C30",
+  "text": "C30",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R18",
+  "text": "R18",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C13",
+  "text": "C13",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C68",
+  "text": "C68",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C41",
+  "text": "C41",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C9",
+  "text": "C9",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C85",
+  "text": "C85",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C50",
+  "text": "C50",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C62",
+  "text": "C62",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R38",
+  "text": "R38",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C43",
+  "text": "C43",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R25",
+  "text": "R25",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C71",
+  "text": "C71",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R20",
+  "text": "R20",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L4",
+  "text": "L4",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C89",
+  "text": "C89",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R12",
+  "text": "R12",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C76",
+  "text": "C76",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L8",
+  "text": "L8",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R22",
+  "text": "R22",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L1",
+  "text": "L1",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C67",
+  "text": "C67",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L6",
+  "text": "L6",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C34",
+  "text": "C34",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C83",
+  "text": "C83",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R33",
+  "text": "R33",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L3",
+  "text": "L3",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C61",
+  "text": "C61",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C38",
+  "text": "C38",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C42",
+  "text": "C42",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C11",
+  "text": "C11",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C7",
+  "text": "C7",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R31",
+  "text": "R31",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C26",
+  "text": "C26",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C24",
+  "text": "C24",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C21",
+  "text": "C21",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R35",
+  "text": "R35",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L5",
+  "text": "L5",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R29",
+  "text": "R29",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L2",
+  "text": "L2",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C22",
+  "text": "C22",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C44",
+  "text": "C44",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "U1",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C88",
+  "text": "C88",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C63",
+  "text": "C63",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C55",
+  "text": "C55",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R1",
+  "text": "R1",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "J12",
+  "text": "J12",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C58",
+  "text": "C58",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R15",
+  "text": "R15",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R21",
+  "text": "R21",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R27",
+  "text": "R27",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C6",
+  "text": "C6",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "L7",
+  "text": "L7",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R24",
+  "text": "R24",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C64",
+  "text": "C64",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R37",
+  "text": "R37",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R30",
+  "text": "R30",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "J13",
+  "text": "J13",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C12",
+  "text": "C12",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C1",
+  "text": "C1",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C48",
+  "text": "C48",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R28",
+  "text": "R28",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C73",
+  "text": "C73",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C79",
+  "text": "C79",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C72",
+  "text": "C72",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "U6",
+  "text": "*",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "IC1",
+  "text": "IC1",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C5",
+  "text": "C5",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C60",
+  "text": "C60",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C80",
+  "text": "C80",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C69",
+  "text": "C69",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C91",
+  "text": "C91",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C57",
+  "text": "C57",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C66",
+  "text": "C66",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C49",
+  "text": "C49",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C35",
+  "text": "C35",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "C81",
+  "text": "C81",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R17",
+  "text": "R17",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ },
+ {
+  "fp": "R19",
+  "text": "R19",
+  "layer": "F.Silkscreen",
+  "status": "CONFLICT"
+ }
+]

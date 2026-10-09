@@ -14,3 +14,4 @@ beta/fpga/sim_build/
 *.egg-info/
 dist/
 openems_out/
+beta/pcb/tools/*.jar

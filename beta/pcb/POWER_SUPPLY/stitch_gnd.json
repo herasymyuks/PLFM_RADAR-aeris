@@ -1,0 +1,644 @@
+[
+ {
+  "uuid": "525cbf1c-a5e9-4b6f-be2c-a342fc1c15a0",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   262.838546,
+   -109.2845
+  ],
+  "why": "B.Cu island 0 <-> F.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "c6d7a469-b695-4304-8014-36271b1ebd53",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   121.2986,
+   -9.856927
+  ],
+  "why": "B.Cu island 4 <-> F.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "d450a699-ddde-41d0-ba82-34ea767662be",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   123.0537,
+   -21.117977
+  ],
+  "why": "B.Cu island 4 <-> F.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "155e319a-025c-4c7f-a49b-a1e81a740b13",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   157.5635,
+   -35.801329
+  ],
+  "why": "B.Cu island 4 <-> F.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "eea0e831-2e11-453f-9928-f938055574b3",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   121.0,
+   -93.725
+  ],
+  "to": [
+   121.0,
+   -94.725
+  ],
+  "why": "pad U34.18 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d457deab-8ef4-463d-bcd1-4aea9eaadf80",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   121.0,
+   -94.725
+  ],
+  "why": "pad U34.18 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "1c1a6ff2-e23e-4e6d-9662-574aa09dbaf9",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   132.05,
+   -86.0
+  ],
+  "to": [
+   131.05,
+   -86.0
+  ],
+  "why": "pad R42.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "a0d43b6a-ba23-4878-95bb-88b21720ab3f",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   131.05,
+   -86.0
+  ],
+  "why": "pad R42.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "00b1cb2b-f7e0-41ef-bfc7-87d14084e097",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   132.05,
+   -83.0
+  ],
+  "to": [
+   130.65,
+   -83.0
+  ],
+  "why": "pad C127.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d33d740f-d252-4ffa-bfc2-e25292ac924e",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   130.65,
+   -83.0
+  ],
+  "why": "pad C127.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d09fd4af-18f0-4ceb-a5ac-814e836bc03c",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   132.05,
+   -80.0
+  ],
+  "to": [
+   131.05,
+   -80.0
+  ],
+  "why": "pad C126.1 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "11bd1738-c999-40b7-9f74-adef4a9f31bf",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   131.05,
+   -80.0
+  ],
+  "why": "pad C126.1 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "07c7b725-99c3-40e8-9c4b-28e989863cc9",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   141.5976,
+   -91.25
+  ],
+  "to": [
+   140.01033,
+   -90.401132
+  ],
+  "why": "pad U27.4 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "85ecb3f6-cbe0-4400-bde9-929b5e486443",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   140.01033,
+   -90.401132
+  ],
+  "why": "pad U27.4 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "47ee0881-a0c7-46ac-97ed-022a2df27617",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   142.05,
+   -86.0
+  ],
+  "to": [
+   141.05,
+   -86.0
+  ],
+  "why": "pad C124.1 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "b065a9ca-133c-4c5c-9d83-df08a8d66fed",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   141.05,
+   -86.0
+  ],
+  "why": "pad C124.1 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "74367f95-25eb-44d7-81e3-c776b01e6b94",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   147.05,
+   -83.0
+  ],
+  "to": [
+   146.05,
+   -83.0
+  ],
+  "why": "pad C125.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "841dd54f-2340-4833-9e96-f076533f1857",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   146.05,
+   -83.0
+  ],
+  "why": "pad C125.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d616f74a-5aad-4814-8673-636061dee652",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   154.05,
+   -86.0
+  ],
+  "to": [
+   153.05,
+   -86.0
+  ],
+  "why": "pad C137.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "914be6aa-15e3-4f9b-b99b-16e3e7ce54bb",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   153.05,
+   -86.0
+  ],
+  "why": "pad C137.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "076f30e8-6a5a-4fd7-ae4e-8e49f43bf89a",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   164.85,
+   -80.0
+  ],
+  "to": [
+   165.85,
+   -80.0
+  ],
+  "why": "pad C131.2 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "7d9414af-e2f5-4a0b-bbb8-0a76f5fea9fe",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   165.85,
+   -80.0
+  ],
+  "why": "pad C131.2 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "dff1f838-b792-4233-9ed0-0c1bf1d12a1e",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   168.625,
+   -92.95
+  ],
+  "to": [
+   167.802269,
+   -93.518431
+  ],
+  "why": "pad U28.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "06c294a0-9ec3-439f-b174-20ca229fe0d4",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   167.802269,
+   -93.518431
+  ],
+  "why": "pad U28.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "be4895c0-0e31-45e9-8688-3457030269b4",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   177.0,
+   -80.0
+  ],
+  "to": [
+   177.0,
+   -80.0
+  ],
+  "why": "pad U30.9 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "2cf16983-6177-4952-ac26-4242ad856a05",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   177.0,
+   -80.0
+  ],
+  "why": "pad U30.9 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "c089a875-1426-4dad-a858-79867071627e",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   176.05,
+   -71.0
+  ],
+  "to": [
+   175.05,
+   -71.0
+  ],
+  "why": "pad C141.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "1517f2b9-6b04-4a25-8d81-58cc53bec872",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   175.05,
+   -71.0
+  ],
+  "why": "pad C141.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "09cb7740-0a82-45f8-a530-edc66e6677d6",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   181.05,
+   -77.0
+  ],
+  "to": [
+   179.65,
+   -77.0
+  ],
+  "why": "pad R50.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "d7eee99f-8d6e-4919-9d5e-2a9ef4aece07",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   179.65,
+   -77.0
+  ],
+  "why": "pad R50.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "68cb7220-cf82-4a58-b91d-7d8280a3b205",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   222.7524,
+   -65.0
+  ],
+  "to": [
+   223.634216,
+   -65.471593
+  ],
+  "why": "pad U5.4 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "e96a34a1-b84a-4d36-9f7d-d0fb157359f7",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   223.634216,
+   -65.471593
+  ],
+  "why": "pad U5.4 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "4d5ec691-cd30-476b-a599-f1805c8b809a",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   226.625,
+   -92.95
+  ],
+  "to": [
+   225.473177,
+   -93.745804
+  ],
+  "why": "pad U31.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "a04c65b8-ed7f-4092-b355-d3eece82aac0",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   225.473177,
+   -93.745804
+  ],
+  "why": "pad U31.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "bdf2d13b-3e5f-4188-be9a-c41ea6ad85dc",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   238.0,
+   -100.725
+  ],
+  "to": [
+   238.0,
+   -101.725
+  ],
+  "why": "pad U32.18 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "57e1afc1-51a6-4340-8db6-23d72f09e138",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   238.0,
+   -101.725
+  ],
+  "why": "pad U32.18 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "2a7091d8-9211-4a87-9f92-739d44435998",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   248.5976,
+   -147.25
+  ],
+  "to": [
+   247.715783,
+   -146.778406
+  ],
+  "why": "pad U25.4 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "c412450c-6304-4ac4-b9fe-cad824d8d387",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   247.715783,
+   -146.778406
+  ],
+  "why": "pad U25.4 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "8bcce8c0-069f-4d16-bccf-f4bceb3b82e7",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   250.0,
+   -148.0
+  ],
+  "to": [
+   250.0,
+   -148.0
+  ],
+  "why": "pad U25.9 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "40aec5bc-c7f0-4f6c-bb32-fdff107c7d4e",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   250.0,
+   -148.0
+  ],
+  "why": "pad U25.9 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "812e4fb0-478d-4867-8847-c59d1962c7b2",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   254.05,
+   -78.0
+  ],
+  "to": [
+   253.05,
+   -78.0
+  ],
+  "why": "pad C107.1 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "625a6ac1-28d6-447a-9d56-af172ec1aabc",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   253.05,
+   -78.0
+  ],
+  "why": "pad C107.1 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "6371b7b3-e474-4e2d-899d-1057fca88394",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   254.05,
+   -75.0
+  ],
+  "to": [
+   253.05,
+   -75.0
+  ],
+  "why": "pad C53.1 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "144d7f96-d3e6-4b34-9c8a-f8aef71709cb",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   253.05,
+   -75.0
+  ],
+  "why": "pad C53.1 into B.Cu fill",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "fcb23944-9126-47c3-8669-3b2f3f91b578",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   258.5976,
+   -86.25
+  ],
+  "to": [
+   257.715783,
+   -85.778406
+  ],
+  "why": "pad U23.4 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "bd93cc19-38cc-4ac4-875a-233be49b0647",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   257.715783,
+   -85.778406
+  ],
+  "why": "pad U23.4 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "0187bf43-1a25-4d15-b28f-0c987033276d",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   259.05,
+   -78.0
+  ],
+  "to": [
+   258.05,
+   -78.0
+  ],
+  "why": "pad C52.1 -> via",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "9bf2785f-d586-4c24-856d-44b24b8beebe",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   258.05,
+   -78.0
+  ],
+  "why": "pad C52.1 into B.Cu fill",
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "3c6c5686-6983-4b11-bbda-1093d03e4152",
+  "kind": "track",
+  "net": "GND",
+  "frm": [
+   259.85,
+   -75.0
+  ],
+  "to": [
+   260.85,
+   -75.0
+  ],
+  "why": "pad C49.2 -> via",
+  "status": "ADDED"
+ },
+ {
+  "uuid": "43052802-d8b5-4633-8710-5b9d64944264",
+  "kind": "via",
+  "net": "GND",
+  "at": [
+   260.85,
+   -75.0
+  ],
+  "why": "pad C49.2 into B.Cu fill",
+  "status": "ADDED"
+ }
+]

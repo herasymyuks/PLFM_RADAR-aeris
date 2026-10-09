@@ -1,0 +1,767 @@
+(session "POWER_SUPPLY_pass2"
+  (base_design "POWER_SUPPLY_pass2")
+  (placement
+    (resolution um 10)
+    (component M0805
+      (place R22 1129700 1104700 front 270)
+      (place R4 1553700 329100 front 270)
+      (place R30 1572700 1799400 front 270)
+      (place R20 2280200 1433900 front 270)
+      (place R32 1939700 1795700 front 270)
+      (place R2 1160200 328800 front 270)
+      (place R12 1930200 1088700 front 270)
+      (place R28 1211200 1805100 front 270)
+      (place R26 1505700 1098300 front 270)
+      (place R6 784700 328400 front 270)
+      (place R16 782700 1812300 front 270)
+      (place R24 2310200 334000 front 270)
+      (place R14 2306700 1090500 front 270)
+      (place R8 1926200 339700 front 270)
+      (place R34 1216200 2252000 front 270)
+      (place R42 1330000 860000 front 0)
+      (place R53 2330000 920000 front 0)
+      (place R44 1380000 860000 front 0)
+      (place R55 1160000 850000 front 0)
+      (place R36 2550000 810000 front 0)
+      (place R41 1480000 860000 front 0)
+      (place R54 2380000 920000 front 0)
+      (place R51 2430000 920000 front 0)
+      (place R17 2650000 810000 front 0)
+      (place R56 1210000 850000 front 0)
+      (place R57 1260000 850000 front 0)
+      (place R37 2500000 1420000 front 0)
+      (place R35 2500000 780000 front 0)
+      (place R46 1700000 860000 front 0)
+      (place R52 2280000 890000 front 0)
+      (place R9 2188500 712000 front 0)
+      (place R49 1770000 770000 front 0)
+      (place R47 1550000 830000 front 0)
+      (place R38 2400000 1390000 front 0)
+      (place R50 1820000 770000 front 0)
+      (place R10 2144500 712000 front 0)
+      (place R40 2400000 1360000 front 0)
+      (place R58 1160000 820000 front 0)
+      (place R48 1650000 830000 front 0)
+      (place R18 2500000 750000 front 0)
+      (place R45 1550000 800000 front 0)
+      (place R43 1380000 800000 front 0)
+      (place R39 2450000 1360000 front 0)
+      (place R1 1198300 329200 front 90)
+      (place R31 1971300 1795900 front 90)
+      (place R25 1546300 1097900 front 90)
+      (place R27 1249800 1804400 front 90)
+      (place R29 1613800 1799900 front 90)
+      (place R23 2340300 333400 front 90)
+      (place R21 1160800 1104400 front 90)
+      (place R19 2317300 1433900 front 90)
+      (place R11 1962800 1088200 front 90)
+      (place R15 815300 1811700 front 90)
+      (place R7 1951800 339200 front 90)
+      (place R5 812300 328700 front 90)
+      (place R33 1249800 2252900 front 90)
+      (place R13 2345300 1090200 front 90)
+      (place R3 1591800 329200 front 90)
+    )
+    (component C0805
+      (place C34 1822300 1085400 front 90)
+      (place C39 2163300 1086900 front 90)
+      (place C21 1822800 332400 front 90)
+      (place C76 1174300 2294700 front 90)
+      (place C58 2163300 1420400 front 90)
+      (place C60 1106800 1154200 front 90)
+      (place C46 666300 1804900 front 90)
+      (place C30 1898800 1135700 front 90)
+      (place C18 1898800 384200 front 90)
+      (place C40 2187300 1086900 front 90)
+      (place C10 1394800 324400 front 90)
+      (place C4 990800 324900 front 90)
+      (place C22 1801800 332400 front 90)
+      (place C33 1798800 1085400 front 90)
+      (place C36 2273300 1134200 front 90)
+      (place C45 644800 1804900 front 90)
+      (place C42 754300 1852200 front 90)
+      (place C9 1371800 324400 front 90)
+      (place C16 677300 322400 front 90)
+      (place C77 1180300 1848200 front 90)
+      (place C93 1822800 1790400 front 90)
+      (place C80 1068300 1794900 front 90)
+      (place C86 1432800 1795900 front 90)
+      (place C87 1456800 1795900 front 90)
+      (place C57 2140800 1420400 front 90)
+      (place C83 1537800 1841700 front 90)
+      (place C54 2249800 1468200 front 90)
+      (place C12 755300 352200 front 90)
+      (place C70 2211300 331400 front 90)
+      (place C15 655300 322900 front 90)
+      (place C63 1008300 1100900 front 90)
+      (place C64 1031800 1100900 front 90)
+      (place C95 1086800 2248400 front 90)
+      (place C74 1376300 1095900 front 90)
+      (place C5 1012800 325400 front 90)
+      (place C94 1063800 2248400 front 90)
+      (place C1 1103800 355900 front 90)
+      (place C89 1907300 1837200 front 90)
+      (place C75 1399300 1095900 front 90)
+      (place C81 1091300 1794900 front 90)
+      (place C25 2268500 621500 front 90)
+      (place C69 2187300 331400 front 90)
+      (place C92 1799300 1790400 front 90)
+      (place C71 1473300 1144200 front 90)
+      (place C66 2288800 383200 front 90)
+      (place C6 1497800 352700 front 90)
+      (place C106 2500000 810000 front 0)
+      (place C118 2400000 1420000 front 0)
+      (place C50 1560000 1260000 front 0)
+      (place C143 1590000 1210000 front 0)
+      (place C124 1430000 860000 front 0)
+      (place C133 1590000 1160000 front 0)
+      (place C137 1550000 860000 front 0)
+      (place C114 2450000 1420000 front 0)
+      (place C136 1600000 860000 front 0)
+      (place C108 2600000 810000 front 0)
+      (place C158 1600000 1110000 front 0)
+      (place C148 1320000 1310000 front 0)
+      (place C135 1650000 860000 front 0)
+      (place C127 1330000 830000 front 0)
+      (place C116 2550000 1420000 front 0)
+      (place C112 1390000 1310000 front 0)
+      (place C142 1820000 800000 front 0)
+      (place C128 1380000 830000 front 0)
+      (place C132 1520000 1310000 front 0)
+      (place C123 1590000 1310000 front 0)
+      (place C154 1110000 820000 front 0)
+      (place C122 1660000 1320000 front 0)
+      (place C51 1370000 1360000 front 0)
+      (place C109 2450000 1390000 front 0)
+      (place C119 1430000 830000 front 0)
+      (place C134 1600000 830000 front 0)
+      (place C144 2330000 890000 front 0)
+      (place C107 2550000 780000 front 0)
+      (place C125 1480000 830000 front 0)
+      (place C115 2500000 1390000 front 0)
+      (place C117 2550000 1390000 front 0)
+      (place C126 1330000 800000 front 0)
+      (place C140 1770000 740000 front 0)
+      (place C26 2257000 677000 front 0)
+      (place C52 2600000 780000 front 0)
+      (place C29 2650000 780000 front 0)
+      (place C113 1200000 1250000 front 0)
+      (place C139 1820000 740000 front 0)
+      (place C138 1700000 830000 front 0)
+      (place C24 2223000 611000 front 0)
+      (place C53 2550000 750000 front 0)
+      (place C157 1730000 1320000 front 0)
+      (place C147 1110000 1450000 front 0)
+      (place C129 1600000 800000 front 0)
+      (place C141 1770000 710000 front 0)
+      (place C27 2194500 677500 front 180)
+      (place C28 2179000 611000 front 180)
+    )
+    (component "22-23-2021"
+      (place X18 2056600 1881200 front 180)
+      (place X14 2726670 1266980 front 0)
+      (place X12 2342000 629500 front 0)
+      (place X30 66670 1926980 front 0)
+      (place X6 1766670 76980 front 0)
+      (place X8 1456670 76980 front 0)
+      (place X7 1646670 76980 front 0)
+      (place X5 1356000 548000 front 0)
+      (place X26 2726670 916980 front 0)
+      (place X34 2726670 996980 front 0)
+      (place X9 2726670 1416980 front 0)
+      (place X2 2726670 806980 front 0)
+      (place X17 1336670 76980 front 0)
+      (place X4 925000 551000 front 0)
+      (place X3 996670 2926980 front 0)
+      (place X13 1266670 76980 front 0)
+      (place X35 1196670 76980 front 0)
+      (place X31 66670 2006980 front 0)
+      (place X32 1446670 2926980 front 0)
+      (place X15 2726670 1496980 front 0)
+      (place X10 2726670 1576980 front 0)
+      (place X22 2162800 544300 front 0)
+      (place X29 2726670 1656980 front 0)
+      (place X28 1126670 76980 front 0)
+      (place X16 639200 543300 front 0)
+      (place X25 1576670 76980 front 0)
+      (place X11 2726670 726980 front 0)
+      (place X33 2726670 1866980 front 0)
+      (place X27 1643500 553000 front 0)
+      (place X23 988400 1326800 front 0)
+      (place X21 1111300 1369800 front 270)
+      (place X20 1471300 1620400 front 270)
+      (place X19 876800 2386000 front 270)
+      (place X24 749300 1363500 front 270)
+    )
+    (component C0603
+      (place C62 992200 1221200 front 0)
+      (place C11 1359900 465700 front 0)
+      (place C23 1786900 435200 front 0)
+      (place C91 1785700 1916200 front 0)
+      (place C90 1785700 1939200 front 0)
+      (place C82 1050200 2396700 front 0)
+      (place C61 992200 1243200 front 0)
+      (place C145 2370000 890000 front 0)
+      (place C160 1200000 820000 front 0)
+      (place C84 1419200 1946700 front 0)
+      (place C38 2148900 1205200 front 0)
+      (place C88 1050200 2374200 front 0)
+      (place C155 1240000 820000 front 0)
+      (place C152 2410000 890000 front 0)
+      (place C162 1100000 790000 front 0)
+      (place C35 1784900 1180200 front 0)
+      (place C44 629900 1927700 front 0)
+      (place C67 2172200 474200 front 0)
+      (place C37 2148900 1227200 front 0)
+      (place C2 971900 429700 front 0)
+      (place C56 2128700 1549200 front 0)
+      (place C146 2270000 860000 front 0)
+      (place C163 1140000 790000 front 0)
+      (place C151 2310000 860000 front 0)
+      (place C159 1180000 790000 front 0)
+      (place C7 1359900 421700 front 0)
+      (place C111 2490000 1360000 front 0)
+      (place C32 1784900 1204700 front 0)
+      (place C43 629900 1951200 front 0)
+      (place C150 2350000 860000 front 0)
+      (place C14 640900 442700 front 0)
+      (place C79 1054200 1917700 front 0)
+      (place C31 1784900 1228700 front 0)
+      (place C120 1420000 800000 front 0)
+      (place C68 2172200 452200 front 0)
+      (place C19 1786900 479200 front 0)
+      (place C72 1360700 1233200 front 0)
+      (place C3 972400 453700 front 0)
+      (place C161 1220000 790000 front 0)
+      (place C85 1419200 1923700 front 0)
+      (place C49 2590000 750000 front 0)
+      (place C110 2530000 1360000 front 0)
+      (place C73 1360700 1210700 front 0)
+      (place C156 1260000 790000 front 0)
+      (place C59 2128700 1526200 front 0)
+      (place C65 992200 1198700 front 0)
+      (place C47 630200 1903700 front 0)
+      (place C13 640900 465200 front 0)
+      (place C121 1460000 800000 front 0)
+      (place C48 2630000 750000 front 0)
+      (place C41 2148900 1182200 front 0)
+      (place C131 1640000 800000 front 0)
+      (place C20 1786900 457200 front 0)
+      (place C8 1359900 444200 front 0)
+      (place C78 1054200 1941200 front 0)
+      (place C149 2390000 860000 front 0)
+      (place C55 2128700 1571700 front 0)
+      (place C153 2430000 860000 front 0)
+      (place C17 640900 420200 front 0)
+      (place C130 1680000 800000 front 0)
+    )
+    (component dummyfp1
+      (place "UNK_HOLE_1" 2700000 100000 front 0)
+      (place "UNK_HOLE_7" 100000 1200000 front 0)
+      (place "UNK_HOLE_5" 1400000 100000 front 0)
+      (place "UNK_HOLE_2" 2700000 2300000 front 0)
+      (place "UNK_HOLE_0" 100000 100000 front 0)
+      (place "UNK_HOLE_6" 2700000 1200000 front 0)
+      (place "UNK_HOLE_4" 1384500 2678500 front 0)
+      (place "UNK_HOLE_3" 100000 2300000 front 0)
+    )
+    (component "DDC0006A_N"
+      (place U14 1144500 1798000 front 0)
+      (place U31 2280000 920000 front 0)
+      (place U13 1450300 1098000 front 0)
+      (place U1 1065200 329000 front 0)
+      (place U17 1139800 2251500 front 0)
+      (place U8 720300 1807500 front 0)
+      (place U16 1875400 1793500 front 0)
+      (place U26 1480000 920000 front 0)
+      (place U12 2261100 334000 front 0)
+      (place U2 1448900 328500 front 0)
+      (place U7 2238400 1090500 front 0)
+      (place U11 1081900 1104500 front 0)
+      (place U15 1508700 1799000 front 0)
+      (place U4 1875300 335000 front 0)
+      (place U24 2550000 1480000 front 0)
+      (place U10 2218700 1423500 front 0)
+      (place U28 1700000 920000 front 0)
+      (place U9 2650000 870000 front 0)
+      (place U33 1110000 850000 front 0)
+      (place U3 720100 328500 front 0)
+      (place U6 1873700 1088500 front 0)
+    )
+    (component "IND_VLP8040T-1R0N_TDK"
+      (place U$3 569800 355900 front 270)
+      (place U$15 1345000 1826400 front 270)
+      (place U$1 914300 353400 front 270)
+      (place U$6 1711400 1114900 front 270)
+      (place U$7 2075900 1116900 front 270)
+      (place U$14 981500 1825400 front 270)
+      (place U$17 977100 2278400 front 270)
+      (place U$8 557400 1835400 front 270)
+      (place U$2 1296300 351900 front 270)
+      (place U$13 1287000 1125400 front 270)
+      (place U$10 2054900 1451400 front 270)
+      (place U$16 1712100 1822400 front 270)
+      (place U$12 2099500 361900 front 270)
+      (place U$11 919500 1131400 front 270)
+      (place U$4 1717800 363400 front 270)
+      (place U$18 1350000 920000 front 0)
+      (place U$19 1570000 920000 front 0)
+      (place U$5 2520000 870000 front 0)
+      (place U$20 2300000 990000 front 0)
+      (place U$21 1130000 920000 front 0)
+      (place U$9 2420000 1480000 front 0)
+    )
+    (component M08A
+      (place U18 2151000 1816900 front 270)
+      (place U19 900000 1409700 front 270)
+      (place U20 1265500 1416500 front 270)
+      (place U22 669000 2417100 front 0)
+      (place U21 1337400 1632800 front 90)
+    )
+    (component T521W
+      (place C98 893500 1511600 front 180)
+      (place C100 1245200 1506300 front 180)
+      (place C96 2147700 1918100 front 180)
+      (place C105 760300 2364800 front 90)
+      (place C101 1195800 1364400 front 90)
+      (place C99 832800 1353200 front 90)
+      (place C103 1411300 1621600 front 90)
+      (place C102 1383500 1502700 front 0)
+      (place C97 2068400 1793400 front 0)
+      (place C104 559200 2399300 front 270)
+    )
+    (component "CP_8_11_ADI"
+      (place U23 2600000 870000 front 0)
+      (place U27 1430000 920000 front 0)
+      (place U25 2500000 1480000 front 0)
+      (place U30 1770000 800000 front 0)
+      (place U29 1650000 920000 front 0)
+      (place U5 2213500 642500 front 180)
+    )
+    (component "MA10-2"
+      (place SV1 2581500 1191000 front 90)
+    )
+    (component "RGR20_2P05X2P05_TEX"
+      (place U34 1210000 920000 front 0)
+      (place U32 2380000 990000 front 0)
+    )
+    (component "AK300_2"
+      (place X1 104500 883000 front 270)
+    )
+  )
+  (was_is
+  )
+  (routes 
+    (resolution um 10)
+    (parser
+      (host_cad "KiCad's Pcbnew")
+      (host_version "10.0.6")
+    )
+    (library_out 
+      (padstack "Via[0-1]_500:300_um"
+        (shape
+          (circle F.Cu 5000 0 0)
+        )
+        (shape
+          (circle B.Cu 5000 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-1]_900:600_um"
+        (shape
+          (circle F.Cu 9000 0 0)
+        )
+        (shape
+          (circle B.Cu 9000 0 0)
+        )
+        (attach off)
+      )
+      (padstack "Via[0-1]_550:350_um"
+        (shape
+          (circle F.Cu 5500 0 0)
+        )
+        (shape
+          (circle B.Cu 5500 0 0)
+        )
+        (attach off)
+      )
+    )
+    (network_out 
+      (net +3V4
+        (wire
+          (path F.Cu 2500
+            919050 1385060
+            919050 1385062
+          )
+        )
+      )
+      (net VIN
+        (wire
+          (path F.Cu 2500
+            2571788 1430752
+            2572017 1430981
+            2572017 1480000
+          )
+        )
+        (wire
+          (path F.Cu 1874
+            2569252 1368452
+            2569252 1428216
+            2571788 1430752
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            2545585 1333493
+            2569252 1357160
+            2569252 1368452
+          )
+        )
+        (via "Via[0-1]_500:300_um" 2545585 1333493
+        )
+        (wire
+          (path B.Cu 2500
+            2228281 1328737
+            2540829 1328737
+            2545585 1333493
+          )
+        )
+        (via "Via[0-1]_500:300_um" 2228281 1328737
+        )
+        (wire
+          (path F.Cu 2500
+            2228281 1373173
+            2228281 1328737
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            2563750 1480000
+            2572017 1480000
+          )
+        )
+      )
+      (net "+3V3_SW"
+        (wire
+          (path F.Cu 2500
+            2170050 1792260
+            2170050 1792262
+          )
+        )
+      )
+      (net "+5V0_ADAR"
+        (wire
+          (path F.Cu 2500
+            1284550 1391862
+            1284550 1391860
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1318350 1657440
+            1318350 1657438
+          )
+        )
+      )
+      (net "+3V3_ADAR_12"
+        (wire
+          (path B.Cu 2500
+            2713970 1266980
+            2703203 1266980
+          )
+        )
+        (wire
+          (path B.Cu 2500
+            2589830 1216670
+            2652893 1216670
+            2703203 1266980
+          )
+        )
+        (via "Via[0-1]_500:300_um" 2589830 1216670
+        )
+      )
+      (net "-3V3_SW"
+        (wire
+          (path F.Cu 2500
+            2131950 1792262
+            2131950 1792260
+          )
+        )
+      )
+      (net N$89
+        (wire
+          (path F.Cu 2500
+            1444024 912500
+            1444020 912500
+          )
+        )
+      )
+      (net "+5V0_5"
+        (wire
+          (path F.Cu 2500
+            1220003 937250
+            1220000 937250
+          )
+        )
+      )
+      (net "+5V0_3"
+        (wire
+          (path F.Cu 2500
+            1447670 927500
+            1451315 927500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1447670 927500
+            1444024 927500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1444024 922500
+            1451315 922500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1451315 927500
+            1451315 922500
+          )
+        )
+      )
+      (net "+5V0_2"
+        (wire
+          (path F.Cu 2500
+            2514024 1487500
+            2514020 1487500
+          )
+        )
+      )
+      (net N$54
+        (wire
+          (path F.Cu 2500
+            2157350 1841540
+            2157350 1841538
+          )
+        )
+      )
+      (net N$55
+        (wire
+          (path F.Cu 2500
+            2131950 1841540
+            2131950 1841538
+          )
+        )
+      )
+      (net "+5V0_ADTR"
+        (wire
+          (path F.Cu 2500
+            2390003 1007250
+            2390000 1007250
+          )
+        )
+      )
+      (net N$69
+        (wire
+          (path F.Cu 2500
+            2614024 862500
+            2614020 862500
+          )
+        )
+      )
+      (net N$52
+        (wire
+          (path F.Cu 2500
+            906350 1434340
+            906350 1434338
+          )
+        )
+      )
+      (net N$53
+        (wire
+          (path F.Cu 2500
+            880950 1434340
+            880950 1434338
+          )
+        )
+      )
+      (net N$86
+        (wire
+          (path F.Cu 2500
+            1415976 927500
+            1415980 927500
+          )
+        )
+      )
+      (net "+3V3_LO_1"
+        (wire
+          (path F.Cu 2500
+            1415976 922500
+            1415980 922500
+          )
+        )
+      )
+      (net N$76
+        (wire
+          (path F.Cu 2500
+            2485976 1487500
+            2485980 1487500
+          )
+        )
+      )
+      (net "+5V0_4"
+        (wire
+          (path F.Cu 2500
+            1671315 927500
+            1671315 922500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1669130 927500
+            1671315 927500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1664024 927500
+            1667670 927500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1667670 927500
+            1669130 927500
+          )
+        )
+        (wire
+          (path F.Cu 2500
+            1664024 922500
+            1671315 922500
+          )
+        )
+      )
+      (net "+5V0_1"
+        (wire
+          (path F.Cu 2500
+            2614024 877500
+            2614020 877500
+          )
+        )
+      )
+      (net "+3V3_XO"
+        (wire
+          (path F.Cu 2500
+            1199998 937250
+            1200000 937250
+          )
+        )
+      )
+      (net "-5V0_ADAR12"
+        (wire
+          (path F.Cu 2500
+            1246450 1391862
+            1246450 1391860
+          )
+        )
+      )
+      (net N$66
+        (wire
+          (path F.Cu 2500
+            2585976 877500
+            2585980 877500
+          )
+        )
+      )
+      (net "-3V4"
+        (wire
+          (path F.Cu 2500
+            880950 1385062
+            880950 1385060
+          )
+        )
+      )
+      (net N$63
+        (wire
+          (path F.Cu 2500
+            1784024 792500
+            1784020 792500
+          )
+        )
+      )
+      (net N$99
+        (wire
+          (path F.Cu 2500
+            1664024 912500
+            1664020 912500
+          )
+        )
+      )
+      (net N$56
+        (wire
+          (path F.Cu 2500
+            1271850 1441140
+            1271850 1441138
+          )
+        )
+      )
+      (net N$57
+        (wire
+          (path F.Cu 2500
+            1246450 1441140
+            1246450 1441138
+          )
+        )
+      )
+      (net N$58
+        (wire
+          (path F.Cu 2500
+            1331050 1608160
+            1331050 1608162
+          )
+        )
+      )
+      (net N$59
+        (wire
+          (path F.Cu 2500
+            1356450 1608160
+            1356450 1608162
+          )
+        )
+      )
+      (net N$79
+        (wire
+          (path F.Cu 2500
+            2514024 1472500
+            2514020 1472500
+          )
+        )
+      )
+      (net N$80
+        (wire
+          (path F.Cu 2500
+            2514024 1477500
+            2514020 1477500
+          )
+        )
+      )
+      (net N$14
+        (wire
+          (path F.Cu 2500
+            1755976 807500
+            1755980 807500
+          )
+        )
+      )
+      (net N$62
+        (wire
+          (path F.Cu 2500
+            1755976 797500
+            1755980 797500
+          )
+        )
+      )
+    )
+  )
+)

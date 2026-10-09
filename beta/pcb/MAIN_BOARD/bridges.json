@@ -1,0 +1,191 @@
+[
+ {
+  "uuid": "4ef71312-74a0-4369-a995-ab9099561b70",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   5.27,
+   -220.76
+  ],
+  "to": [
+   5.3,
+   -231.55
+  ],
+  "length_mm": 10.79,
+  "between": [
+   "PTH pad 2 [GND] of X16",
+   "Pad 2 [GND] of C185 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "4ecdf1b7-9976-4d39-bef2-1102bbf3371e",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   6.6,
+   -234.1
+  ],
+  "to": [
+   6.0,
+   -232.45
+  ],
+  "length_mm": 1.756,
+  "between": [
+   "Pad 2 [GND] of C159 on F.Cu",
+   "Pad 2 [GND] of C185 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "07e6ffe5-111f-42b1-86a4-8d5be37c1ae8",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   8.2,
+   -234.1
+  ],
+  "to": [
+   9.3,
+   -232.45
+  ],
+  "length_mm": 1.983,
+  "between": [
+   "Pad 2 [GND] of C159 on F.Cu",
+   "Pad 2 [GND] of C186 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "06db95cd-3fd6-43b7-816e-b2ff9b15041e",
+  "kind": "track",
+  "net": "GND",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   12.3,
+   -234.25
+  ],
+  "to": [
+   10.0,
+   -232.45
+  ],
+  "length_mm": 2.921,
+  "between": [
+   "Pad 2 [GND] of C184 on F.Cu",
+   "Pad 2 [GND] of C186 on F.Cu"
+  ],
+  "status": "REMOVED (replaced by GND vias to inner planes)"
+ },
+ {
+  "uuid": "ef26145a-5a8f-4bf6-ae7d-d18f5bbf4157",
+  "kind": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   5.4,
+   -234.1
+  ],
+  "to": [
+   5.27,
+   -223.3
+  ],
+  "length_mm": 10.801,
+  "between": [
+   "Pad 1 [+3V3_FPGA] of C159 on F.Cu",
+   "PTH pad 1 [+3V3_FPGA] of X16"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "a30017ee-2d7a-47af-bc23-6686766bcd8c",
+  "kind": "track",
+  "net": "+3V3_FPGA",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   4.6,
+   -238.0
+  ],
+  "to": [
+   3.8,
+   -235.9
+  ],
+  "length_mm": 2.247,
+  "between": [
+   "Pad 1 [+3V3_FPGA] of L19 on F.Cu",
+   "Pad 1 [+3V3_FPGA] of C159 on F.Cu"
+  ],
+  "status": "ADDED"
+ },
+ {
+  "uuid": "c38f839f-0972-4352-a6f9-dc728b8dd1ea",
+  "kind": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   4.7,
+   -232.45
+  ],
+  "to": [
+   8.0,
+   -232.45
+  ],
+  "length_mm": 3.3,
+  "between": [
+   "Pad 1 [+3V3_FT] of C185 on F.Cu",
+   "Pad 1 [+3V3_FT] of C186 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "b4fe8288-83e1-4d78-897a-2a85ddd2b058",
+  "kind": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   8.7,
+   -232.45
+  ],
+  "to": [
+   10.4,
+   -234.25
+  ],
+  "length_mm": 2.476,
+  "between": [
+   "Pad 1 [+3V3_FT] of C186 on F.Cu",
+   "Pad 1 [+3V3_FT] of C184 on F.Cu"
+  ],
+  "status": "REVERTED (DRC violation)"
+ },
+ {
+  "uuid": "35e71583-537e-41fe-88cf-2d9c76006d40",
+  "kind": "track",
+  "net": "+3V3_FT",
+  "layer": "F.Cu",
+  "width": 0.5,
+  "frm": [
+   11.7,
+   -235.75
+  ],
+  "to": [
+   11.4,
+   -238.0
+  ],
+  "length_mm": 2.27,
+  "between": [
+   "Pad 1 [+3V3_FT] of C184 on F.Cu",
+   "Pad 2 [+3V3_FT] of L19 on F.Cu"
+  ],
+  "status": "ADDED"
+ }
+]
