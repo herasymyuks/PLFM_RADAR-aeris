@@ -22,6 +22,10 @@
  *  - receiver gets the STM32 toggle lines and register controls (new ports)
  *  - USB packetiser receives the real decimated range profile instead of the Doppler data
  *  - BUFG on ft601_clk_in removed (clock unused)
+ *  - host-link option B (engineering/DESIGN/HOST_LINK): rd_map_packer + host_bridge_spi on the
+ *    shared STM32 SPI1 lines with three new ports (spi_bridge_cs_n = DIG_5, spi_bridge_drdy =
+ *    DIG_6, spi_bridge_spare = DIG_7); the ADAR1000 pass-through is gated while the bridge CS is
+ *    low. The FT601 path (usb_data_interface, option A) is unchanged.
  */
 
 module radar_system_top (
@@ -81,6 +85,11 @@ module radar_system_top (
     input wire stm32_new_elevation,
     input wire stm32_new_azimuth,
     input wire stm32_mixers_enable,
+
+    // ========== HOST-LINK OPTION B (SPI bridge on SPI1, BETA) ==========
+    input wire spi_bridge_cs_n,          // DIG_5 (H11): FPGA chip select, active low
+    output wire spi_bridge_drdy,         // DIG_6 (G12): a complete frame is ready to be read
+    output wire spi_bridge_spare,        // DIG_7 (H12): packer overflow flag (frame dropped)
     
     // ========== FT601 USB 3.0 INTERFACE ==========
     
@@ -131,6 +140,7 @@ module radar_system_top (
 parameter USE_LONG_CHIRP = 1'b1;          // Default to long chirp
 parameter DOPPLER_ENABLE = 1'b1;           // Enable Doppler processing (not used - kept for compatibility)
 parameter USB_ENABLE = 1'b1;               // Enable USB data transfer
+parameter [15:0] CFAR_THRESHOLD_DEFAULT = 16'd10000;   // BETA: reset value of the register-map threshold (|I|+|Q|)
 
 // ============================================================================
 // INTERNAL SIGNALS
@@ -164,6 +174,12 @@ wire [31:0] rx_range_profile_w;
 wire        rx_range_profile_valid;
 wire [5:0]  rx_range_profile_bin;
 wire        rx_cdc_overflow;
+
+// Host-link option B (BETA)
+wire        bridge_active;
+wire        bridge_miso;
+wire        passthrough_miso_3v3;
+wire [5:0]  rx_chirp_counter;
 
 // Register map (BETA)
 wire        ctl_use_long_chirp;
@@ -260,9 +276,10 @@ radar_transmitter tx_inst (
     .adar_tr_4(adar_tr_4),
     
     // Level Shifter SPI Interface
+    .spi_passthrough_gate(bridge_active),
     .stm32_sclk_3v3(stm32_sclk_3v3),
     .stm32_mosi_3v3(stm32_mosi_3v3),
-    .stm32_miso_3v3(stm32_miso_3v3),
+    .stm32_miso_3v3(passthrough_miso_3v3),
     .stm32_cs_adar1_3v3(stm32_cs_adar1_3v3),
     .stm32_cs_adar2_3v3(stm32_cs_adar2_3v3),
     .stm32_cs_adar3_3v3(stm32_cs_adar3_3v3),
@@ -289,7 +306,8 @@ radar_transmitter tx_inst (
 
 radar_control_regs #(
     .DEF_USE_LONG_CHIRP (USE_LONG_CHIRP),
-    .DEF_USB_ENABLE     (USB_ENABLE)
+    .DEF_USB_ENABLE     (USB_ENABLE),
+    .DEF_CFAR_THRESHOLD (CFAR_THRESHOLD_DEFAULT)
 ) ctl_regs (
     .clk             (clk_100m_buf),
     .reset_n         (sys_reset_n),
@@ -340,7 +358,7 @@ radar_receiver_final #(
     .range_bin(rx_range_bin),
 
     // Status
-    .rx_chirp_counter(),
+    .rx_chirp_counter(rx_chirp_counter),
     .new_chirp_frame(),
     .cdc_overflow(rx_cdc_overflow)
 );
@@ -399,7 +417,100 @@ assign usb_cfar_detection = rx_cfar_detection;
 assign usb_cfar_valid = rx_cfar_valid & ctl_usb_enable;
 
 // ============================================================================
-// USB DATA INTERFACE INSTANTIATION
+// HOST-LINK OPTION B: range-Doppler frame packer + SPI bridge (BETA)
+// Source: engineering/DESIGN/HOST_LINK (HOST_LINK_DESIGN.md section 5, option_b_signal_map.csv)
+// ============================================================================
+// Cell stream: the Doppler processor emits, for each range bin 0..63, the 32 Doppler bins in
+// order (range-major, 2048 cells per frame). The detector output rx_cfar_valid/detection is one
+// clock behind rx_doppler_valid, so the Doppler data are delayed by one register to line up with
+// the detection flag; frame_start is derived from the undelayed first cell (range_bin == 0 and
+// doppler_bin == 0) and therefore precedes the delayed first cell by one clock, as the packer
+// requires.
+// Beam indices: az/el come from the transmitter's STM32-toggle counters (the only source of the
+// beam position in the design; the register map has no such field). They live in the clk_120m
+// domain and change only on STM32 toggles (milliseconds apart), so they are taken through a
+// 2-stage synchroniser and accepted only when two consecutive samples agree. chirp_count is a
+// free-running 16-bit count of receiver chirp pulses (clk_100m). long_chirp = register map.
+reg  [15:0] cell_i_d, cell_q_d;
+reg  [4:0]  dop_bin_d;
+reg  [5:0]  rng_bin_d;
+reg         frame_first_d;
+always @(posedge clk_100m_buf or negedge sys_reset_n) begin
+    if (!sys_reset_n) begin
+        cell_i_d <= 16'd0; cell_q_d <= 16'd0; dop_bin_d <= 5'd0; rng_bin_d <= 6'd0; frame_first_d <= 1'b0;
+    end else begin
+        cell_i_d <= rx_doppler_real;
+        cell_q_d <= rx_doppler_imag;
+        dop_bin_d <= rx_doppler_bin;
+        rng_bin_d <= rx_range_bin;
+        frame_first_d <= rx_doppler_valid && (rx_doppler_bin == 5'd0) && (rx_range_bin == 6'd0);
+    end
+end
+wire packer_frame_start = rx_doppler_valid && (rx_doppler_bin == 5'd0) && (rx_range_bin == 6'd0);
+
+(* ASYNC_REG = "TRUE" *) reg [5:0] az_s1, az_s2, el_s1, el_s2;
+reg [5:0] az_stable, el_stable;
+reg [15:0] chirp_count;
+reg [5:0]  rx_chirp_counter_d;
+always @(posedge clk_100m_buf or negedge sys_reset_n) begin
+    if (!sys_reset_n) begin
+        az_s1 <= 6'd0; az_s2 <= 6'd0; el_s1 <= 6'd0; el_s2 <= 6'd0;
+        az_stable <= 6'd0; el_stable <= 6'd0; chirp_count <= 16'd0; rx_chirp_counter_d <= 6'd0;
+    end else begin
+        az_s1 <= tx_current_azimuth;   az_s2 <= az_s1;
+        el_s1 <= tx_current_elevation; el_s2 <= el_s1;
+        if (az_s1 == az_s2) az_stable <= az_s2;
+        if (el_s1 == el_s2) el_stable <= el_s2;
+        rx_chirp_counter_d <= rx_chirp_counter;
+        if (rx_chirp_counter != rx_chirp_counter_d) chirp_count <= chirp_count + 16'd1;
+    end
+end
+
+wire        pk_wr_en, pk_bank, pk_frame_done, pk_frame_bank, pk_overflow, pk_consumed;
+wire [11:0] pk_wr_addr, pk_frame_len;
+wire [7:0]  pk_wr_data;
+
+rd_map_packer #(.N_RANGE(64), .N_DOPPLER(32), .MAX_DET(32)) rd_packer (
+    .clk(clk_100m_buf), .rst_n(sys_reset_n),
+    .frame_start(packer_frame_start),
+    .cell_valid(rx_cfar_valid),
+    .cell_i(cell_i_d), .cell_q(cell_q_d),
+    .cell_det(rx_cfar_detection),
+    .az_idx({2'b00, az_stable}), .el_idx({2'b00, el_stable}),
+    .chirp_count(chirp_count), .long_chirp(ctl_use_long_chirp),
+    .wr_en(pk_wr_en), .wr_addr(pk_wr_addr), .wr_data(pk_wr_data), .bank(pk_bank),
+    .frame_done(pk_frame_done), .frame_bank(pk_frame_bank), .frame_len(pk_frame_len),
+    .overflow(pk_overflow), .consumed(pk_consumed)
+);
+
+host_bridge_spi host_bridge (
+    .clk(clk_100m_buf), .rst_n(sys_reset_n),
+    .wr_en(pk_wr_en), .wr_addr(pk_wr_addr), .wr_data(pk_wr_data), .wr_bank(pk_bank),
+    .frame_bank(pk_frame_bank), .frame_done(pk_frame_done), .frame_len(pk_frame_len),
+    .consumed(pk_consumed),
+    .sclk(stm32_sclk_3v3), .mosi(stm32_mosi_3v3), .miso(bridge_miso), .cs_n(spi_bridge_cs_n),
+    .drdy(spi_bridge_drdy), .bridge_active(bridge_active)
+);
+
+// Shared SPI1 MISO: bridge while its chip select is low, ADAR1000 pass-through otherwise.
+assign stm32_miso_3v3  = bridge_active ? bridge_miso : passthrough_miso_3v3;
+assign spi_bridge_spare = pk_overflow;
+
+// RTL check required by option_b_signal_map.csv: all ADAR1000 chip selects must be high
+// during a bridge transfer (sticky flag, exported in system_status[1]).
+reg bridge_cs_conflict;
+always @(posedge clk_100m_buf or negedge sys_reset_n) begin
+    if (!sys_reset_n) bridge_cs_conflict <= 1'b0;
+    else if (bridge_active && !(stm32_cs_adar1_3v3 & stm32_cs_adar2_3v3 & stm32_cs_adar3_3v3 & stm32_cs_adar4_3v3))
+        bridge_cs_conflict <= 1'b1;
+end
+
+/* verilator lint_off UNUSEDSIGNAL */
+wire unused_packer = (|dop_bin_d) | (|rng_bin_d) | frame_first_d;   // kept for waveform debugging
+/* verilator lint_on UNUSEDSIGNAL */
+
+// ============================================================================
+// USB DATA INTERFACE INSTANTIATION (host-link option A, unchanged)
 // ============================================================================
 
 usb_data_interface usb_inst (
@@ -455,7 +566,7 @@ always @(posedge clk_100m_buf or negedge sys_reset_n) begin
         status_reg <= 4'b0000;
     end else begin
         status_reg[0] <= stm32_mixers_enable;      // Mixers enabled
-        status_reg[1] <= ft601_txe | rx_cdc_overflow; // USB TX ready / BETA: or CDC FIFO overflow
+        status_reg[1] <= ft601_txe | rx_cdc_overflow | bridge_cs_conflict; // USB TX ready / BETA: or CDC FIFO overflow / ADAR CS low during a bridge transfer
         status_reg[2] <= rx_doppler_valid;          // Data valid
         status_reg[3] <= tx_new_chirp_frame;        // New chirp frame
     end

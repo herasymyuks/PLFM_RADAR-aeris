@@ -13,6 +13,11 @@
 //     2..4 carry CS2..CS4 only. The pass-through re-times every SPI line by one
 //     clk_100m cycle (10 ns, +1 cycle MISO return) - acceptable for SCLK up to a
 //     few MHz; the STM32 SPI1 clock must be checked against this (README).
+//   * spi_passthrough_gate input (host-link option B): while high (bridge chip
+//     select active) the ADAR1000 CS lines are held high and SCLK/MOSI idle on
+//     the 1.8 V side, so a bridge transfer on the shared SPI1 bus never reaches
+//     the beamformers. passthrough_miso carries the ADAR1000 MISO; the top level
+//     multiplexes it with the bridge MISO onto stm32_miso_3v3.
 //////////////////////////////////////////////////////////////////////////////////
 module radar_transmitter(
     // System Clocks
@@ -50,9 +55,10 @@ module radar_transmitter(
     output wire adar_tr_4,
 
     // Level Shifter SPI Interface (STM32F7 to ADAR1000)
+    input wire spi_passthrough_gate,   // BETA host-link: 1 = hold the ADAR1000 SPI idle
     input wire stm32_sclk_3v3,
     input wire stm32_mosi_3v3,
-    output wire stm32_miso_3v3,
+    output wire stm32_miso_3v3,        // ADAR1000 MISO after the level shifter (pass-through only)
     input wire stm32_cs_adar1_3v3,
     input wire stm32_cs_adar2_3v3,
     input wire stm32_cs_adar3_3v3,
@@ -150,31 +156,40 @@ dac_interface_enhanced dac_interface_inst (
 );
 
 // STM32 (3.3 V bank 15) -> ADAR1000 (1.8 V bank 34) SPI pass-through.
+// Gate (host-link option B): the 3.3 V inputs are forced idle (CS high, SCLK/MOSI low)
+// before the level shifters while spi_passthrough_gate is high.
+wire ls_sclk_in = stm32_sclk_3v3 & ~spi_passthrough_gate;
+wire ls_mosi_in = stm32_mosi_3v3 & ~spi_passthrough_gate;
+wire ls_cs1_in  = stm32_cs_adar1_3v3 | spi_passthrough_gate;
+wire ls_cs2_in  = stm32_cs_adar2_3v3 | spi_passthrough_gate;
+wire ls_cs3_in  = stm32_cs_adar3_3v3 | spi_passthrough_gate;
+wire ls_cs4_in  = stm32_cs_adar4_3v3 | spi_passthrough_gate;
+
 level_shifter_interface ls_adar1 (
     .clk(clk_100m), .reset_n(reset_n),
-    .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(stm32_miso_3v3),
-    .cs_3v3(stm32_cs_adar1_3v3),
+    .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(stm32_miso_3v3),
+    .cs_3v3(ls_cs1_in),
     .sclk_1v8(stm32_sclk_1v8), .mosi_1v8(stm32_mosi_1v8), .miso_1v8(stm32_miso_1v8),
     .cs_1v8(stm32_cs_adar1_1v8)
 );
 level_shifter_interface ls_adar2 (
     .clk(clk_100m), .reset_n(reset_n),
-    .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
-    .cs_3v3(stm32_cs_adar2_3v3),
+    .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
+    .cs_3v3(ls_cs2_in),
     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
     .cs_1v8(stm32_cs_adar2_1v8)
 );
 level_shifter_interface ls_adar3 (
     .clk(clk_100m), .reset_n(reset_n),
-    .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
-    .cs_3v3(stm32_cs_adar3_3v3),
+    .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
+    .cs_3v3(ls_cs3_in),
     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
     .cs_1v8(stm32_cs_adar3_1v8)
 );
 level_shifter_interface ls_adar4 (
     .clk(clk_100m), .reset_n(reset_n),
-    .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
-    .cs_3v3(stm32_cs_adar4_3v3),
+    .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
+    .cs_3v3(ls_cs4_in),
     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
     .cs_1v8(stm32_cs_adar4_1v8)
 );

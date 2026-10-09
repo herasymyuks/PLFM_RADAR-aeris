@@ -18,11 +18,11 @@ beta/fpga/
 ├── build.sh                 open-source flow (exit code = number of failures)      <- RUN THIS
 ├── gen_chirp_mem.py         verifies the .mem formula, writes the missing seg3 files
 ├── CHANGELOG.md             every change vs. 9_Firmware/9_2_FPGA, file:line + reason
-├── rtl/                     synthesisable Verilog-2001 (28 files)
+├── rtl/                     synthesisable Verilog-2001 (30 files; incl. host-link option B rd_map_packer + host_bridge_spi)
 │   ├── sim/unisim_sim_models.v   BUFG/IBUFDS/IDDR stand-ins (simulation + lint only)
 │   └── unused_orig/              5 untouched originals that are no longer compiled (+README)
 ├── mem/                     8 original .mem copies + generated long_chirp_seg3_{i,q}.mem
-├── tb/                      4 self-checking testbenches, gen_vectors.py, vectors/, original TB (reference)
+├── tb/                      6 self-checking testbenches, gen_vectors.py, vectors/, original TB (reference)
 ├── constraints/radar_system_top_beta.xdc
 ├── vivado/create_project.tcl, vivado/build.tcl     (NOT executed)
 ├── ip/README.md             exact FFT IP settings (xfft v9.1) derived from the port usage
@@ -47,16 +47,18 @@ resolves Memory Files by name).
 |---|---|---|---|
 | 1 | `iverilog -g2005 -DSIM -s radar_system_top rtl/*.v rtl/sim/unisim_sim_models.v` | PASS | `logs/iverilog_top_sim.log` |
 | 2 | `iverilog -g2005 -s radar_system_top ...` (synthesis view) | PASS | `logs/iverilog_top_synth.log` |
-| 3a | `verilator --lint-only -Wall -Wno-fatal --top-module radar_system_top ...` (synth view) | PASS, **0 %Error, 113 %Warning** | `logs/verilator_synth.log` |
-| 3b | same with `-DSIM` | PASS, **0 %Error, 106 %Warning** | `logs/verilator_sim.log` |
+| 3a | `verilator --lint-only -Wall -Wno-fatal --top-module radar_system_top ...` (synth view) | PASS, **0 %Error, 124 %Warning** | `logs/verilator_synth.log` |
+| 3b | same with `-DSIM` | PASS, **0 %Error, 117 %Warning** | `logs/verilator_sim.log` |
 | 4 | `python3 gen_chirp_mem.py` | PASS: seg0/1/2 reproduced within 1 LSB, seg3 written | `logs/gen_chirp_mem.log` |
 | 5 | `python3 tb/gen_vectors.py` | PASS | `logs/gen_vectors.log` |
 | 6a | `tb_fft_wrappers` - xfft_32 (4 frames incl. back-pressure) and FFT_enhanced (fwd + inv) vs numpy | PASS: 2176 samples within +/-2 LSB | `logs/tb_fft_wrappers.run.log` |
 | 6b | `tb_matched_filter` - chain + memory, reference chirp delayed 300 samples | PASS: peak at bin 302 (300 +/-4), peak/sidelobe 4.76 | `logs/tb_matched_filter.run.log` |
 | 6c | `tb_range_bin_decimator` - 2 x 1024 bins (one with input gaps) vs numpy, peak mode | PASS: 128/128 bins | `logs/tb_range_bin_decimator.run.log` |
-| 6d | `tb_system_smoke` - full top, 10 chirps, synthetic IF echoes, 3.3 ms | PASS (65 s): see below | `logs/tb_system_smoke.run.log` |
+| 6d | `tb_system_smoke` - full top, 10 chirps, synthetic IF echoes, 3.3 ms | PASS (~65 s): see below | `logs/tb_system_smoke.run.log` |
+| 6e | `tb_host_bridge` - copy of the HOST_LINK unit test (packer + SPI slave, 3 detections) | PASS: 2075-byte frame, CRC ok | `logs/tb_host_bridge.run.log` |
+| 6f | `tb_host_bridge_top` - option B bridge through the top: SPI master reads one 64x32 frame after DRDY | PASS (~65 s): 2162-byte frame, 32 detections, sync/dims/az-el/chirp-count/map/CRC ok, ADAR pass-through gated | `logs/tb_host_bridge_top.run.log` |
 
-`build.sh` summary line: `0 failure(s), 219 verilator warning line(s) (both views)`.
+`build.sh` summary line: `0 failure(s), 241 verilator warning line(s) (both views)` (124 synth view + 117 sim view, after the host-link integration; 219 before it).
 
 System smoke test evidence (`logs/tb_system_smoke.run.log`): DAC left mid-scale (57540 samples);
 40 range profiles (4 segments x 10 chirps); for alternating echo delays of 100 and 420 baseband
@@ -65,7 +67,7 @@ samples the segment-0 peak sat at decimated bin 8 and 28 on every chirp - a shif
 DDC -> matched filter -> decimator; 2048 Doppler outputs (one 64 x 32 frame); 2688 USB packets with
 0 header/footer/sequence errors; no X on outputs; the matched-filter FSM was idle at every toggle.
 
-Verilator warning breakdown (synthesis view, 113): 34 UNUSEDSIGNAL (debug/diagnostic nets of the
+Verilator warning breakdown (synthesis view, 124): 36 UNUSEDSIGNAL (debug/diagnostic nets of the
 original, unused IP tready/tlast nets in the wrappers), 34 PINCONNECTEMPTY (monitor outputs left
 unconnected on purpose), 13 WIDTHEXPAND / 4 WIDTHTRUNC (original arithmetic widths, e.g.
 `plfm_chirp_controller.v` 16-bit counter indexing a 3600-entry LUT), 12 UNUSEDPARAM (original
@@ -75,7 +77,7 @@ in `lfsr_dither_enhanced`). None was hidden with a global `-Wno-*`; the few loca
 are documented in the source next to the reason.
 
 Additional checks: `tools/check_fpga_constraints.py --top beta/fpga/rtl/radar_system_top.v --xdc
-beta/fpga/constraints/radar_system_top_beta.xdc` -> 0 placeholders, 0 invalid properties, 64/180
+beta/fpga/constraints/radar_system_top_beta.xdc` -> 0 placeholders, 0 invalid properties, 67/183
 port bits constrained (the 116 unconstrained bits are exactly the UNRESOLVED ports below).
 `tools/gen_verilog_hierarchy.py --rtl beta/fpga/rtl` -> 0 missing RTL modules; the only "missing"
 names are the two deliberate IP placeholders (`logs/hier/`).
@@ -127,15 +129,33 @@ names are the two deliberate IP placeholders (`logs/hier/`).
   therefore constrained with `DIFF_TERM FALSE` (external 100 Ohm termination required - option A,
   REQUIRES VERIFICATION) and the `DIFF_TERM TRUE` lines are left commented as option B (bank VCCO
   change). `CFGBVS VCCO` / `CONFIG_VOLTAGE 3.3` set from the bank-0 supply.
+* Host-link option B pins H11/G12/H12 (DIG_5..7, bank 15, LVCMOS33) added; `spi_sclk` (37 ns)
+  is a fifth asynchronous clock group.
 * UNRESOLVED (116 bits, listed at the end of the file, unconstrained): `dac_clk` (DAC is clocked by
   AD9523 OUT10, not by the FPGA), all `ft601_*` (FT601 U6 has 0/77 pins connected), `current_*`,
   `new_chirp_frame`, `dbg_*`, `system_status` (no board nets). `write_bitstream` will refuse the
   unconstrained I/O unless they are removed from the top or `UNCONSTRAINEDPINS ALLOW` is set for a
   resource/timing trial only.
 
-## Host path (FT601 absent)
+## Host path
 
-The RTL's host interface is an FT601 slave-FIFO packetiser. On the Main Board the FT601 is placed but
+**Option B (implemented, BETA): SPI bridge on the STM32 SPI1 bus.** `rd_map_packer` turns each
+64 x 32 Doppler frame into a 2066..2162-byte frame (header, 2048 x uint8 log-magnitude, up to 32
+detections, CRC-16/CCITT-FALSE; layout in `engineering/DESIGN/HOST_LINK/HOST_LINK_DESIGN.md` section
+5) and `host_bridge_spi` streams it to the STM32 as an SPI slave (mode 0, MSB first, <= 27 MHz) on
+the existing SCLK/MOSI/MISO nets with DIG_5 = `spi_bridge_cs_n` (H11), DIG_6 = `spi_bridge_drdy`
+(G12), DIG_7 = `spi_bridge_spare` (H12, packer overflow flag). While the bridge CS is low the
+ADAR1000 pass-through is gated (CS high, SCLK/MOSI idle on the 1.8 V side) and MISO is driven by
+the bridge; `system_status[1]` latches a conflict if any ADAR CS is low during a transfer. Beam
+indices come from the transmitter's STM32-toggle counters (synchronised), the chirp count from the
+receiver's chirp pulses, `long_chirp` from the register map. Verified by `tb_host_bridge_top`
+(frame read end to end through the top, see table). Firmware side: STM32 PD13 must become an
+output (`main.cpp:2313-2317` configures PD13..15 as inputs), see `engineering/DESIGN/HOST_LINK/stm32`.
+Unresolved for option B: STM32 SPI1 timing versus the FPGA pins (XDC placeholders), BRAM inference
+of the SCLK-domain frame RAM read (`host_bridge_spi.v`, asynchronous read registered on falling
+SCLK), and the firmware rule that no ADAR1000 transaction overlaps a bridge read.
+
+**Option A (kept unchanged, Main Board rev. B): FT601.** The RTL's original host interface is an FT601 slave-FIFO packetiser. On the Main Board the FT601 is placed but
 not wired, and the STM32 reaches the FPGA only via `DIG_0..7` and the SPI1 pass-through (no chip
 select for the FPGA). The beta keeps `usb_data_interface` (packet format defined in its header,
 checked by `tb_system_smoke`) running on clk_100m so the data path can be simulated; a real FT601
@@ -172,8 +192,11 @@ map's write port is the hook for it.
    AD9484 capture edge and trace skew; bank-14 LVDS termination; ADC test pattern check; DAC data
    timing versus the externally clocked AD9708 (`dac_clk` has no pin); STM32 SPI1 clock rate versus
    the 1-cycle SPI pass-through re-timing; the short-chirp reference; the FT601/host decision.
-7. Register-map host interface; CFAR (the detector is still a fixed threshold); removal of the 116
-   unconstrained debug/status bits from the top before a board build.
+7. Register-map host interface (the bridge is read-only today; a write command on the same SPI
+   bridge is the natural extension); CFAR (the detector is still a fixed threshold, default 10000
+   via `CFAR_THRESHOLD_DEFAULT`); removal of the 116 unconstrained debug/status bits from the top
+   before a board build.
+8. Back-port the `rd_map_packer` `det_wr` width fix to `engineering/DESIGN/HOST_LINK/rtl/`.
 
 ## Known limitations of the beta (summary)
 

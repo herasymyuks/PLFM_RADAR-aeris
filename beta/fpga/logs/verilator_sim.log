@@ -92,41 +92,38 @@
 %Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:263:6: Instance pin connected by name with empty reference: 'status'
   263 |     .status            ()
       |      ^~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:299:6: Instance pin connected by name with empty reference: 'reg_rdata'
-  299 |     .reg_rdata       (),
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:317:6: Instance pin connected by name with empty reference: 'reg_rdata'
+  317 |     .reg_rdata       (),
       |      ^~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:343:6: Instance pin connected by name with empty reference: 'rx_chirp_counter'
-  343 |     .rx_chirp_counter(),
-      |      ^~~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:344:6: Instance pin connected by name with empty reference: 'new_chirp_frame'
-  344 |     .new_chirp_frame(),
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:362:6: Instance pin connected by name with empty reference: 'new_chirp_frame'
+  362 |     .new_chirp_frame(),
       |      ^~~~~~~~~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:162:60: Instance pin connected by name with empty reference: 'miso_3v3'
-  162 |     .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
-      |                                                            ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:164:6: Instance pin connected by name with empty reference: 'sclk_1v8'
-  164 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:177:52: Instance pin connected by name with empty reference: 'miso_3v3'
+  177 |     .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
+      |                                                    ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:179:6: Instance pin connected by name with empty reference: 'sclk_1v8'
+  179 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
       |      ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:164:19: Instance pin connected by name with empty reference: 'mosi_1v8'
-  164 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:179:19: Instance pin connected by name with empty reference: 'mosi_1v8'
+  179 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
       |                   ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:169:60: Instance pin connected by name with empty reference: 'miso_3v3'
-  169 |     .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
-      |                                                            ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:171:6: Instance pin connected by name with empty reference: 'sclk_1v8'
-  171 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:184:52: Instance pin connected by name with empty reference: 'miso_3v3'
+  184 |     .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
+      |                                                    ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:186:6: Instance pin connected by name with empty reference: 'sclk_1v8'
+  186 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
       |      ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:171:19: Instance pin connected by name with empty reference: 'mosi_1v8'
-  171 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:186:19: Instance pin connected by name with empty reference: 'mosi_1v8'
+  186 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
       |                   ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:176:60: Instance pin connected by name with empty reference: 'miso_3v3'
-  176 |     .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
-      |                                                            ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:178:6: Instance pin connected by name with empty reference: 'sclk_1v8'
-  178 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:191:52: Instance pin connected by name with empty reference: 'miso_3v3'
+  191 |     .sclk_3v3(ls_sclk_in), .mosi_3v3(ls_mosi_in), .miso_3v3(),
+      |                                                    ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:193:6: Instance pin connected by name with empty reference: 'sclk_1v8'
+  193 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
       |      ^~~~~~~~
-%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:178:19: Instance pin connected by name with empty reference: 'mosi_1v8'
-  178 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:193:19: Instance pin connected by name with empty reference: 'mosi_1v8'
+  193 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
       |                   ^~~~~~~~
 %Warning-DECLFILENAME: rtl/sim/unisim_sim_models.v:18:8: Filename 'unisim_sim_models' does not match MODULE name: 'BUFG'
    18 | module BUFG (
@@ -217,24 +214,68 @@
                                                     : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
   282 |                 if (read_range_bin < RANGE_BINS - 1) begin
       |                                    ^
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:145:12: Signal is not driven, nor used: 'tx_chirp_data'
+%Warning-WIDTHTRUNC: rtl/rd_map_packer.v:63:36: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's SHIFTR generates 17 bits.
+                                              : ... note: In instance 'radar_system_top.rd_packer'
+   63 |                 if (msb >= 3) frac = (m >> (msb-3));    
+      |                                    ^
+%Warning-WIDTHEXPAND: rtl/rd_map_packer.v:65:41: Operator OR expects 8 bits on the RHS, but RHS's VARREF 'frac' generates 3 bits.
+                                               : ... note: In instance 'radar_system_top.rd_packer'
+   65 |                 logmag = ({msb, 3'b000} | frac);
+      |                                         ^
+%Warning-WIDTHTRUNC: rtl/rd_map_packer.v:73:23: Operator ASSIGNW expects 6 bits on the Assign RHS, but Assign RHS's DIV generates 32 or 12 bits.
+                                              : ... note: In instance 'radar_system_top.rd_packer'
+   73 |     wire [5:0]  r_idx = cell_cnt / N_DOPPLER;
+      |                       ^
+%Warning-WIDTHTRUNC: rtl/rd_map_packer.v:74:23: Operator ASSIGNW expects 5 bits on the Assign RHS, but Assign RHS's MODDIV generates 32 or 12 bits.
+                                              : ... note: In instance 'radar_system_top.rd_packer'
+   74 |     wire [4:0]  d_idx = cell_cnt % N_DOPPLER;
+      |                       ^
+%Warning-WIDTHTRUNC: rtl/rd_map_packer.v:94:32: Bit extraction of array[31:0] requires 5 bit index, not 6 bits.
+                                              : ... note: In instance 'radar_system_top.rd_packer'
+   94 |                           det_r[n_det] <= {2'b00, r_idx}; det_d[n_det] <= {3'b000, d_idx}; det_m[n_det] <= lm; n_det <= n_det + 1;
+      |                                ^
+%Warning-WIDTHTRUNC: rtl/rd_map_packer.v:94:64: Bit extraction of array[31:0] requires 5 bit index, not 6 bits.
+                                              : ... note: In instance 'radar_system_top.rd_packer'
+   94 |                           det_r[n_det] <= {2'b00, r_idx}; det_d[n_det] <= {3'b000, d_idx}; det_m[n_det] <= lm; n_det <= n_det + 1;
+      |                                                                ^
+%Warning-WIDTHTRUNC: rtl/rd_map_packer.v:94:97: Bit extraction of array[31:0] requires 5 bit index, not 6 bits.
+                                              : ... note: In instance 'radar_system_top.rd_packer'
+   94 |                           det_r[n_det] <= {2'b00, r_idx}; det_d[n_det] <= {3'b000, d_idx}; det_m[n_det] <= lm; n_det <= n_det + 1;
+      |                                                                                                 ^
+%Warning-WIDTHEXPAND: rtl/rd_map_packer.v:102:35: Operator ASSIGNDLY expects 12 bits on the Assign RHS, but Assign RHS's VARREF 'hdr_i' generates 5 bits.
+                                                : ... note: In instance 'radar_system_top.rd_packer'
+  102 |                           wr_addr <= hdr_i;
+      |                                   ^~
+%Warning-WIDTHEXPAND: rtl/rd_map_packer.v:115:48: Operator ADD expects 32 or 12 bits on the RHS, but RHS's VARREF 'det_wr' generates 7 bits.
+                                                : ... note: In instance 'radar_system_top.rd_packer'
+  115 |                           wr_addr <= HDR + MAP + det_wr;
+      |                                                ^
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:155:12: Signal is not driven, nor used: 'tx_chirp_data'
                                                     : ... note: In instance 'radar_system_top'
-  145 | wire [7:0] tx_chirp_data;
+  155 | wire [7:0] tx_chirp_data;
       |            ^~~~~~~~~~~~~
                        ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.052
                        ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:146:6: Signal is not driven, nor used: 'tx_chirp_valid'
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:156:6: Signal is not driven, nor used: 'tx_chirp_valid'
                                                    : ... note: In instance 'radar_system_top'
-  146 | wire tx_chirp_valid;
+  156 | wire tx_chirp_valid;
       |      ^~~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:147:6: Signal is not driven, nor used: 'tx_chirp_done'
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:157:6: Signal is not driven, nor used: 'tx_chirp_done'
                                                    : ... note: In instance 'radar_system_top'
-  147 | wire tx_chirp_done;
+  157 | wire tx_chirp_done;
       |      ^~~~~~~~~~~~~
-%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:160:6: Signal is not used: 'rx_doppler_data_valid'
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:170:6: Signal is not used: 'rx_doppler_data_valid'
                                                    : ... note: In instance 'radar_system_top'
-  160 | wire rx_doppler_data_valid;
+  170 | wire rx_doppler_data_valid;
       |      ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/host_bridge_spi.v:33:16: Bits of signal are not used: 'shin'[7]
+                                                  : ... note: In instance 'radar_system_top.host_bridge'
+   33 |     reg [7:0]  shin;
+      |                ^~~~
+%Warning-UNUSEDSIGNAL: rtl/rd_map_packer.v:76:13: Signal is not driven, nor used: 'i'
+                                                : ... note: In instance 'radar_system_top.rd_packer'
+   76 |     integer i;
+      |             ^
 %Warning-UNUSEDPARAM: rtl/ad9484_lvds_to_cmos_400m.v:44:15: Parameter is not used: 'DIFF_TERM'
                                                           : ... note: In instance 'radar_system_top.rx_inst.adc'
    44 |     parameter DIFF_TERM       = "FALSE",    
@@ -393,6 +434,12 @@
                                                   : ... note: In instance 'radar_system_top.rx_inst.doppler_proc.fft_inst.u_core'
   110 |         integer base, i, j, bitmask, len, half, k, p, q, sh;
       |                                                       ^
+%Warning-CMPCONST: rtl/rd_map_packer.v:66:25: Comparison is constant due to limited range
+                                            : ... note: In instance 'radar_system_top.rd_packer'
+   66 |                 if (msb > 5'd31) logmag = 8'hFF;
+      |                         ^
+                   ... For warning description see https://verilator.org/warn/CMPCONST?v=5.052
+                   ... Use "/* verilator lint_off CMPCONST */" and lint_on around source to disable this message.
 - V e r i l a t i o n   R e p o r t: Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905
-- Verilator: Built from 3.730 MB sources in 33 modules, into 3.857 MB in 6 C++ files needing 0.000 MB
-- Verilator: Walltime 0.247 s (elab=0.015, cvt=0.195, bld=0.000); cpu 0.247 s on 1 threads; allocated 60.453 MB
+- Verilator: Built from 4.196 MB sources in 35 modules, into 3.927 MB in 6 C++ files needing 0.000 MB
+- Verilator: Walltime 0.234 s (elab=0.014, cvt=0.182, bld=0.000); cpu 0.233 s on 1 threads; allocated 61.344 MB

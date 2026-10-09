@@ -29,4 +29,9 @@ else
   printf '\n===== FPGA iverilog elaboration =====\nSKIPPED (iverilog not installed)\n'
 fi
 printf '\n===== SUMMARY: %d check(s) failed =====\n' "$FAILS"
+# --- BETA tree (optional: only when present; needs iverilog/verilator, arm-none-eabi-gcc + beta/stm32/cube, beta/gui/.venv) ---
+if [ -x beta/fpga/build.sh ]; then run "beta/fpga build + testbenches" bash beta/fpga/build.sh; fi
+if [ -x beta/stm32/build.sh ] && command -v arm-none-eabi-gcc >/dev/null && [ -d beta/stm32/cube ]; then run "beta/stm32 build" bash beta/stm32/build.sh; fi
+if [ -x beta/gui/.venv/bin/python ]; then run "beta/gui pytest" bash -c "cd beta/gui && .venv/bin/python -m pytest -q"; fi
+if [ -f engineering/DESIGN/HOST_LINK/rtl/run_tb.sh ]; then run "host-link bridge testbench" bash engineering/DESIGN/HOST_LINK/rtl/run_tb.sh; fi
 exit $(( FAILS > 125 ? 125 : FAILS ))

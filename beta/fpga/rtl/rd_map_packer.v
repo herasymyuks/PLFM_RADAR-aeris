@@ -2,6 +2,8 @@
 // frame (header + 2048 × uint8 log-magnitude + detection list) in a dual-port RAM that the SPI
 // bridge streams to the STM32.  BETA — simulated with iverilog, not synthesised.
 // Frame layout: see engineering/DESIGN/HOST_LINK/HOST_LINK_DESIGN.md §5.
+// beta/fpga copy: det_wr widened to 7 bits (see beta/fpga/CHANGELOG.md); otherwise identical to
+// engineering/DESIGN/HOST_LINK/rtl/rd_map_packer.v.
 `timescale 1ns/1ps
 module rd_map_packer #(
     parameter N_RANGE   = 64,
@@ -39,7 +41,7 @@ module rd_map_packer #(
     reg [7:0]  det_r [0:MAX_DET-1];
     reg [7:0]  det_d [0:MAX_DET-1];
     reg [7:0]  det_m [0:MAX_DET-1];
-    reg [6:0]  det_wr;          // counts to 3*MAX_DET = 96 (bug found by beta/fpga top-level test: 6 bits hung at n_det >= 22)
+    reg [6:0]  det_wr;           // BETA fix: counts to 3*MAX_DET = 96 (was [5:0] -> hang when n_det >= 22)
     reg [4:0]  hdr_i;
     reg [15:0] seq;
     reg        busy_other;       // other bank not yet consumed

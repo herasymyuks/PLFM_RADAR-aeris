@@ -21,6 +21,11 @@ create_clock -name adc_dco      -period  2.500 [get_ports adc_dco_p]      ;# AD9
 # ft601_clk_in has no board pin (FT601 not wired) and is not used by the beta RTL; the
 # constraint is kept so that a future FT601 interface starts with a defined clock:
 create_clock -name ft601_clk_in -period 10.000 [get_ports ft601_clk_in]
+# Host-link option B: the STM32 SPI1 clock is a clock for host_bridge_spi (SCLK-domain slave,
+# <= 27 MHz per option_b_signal_map.csv) and at the same time data for the ADAR1000 pass-through
+# synchroniser (level_shifter_interface samples it with clk_100m) - Vivado reports the latter as
+# a clock used as data, which is intended.
+create_clock -name spi_sclk     -period 37.000 [get_ports stm32_sclk_3v3]   ;# 27 MHz max (STM32 SPI1, APB2 108 MHz / 4)
 set_input_jitter [get_clocks clk_100m]     0.100
 set_input_jitter [get_clocks clk_120m_dac] 0.100
 set_input_jitter [get_clocks adc_dco]      0.050
@@ -32,7 +37,8 @@ set_clock_groups -asynchronous \
     -group [get_clocks clk_100m] \
     -group [get_clocks clk_120m_dac] \
     -group [get_clocks adc_dco] \
-    -group [get_clocks ft601_clk_in]
+    -group [get_clocks ft601_clk_in] \
+    -group [get_clocks spi_sclk]
 
 # ----------------------------------------------------- I/O timing ---------
 # AD9484 LVDS data, SDR, edge-aligned with DCO (tSKEW +/-0.07 ns). Board trace skew is
@@ -52,10 +58,18 @@ set_input_delay -clock adc_dco -min -0.320 [get_ports {adc_d_p[*] adc_d_n[*]}] -
 
 # Asynchronous STM32 lines (synchronised inside: edge_detector_enhanced, reset synchronisers)
 set_false_path -from [get_ports {stm32_new_chirp stm32_new_elevation stm32_new_azimuth stm32_mixers_enable reset_n}]
-# SPI pass-through is re-timed by clk_100m flops; the STM32 SPI clock (<= a few MHz) is
-# treated as data, not as a clock
-set_false_path -from [get_ports {stm32_sclk_3v3 stm32_mosi_3v3 stm32_cs_adar*_3v3 stm32_miso_1v8}]
-set_false_path -to   [get_ports {stm32_sclk_1v8 stm32_mosi_1v8 stm32_cs_adar*_1v8 stm32_miso_3v3}]
+# ADAR1000 SPI pass-through is re-timed by clk_100m flops: the 3.3 V inputs are asynchronous
+# to clk_100m (false paths limited to the level-shifter cells, -quiet in case of renaming).
+set_false_path -quiet -from [get_ports {stm32_sclk_3v3 stm32_mosi_3v3 stm32_cs_adar*_3v3 stm32_miso_1v8 spi_bridge_cs_n}] \
+                      -to [get_cells -hier -filter {NAME =~ *ls_adar*}]
+set_false_path -to   [get_ports {stm32_sclk_1v8 stm32_mosi_1v8 stm32_cs_adar*_1v8}]
+# Bridge (spi_sclk domain): MOSI is sampled on the rising SCLK edge, MISO changes on the falling
+# edge (mode 0). STM32F7 SPI1 master timing versus SCLK at the FPGA pins is UNRESOLVED (needs the
+# STM32 datasheet tv/tsu figures and the board trace delays); placeholders, not active:
+# set_input_delay  -clock spi_sclk -max 10.0 [get_ports {stm32_mosi_3v3 spi_bridge_cs_n}]
+# set_input_delay  -clock spi_sclk -min  0.0 [get_ports {stm32_mosi_3v3 spi_bridge_cs_n}]
+# set_output_delay -clock spi_sclk -max  5.0 [get_ports stm32_miso_3v3]
+set_false_path -to [get_ports {stm32_miso_3v3 spi_bridge_drdy spi_bridge_spare}]
 set_false_path -to   [get_ports {adar_* tx_mixer_en rx_mixer_en fpga_rf_switch dac_sleep adc_pwdn}]
 
 # Synchroniser cells: ASYNC_REG is set in the RTL; the max-delay below bounds the
@@ -244,6 +258,15 @@ set_property IOSTANDARD LVCMOS18 [get_ports {adar_tr_3}]   ;# bank 34 VCCO=+1V8_
 set_property PACKAGE_PIN P4 [get_ports {adar_tr_4}]   ;# net ADAR_TR_4, pin IO_L5P_T0_34 [HIGH]
 set_property IOSTANDARD LVCMOS18 [get_ports {adar_tr_4}]   ;# bank 34 VCCO=+1V8_FPGA
 
+# ---- host-link option B (engineering/DESIGN/HOST_LINK/option_b_signal_map.csv) - nets exist on the board
+set_property PACKAGE_PIN H11 [get_ports {spi_bridge_cs_n}]   ;# net DIG_5, pin IO_L19P_T3_A22_15, STM32 PD13 (firmware: becomes OUTPUT) [MEDIUM]
+set_property IOSTANDARD LVCMOS33 [get_ports {spi_bridge_cs_n}]   ;# bank 15 VCCO=+3V3_FPGA
+set_property PULLUP true [get_ports {spi_bridge_cs_n}]   ;# bridge inactive until the STM32 drives the line
+set_property PACKAGE_PIN G12 [get_ports {spi_bridge_drdy}]   ;# net DIG_6, pin IO_L19N_T3_A21_VREF_15, STM32 PD14 (EXTI14) [MEDIUM]
+set_property IOSTANDARD LVCMOS33 [get_ports {spi_bridge_drdy}]   ;# bank 15 VCCO=+3V3_FPGA
+set_property PACKAGE_PIN H12 [get_ports {spi_bridge_spare}]   ;# net DIG_7, pin IO_L20P_T3_A20_15, STM32 PD15 [MEDIUM]
+set_property IOSTANDARD LVCMOS33 [get_ports {spi_bridge_spare}]   ;# bank 15 VCCO=+3V3_FPGA
+
 # ---------------- UNRESOLVED RTL PORTS (no schematic evidence) ----------------
 # UNRESOLVED — REQUIRES BOARD DESIGN VERIFICATION: dac_clk
 #     reason: RTL drives a DAC clock output, but the board clocks the AD9708 from AD9523 OUT10 (main.cpp:1019-1020); no FPGA net
@@ -251,8 +274,8 @@ set_property IOSTANDARD LVCMOS18 [get_ports {adar_tr_4}]   ;# bank 34 VCCO=+1V8_
 #     reason: FT601Q-B-T (U6) is placed in the schematic but has 0 of 77 pins connected; its decoupling parts are parked outside the board outline
 # UNRESOLVED — REQUIRES BOARD DESIGN VERIFICATION: ft601_data[*], ft601_be[*], ft601_txe_n, ft601_rxf_n, ft601_txe, ft601_rxf, ft601_wr_n, ft601_rd_n, ft601_oe_n, ft601_siwu_n, ft601_srb[*], ft601_swb[*], ft601_clk_out
 #     reason: FT601 not wired on Main Board
-# UNRESOLVED — REQUIRES BOARD DESIGN VERIFICATION: (DIG_5..DIG_7)
-#     reason: schematic nets DIG_5/6/7 (STM32 PD13/14/15 configured as INPUTS in main.cpp:2313-2317) reach FPGA H11/G12/H12 but no RTL port uses them
+# (DIG_5..DIG_7 are now used by the host-link option B ports above; the STM32 firmware must
+#  reconfigure PD13 as an output - main.cpp:2313-2317 configures PD13..15 as inputs today)
 # UNRESOLVED — REQUIRES BOARD DESIGN VERIFICATION: current_elevation[*], current_azimuth[*], current_chirp[*], new_chirp_frame
 #     reason: no status outputs on the schematic
 # UNRESOLVED — REQUIRES BOARD DESIGN VERIFICATION: dbg_doppler_data[*], dbg_doppler_valid, dbg_doppler_bin[*], dbg_range_bin[*], system_status[*]
@@ -261,9 +284,6 @@ set_property IOSTANDARD LVCMOS18 [get_ports {adar_tr_4}]   ;# bank 34 VCCO=+1V8_
 # ---------------- schematic FPGA nets with NO RTL port ----------------
 # ADC_OR_N               pad N6   pin IO_L19N_T3_A09_D25_VREF_14
 # ADC_OR_P               pad M6   pin IO_L19P_T3_A10_D26_14
-# DIG_5                  pad H11  pin IO_L19P_T3_A22_15
-# DIG_6                  pad G12  pin IO_L19N_T3_A21_VREF_15
-# DIG_7                  pad H12  pin IO_L20P_T3_A20_15
 # FPGA_ADC_CLOCK_N       pad N12  pin IO_L13N_T2_MRCC_14
 # FPGA_ADC_CLOCK_P       pad N11  pin IO_L13P_T2_MRCC_14
 # FPGA_CLOCK_TEST        pad H14  pin IO_L24P_T3_RS1_15

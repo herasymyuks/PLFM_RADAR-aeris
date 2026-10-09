@@ -7,6 +7,8 @@
 #   4. python3 gen_chirp_mem.py        (verifies the .mem formula, writes seg3 if absent)
 #   5. python3 tb/gen_vectors.py       (numpy reference vectors)
 #   6. every testbench in tb/tb_*.v    (iverilog + vvp; a run passes only if it prints "PASS" and not "FAIL")
+#      tb_fft_wrappers, tb_matched_filter, tb_range_bin_decimator, tb_host_bridge (unit),
+#      tb_host_bridge_top (option B bridge through the top, ~65 s), tb_system_smoke (~65 s)
 #
 # Exit code = number of failed steps. Logs: beta/fpga/logs/. Never modifies rtl/ or mem/.
 # Run from anywhere: paths are resolved relative to this script. $readmemh paths in the RTL are
