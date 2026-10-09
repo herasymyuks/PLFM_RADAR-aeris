@@ -9,3 +9,4 @@
 - **Headings**: `#` chapter, `##` section, `###` subsection; chapter files start with a front-matter block: title, status summary, sources list.
 - **Cross-references**: use the IDs already in use (K1–K8 conflicts, D-01…D-19 decisions, DSN-* drawings, R-* tasks, AC-* acceptance criteria, CBL-* cables, G-* geometry gaps, MDR-* recovery guides).
 - **No marketing language, no speculation, no "should work"**; say what was executed and what was not.
+- **Authorship**: every page header/footer, the title page, drawing title blocks and chapter front-matter carry `Antidrone Ukraine · antidrone.cc`; captions of original upstream files keep `ORIGINAL PROJECT FILE` and do not claim authorship.

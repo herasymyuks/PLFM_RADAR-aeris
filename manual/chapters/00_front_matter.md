@@ -10,4 +10,4 @@
 
 ## Content
 
-(to write)
+(to write) — must include: author line **Antidrone Ukraine · antidrone.cc**, revision table (edition, date, author, scope), status statement, how to read the status labels, acknowledgement of the upstream project files (ORIGINAL PROJECT FILE).

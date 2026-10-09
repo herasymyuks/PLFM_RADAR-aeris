@@ -17,6 +17,10 @@ Produce `manual/AERIS10_MANUAL.md` (single Markdown master with relative figure 
 5. `docs/AERIS10_ENGINEERING_BUILD_MANUAL.md` (v1.3, Parts I–XIII), `docs/AERIS10_BETA_ENGINEERING_REPORT.md`, `engineering/DRAWING_REGISTER.md`, `engineering/DESIGN/00_DESIGN_BASIS.md`, the `README.md`/`CHANGELOG.md` of `beta/fpga`, `beta/stm32`, `beta/gui`, `beta/pcb`.
 6. Everything they reference (schematic reports, PCB READMEs, calculation sheets, interconnection table, power-rail register, harness schedule, parts lists).
 
+## AUTHORSHIP (mandatory)
+
+The manual is authored by **Antidrone Ukraine — antidrone.cc**. Put this on: the title page (author line + website), the running header/footer of every page (`tools/build_manual.py` does it automatically: header "AERIS-10 — Engineering & Assembly Manual", footer "© Antidrone Ukraine · antidrone.cc · <date> · <status>"), the front-matter revision table (author column), the title block line of every generated drawing (`tools/eagle_svg_common.py` `ATTRIBUTION`, applied when figures are regenerated), the HTML `<meta name="author">`, and the PDF metadata. Original project files from the upstream repository keep their own authorship and are labelled ORIGINAL PROJECT FILE; the manual's authorship covers the compilation, the generated drawings, the reconstruction and the proposed designs.
+
 ## HARD RULES
 
 - **Never invent**: every number, pin, part, dimension and claim must trace to a file in the repository; cite it inline as `(source: path[:line])`. If a value is unknown, write "UNKNOWN — see <register/recovery item>", never a placeholder number.

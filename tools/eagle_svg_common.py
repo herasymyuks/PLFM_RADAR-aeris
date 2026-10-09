@@ -19,6 +19,8 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from typing import Iterable, Optional
 
+ATTRIBUTION = "Antidrone Ukraine · antidrone.cc"   # printed in the title block of every generated drawing
+
 ROT_RE = re.compile(r"^(S?)(M?)R(-?[0-9.]+)$")
 
 
@@ -268,6 +270,7 @@ class SvgCanvas:
             bb = BBox()
             bb.add(0, 0)
             bb.add(100, 100)
+        subtitle_lines = list(subtitle_lines) + [f"Author: {ATTRIBUTION}"]
         title_h = 6.0 + 3.6 * (len(subtitle_lines) + 1)
         legend_h = 0.0
         if legend:

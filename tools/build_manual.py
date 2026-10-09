@@ -104,7 +104,10 @@ def main() -> int:
         for pr in problems: print("  -", pr)
         return 1 if problems else 0
     os.makedirs(OUT, exist_ok=True)
-    master = f"# AERIS-10 — Complete Engineering & Assembly Manual\n\nBuilt {_dt.date.today().isoformat()} by tools/build_manual.py from manual/chapters (order: manual/00_OUTLINE.md).\n\n"
+    AUTHOR = "Antidrone Ukraine · antidrone.cc"
+    master = (f"# AERIS-10 — Complete Engineering & Assembly Manual\n\n**Author: {AUTHOR}**\n\n"
+              f"Built {_dt.date.today().isoformat()} by tools/build_manual.py from manual/chapters (order: manual/00_OUTLINE.md). "
+              f"Status: BETA documentation — no item is hardware-verified; see the status label on every figure and procedure.\n\n")
     master += "\n\n---\n\n".join(f"<!-- chapter {cid}: {title} -->\n{md}" for cid, title, md in parts)
     open(os.path.join(MAN, "AERIS10_MANUAL.md"), "w", encoding="utf-8").write(master)
     # HTML with embedded images
@@ -121,13 +124,24 @@ def main() -> int:
         return f'<figure><img src="data:{mime};base64,{data}" alt="{html.escape(alt)}"><figcaption>{html.escape(alt)}</figcaption></figure>'
     body = md_to_html(master)
     body = re.sub(r'<img alt="([^"]*)" src="([^"]+)">', embed, body)
+    today = _dt.date.today().isoformat()
+    title_page = (f'<section class="title-page"><h1 style="page-break-before:avoid;font-size:34px;margin-top:120px">AERIS-10</h1>'
+                  f'<h2 style="font-weight:normal">Pulsed-LFM X-band phased-array radar</h2><h2>Complete Engineering &amp; Assembly Manual</h2>'
+                  f'<p style="margin-top:60px;font-size:18px"><strong>{AUTHOR}</strong></p><p>Edition {today} — BETA (reconstruction, proposed designs and beta implementations; not hardware-verified)</p>'
+                  f'<p style="margin-top:80px;font-size:12px;color:#444">Repository: https://github.com/herasymyuks/PLFM_RADAR-aeris · Upstream project files: NawfalMotii79/PLFM_RADAR (ORIGINAL PROJECT FILE where labelled)</p></section>')
+    running = (f'<div class="run-head">AERIS-10 — Engineering &amp; Assembly Manual</div>'
+               f'<div class="run-foot">© {AUTHOR} · {today} · BETA — not hardware-verified</div>')
+    body = running + title_page + body
     css = ("body{font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:auto;padding:20px;line-height:1.45;color:#111}"
            "table{border-collapse:collapse;font-size:12px;margin:8px 0}th,td{border:1px solid #999;padding:3px 6px;vertical-align:top}"
            "th{background:#eee}code{background:#f3f3f3;padding:0 3px}pre{background:#f3f3f3;padding:8px;overflow:auto}"
            "figure{margin:12px 0;page-break-inside:avoid}figure img,figure svg{max-width:100%;height:auto}figcaption{font-size:12px;color:#333}"
-           "h1{page-break-before:always}h1:first-of-type{page-break-before:avoid}@page{size:A4;margin:14mm}")
+           "h1{page-break-before:always}h1:first-of-type{page-break-before:avoid}@page{size:A4;margin:18mm 14mm 16mm 14mm}"
+           ".run-head{position:fixed;top:0;left:0;right:0;font-size:9px;color:#555;border-bottom:1px solid #ccc;padding:2px 0}"
+           ".run-foot{position:fixed;bottom:0;left:0;right:0;font-size:9px;color:#555;border-top:1px solid #ccc;padding:2px 0}"
+           ".title-page{text-align:center;page-break-after:always}@media screen{.run-head,.run-foot{position:static;text-align:right}}")
     hp = os.path.join(OUT, "AERIS10_MANUAL.html")
-    open(hp, "w", encoding="utf-8").write(f"<!doctype html><html><head><meta charset='utf-8'><title>AERIS-10 Manual</title><style>{css}</style></head><body>{body}</body></html>")
+    open(hp, "w", encoding="utf-8").write(f"<!doctype html><html><head><meta charset='utf-8'><title>AERIS-10 Manual — {AUTHOR}</title><meta name='author' content='{AUTHOR}'><meta name='description' content='AERIS-10 radar complete engineering and assembly manual — Antidrone Ukraine, antidrone.cc'><style>{css}</style></head><body>{body}</body></html>")
     print("wrote", hp, f"({os.path.getsize(hp)//1024} kB, {fig_n} figures)")
     if not a.no_pdf and os.path.exists(CHROME):
         pdf = os.path.join(OUT, "AERIS10_MANUAL.pdf")
