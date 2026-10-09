@@ -17,3 +17,4 @@ openems_out/
 beta/pcb/tools/*.jar
 !manual/build/
 manual/build/AERIS10_MANUAL.html
+manual/build/chapters/

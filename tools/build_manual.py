@@ -72,6 +72,7 @@ def main() -> int:
     ap.add_argument("--check", action="store_true"); ap.add_argument("--no-pdf", action="store_true")
     ap.add_argument("--max-px", type=int, default=0, help="downscale embedded raster images to this width (needs Pillow); writes *_light outputs")
     ap.add_argument("--suffix", default="")
+    ap.add_argument("--per-chapter", action="store_true", help="also write one HTML/PDF per chapter into manual/build/chapters/")
     a = ap.parse_args()
     problems, parts, fig_n = [], [], 0
     order = chapter_order()
@@ -134,6 +135,30 @@ def main() -> int:
                 pass
         data = base64.b64encode(raw).decode()
         return f'<figure><img src="data:{mime};base64,{data}" alt="{html.escape(alt)}"><figcaption>{html.escape(alt)}</figcaption></figure>'
+    CSS = ("body{font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:auto;padding:20px;line-height:1.45;color:#111}"
+           "table{border-collapse:collapse;font-size:12px;margin:8px 0}th,td{border:1px solid #999;padding:3px 6px;vertical-align:top}"
+           "th{background:#eee}code{background:#f3f3f3;padding:0 3px}pre{background:#f3f3f3;padding:8px;overflow:auto}"
+           "figure{margin:12px 0;page-break-inside:avoid}figure img,figure svg{max-width:100%;height:auto}figcaption{font-size:12px;color:#333}"
+           "h1{page-break-before:always}h1:first-of-type{page-break-before:avoid}@page{size:A4;margin:18mm 14mm 16mm 14mm}"
+           ".run-head{position:fixed;top:0;left:0;right:0;font-size:9px;color:#555;border-bottom:1px solid #ccc;padding:2px 0}"
+           ".run-foot{position:fixed;bottom:0;left:0;right:0;font-size:9px;color:#555;border-top:1px solid #ccc;padding:2px 0}"
+           ".title-page{text-align:center;page-break-after:always}@media screen{.run-head,.run-foot{position:static;text-align:right}}")
+    def render(md_text, hp, pdf_path, with_title=True):
+        body = md_to_html(md_text)
+        body = re.sub(r'<img alt="([^"]*)" src="([^"]+)">', embed, body)
+        today = _dt.date.today().isoformat()
+        title_page = (f'<section class="title-page"><h1 style="page-break-before:avoid;font-size:34px;margin-top:120px">AERIS-10</h1>'
+                      f'<h2 style="font-weight:normal">Pulsed-LFM X-band phased-array radar</h2><h2>Complete Engineering &amp; Assembly Manual</h2>'
+                      f'<p style="margin-top:60px;font-size:18px"><strong>{AUTHOR}</strong></p><p>Edition {today} — BETA (reconstruction, proposed designs and beta implementations; not hardware-verified)</p>'
+                      f'<p style="margin-top:80px;font-size:12px;color:#444">Repository: https://github.com/herasymyuks/PLFM_RADAR-aeris · Upstream project files: NawfalMotii79/PLFM_RADAR (ORIGINAL PROJECT FILE where labelled)</p></section>') if with_title else ""
+        running = (f'<div class="run-head">AERIS-10 — Engineering &amp; Assembly Manual</div>'
+                   f'<div class="run-foot">© {AUTHOR} · {today} · BETA — not hardware-verified</div>')
+        body = running + title_page + body
+        open(hp, "w", encoding="utf-8").write(f"<!doctype html><html><head><meta charset='utf-8'><title>AERIS-10 Manual — {AUTHOR}</title><meta name='author' content='{AUTHOR}'><meta name='description' content='AERIS-10 radar complete engineering and assembly manual — Antidrone Ukraine, antidrone.cc'><style>{CSS}</style></head><body>{body}</body></html>")
+        print("wrote", hp, f"({os.path.getsize(hp)//1024} kB)")
+        if pdf_path and os.path.exists(CHROME):
+            r = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={pdf_path}", "file://" + hp], capture_output=True, text=True, timeout=900)
+            print("wrote", pdf_path if os.path.isfile(pdf_path) else "PDF FAILED " + r.stderr[-300:])
     body = md_to_html(master)
     body = re.sub(r'<img alt="([^"]*)" src="([^"]+)">', embed, body)
     today = _dt.date.today().isoformat()
@@ -144,21 +169,19 @@ def main() -> int:
     running = (f'<div class="run-head">AERIS-10 — Engineering &amp; Assembly Manual</div>'
                f'<div class="run-foot">© {AUTHOR} · {today} · BETA — not hardware-verified</div>')
     body = running + title_page + body
-    css = ("body{font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:auto;padding:20px;line-height:1.45;color:#111}"
-           "table{border-collapse:collapse;font-size:12px;margin:8px 0}th,td{border:1px solid #999;padding:3px 6px;vertical-align:top}"
-           "th{background:#eee}code{background:#f3f3f3;padding:0 3px}pre{background:#f3f3f3;padding:8px;overflow:auto}"
-           "figure{margin:12px 0;page-break-inside:avoid}figure img,figure svg{max-width:100%;height:auto}figcaption{font-size:12px;color:#333}"
-           "h1{page-break-before:always}h1:first-of-type{page-break-before:avoid}@page{size:A4;margin:18mm 14mm 16mm 14mm}"
-           ".run-head{position:fixed;top:0;left:0;right:0;font-size:9px;color:#555;border-bottom:1px solid #ccc;padding:2px 0}"
-           ".run-foot{position:fixed;bottom:0;left:0;right:0;font-size:9px;color:#555;border-top:1px solid #ccc;padding:2px 0}"
-           ".title-page{text-align:center;page-break-after:always}@media screen{.run-head,.run-foot{position:static;text-align:right}}")
     hp = os.path.join(OUT, f"AERIS10_MANUAL{a.suffix}.html")
-    open(hp, "w", encoding="utf-8").write(f"<!doctype html><html><head><meta charset='utf-8'><title>AERIS-10 Manual — {AUTHOR}</title><meta name='author' content='{AUTHOR}'><meta name='description' content='AERIS-10 radar complete engineering and assembly manual — Antidrone Ukraine, antidrone.cc'><style>{css}</style></head><body>{body}</body></html>")
+    open(hp, "w", encoding="utf-8").write(f"<!doctype html><html><head><meta charset='utf-8'><title>AERIS-10 Manual — {AUTHOR}</title><meta name='author' content='{AUTHOR}'><meta name='description' content='AERIS-10 radar complete engineering and assembly manual — Antidrone Ukraine, antidrone.cc'><style>{CSS}</style></head><body>{body}</body></html>")
     print("wrote", hp, f"({os.path.getsize(hp)//1024} kB, {fig_n} figures)")
     if not a.no_pdf and os.path.exists(CHROME):
         pdf = os.path.join(OUT, f"AERIS10_MANUAL{a.suffix}.pdf")
         r = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={pdf}", "file://" + hp], capture_output=True, text=True, timeout=600)
         print("wrote", pdf if os.path.isfile(pdf) else "PDF FAILED " + r.stderr[-300:])
+    if a.per_chapter:
+        cdir = os.path.join(OUT, "chapters"); os.makedirs(cdir, exist_ok=True)
+        for cid, title, md in parts:
+            base = os.path.join(cdir, f"AERIS10_ch{cid}_{re.sub(r'[^A-Za-z0-9]+', '_', title)[:40].strip('_')}")
+            hdr = f"# AERIS-10 Manual — Chapter {cid}: {title}\n\n**Author: {AUTHOR}** · edition {_dt.date.today().isoformat()} · BETA — this is one chapter of `manual/AERIS10_MANUAL.md`; figure numbers are global.\n\n"
+            render(hdr + md, base + ".html", base + ".pdf", with_title=False)
     return 1 if problems else 0
 
 
