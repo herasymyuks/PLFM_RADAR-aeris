@@ -13,7 +13,7 @@
  *                                                     frames produced u16, reserved u16 (all LE)
  *   addr = word address a0 | a1<<8 (map: radar_control_regs.v, §7 table)
  * ASSUMPTION (D-18): §7 says "status word" without a width; 8 bytes = 4 x u16 is used here.
- * STATUS: the FPGA RTL in beta/fpga does not implement 0x02..0x04 yet (grep 2026-10-09); STM32 side only.
+ * STATUS: implemented on both sides since 2026-10-09 (beta/fpga/rtl/host_bridge_spi.v command set v2, register map 0x00..0x10; status word also carries bit4 = packer overflow).
  */
 #ifndef HOST_BRIDGE_PROTO_H
 #define HOST_BRIDGE_PROTO_H
