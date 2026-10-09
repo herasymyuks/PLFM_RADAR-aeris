@@ -112,7 +112,7 @@ def main() -> int:
     open(os.path.join(MAN, "AERIS10_MANUAL.md"), "w", encoding="utf-8").write(master)
     # HTML with embedded images
     def embed(m):
-        alt, src = m.group(1), m.group(2); p = os.path.join(ROOT, src)
+        alt, src = html.unescape(m.group(1)), html.unescape(m.group(2)); p = os.path.join(ROOT, src)
         if not os.path.isfile(p): return m.group(0)
         ext = os.path.splitext(p)[1].lower()
         if ext == ".svg":
