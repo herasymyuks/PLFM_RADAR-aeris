@@ -1,0 +1,2 @@
+PASS tb_range_bin_decimator: 2 x 64 bins, peak mode, with and without input gaps
+tb/tb_range_bin_decimator.v:53: $finish called at 25895000 (1ps)

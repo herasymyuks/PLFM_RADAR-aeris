@@ -1,0 +1,398 @@
+%Warning-DECLFILENAME: rtl/dac_interface_single.v:1:8: Filename 'dac_interface_single' does not match MODULE name: 'dac_interface_enhanced'
+    1 | module dac_interface_enhanced (
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/DECLFILENAME?v=5.052
+                       ... Use "/* verilator lint_off DECLFILENAME */" and lint_on around source to disable this message.
+%Warning-DECLFILENAME: rtl/ddc_400m.v:9:8: Filename 'ddc_400m' does not match MODULE name: 'ddc_400m_enhanced'
+    9 | module ddc_400m_enhanced (
+      |        ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:255:6: Instance pin connected by name with empty reference: 'saturation_detected'
+  255 |     .saturation_detected(),
+      |      ^~~~~~~~~~~~~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.052
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:256:6: Instance pin connected by name with empty reference: 'max_value_monitor'
+  256 |     .max_value_monitor(),
+      |      ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:267:6: Instance pin connected by name with empty reference: 'saturation_detected'
+  267 |     .saturation_detected(),
+      |      ^~~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:268:6: Instance pin connected by name with empty reference: 'max_value_monitor'
+  268 |     .max_value_monitor(),
+      |      ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:283:6: Instance pin connected by name with empty reference: 'full'
+  283 |     .full(), .wr_overflow_count(fifo_i_ovf),
+      |      ^~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:290:6: Instance pin connected by name with empty reference: 'full'
+  290 |     .full(), .wr_overflow_count(fifo_q_ovf),
+      |      ^~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:310:6: Instance pin connected by name with empty reference: 'fir_ready'
+  310 |     .fir_ready(),
+      |      ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/ddc_400m.v:322:6: Instance pin connected by name with empty reference: 'fir_ready'
+  322 |     .fir_ready(),
+      |      ^~~~~~~~~
+%Warning-DECLFILENAME: rtl/doppler_processor.v:12:8: Filename 'doppler_processor' does not match MODULE name: 'doppler_processor_optimized'
+   12 | module doppler_processor_optimized #(
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/doppler_processor.v:311:6: Instance pin connected by name with empty reference: 's_axis_data_tready'
+  311 |     .s_axis_data_tready(),
+      |      ^~~~~~~~~~~~~~~~~~
+%Warning-DECLFILENAME: rtl/edge_detector.v:8:8: Filename 'edge_detector' does not match MODULE name: 'edge_detector_enhanced'
+    8 | module edge_detector_enhanced (
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-DECLFILENAME: rtl/fft_1024_forward.v:6:8: Filename 'fft_1024_forward' does not match MODULE name: 'fft_1024_forward_enhanced'
+    6 | module fft_1024_forward_enhanced #(
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-DECLFILENAME: rtl/fft_1024_inverse.v:6:8: Filename 'fft_1024_inverse' does not match MODULE name: 'fft_1024_inverse_enhanced'
+    6 | module fft_1024_inverse_enhanced #(
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-DECLFILENAME: rtl/fir_lowpass.v:3:8: Filename 'fir_lowpass' does not match MODULE name: 'fir_lowpass_parallel_enhanced'
+    3 | module fir_lowpass_parallel_enhanced (
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/matched_filter_processing_chain.v:151:10: Instance pin connected by name with empty reference: 'state'
+  151 |         .state          ()
+      |          ^~~~~
+%Warning-DECLFILENAME: rtl/plfm_chirp_controller.v:5:8: Filename 'plfm_chirp_controller' does not match MODULE name: 'plfm_chirp_controller_enhanced'
+    5 | module plfm_chirp_controller_enhanced (
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:107:6: Instance pin connected by name with empty reference: 'ddc_status'
+  107 |     .ddc_status        (),
+      |      ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:108:6: Instance pin connected by name with empty reference: 'ddc_diagnostics'
+  108 |     .ddc_diagnostics   (),
+      |      ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:109:6: Instance pin connected by name with empty reference: 'mixer_saturation'
+  109 |     .mixer_saturation  (),
+      |      ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:110:6: Instance pin connected by name with empty reference: 'filter_overflow'
+  110 |     .filter_overflow   (),
+      |      ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:116:6: Instance pin connected by name with empty reference: 'debug_sample_count'
+  116 |     .debug_sample_count(),
+      |      ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:117:6: Instance pin connected by name with empty reference: 'debug_internal_i'
+  117 |     .debug_internal_i  (),
+      |      ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:118:6: Instance pin connected by name with empty reference: 'debug_internal_q'
+  118 |     .debug_internal_q  (),
+      |      ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:135:6: Instance pin connected by name with empty reference: 'data_sync_error'
+  135 |     .data_sync_error()
+      |      ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:215:6: Instance pin connected by name with empty reference: 'status'
+  215 |     .status           ()
+      |      ^~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:261:6: Instance pin connected by name with empty reference: 'processing_active'
+  261 |     .processing_active (),
+      |      ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:262:6: Instance pin connected by name with empty reference: 'frame_complete'
+  262 |     .frame_complete    (),
+      |      ^~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_receiver_final.v:263:6: Instance pin connected by name with empty reference: 'status'
+  263 |     .status            ()
+      |      ^~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:299:6: Instance pin connected by name with empty reference: 'reg_rdata'
+  299 |     .reg_rdata       (),
+      |      ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:343:6: Instance pin connected by name with empty reference: 'rx_chirp_counter'
+  343 |     .rx_chirp_counter(),
+      |      ^~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_system_top.v:344:6: Instance pin connected by name with empty reference: 'new_chirp_frame'
+  344 |     .new_chirp_frame(),
+      |      ^~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:162:60: Instance pin connected by name with empty reference: 'miso_3v3'
+  162 |     .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
+      |                                                            ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:164:6: Instance pin connected by name with empty reference: 'sclk_1v8'
+  164 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+      |      ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:164:19: Instance pin connected by name with empty reference: 'mosi_1v8'
+  164 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+      |                   ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:169:60: Instance pin connected by name with empty reference: 'miso_3v3'
+  169 |     .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
+      |                                                            ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:171:6: Instance pin connected by name with empty reference: 'sclk_1v8'
+  171 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+      |      ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:171:19: Instance pin connected by name with empty reference: 'mosi_1v8'
+  171 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+      |                   ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:176:60: Instance pin connected by name with empty reference: 'miso_3v3'
+  176 |     .sclk_3v3(stm32_sclk_3v3), .mosi_3v3(stm32_mosi_3v3), .miso_3v3(),
+      |                                                            ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:178:6: Instance pin connected by name with empty reference: 'sclk_1v8'
+  178 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+      |      ^~~~~~~~
+%Warning-PINCONNECTEMPTY: rtl/radar_transmitter.v:178:19: Instance pin connected by name with empty reference: 'mosi_1v8'
+  178 |     .sclk_1v8(), .mosi_1v8(), .miso_1v8(1'b0),
+      |                   ^~~~~~~~
+%Warning-DECLFILENAME: rtl/sim/unisim_sim_models.v:18:8: Filename 'unisim_sim_models' does not match MODULE name: 'BUFG'
+   18 | module BUFG (
+      |        ^~~~
+%Warning-GENUNNAMED: rtl/ddc_400m.v:383:28: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
+                                          : ... Suggest assign a label with 'begin : gen_<label_name>'
+  383 |     if (DITHER_WIDTH == 4) begin
+      |                            ^~~~~
+                     ... For warning description see https://verilator.org/warn/GENUNNAMED?v=5.052
+                     ... Use "/* verilator lint_off GENUNNAMED */" and lint_on around source to disable this message.
+%Warning-GENUNNAMED: rtl/ddc_400m.v:385:37: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
+                                          : ... Suggest assign a label with 'begin : gen_<label_name>'
+  385 |     end else if (DITHER_WIDTH == 8) begin
+      |                                     ^~~~~
+%Warning-GENUNNAMED: rtl/ddc_400m.v:387:14: Unnamed generate block 'genblk1' (IEEE 1800-2023 27.6)
+                                          : ... Suggest assign a label with 'begin : gen_<label_name>'
+  387 |     end else begin
+      |              ^~~~~
+%Warning-WIDTHEXPAND: rtl/nco_400m_enhanced.v:62:32: Bit extraction of array[64:0] requires 7 bit index, not 6 bits.
+                                                   : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
+   62 |     wire [15:0] lut_a = sin_lut[idx];           
+      |                                ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.052
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: rtl/cic_decimator_4x_enhanced.v:151:32: Operator EQ expects 32 or 3 bits on the LHS, but LHS's VARREF 'decimation_counter' generates 2 bits.
+                                                            : ... note: In instance 'radar_system_top.rx_inst.ddc.cic_q_inst'
+  151 |         if (decimation_counter == DECIMATION - 1) begin
+      |                                ^~
+%Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:52:57: Operator COND expects 17 bits on the Conditional False, but Conditional False's VARREF 'range_i_in' generates 16 bits.
+                                                     : ... note: In instance 'radar_system_top.rx_inst.range_decim'
+   52 |     wire [MAG_W-1:0] mag_in = (range_i_in[DATA_WIDTH-1] ? -range_i_in : range_i_in)
+      |                                                         ^
+%Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:53:57: Operator COND expects 17 bits on the Conditional False, but Conditional False's VARREF 'range_q_in' generates 16 bits.
+                                                     : ... note: In instance 'radar_system_top.rx_inst.range_decim'
+   53 |                             + (range_q_in[DATA_WIDTH-1] ? -range_q_in : range_q_in);
+      |                                                         ^
+%Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:56:39: Operator EQ expects 32 or 5 bits on the LHS, but LHS's VARREF 'grp_cnt' generates 4 bits.
+                                                     : ... note: In instance 'radar_system_top.rx_inst.range_decim'
+   56 |     wire grp_end = accept && (grp_cnt == DECIMATION_FACTOR - 1);
+      |                                       ^~
+%Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:92:28: Operator EQ expects 32 or 11 bits on the LHS, but LHS's VARREF 'in_idx' generates 10 bits.
+                                                     : ... note: In instance 'radar_system_top.rx_inst.range_decim'
+   92 |                 if (in_idx == INPUT_BINS - 1) begin
+      |                            ^~
+%Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:121:49: Operator LT expects 32 or 7 bits on the LHS, but LHS's VARREF 'out_idx' generates 6 bits.
+                                                      : ... note: In instance 'radar_system_top.rx_inst.range_decim'
+  121 |                     range_valid_out <= (out_idx < OUTPUT_BINS);
+      |                                                 ^
+%Warning-WIDTHEXPAND: rtl/range_bin_decimator.v:123:52: Operator NEQ expects 32 or 11 bits on the LHS, but LHS's VARREF 'in_idx' generates 10 bits.
+                                                      : ... note: In instance 'radar_system_top.rx_inst.range_decim'
+  123 |                     if (out_idx != 6'd63 && in_idx != INPUT_BINS - 1)
+      |                                                    ^~
+%Warning-WIDTHTRUNC: rtl/plfm_chirp_controller.v:723:49: Bit extraction of array[3599:0] requires 12 bit index, not 16 bits.
+                                                       : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
+  723 |                     chirp_data <= long_chirp_lut[sample_counter];
+      |                                                 ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.052
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: rtl/plfm_chirp_controller.v:746:50: Bit extraction of array[59:0] requires 6 bit index, not 16 bits.
+                                                       : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
+  746 |                     chirp_data <= short_chirp_lut[sample_counter];
+      |                                                  ^
+%Warning-WIDTHEXPAND: rtl/doppler_processor.v:113:58: Operator ADD expects 32 or 11 bits on the RHS, but RHS's VARREF 'write_range_bin' generates 6 bits.
+                                                    : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  113 | assign mem_write_addr = (write_chirp_index * RANGE_BINS) + write_range_bin;
+      |                                                          ^
+%Warning-WIDTHEXPAND: rtl/doppler_processor.v:114:58: Operator ADD expects 32 or 11 bits on the RHS, but RHS's VARREF 'read_range_bin' generates 6 bits.
+                                                    : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  114 | assign mem_read_addr = (read_doppler_index * RANGE_BINS) + read_range_bin;
+      |                                                          ^
+%Warning-WIDTHEXPAND: rtl/doppler_processor.v:215:47: Operator GTE expects 32 or 6 bits on the LHS, but LHS's VARREF 'write_chirp_index' generates 5 bits.
+                                                    : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  215 |                         if (write_chirp_index >= CHIRPS_PER_FRAME - 1) begin
+      |                                               ^~
+%Warning-WIDTHEXPAND: rtl/doppler_processor.v:206:41: Operator LT expects 32 or 7 bits on the LHS, but LHS's VARREF 'write_range_bin' generates 6 bits.
+                                                    : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  206 |                     if (write_range_bin < RANGE_BINS - 1) begin
+      |                                         ^
+%Warning-WIDTHTRUNC: rtl/doppler_processor.v:242:21: Operator ASSIGNDLY expects 16 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 32 bits.
+                                                   : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  242 |         fft_input_i <= (mult_i + (1 << 14)) >>> 15;   
+      |                     ^~
+%Warning-WIDTHTRUNC: rtl/doppler_processor.v:243:21: Operator ASSIGNDLY expects 16 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 32 bits.
+                                                   : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  243 |         fft_input_q <= (mult_q + (1 << 14)) >>> 15;
+      |                     ^~
+%Warning-WIDTHEXPAND: rtl/doppler_processor.v:282:36: Operator LT expects 32 or 7 bits on the LHS, but LHS's VARREF 'read_range_bin' generates 6 bits.
+                                                    : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+  282 |                 if (read_range_bin < RANGE_BINS - 1) begin
+      |                                    ^
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:145:12: Signal is not driven, nor used: 'tx_chirp_data'
+                                                    : ... note: In instance 'radar_system_top'
+  145 | wire [7:0] tx_chirp_data;
+      |            ^~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.052
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:146:6: Signal is not driven, nor used: 'tx_chirp_valid'
+                                                   : ... note: In instance 'radar_system_top'
+  146 | wire tx_chirp_valid;
+      |      ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:147:6: Signal is not driven, nor used: 'tx_chirp_done'
+                                                   : ... note: In instance 'radar_system_top'
+  147 | wire tx_chirp_done;
+      |      ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/radar_system_top.v:160:6: Signal is not used: 'rx_doppler_data_valid'
+                                                   : ... note: In instance 'radar_system_top'
+  160 | wire rx_doppler_data_valid;
+      |      ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/ad9484_lvds_to_cmos_400m.v:44:15: Parameter is not used: 'DIFF_TERM'
+                                                          : ... note: In instance 'radar_system_top.rx_inst.adc'
+   44 |     parameter DIFF_TERM       = "FALSE",    
+      |               ^~~~~~~~~
+                      ... For warning description see https://verilator.org/warn/UNUSEDPARAM?v=5.052
+                      ... Use "/* verilator lint_off UNUSEDPARAM */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: rtl/chirp_memory_loader_param.v:39:13: Signal is not driven, nor used: 'debug_msg'
+                                                            : ... note: In instance 'radar_system_top.rx_inst.chirp_mem'
+   39 | reg [799:0] debug_msg;
+      |             ^~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/ddc_400m.v:46:11: Parameter is not used: 'OUTPUT_WIDTH'
+                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   46 | parameter OUTPUT_WIDTH = 18;
+      |           ^~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/ddc_400m.v:49:11: Parameter is not used: 'IF_FREQ'
+                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   49 | parameter IF_FREQ = 120000000;
+      |           ^~~~~~~
+%Warning-UNUSEDPARAM: rtl/ddc_400m.v:50:11: Parameter is not used: 'FS'
+                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   50 | parameter FS = 400000000;
+      |           ^~
+%Warning-UNUSEDPARAM: rtl/ddc_400m.v:51:11: Parameter is not used: 'PHASE_WIDTH'
+                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   51 | parameter PHASE_WIDTH = 32;
+      |           ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:56:6: Signal is not used: 'cic_valid'
+                                          : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   56 | wire cic_valid;
+      |      ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:65:11: Bits of signal are not used: 'error_counter'[7:5]
+                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   65 | reg [7:0] error_counter;
+      |           ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:73:20: Signal is not used: 'debug_mixed_i_trunc'
+                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   73 | wire signed [17:0] debug_mixed_i_trunc;
+      |                    ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:74:20: Signal is not used: 'debug_mixed_q_trunc'
+                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   74 | wire signed [17:0] debug_mixed_q_trunc;
+      |                    ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:77:11: Signal is not driven, nor used: 'signal_power_i'
+                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   77 | reg [7:0] signal_power_i, signal_power_q;
+      |           ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:77:27: Signal is not driven, nor used: 'signal_power_q'
+                                           : ... note: In instance 'radar_system_top.rx_inst.ddc'
+   77 | reg [7:0] signal_power_i, signal_power_q;
+      |                           ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_input_interface.v:8:30: Bits of signal are not used: 'ddc_i'[0]
+                                                     : ... note: In instance 'radar_system_top.rx_inst.ddc_if'
+    8 |     input wire signed [17:0] ddc_i,
+      |                              ^~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_input_interface.v:9:30: Bits of signal are not used: 'ddc_q'[0]
+                                                     : ... note: In instance 'radar_system_top.rx_inst.ddc_if'
+    9 |     input wire signed [17:0] ddc_q,
+      |                              ^~~~~
+%Warning-UNUSEDSIGNAL: rtl/doppler_processor.v:86:11: Signal is not used: 'chirp_state'
+                                                    : ... note: In instance 'radar_system_top.rx_inst.doppler_proc'
+   86 | reg [1:0] chirp_state;          
+      |           ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/matched_filter_multi_segment.v:36:30: Bits of signal are not used: 'ddc_i'[0]
+                                                               : ... note: In instance 'radar_system_top.rx_inst.mf_dual'
+   36 |     input wire signed [17:0] ddc_i,
+      |                              ^~~~~
+%Warning-UNUSEDSIGNAL: rtl/matched_filter_multi_segment.v:37:30: Bits of signal are not used: 'ddc_q'[0]
+                                                               : ... note: In instance 'radar_system_top.rx_inst.mf_dual'
+   37 |     input wire signed [17:0] ddc_q,
+      |                              ^~~~~
+%Warning-UNUSEDPARAM: rtl/plfm_chirp_controller.v:40:11: Parameter is not used: 'F_START'
+                                                       : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
+   40 | parameter F_START = 30000000;        
+      |           ^~~~~~~
+%Warning-UNUSEDPARAM: rtl/plfm_chirp_controller.v:41:11: Parameter is not used: 'F_END'
+                                                       : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
+   41 | parameter F_END = 10000000;          
+      |           ^~~~~
+%Warning-UNUSEDPARAM: rtl/plfm_chirp_controller.v:42:11: Parameter is not used: 'FS'
+                                                       : ... note: In instance 'radar_system_top.tx_inst.plfm_chirp_inst'
+   42 | parameter FS = 120000000;            
+      |           ^~
+%Warning-UNUSEDSIGNAL: rtl/cic_decimator_4x_enhanced.v:34:5: Signal is not used: 'overflow_latched'
+                                                           : ... note: In instance 'radar_system_top.rx_inst.ddc.cic_q_inst'
+   34 | reg overflow_latched;   
+      |     ^~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/cic_decimator_4x_enhanced.v:37:5: Signal is not used: 'comb_overflow_latched'
+                                                           : ... note: In instance 'radar_system_top.rx_inst.ddc.cic_q_inst'
+   37 | reg comb_overflow_latched;
+      |     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/ddc_400m.v:377:5: Signal is not used: 'lock_detected'
+                                           : ... note: In instance 'radar_system_top.rx_inst.ddc.phase_dither_gen'
+  377 | reg lock_detected;
+      |     ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/matched_filter_processing_chain.v:51:24: Bits of signal are not used: 'chirp_counter'[5:1]
+                                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c'
+   51 |     input  wire [5:0]  chirp_counter,      
+      |                        ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/nco_400m_enhanced.v:31:16: Bits of signal are not used: 'phase_with_offset'[23:0]
+                                                    : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
+   31 |     reg [31:0] phase_with_offset;
+      |                ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/nco_400m_enhanced.v:62:17: Bits of signal are not used: 'lut_a'[15]
+                                                    : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
+   62 |     wire [15:0] lut_a = sin_lut[idx];           
+      |                 ^~~~~
+%Warning-UNUSEDSIGNAL: rtl/nco_400m_enhanced.v:63:17: Bits of signal are not used: 'lut_b'[15]
+                                                    : ... note: In instance 'radar_system_top.rx_inst.ddc.nco_core'
+   63 |     wire [15:0] lut_b = sin_lut[idx_mirror];    
+      |                 ^~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_forward.v:22:6: Signal is not used: 's_axis_config_tready'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_fwd'
+   22 | wire s_axis_config_tready;
+      |      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_forward.v:25:6: Signal is not used: 's_axis_data_tready'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_fwd'
+   25 | wire s_axis_data_tready;               
+      |      ^~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_forward.v:29:6: Signal is not used: 'm_axis_data_tready'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_fwd'
+   29 | wire m_axis_data_tready;
+      |      ^~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_forward.v:30:6: Signal is not used: 'm_axis_data_tlast'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_fwd'
+   30 | wire m_axis_data_tlast;
+      |      ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_inverse.v:22:6: Signal is not used: 's_axis_config_tready'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_inv'
+   22 | wire s_axis_config_tready;
+      |      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_inverse.v:25:6: Signal is not used: 's_axis_data_tready'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_inv'
+   25 | wire s_axis_data_tready;               
+      |      ^~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_inverse.v:29:6: Signal is not used: 'm_axis_data_tready'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_inv'
+   29 | wire m_axis_data_tready;
+      |      ^~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/fft_1024_inverse.v:30:6: Signal is not used: 'm_axis_data_tlast'
+                                                  : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fft_inv'
+   30 | wire m_axis_data_tlast;
+      |      ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/frequency_matched_filter.v:46:11: Signal is not driven, nor used: 'addr_counter'
+                                                           : ... note: In instance 'radar_system_top.rx_inst.mf_dual.m_f_p_c.u_fmf'
+   46 | reg [9:0] addr_counter;
+      |           ^~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/axis_fft_behav.v:57:16: Parameter is not used: 'SCHW'
+                                                : ... note: In instance 'radar_system_top.rx_inst.doppler_proc.fft_inst.u_core'
+   57 |     localparam SCHW      = 2 * R4_STAGES + HAS_R2;
+      |                ^~~~
+%Warning-UNUSEDSIGNAL: rtl/axis_fft_behav.v:84:17: Bits of function variable are not used: 'iv'[31:16]
+                                                 : ... note: In instance 'radar_system_top.rx_inst.doppler_proc.fft_inst.u_core'
+   84 |         integer iv;
+      |                 ^~
+%Warning-UNUSEDSIGNAL: rtl/axis_fft_behav.v:110:55: Bits of function variable are not used: 'q'[31:7]
+                                                  : ... note: In instance 'radar_system_top.rx_inst.doppler_proc.fft_inst.u_core'
+  110 |         integer base, i, j, bitmask, len, half, k, p, q, sh;
+      |                                                       ^
+- V e r i l a t i o n   R e p o r t: Verilator 5.052 2026-09-05 rev vUNKNOWN-built20260905
+- Verilator: Built from 3.730 MB sources in 33 modules, into 3.857 MB in 6 C++ files needing 0.000 MB
+- Verilator: Walltime 0.247 s (elab=0.015, cvt=0.195, bld=0.000); cpu 0.247 s on 1 threads; allocated 60.453 MB

@@ -1,0 +1,2 @@
+PASS tb_fft_wrappers: 2176 samples checked within +/-2 LSB (xfft_32: 4 frames, FFT_enhanced: fwd+inv)
+tb/tb_fft_wrappers.v:136: $finish called at 81945000 (1ps)

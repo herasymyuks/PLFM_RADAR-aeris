@@ -1,0 +1,4 @@
+seg0: existing file vs formula: max |dI|=1 LSB, max |dQ|=1 LSB, peak=31128 -> OK
+seg1: existing file vs formula: max |dI|=1 LSB, max |dQ|=1 LSB, peak=31128 -> OK
+seg2: existing file vs formula: max |dI|=1 LSB, max |dQ|=1 LSB, peak=31128 -> OK
+seg3: existing file vs formula: max |dI|=0 LSB, max |dQ|=0 LSB, peak=0 -> OK

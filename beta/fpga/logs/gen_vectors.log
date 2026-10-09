@@ -1,0 +1,2 @@
+matched filter: delay=300 -> model peak bin 300, |peak|=20277, peak/next=4.70
+vectors written to /Users/void/PLFM_RADAR/beta/fpga/tb/vectors
