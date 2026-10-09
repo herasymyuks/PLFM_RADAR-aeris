@@ -26,9 +26,9 @@ The upstream directory holds nine GUI versions; only one is runnable offline and
 
 No GUI version could decode the RTL's actual packet (`A5C3`+CRC16 expected vs the RTL's `0xAA … 0x55` without CRC — `docs/GUI/DEPENDENCIES.md` §6 row 5), and both FTDI paths (FT2232H in V2–V5, FT601 in V6) have no hardware on the Main Board (same §4). The BETA package `beta/gui/aeris10_gui` therefore re-implements the host from the firmware and RTL sources; the provenance of every beta module is tabulated in `beta/gui/README.md` ("Mapping: original file -> beta module") and `CHANGELOG.md` ("Provenance").
 
-![F13.1 — Python GUI modules: imports and definitions of the nine upstream scripts, classified stdlib / third-party / local (SD-05; auto-generated) [SOURCE-DERIVED] (source: engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_modules.png; produced by tools/gen_python_module_graph.py + Graphviz dot)](engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_modules.png)
+![F13.1 — Python GUI modules: imports and definitions of the nine upstream scripts, classified stdlib / third-party / local (SD-05; auto-generated) — SOURCE-DERIVED (source: engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_modules.png; produced by tools/gen_python_module_graph.py + Graphviz dot)](engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_modules.png)
 
-![F13.2 — Python GUI runtime architecture as found in GUI_V5.py / GUI_V6_Demo.py: threads, queues, parsers, processor, Tk timer; clustering/tracking defined but never called in V5 (SD-06) [SOURCE-DERIVED] (source: engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_architecture.png; produced by hand-authored DOT + Graphviz)](engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_architecture.png)
+![F13.2 — Python GUI runtime architecture as found in GUI_V5.py / GUI_V6_Demo.py: threads, queues, parsers, processor, Tk timer; clustering/tracking defined but never called in V5 (SD-06) — SOURCE-DERIVED (source: engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_architecture.png; produced by hand-authored DOT + Graphviz)](engineering/SOFTWARE_DIAGRAMS/PYTHON/python_gui_architecture.png)
 
 ## 13.2 BETA package: what it implements
 
@@ -99,7 +99,7 @@ Dependency ranges (source: `docs/GUI/DEPENDENCIES.md` §2, for the upstream scri
 - **Figure:** F13.3.
 - **⚠ Decision:** hardware mode depends on the firmware CDC path (chapter 12, C4/C5 fixed in the beta, never enumerated on a board) and on the placeholder VID/PID 0x0483:0x5740 (D-09).
 
-![F13.3 — Demo-mode plot area of the beta GUI after 5 simulated bridge frames: left range-Doppler map (dB) with CFAR detections (red circles), right PPI with Kalman tracks (cyan); range/velocity scaling UNVERIFIED (assumptions 4–6 of beta/gui/README.md). Rendered off-screen on 2026-10-09 by driving MainWindow.step() with the Tk root withdrawn and saving the matplotlib Figure (`fig.savefig`, 110 dpi) — only the plot canvas is captured; the Tk control row, notebook tabs and register panel are not in this image because no screen grab was taken [BETA] (source: beta/gui/aeris10_gui/ui/main_window.py, sim/simulator.py; produced by a 20-line driver script equivalent to app.py --selftest plus fig.savefig into manual/figures/gui_demo_plots.png)](manual/figures/gui_demo_plots.png)
+![F13.3 — Demo-mode plot area of the beta GUI after 5 simulated bridge frames: left range-Doppler map (dB) with CFAR detections (red circles), right PPI with Kalman tracks (cyan); range/velocity scaling UNVERIFIED (assumptions 4–6 of beta/gui/README.md). Rendered off-screen on 2026-10-09 by driving MainWindow.step() with the Tk root withdrawn and saving the matplotlib Figure (`fig.savefig`, 110 dpi) — only the plot canvas is captured; the Tk control row, notebook tabs and register panel are not in this image because no screen grab was taken — BETA (source: beta/gui/aeris10_gui/ui/main_window.py, sim/simulator.py; produced by a 20-line driver script equivalent to app.py --selftest plus fig.savefig into manual/figures/gui_demo_plots.png)](manual/figures/gui_demo_plots.png)
 
 ## 13.5 Tests
 

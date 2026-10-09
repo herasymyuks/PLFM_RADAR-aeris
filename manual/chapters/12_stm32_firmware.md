@@ -20,9 +20,9 @@ MCU: **STM32F746ZGTx (LQFP-144), part U2 on `RADAR_Main_Board.sch`** (source: `b
 
 Peripheral-to-device map (source: same note §1): I2C1 PB6/PB7 → 2 × DAC5578 (PA gate bias); I2C2 PF0/PF1 → 3 × ADS7830 (IDQ sense, temperatures); I2C3 PA8/PC9 → GY-85 + BMP180; SPI1 PA5/PA6/PA7 + CS PA0..PA3 → ADAR1000 ×4 through the FPGA level shift; SPI4 PE2/PE5/PE6 → AD9523 (CS PF7) and ADF4382 TX/RX (CS PG14/PG10); UART5 PC12/PD2 → GPS NMEA; USART3 PB10/PB11 → debug text; TIM1 → `delay_us()`; GPIO PD8..PD12 → FPGA handshake; USB OTG_FS → host CDC.
 
-![F12.1 — STM32 firmware architecture: main.cpp application sequence, driver families, peripheral handles; dashed red = HAL/CMSIS/startup/linker/USB middleware absent from the upstream repository (SD-03) [PARTIAL] (source: engineering/SOFTWARE_DIAGRAMS/STM32/stm32_firmware_architecture.png; produced by hand-authored DOT + Graphviz dot -Tpng -Gdpi=150)](engineering/SOFTWARE_DIAGRAMS/STM32/stm32_firmware_architecture.png)
+![F12.1 — STM32 firmware architecture: main.cpp application sequence, driver families, peripheral handles; dashed red = HAL/CMSIS/startup/linker/USB middleware absent from the upstream repository (SD-03) — PARTIAL (source: engineering/SOFTWARE_DIAGRAMS/STM32/stm32_firmware_architecture.png; produced by hand-authored DOT + Graphviz dot -Tpng -Gdpi=150)](engineering/SOFTWARE_DIAGRAMS/STM32/stm32_firmware_architecture.png)
 
-![F12.2 — USB CDC flow host ↔ STM32 as found in the original sources: start flag, zero-padding defect C5, settings packet, unbound receive callback C4, status/GPS transmit (SD-04); the beta tree fixes C4/C5 (§12.4) [PARTIAL] (source: engineering/SOFTWARE_DIAGRAMS/STM32/stm32_usb_cdc_flow.png; produced by hand-authored DOT + Graphviz)](engineering/SOFTWARE_DIAGRAMS/STM32/stm32_usb_cdc_flow.png)
+![F12.2 — USB CDC flow host ↔ STM32 as found in the original sources: start flag, zero-padding defect C5, settings packet, unbound receive callback C4, status/GPS transmit (SD-04); the beta tree fixes C4/C5 (§12.4) — PARTIAL (source: engineering/SOFTWARE_DIAGRAMS/STM32/stm32_usb_cdc_flow.png; produced by hand-authored DOT + Graphviz)](engineering/SOFTWARE_DIAGRAMS/STM32/stm32_usb_cdc_flow.png)
 
 ## 12.2 BETA tree layout
 

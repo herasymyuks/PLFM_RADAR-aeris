@@ -77,12 +77,12 @@ Each criterion is objective, references the test ID in `VALIDATION_PLAN.md`, and
 
 | ID | Criterion | Evidence | Status |
 |---|---|---|---|
-| AC-E1 | Every drawing in `engineering/DRAWING_REGISTER.md` has its native file and exports present and well-formed | `python3 tools/gen_drawing_register.py --check` exit 0 | **MET** (73 drawings, 0 problems) |
+| AC-E1 | Every drawing in `engineering/DRAWING_REGISTER.md` has its native file and exports present and well-formed | `python3 tools/gen_drawing_register.py --check` exit 0 | **MET** (89 drawings incl. 16 PROPOSED, 0 problems — regenerated 2026-10-09) |
 | AC-E2 | EAGLE XML ↔ KiCad conversion counts agree for all boards | `engineering/VALIDATION/PCB_CROSS_CHECK.md` | **MET** (32/32 rows OK) |
 | AC-E3 | No missing symbols/footprints; schematic ↔ board part lists identical | `tools/gen_schematic_reports.py` exit 0 | **MET** |
 | AC-E4 | Any drawing VERIFIED against EAGLE output or hardware | `VALIDATION/DRAWING_CHECKS.md` §2 | NOT MET (0 VERIFIED) |
 | AC-E5 | Enclosure/antenna/pedestal/cooling drawings exist | register MECH-ENC/ANT/PED/COOL | NOT MET (BLOCKED — MISSING DATA) |
-| AC-E6 | Proposed designs (DSN-*) registered with native editable files and exports present | `tools/gen_drawing_register.py --check` | **MET** (11 PROPOSED entries, 0 file problems) |
+| AC-E6 | Proposed designs (DSN-*) registered with native editable files and exports present | `tools/gen_drawing_register.py --check` | **MET** (16 PROPOSED entries, 0 file problems) |
 | AC-E7 | Antenna proposal simulated (|S11| < −10 dB at f0 ± B/2) and coupon measured | openEMS log + VNA data | NOT RUN |
 | AC-E8 | Owner approval of decisions D-01…D-15 recorded | signed decision log | NOT MET |
 
@@ -91,8 +91,8 @@ Each criterion is objective, references the test ID in `VALIDATION_PLAN.md`, and
 | ID | Criterion | Evidence | Status |
 |---|---|---|---|
 | AC-X1 | beta RTL parses/elaborates/lints with 0 errors and all testbenches pass | `beta/fpga/logs/` | **MET** (BETA) |
-| AC-X2 | beta firmware compiles and links; host tests pass | `beta/stm32/build_out/`, `logs/` | **MET** (BETA) |
-| AC-X3 | beta GUI test suite passes; packaged app starts | `beta/gui` pytest 55 passed | **MET** (BETA) |
+| AC-X2 | beta firmware compiles and links; host tests pass (6/6) | `beta/stm32/build_out/`, `logs/` | **MET** (BETA) |
+| AC-X3 | beta GUI test suite passes; packaged app starts | `beta/gui` pytest 76 passed; selftest OK | **MET** (BETA) |
 | AC-X4 | beta boards: 0 unconnected on Main/RF PA/Synth; Power ≤ 100 open with documented reasons | `beta/pcb/*/exports/reports/DRC_report.json` | **MET** (BETA; Power 89 listed) |
 | AC-X5 | host-link bridge testbench, firmware build and GUI parser agree on one frame vector | `tb_frame.hex` shared | **MET** (BETA) |
 | AC-X6 | antenna row S11 < −10 dB at f0 in simulation | `TUNING_LOG.md` | **MET** (−18 dB; band 128 MHz) |

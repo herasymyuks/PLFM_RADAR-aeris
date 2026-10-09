@@ -30,7 +30,7 @@ Copied (source: `engineering/ASSEMBLY/ASSEMBLY_SEQUENCE.md` §A):
 | CP-3 | No shorts between rails | > 1 kΩ between every rail and GND before power-up (rail list `engineering/ELECTRICAL/power_distribution/power_rails.md`) | DMM |
 | CP-4 | Power Board rails at nominal with no load | each X2..X35 output within the net-name voltage (currents UNKNOWN) | bench PSU + DMM |
 
-![F15.1 — Conceptual exploded view of the electronics set used as the orientation reference for phases A–C; board outlines verified from the .brd files, arrangement conceptual (ASM-EXP-01) [CONCEPTUAL] (source: engineering/ASSEMBLY/EXPLODED_VIEWS/aeris10_exploded_conceptual.png; produced by tools/gen_assembly_exploded_view.py)](engineering/ASSEMBLY/EXPLODED_VIEWS/aeris10_exploded_conceptual.png)
+![F15.1 — Conceptual exploded view of the electronics set used as the orientation reference for phases A–C; board outlines verified from the .brd files, arrangement conceptual (ASM-EXP-01) — CONCEPTUAL (source: engineering/ASSEMBLY/EXPLODED_VIEWS/aeris10_exploded_conceptual.png; produced by tools/gen_assembly_exploded_view.py)](engineering/ASSEMBLY/EXPLODED_VIEWS/aeris10_exploded_conceptual.png)
 
 ## 15.2 Phase A — PCB assemblies (repeat per board: Main, Power, Synth, 16 × RF PA)
 
@@ -52,13 +52,13 @@ Copied (source: `engineering/ASSEMBLY/ASSEMBLY_SEQUENCE.md` §A):
 - **Figure:** F15.2–F15.5.
 - **⚠ Decision:** K1 (FPGA part XC7A50T on the schematic vs XC7A100T in the FPGA README) — the Main Board U42 placement follows the schematic part; the Main Board rev. B (FT601 wired) is a separate BETA layout (`beta/pcb/MAIN_BOARD_REVB/`), not the baseline of this step.
 
-![F15.2 — Main Board, top assembly drawing (component placement, references), page 1 of engineering/PCB/MAIN_BOARD/drawings/MAIN_BOARD_assembly_top.pdf; layout state PARTIAL (2 390 airwires in the EAGLE source) [SOURCE-DERIVED / PARTIAL] (source: engineering/PCB/MAIN_BOARD/drawings/MAIN_BOARD_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh (kicad-cli 10.0.6), rendered to PNG by `pdftoppm -png -r 110 -f 1 -l 1`)](manual/figures/MAIN_BOARD_assembly_top-1.png)
+![F15.2 — Main Board, top assembly drawing (component placement, references), page 1 of engineering/PCB/MAIN_BOARD/drawings/MAIN_BOARD_assembly_top.pdf; layout state PARTIAL (2 390 airwires in the EAGLE source) — SOURCE-DERIVED / PARTIAL (source: engineering/PCB/MAIN_BOARD/drawings/MAIN_BOARD_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh (kicad-cli 10.0.6), rendered to PNG by `pdftoppm -png -r 110 -f 1 -l 1`)](manual/figures/MAIN_BOARD_assembly_top-1.png)
 
-![F15.3 — Power Supply Board, top assembly drawing, page 1; layout state PARTIAL (309 airwires in the EAGLE source) [SOURCE-DERIVED / PARTIAL] (source: engineering/PCB/POWER_SUPPLY/drawings/POWER_SUPPLY_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh, rendered by pdftoppm)](manual/figures/POWER_SUPPLY_assembly_top-1.png)
+![F15.3 — Power Supply Board, top assembly drawing, page 1; layout state PARTIAL (309 airwires in the EAGLE source) — SOURCE-DERIVED / PARTIAL (source: engineering/PCB/POWER_SUPPLY/drawings/POWER_SUPPLY_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh, rendered by pdftoppm)](manual/figures/POWER_SUPPLY_assembly_top-1.png)
 
-![F15.4 — Frequency Synthesizer Board, top assembly drawing, page 1 [SOURCE-DERIVED] (source: engineering/PCB/FREQUENCY_SYNTHESIZER/drawings/FREQUENCY_SYNTHESIZER_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh, rendered by pdftoppm)](manual/figures/FREQUENCY_SYNTHESIZER_assembly_top-1.png)
+![F15.4 — Frequency Synthesizer Board, top assembly drawing, page 1 — SOURCE-DERIVED (source: engineering/PCB/FREQUENCY_SYNTHESIZER/drawings/FREQUENCY_SYNTHESIZER_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh, rendered by pdftoppm)](manual/figures/FREQUENCY_SYNTHESIZER_assembly_top-1.png)
 
-![F15.5 — RF PA board, top assembly drawing, page 1 (one of 16 identical boards) [SOURCE-DERIVED] (source: engineering/PCB/RF_PA/drawings/RF_PA_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh, rendered by pdftoppm)](manual/figures/RF_PA_assembly_top-1.png)
+![F15.5 — RF PA board, top assembly drawing, page 1 (one of 16 identical boards) — SOURCE-DERIVED (source: engineering/PCB/RF_PA/drawings/RF_PA_assembly_top.pdf; produced by tools/kicad_pcb_pipeline.sh, rendered by pdftoppm)](manual/figures/RF_PA_assembly_top-1.png)
 
 ### Step 15.3 — Rail-to-ground resistance before power [SOURCE-DERIVED rail list]
 
@@ -82,9 +82,9 @@ Copied (source: `engineering/ASSEMBLY/ASSEMBLY_SEQUENCE.md` §A):
 
 Part numbers (#) are those of `engineering/DESIGN/MECHANICAL/MECHANICAL_PARTS_LIST.md` (copied in chapter 10 §10.5). Station coordinates (Y, mm from the inner face of the front wall) are the values printed by `python3 tools/design_layout.py` (chapter 10 §10.3). The step source (`manual/ASSEMBLY_STEPS_SOURCE.md`, phase B) uses an older part numbering in some rows; the numbers below follow the parts list, and each divergence is noted.
 
-![F15.6 — Assembly section with fastener balloons: balloon number = part # of the mechanical parts list; defines which fastener goes where in Steps 15.5–15.13, DSN-MECH-07 Rev A [PROPOSED DESIGN] (source: engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-07_assembly_section_fasteners.png; produced by tools/design_enclosure_drawings.py)](engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-07_assembly_section_fasteners.png)
+![F15.6 — Assembly section with fastener balloons: balloon number = part # of the mechanical parts list; defines which fastener goes where in Steps 15.5–15.13, DSN-MECH-07 Rev A — PROPOSED DESIGN (source: engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-07_assembly_section_fasteners.png; produced by tools/design_enclosure_drawings.py)](engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-07_assembly_section_fasteners.png)
 
-![F15.7 — Sheet-metal flat patterns (tray, front plate, lid) that the fabricator folds before Step 15.5; bend lines and allowance per the generator formula, DSN-MECH-06 Rev A [PROPOSED DESIGN] (source: engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-06_sheet_metal_flat_patterns.png; produced by tools/design_enclosure_drawings.py)](engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-06_sheet_metal_flat_patterns.png)
+![F15.7 — Sheet-metal flat patterns (tray, front plate, lid) that the fabricator folds before Step 15.5; bend lines and allowance per the generator formula, DSN-MECH-06 Rev A — PROPOSED DESIGN (source: engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-06_sheet_metal_flat_patterns.png; produced by tools/design_enclosure_drawings.py)](engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-06_sheet_metal_flat_patterns.png)
 
 ### Step 15.5 — Fit PEM nuts, lid gasket and front gasket to the tray [PROPOSED DESIGN]
 
@@ -173,7 +173,7 @@ The lid (#6, M4×8 ×8, gasket #7) stays off until the bring-up of chapter 16 is
 
 Lengths are PROPOSED: "Manhattan distance between connector positions in the head + service allowance (40 mm coax / 60 mm wire), rounded up to 10 mm … cut after a first fit" (source: `engineering/DESIGN/HARNESS/HARNESS_SCHEDULE.md`, header). Totals: 144 cables; coax 55; wire 89; ≈ 41.6 m. ⚠ The pin order of every Molex 22-23-20x1 connector is UNVERIFIED because the EAGLE symbols name all pads `S` (source: `interconnection_table.md`, header) — buzz out before mating.
 
-![F15.8 — Internal layout per tier, rear view, with every connector reference (J, X, JP, SV) at its P&P position — the routing reference for Steps 15.14–15.18, DSN-MECH-04 Rev A [PROPOSED DESIGN; connector positions SOURCE-DERIVED] (source: engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-04_internal_layout_rear.png; produced by tools/design_mechanical_drawings.py)](engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-04_internal_layout_rear.png)
+![F15.8 — Internal layout per tier, rear view, with every connector reference (J, X, JP, SV) at its P&P position — the routing reference for Steps 15.14–15.18, DSN-MECH-04 Rev A — PROPOSED DESIGN; connector positions SOURCE-DERIVED (source: engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-04_internal_layout_rear.png; produced by tools/design_mechanical_drawings.py)](engineering/DESIGN/MECHANICAL/drawings/png/DSN-MECH-04_internal_layout_rear.png)
 
 Harness schedule excerpt — the cables named in this phase (source: `engineering/DESIGN/HARNESS/HARNESS_SCHEDULE.md`, rows copied; the full 144-row table is reproduced in Appendix B):
 
