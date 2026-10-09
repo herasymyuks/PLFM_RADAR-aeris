@@ -66,3 +66,17 @@ Files: `rtl/host_bridge_spi.v` (SPI slave + frame FIFO, 1 BRAM), `rtl/rd_map_pac
 ## 6. What remains
 
 - Option A: Main Board rev. B schematic/layout (MDR-13), FT601 datasheet checks, FTDI D3XX host driver test; option B: bench test of the SPI timing (level shifter path is 3.3 V, no translation needed), CDC throughput measurement, firmware arbitration of SPI1 with the ADAR1000 writes.
+
+## 7. Bridge command set v2 (register access) — added 2026-10-09
+
+All transfers: `FPGA_CS_N` low, SPI mode 0, MSB first; first byte = command. Bytes marked ← are driven by the FPGA on MISO (the master clocks dummy 0x00).
+
+| Cmd | Bytes after the command | Reply | Meaning |
+|---|---|---|---|
+| 0x01 | — | frame + CRC (as §5) | read the pending range-Doppler frame (unchanged) |
+| 0x02 | addr[7:0], addr[15:8], d[7:0], d[15:8], d[23:16], d[31:24] | ← 0xA2 (ack) after the last data byte | write 32-bit register `addr` (word address in the register map of `radar_control_regs.v`) |
+| 0x03 | addr[7:0], addr[15:8] | ← d[7:0], d[15:8], d[23:16], d[31:24] | read 32-bit register |
+| 0x04 | — | ← 8 bytes: status word (bit0 frame ready, bit1 ADAR CS conflict, bit2 FIFO overflow, bit3 calibration lock), fw/rtl version u16, frames produced u16, reserved | status without touching the frame |
+| other | — | ← 0xEE | unknown command (ignored) |
+
+Register map (word addresses, from `beta/fpga/rtl/radar_control_regs.v` — the RTL owner keeps this table in sync): 0x0 control (bit0 run, bit1 long_chirp, bit2 mixers enable), 0x1 CFAR threshold, 0x2 NCO tuning word, 0x3 reserved, 0x4 ADC calibration control (bit0 auto, bit1 manual, bits 8..12 manual tap, bits 16..18 bitslip, bits 24..26 lane), 0x5 calibration status (ro), 0x6 pattern expected, 0x7 error counter (ro), 0x8..0xC calibration windows (ro). STM32 API: `HostBridge_WriteReg(addr, value)`, `HostBridge_ReadReg(addr, &value)`, `HostBridge_Status(&st)`; exposed to the GUI through the existing settings path as a text command `REG W <addr> <value>` / `REG R <addr>` → reply `REG <addr> <value>` in the status stream (ASCII, so the bridge-frame parser passes it through).
