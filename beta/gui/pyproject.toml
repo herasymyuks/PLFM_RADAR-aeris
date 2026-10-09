@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aeris10-gui-beta"
+version = "0.7.0b1"
+description = "AERIS-10 PLFM radar host GUI -- BETA reconstruction (Tkinter + matplotlib)"
+readme = "README.md"
+requires-python = ">=3.10"      # tested only on CPython 3.14.7 / Tk 9.0 (macOS arm64); older versions UNVERIFIED
+dependencies = [
+  "numpy>=1.24,<3",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "scikit-learn>=1.3",
+  "filterpy>=1.4.5",
+  "pyserial>=3.5",
+]
+
+[project.optional-dependencies]
+usb-raw = ["pyusb>=1.2"]          # PyUsbCdc fallback (needs libusb-1.0)
+dev = ["pytest>=7"]
+packaging = ["pyinstaller>=6.0"]
+
+[project.scripts]
+aeris10-gui = "aeris10_gui.app:main"
+
+[tool.setuptools.packages.find]
+include = ["aeris10_gui*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

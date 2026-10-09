@@ -1,0 +1,13 @@
+# AERIS-10 GUI BETA -- pinned to the versions installed and tested in beta/gui/.venv
+# (CPython 3.14.7, macOS arm64, 2026-10-09). pip freeze of the direct dependencies.
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.2
+scikit-learn==1.9.1
+filterpy==1.4.5
+pyserial==3.5
+# optional raw-USB fallback (needs libusb-1.0 system library)
+pyusb==1.3.1
+# development / packaging
+pytest==9.1.1
+pyinstaller==6.22.3

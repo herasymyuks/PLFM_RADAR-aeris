@@ -1,0 +1,9 @@
+# virtual environment and build products -- never commit
+.venv/
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
