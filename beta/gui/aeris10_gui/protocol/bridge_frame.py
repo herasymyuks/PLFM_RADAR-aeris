@@ -115,9 +115,13 @@ class BridgeStreamParser:
         while True:
             i = self.buf.find(SYNC)
             if i < 0:
-                self._emit_text(bytes(self.buf[:-1])) if len(self.buf) > 1 else None
-                if len(self.buf) > 1:
-                    del self.buf[:-1]
+                # hold back the last byte only if it could be the first half of the sync word;
+                # otherwise a trailing text terminator ("\n") would be delayed until the next chunk
+                keep = 1 if self.buf and self.buf[-1] == SYNC[0] else 0
+                n = len(self.buf) - keep
+                if n > 0:
+                    self._emit_text(bytes(self.buf[:n]))
+                    del self.buf[:n]
                 break
             if i > 0:
                 self._emit_text(bytes(self.buf[:i])); del self.buf[:i]

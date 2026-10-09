@@ -28,6 +28,8 @@ import numpy as np
 
 from ..model import RadarSettings, RadarTarget
 from ..protocol import fpga_packet as fp
+from ..protocol.bridge_frame import MAX_DET, BridgeFrame, build_frame
+from .register_file import DemoRegisterFile
 from ..protocol.status_text import format_status_line, FIRMWARE_Y_MAX
 
 # Demo settings: firmware defaults except prf1 (10 kHz, within the firmware's
@@ -91,6 +93,8 @@ class RadarSimulator:
         self.y_max = FIRMWARE_Y_MAX
         self.gps = (41.9028, 12.4964, 50.0)   # GUI_V5.py:905 default position
         self.imu = (1.5, -0.5, 0.0)
+        self.regs = DemoRegisterFile()         # answers REG commands; CFAR_THR drives the detection bit
+        self.bridge_seq = 0
 
     # --- scaling shared with processing.RadarPipeline -------------------------------------
     @property
@@ -169,7 +173,7 @@ class RadarSimulator:
         for r in range(iq.shape[0]):
             for d in range(iq.shape[1]):
                 i, q = int(iq[r, d].real), int(iq[r, d].imag)
-                det = (abs(i) + abs(q)) > TOP_LEVEL_DETECTION_THRESHOLD
+                det = (abs(i) + abs(q)) > self.regs.cfar_threshold
                 out += fp.encode_cell(i, q, det)
         return bytes(out)
 
@@ -189,3 +193,58 @@ class RadarSimulator:
         self.chirp_count = (self.chirp_count + self.settings.chirps_per_position) % 1_000_000
         self.azimuth_index = self.azimuth_index % self.y_max + 1
         return frame
+
+
+# ----------------------------------------------------------------------------------------------
+# Option-B bridge frames (HOST_LINK_DESIGN.md section 5, rd_map_packer.v)
+# ----------------------------------------------------------------------------------------------
+
+def logmag(m: int) -> int:
+    """``rd_map_packer.v`` function ``logmag``: |I|+|Q| (17 bit) -> 8*log2 with 3 fractional bits, uint8."""
+    if m <= 0:
+        return 0
+    msb = m.bit_length() - 1
+    if msb >= 3:
+        frac = (m >> (msb - 3)) & 7
+    else:
+        frac = (m << (3 - msb)) & 7
+    return 0xFF if msb > 31 else ((msb << 3) | frac)
+
+
+def bridge_frame_from_iq(iq: np.ndarray, *, threshold: int, seq: int, azimuth: int, elevation: int,
+                         chirp_count: int, long_chirp: bool, overflow: bool = False) -> BridgeFrame:
+    """Pack a complex I/Q map exactly as ``rd_map_packer.v`` would (range-major, first MAX_DET detections)."""
+    n_r, n_d = iq.shape
+    i_abs = np.abs(iq.real.astype(np.int64))
+    q_abs = np.abs(iq.imag.astype(np.int64))
+    mag = (i_abs + q_abs).reshape(-1)
+    lm = bytes(logmag(int(m)) for m in mag)
+    det_cells = np.nonzero(mag > threshold)[0][:MAX_DET]
+    dets = [(int(c // n_d), int(c % n_d), lm[int(c)]) for c in det_cells]
+    flags = (1 if long_chirp else 0) | (2 if overflow else 0)
+    return BridgeFrame(1, flags, seq & 0xFFFF, azimuth & 0xFF, elevation & 0xFF, chirp_count & 0xFFFF,
+                       n_r, n_d, lm, dets)
+
+
+def _next_bridge_frame(self, timestamp: float = 0.0):
+    """Advance the scene and return ``(SimFrame, BridgeFrame)``; the SimFrame's fpga_bytes are the raw packets."""
+    frame = self.next_frame(timestamp)
+    self.regs.on_frame()
+    bf = bridge_frame_from_iq(frame.iq, threshold=self.regs.cfar_threshold, seq=self.bridge_seq,
+                              azimuth=frame.azimuth_index, elevation=frame.beam_pos,
+                              chirp_count=self.chirp_count, long_chirp=self.regs.use_long_chirp)
+    self.bridge_seq = (self.bridge_seq + 1) & 0xFFFF
+    return frame, bf
+
+
+def _bridge_frames(self, count: Optional[int] = None, timestamp: float = 0.0):
+    """Generator of serialised bridge frames (``build_frame``), endless when ``count`` is None."""
+    n = 0
+    while count is None or n < count:
+        _, bf = self.next_bridge_frame(timestamp)
+        yield build_frame(bf)
+        n += 1
+
+
+RadarSimulator.next_bridge_frame = _next_bridge_frame
+RadarSimulator.bridge_frames = _bridge_frames

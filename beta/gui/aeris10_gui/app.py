@@ -16,6 +16,8 @@ def build_parser() -> argparse.ArgumentParser:
                    help="create the window hidden, run --frames simulator frames through the full pipeline, exit 0")
     p.add_argument("--frames", type=int, default=3, help="frames for --selftest (default 3)")
     p.add_argument("--port", help="STM32 CDC serial port (hardware mode)")
+    p.add_argument("--raw-ft601", action="store_true",
+                   help="option A: decode raw 35-byte RTL packets (FT601) instead of SPI-bridge frames over CDC")
     p.add_argument("--update-ms", type=int, default=100, help="UI poll interval in ms")
     p.add_argument("--log-level", default="INFO")
     p.add_argument("--version", action="version", version=f"aeris10-gui {__version__}")
@@ -30,32 +32,37 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     from .model import RadarSettings
     from .sim.simulator import DEMO_SETTINGS
     from .ui.main_window import MainWindow
+    from .ui.sources import LINK_BRIDGE, LINK_RAW_FT601
+    from .protocol.register_map import READ_ALL_ADDRESSES
+    link = LINK_RAW_FT601 if args.raw_ft601 else LINK_BRIDGE
 
     demo = args.demo or args.selftest
     settings = DEMO_SETTINGS if demo else RadarSettings()
     root = tk.Tk()
     if args.selftest:
         root.withdraw()
-        win = MainWindow(root, demo=True, settings=settings, update_ms=args.update_ms)
+        win = MainWindow(root, demo=True, settings=settings, update_ms=args.update_ms, link=link)
         win.start()
         if win._after_id is not None:     # drive step() ourselves, deterministically
             root.after_cancel(win._after_id)
             win._after_id = None
+        win.reg_client.read_all(READ_ALL_ADDRESSES)       # demo register file answers via the CDC stream
         completed = 0
         for _ in range(args.frames * 2 + 2):
             completed += win.step()
             root.update()
             if completed >= args.frames:
                 break
-        stats = dict(win.fpga_parser.stats)
+        dec = win.source.decoder
+        reg_ok = win.reg_client.values.get(0xF) == 0xBE7A and not win.reg_client.pending and not win.reg_client.errors
+        status_msgs = dec.status_parser.stats["status"]
         win.stop()
         root.destroy()
-        ok = completed >= args.frames and stats["packets"] > 0
-        print(f"selftest: frames={completed} packets={stats['packets']} "
-              f"resync_dropped={stats['resync_bytes_dropped']} status_msgs={win.cdc_parser.stats['status']} "
-              f"-> {'OK' if ok else 'FAIL'}")
+        ok = completed >= args.frames and status_msgs > 0 and reg_ok and dec.error_count() == 0
+        print(f"selftest: link={link} frames={completed} link_stats={dec.stats()} "
+              f"reg_read_all={'OK' if reg_ok else 'FAIL'} -> {'OK' if ok else 'FAIL'}")
         return 0 if ok else 1
-    win = MainWindow(root, demo=demo, settings=settings, port=args.port, update_ms=args.update_ms)
+    win = MainWindow(root, demo=demo, settings=settings, port=args.port, update_ms=args.update_ms, link=link)
     if not demo:
         win.refresh_ports()
     root.mainloop()

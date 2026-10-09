@@ -25,6 +25,7 @@ from .dsp.clustering import cluster_points
 from .dsp.tracking import Track, Tracker
 from .model import RadarSettings, RadarTarget, SystemStatus
 from .protocol import fpga_packet as fp
+from .protocol.bridge_frame import BridgeFrame
 from .protocol.status_text import azimuth_index_to_degrees
 
 
@@ -114,17 +115,32 @@ class RadarPipeline:
     # --- processing ---------------------------------------------------------------------
     def process_frame(self, iq: np.ndarray, det_map: Optional[np.ndarray] = None,
                       now: float = 0.0) -> FrameResult:
+        """Raw-RTL path: complex I/Q cells (``FrameAssembler``)."""
+        return self.process_power(np.abs(iq) ** 2, det_map, now)
+
+    def process_bridge_frame(self, frame: BridgeFrame, now: float = 0.0) -> FrameResult:
+        """Option-B path: uint8 log-magnitude map + FPGA detection list; az/el come from the frame header."""
+        power, det_map = bridge_frame_to_power(frame)
+        return self.process_power(power, det_map, now, azimuth_index=frame.azimuth, elevation_index=frame.elevation)
+
+    def process_power(self, power: np.ndarray, det_map: Optional[np.ndarray] = None, now: float = 0.0, *,
+                      azimuth_index: Optional[int] = None, elevation_index: Optional[int] = None) -> FrameResult:
         self.frame_index += 1
-        power = np.abs(iq) ** 2
+        power = np.asarray(power, dtype=np.float64)
+        if power.shape != (self.n_range, self.n_doppler):
+            raise ValueError(f"power map shape {power.shape} != ({self.n_range}, {self.n_doppler})")
         dets = cfar_detections(power, **self.cfar_kwargs)
         # exclude the zero-Doppler clutter notch (bins 0, 1, N-1) from target reports
         dets = [d for d in dets if d.doppler_bin not in (0, 1, self.n_doppler - 1)]
         az = el = 0.0
-        if self.latest_status is not None:
-            if self.latest_status.azimuth is not None:
-                az = azimuth_index_to_degrees(self.latest_status.azimuth)
-            if self.latest_status.beam_pos is not None:
-                el = float(self.latest_status.beam_pos)       # index, no angle table in firmware
+        if azimuth_index is None and self.latest_status is not None:
+            azimuth_index = self.latest_status.azimuth
+        if elevation_index is None and self.latest_status is not None:
+            elevation_index = self.latest_status.beam_pos
+        if azimuth_index:
+            az = azimuth_index_to_degrees(azimuth_index)
+        if elevation_index:
+            el = float(elevation_index)                        # index, no angle table in firmware
         targets: List[RadarTarget] = []
         if dets:
             pts = [(d.range_bin, (d.doppler_bin + self.n_doppler // 2) % self.n_doppler) for d in dets]
@@ -143,3 +159,20 @@ class RadarPipeline:
         if det_map is None:
             det_map = np.zeros_like(power, dtype=bool)
         return FrameResult(power, power_db, det_map, dets, targets, tracks, self.latest_status)
+
+
+LOGMAG_DB_PER_LSB = 20.0 * np.log10(2.0) / 8.0        # 0.7526 dB of |I|+|Q| per uint8 step
+
+
+def bridge_frame_to_power(frame: BridgeFrame):
+    """uint8 8*log2(|I|+|Q|) -> linear power proxy (|I|+|Q|)^2 = 2**(u8/4), plus the FPGA detection map."""
+    lm = np.frombuffer(bytes(frame.magnitude), dtype=np.uint8).astype(np.float64)
+    if lm.size != frame.n_range * frame.n_doppler:
+        raise ValueError("bridge frame magnitude length does not match n_range*n_doppler")
+    power = np.exp2(lm / 4.0).reshape(frame.n_range, frame.n_doppler)
+    power[lm.reshape(frame.n_range, frame.n_doppler) == 0] = 0.0
+    det = np.zeros((frame.n_range, frame.n_doppler), dtype=bool)
+    for r, d, _m in frame.detections:
+        if r < frame.n_range and d < frame.n_doppler:
+            det[r, d] = True
+    return power, det

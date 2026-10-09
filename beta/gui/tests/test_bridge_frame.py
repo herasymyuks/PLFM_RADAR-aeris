@@ -60,3 +60,15 @@ def test_stream_resync_with_status_text():
     assert len(out) == 2 and all(o.seq == out[0].seq for o in out)
     assert p.resyncs >= 1
     assert b"BeamPos:3" in b"".join(texts)
+
+
+def test_trailing_text_not_held_back_unless_possible_sync():
+    texts = []
+    p = BridgeStreamParser(text_sink=texts.append)
+    p.feed(b"REG 0x9 0x1FF\n")
+    assert b"".join(texts) == b"REG 0x9 0x1FF\n"
+    texts.clear()
+    p.feed(b"abc\xa5")                     # 0xA5 may start a frame: held
+    assert b"".join(texts) == b"abc"
+    p.feed(b"\x00")                        # not a sync -> released
+    assert b"".join(texts) == b"abc\xa5\x00"

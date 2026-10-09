@@ -73,3 +73,35 @@ Originals in `9_Firmware/9_3_GUI/` were read only; nothing there was modified.
 
 ## 2026-10-09 — host-link option B (DSN-LINK-01)
 - Added `aeris10_gui/protocol/bridge_frame.py`: parser/serialiser for the FPGA→STM32→CDC range-Doppler frame (sync A5 5A, 16-byte header, 2048 × uint8 log-magnitude, detection list, CRC-16/CCITT-FALSE) and `BridgeStreamParser` (resync, status-text pass-through). Reference vector `tests/vectors/bridge_frame_from_rtl_tb.hex` is dumped by the Verilog testbench `engineering/DESIGN/HOST_LINK/rtl/tb_host_bridge.v`. Tests: `tests/test_bridge_frame.py` (9). Not yet wired into `ui/sources.py` (the hardware source still expects the raw RTL packet stream).
+
+## 2026-10-09 — bridge link as default hardware path, register access (DSN-LINK-01 §5, §7)
+
+### Added
+- `ui/sources.py` rewritten around `LinkDecoder`: **default link = `bridge`** (option B). The CDC byte stream goes through `BridgeStreamParser`; frames → `RadarPipeline.process_bridge_frame`, non-frame bytes → `StatusStreamParser` (status strings, GPS text/GPSB, REG replies). The raw-RTL-packet path (option A) is kept behind `--raw-ft601` (`LINK_RAW_FT601`). Sources return a `PollResult`; `HardwareSource` accepts an injected CDC object (used by tests).
+- `processing.py`: `process_bridge_frame`, `process_power`, `bridge_frame_to_power` (uint8 `8·log2(|I|+|Q|)` → power proxy `2**(u8/4)`, detection list → map). Azimuth/elevation come from the frame header in bridge mode.
+- `sim/simulator.py`: `logmag()` (bit-exact copy of `rd_map_packer.v` `logmag`, checked against the testbench formula), `bridge_frame_from_iq()`, `RadarSimulator.next_bridge_frame()` and the `bridge_frames(count)` generator (serialised with `build_frame`). Detection list = first 32 cells with `|I|+|Q| > CFAR_THR`, range-major, as the packer does.
+- `sim/register_file.py`: `DemoRegisterFile`, in-memory model of `radar_control_regs.v` (write/read arms, toggle bits, RO registers, reset values) with a simulated calibration result (auto start → lock 0xFF, window [10, 22], tap 16). Answers `REG` lines in demo mode; CFAR_THR and CONTROL.use_long_chirp feed back into the simulated frames.
+- `protocol/register_map.py`: register map transcribed from `beta/fpga/rtl/radar_control_regs.v` (field encode/decode, `describe_cal_stat`).
+- `protocol/register_cmd.py`: `REG W <addr> <value>` / `REG R <addr>` formatter and device-side parser; reply parser for `REG <addr> <value>` / `REG ERR`; `RegisterClient` (FIFO of outstanding requests, per-lane CAL_LANE_INFO read-all that restores CAL_LANE).
+- `protocol/status_text.py`: `StatusStreamParser` now recognises `REG` lines at a line start and yields `RegisterReply`.
+- `io/usb_cdc.py`: `send_register_write` / `send_register_read` on `CdcSerialPort` and `PyUsbCdc` (same connection as the settings packet).
+- `ui/register_panel.py`: notebook tab "FPGA registers / ADC calibration": CONTROL bits, CFAR threshold, decimation, start bin; auto (pattern) calibration, pattern-check enable, manual tap + lane load, bitslip + lane, pattern A/B; decoded CAL_STAT lock mask/done/busy/align_fail/fifo_ovf, chosen tap + pass window for all 8 lanes, CAL_ERR, CAL_UNDET, ID; "Read all / refresh". Inputs are range-checked against the RTL field widths.
+- `app.py`: `--raw-ft601`; `--selftest` now also performs a register read-all against the demo register file and fails if any reply is missing, any `REG ERR` occurs, or any parser error is counted.
+- Tests: `tests/test_register_cmd.py` (7), `tests/test_bridge_source.py` (7), 2 new UI smoke tests (raw-FT601 demo, register panel), 1 new bridge-parser regression test. Total 72.
+
+### Changed
+- `protocol/bridge_frame.py` `BridgeStreamParser.feed`: when no sync word is buffered it used to hold back the last byte unconditionally. That delayed a text line's closing `\n` (e.g. a trailing `REG` reply) until the next CDC chunk arrived. It now holds the byte back only when it is `0xA5`, i.e. a possible first sync byte. Regression test added.
+- Demo detection threshold: taken from the simulated CFAR_THR register (reset 10000, same as before) instead of a constant.
+
+### Discrepancies / unresolved (recorded, not papered over)
+1. **HOST_LINK_DESIGN.md §7 register table ≠ RTL.** §7 describes 32-bit registers: 0x0 = run/long_chirp/mixers, 0x2 = NCO tuning word, 0x4 = packed calibration control, status at 0x5/0x7/0x8..0xC. `radar_control_regs.v` has 16-bit registers: 0x0 = use_long_chirp/adc_pwdn/usb_enable, 0x2 = DECIM, 0x4..0x8 = calibration control, status at 0x9..0xC, ID at 0xF. The beta follows the RTL. **Run, mixers enable and the NCO word are not offered** because no RTL implements them.
+2. **Blind calibration** is implemented in `adc_capture_calib.v` (`ctrl_blind`, `blind_coef/thr/max`), but no register in `radar_control_regs.v` drives it. The panel shows it as unavailable.
+3. **`radar_system_top.v:321-323` ties `reg_we`/`reg_addr`/`reg_wdata` of `ctl_regs` to constants.** Even with the SPI bridge decoding commands 0x02/0x03, register writes do not reach the register file on the current RTL.
+4. **No firmware implements the REG text commands.** `beta/stm32/LIB/USBHandler.cpp` ignores all input in READY_FOR_DATA. The lexical rules in `register_cmd.py` (line terminator `\n`, hex or decimal numbers, write replies echo the read-back value, `REG ERR` on an unmapped address) are a **GUI-side proposal** the firmware owner must mirror.
+5. In-order replies are assumed (one CDC link, sequential SPI). There is no request ID in the protocol, so a dropped reply misattributes every later one until `pending` drains.
+
+### Verification performed
+- `pytest -q`: **72 passed**, 0 skipped.
+- `python -m aeris10_gui --selftest`: bridge link: 3 frames, 0 CRC errors, 31 REG replies, read-all OK. `--selftest --raw-ft601`: 6144 packets, 0 drops, read-all OK.
+- `./build_app.sh`: PyInstaller 6.22.3 rebuild OK (135 MB `--onedir`). The bundle passes `--demo --selftest` (bridge) and `--demo --selftest --raw-ft601`, both exit 0.
+- Environment note: Homebrew had upgraded `tcl-tk` to 9.1, which broke `_tkinter` (`libtcl9.0.dylib` not found) and silently skipped the UI tests. Fixed with `brew reinstall python-tk@3.14` (Tk 9.1 now loads).

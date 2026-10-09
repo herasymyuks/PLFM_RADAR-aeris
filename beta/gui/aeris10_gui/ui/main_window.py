@@ -25,11 +25,12 @@ import numpy as np                                                # noqa: E402
 
 from .. import __version__
 from ..model import GPSData, RadarSettings, SystemStatus
-from ..processing import FrameAssembler, RadarPipeline
-from ..protocol import fpga_packet as fp
+from ..processing import RadarPipeline
+from ..protocol.register_cmd import RegisterClient, RegisterReply
 from ..protocol.settings_packet import validate_settings
-from ..protocol.status_text import StatusStreamParser, azimuth_index_to_degrees
-from .sources import DataSource, DemoSource, HardwareSource
+from ..protocol.status_text import azimuth_index_to_degrees
+from .register_panel import RegisterPanel
+from .sources import LINK_BRIDGE, LINK_RAW_FT601, DataSource, DemoSource, HardwareSource
 from .theme import DARK_BG, DARK_FG, PLOT_BG, apply_dark_theme
 
 log = logging.getLogger(__name__)
@@ -50,12 +51,15 @@ SETTINGS_FIELDS = [
 
 class MainWindow:
     def __init__(self, root: tk.Tk, *, demo: bool = False, settings: Optional[RadarSettings] = None,
-                 port: Optional[str] = None, update_ms: int = 100, source: Optional[DataSource] = None):
+                 port: Optional[str] = None, update_ms: int = 100, source: Optional[DataSource] = None,
+                 link: str = LINK_BRIDGE):
         self.root = root
         self.demo = demo
         self.settings = settings if settings is not None else RadarSettings()
         self.update_ms = update_ms
-        self.source: DataSource = source if source is not None else (DemoSource() if demo else DataSource())
+        self.link = source.link if source is not None else link
+        self.source: DataSource = source if source is not None else (DemoSource(link=link) if demo else DataSource(link))
+        self.reg_client: Optional[RegisterClient] = None
         self.port = port
         self.running = False
         self.pad_to_64 = tk.BooleanVar(value=False)
@@ -66,9 +70,6 @@ class MainWindow:
         self.last_status: Optional[SystemStatus] = None
         self.last_gps: Optional[GPSData] = None
 
-        self.fpga_parser = fp.FpgaPacketParser()
-        self.cdc_parser = StatusStreamParser()
-        self.assembler = FrameAssembler()
         self.pipeline = RadarPipeline(self.settings)
 
         root.title(f"AERIS-10 Radar GUI {__version__} BETA -- {'DEMO' if demo else 'HARDWARE (unverified)'}")
@@ -93,8 +94,9 @@ class MainWindow:
         self.stop_btn = ttk.Button(ctrl, text="Stop", command=self.stop, state="disabled")
         self.stop_btn.grid(row=0, column=4, padx=4)
         ttk.Label(ctrl, text=f"Source: {self.source.name}").grid(row=0, column=5, padx=12)
-        ttk.Label(ctrl, text="FPGA link: FT601 not wired on Main Board -- demo data only",
-                  foreground="#f0a050").grid(row=0, column=6, padx=12)
+        link_text = ("FPGA link: SPI bridge via STM32 CDC (option B, unverified)" if self.link == LINK_BRIDGE
+                     else "FPGA link: raw FT601 (option A) -- FT601 not wired on Main Board")
+        ttk.Label(ctrl, text=link_text, foreground="#f0a050").grid(row=0, column=6, padx=12)
         self.gps_label = ttk.Label(ctrl, text="GPS: --")
         self.gps_label.grid(row=1, column=0, columnspan=4, sticky="w", padx=4)
         self.pitch_label = ttk.Label(ctrl, text="IMU pitch: --")
@@ -107,6 +109,7 @@ class MainWindow:
         self._build_radar_tab()
         self._build_settings_tab()
         self._build_status_tab()
+        self.register_panel = RegisterPanel(self.notebook, lambda: self.reg_client)
 
         bar = ttk.Frame(self.root, padding=3)
         bar.pack(fill="x", side="bottom")
@@ -246,7 +249,7 @@ class MainWindow:
             if not port:
                 messagebox.showerror("No port", "Select the STM32 CDC serial port first.")
                 return
-            self.source = HardwareSource(port)
+            self.source = HardwareSource(port, link=self.link)
         try:
             self.source.start(s, pad_to_64=self.pad_to_64.get())
         except Exception as e:                           # noqa: BLE001 -- surfaced to the user
@@ -254,6 +257,7 @@ class MainWindow:
             messagebox.showerror("Start failed", str(e))
             return
         self.running = True
+        self.reg_client = RegisterClient(self.source.send_line)
         self.start_btn.config(state="disabled")
         self.stop_btn.config(state="normal")
         self.status_label.config(text="Status: Running")
@@ -265,6 +269,7 @@ class MainWindow:
             self.root.after_cancel(self._after_id)
             self._after_id = None
         self.source.stop()
+        self.reg_client = None
         self.start_btn.config(state="normal")
         self.stop_btn.config(state="disabled")
         self.status_label.config(text="Status: Stopped")
@@ -287,33 +292,42 @@ class MainWindow:
 
     def step(self) -> int:
         """Poll the source once, process, redraw.  Returns frames completed in this step."""
-        fpga_bytes, cdc_bytes = self.source.poll()
-        for msg in self.cdc_parser.feed(cdc_bytes, time.time()):
+        res = self.source.poll()
+        reg_replies = 0
+        for msg in res.messages:
             if isinstance(msg, SystemStatus):
                 self.last_status = msg
                 self.pipeline.latest_status = msg
                 self._show_status(msg)
             elif isinstance(msg, GPSData):
                 self.last_gps = msg
-        packets = self.fpga_parser.feed(fpga_bytes)
+            elif isinstance(msg, RegisterReply):
+                if self.reg_client is not None:
+                    self.reg_client.on_reply(msg)
+                reg_replies += 1
+        if reg_replies:
+            self.register_panel.render()
         completed = 0
-        for iq, det in self.assembler.feed(packets):
-            result = self.pipeline.process_frame(iq, det, time.time())
-            self._draw(result)
-            completed += 1
-            self.frames += 1
         now = time.time()
+        for bf in res.bridge_frames:
+            self._draw(self.pipeline.process_bridge_frame(bf, now))
+            completed += 1
+        for iq, det in res.raw_frames:
+            self._draw(self.pipeline.process_frame(iq, det, now))
+            completed += 1
+        self.frames += completed
         if completed:
             dt = now - self._last_t
             if dt > 0:
                 self.fps = 0.8 * self.fps + 0.2 * (completed / dt)
             self._last_t = now
-        st = self.fpga_parser.stats
-        errs = sum(v for k, v in st.items() if k.startswith("bad_") or k == "inconsistent_range_word")
-        self.packets_label.config(text=f"Packets: {st['packets']}")
+        dec = self.source.decoder
+        unit = "frames" if self.link == LINK_BRIDGE else "packets"
+        count = dec.bridge_parser.frames if self.link == LINK_BRIDGE else dec.fpga_parser.stats["packets"]
+        self.packets_label.config(text=f"Link {unit}: {count}")
         self.frames_label.config(text=f"Frames: {self.frames}")
         self.fps_label.config(text=f"FPS: {self.fps:.1f}")
-        self.errors_label.config(text=f"Parser errors: {errs} (+{self.cdc_parser.stats['errors']} CDC)")
+        self.errors_label.config(text=f"Parser errors: {dec.error_count()}")
         return completed
 
     def _show_status(self, s: SystemStatus) -> None:

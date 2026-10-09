@@ -35,6 +35,7 @@ import time
 from typing import List, Optional, Union
 
 from ..model import GPSData, SystemStatus
+from .register_cmd import RegisterCommandError, RegisterReply, parse_reply
 
 STATUS_PREFIX = "System Status: "
 GPS_TEXT_PREFIX = "GPS:"
@@ -163,7 +164,18 @@ def azimuth_index_to_degrees(y: int, y_max: int = FIRMWARE_Y_MAX) -> float:
     return ((y - 1) % y_max) * 360.0 / y_max
 
 
-Message = Union[SystemStatus, GPSData]
+REG_PREFIX = "REG"
+
+_REG_LINE_RE = re.compile(r"(?:^|(?<=\n))REG(?= |\r|\n)")
+
+
+def _reg_line_start(text: str) -> int:
+    """Index of the first 'REG' token at a line start (-1 if none).  'REG' as a status field value is not a line start."""
+    m = _REG_LINE_RE.search(text)
+    return m.start() if m else -1
+
+
+Message = Union[SystemStatus, GPSData, RegisterReply]
 
 
 class StatusStreamParser:
@@ -177,7 +189,7 @@ class StatusStreamParser:
     def __init__(self, max_buffer: int = 8192):
         self._buf = bytearray()
         self.max_buffer = max_buffer
-        self.stats = {"status": 0, "gps_text": 0, "gpsb": 0, "errors": 0, "dropped_bytes": 0}
+        self.stats = {"status": 0, "gps_text": 0, "gpsb": 0, "reg": 0, "errors": 0, "dropped_bytes": 0}
 
     def feed(self, data: bytes, timestamp: Optional[float] = None) -> List[Message]:
         self._buf += data
@@ -197,7 +209,8 @@ class StatusStreamParser:
                 continue
             text = self._buf.decode("latin-1")
             # earliest recognisable start
-            starts = [i for i in (text.find(STATUS_PREFIX), text.find(GPS_TEXT_PREFIX), text.find("GPSB")) if i >= 0]
+            starts = [i for i in (text.find(STATUS_PREFIX), text.find(GPS_TEXT_PREFIX), text.find("GPSB"),
+                                  _reg_line_start(text)) if i >= 0]
             if not starts:
                 # keep a tail in case a prefix is split across reads
                 keep = max(len(STATUS_PREFIX), 4) - 1
@@ -224,6 +237,18 @@ class StatusStreamParser:
                 # swallow an optional CRLF
                 if self._buf[:2] == b"\r\n":
                     del self._buf[:2]
+                continue
+            if text.startswith(REG_PREFIX) and _reg_line_start(text) == 0:
+                nl = text.find("\n")
+                if nl == -1:
+                    break
+                line = text[:nl + 1]
+                try:
+                    out.append(parse_reply(line))
+                    self.stats["reg"] += 1
+                except RegisterCommandError:
+                    self.stats["errors"] += 1
+                del self._buf[:len(line.encode("latin-1"))]
                 continue
             if text.startswith(GPS_TEXT_PREFIX):
                 nl = text.find("\n")

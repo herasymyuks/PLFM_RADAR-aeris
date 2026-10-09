@@ -21,6 +21,7 @@ from typing import List, Optional
 
 from ..model import RadarSettings
 from ..protocol.settings_packet import build_start_sequence
+from ..protocol import register_cmd as rc
 
 log = logging.getLogger(__name__)
 
@@ -67,7 +68,21 @@ def list_ports(stm32_only: bool = False) -> List[PortInfo]:
     return ports
 
 
-class CdcSerialPort:
+class _RegisterCommandsMixin:
+    """REG W / REG R text commands (HOST_LINK_DESIGN.md section 7), same connection as the settings packet.
+
+    Replies (``REG <addr> <value>`` / ``REG ERR``) arrive asynchronously in the
+    status stream; decode them with ``protocol.status_text.StatusStreamParser``.
+    """
+
+    def send_register_write(self, addr: int, value: int) -> int:
+        return self.write(rc.format_write(addr, value))
+
+    def send_register_read(self, addr: int) -> int:
+        return self.write(rc.format_read(addr))
+
+
+class CdcSerialPort(_RegisterCommandsMixin):
     """Serial-port view of the STM32 CDC link.
 
     Baud rate is irrelevant for a CDC-ACM virtual port but must be given to
@@ -118,7 +133,7 @@ class CdcSerialPort:
         return n
 
 
-class PyUsbCdc:
+class PyUsbCdc(_RegisterCommandsMixin):
     """Raw-bulk fallback (pyusb/libusb).  UNVERIFIED.  Prefer :class:`CdcSerialPort`."""
 
     CDC_DATA_CLASS = 0x0A

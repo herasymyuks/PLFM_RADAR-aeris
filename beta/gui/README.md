@@ -2,10 +2,15 @@
 
 **BETA statement.** This package has **never been run against hardware**.
 
-* The FPGA -> host data path has **no hardware**: the Main Board's FT601 FIFO bus is
-  not wired to the FPGA and there is no FT2232H (`docs/PCB/MAIN_BOARD.md`). The FPGA
-  packet parser is verified only against vectors derived by hand from the RTL and
-  against the built-in simulator.
+* FPGA -> host data: the **default path is the SPI bridge (option B, DSN-LINK-01)**. The
+  FPGA serves 64x32 log-magnitude frames over SPI, and the STM32 forwards them unchanged
+  over USB CDC, interleaved with status strings and `REG` replies
+  (`engineering/DESIGN/HOST_LINK/HOST_LINK_DESIGN.md` section 5). This is simulated and
+  unit-tested only. The raw 35-byte RTL packet path (option A, FT601) stays available with
+  `--raw-ft601`, but on the board the FT601 is not wired (`docs/PCB/MAIN_BOARD.md`).
+* FPGA register access (`REG W/R` over CDC, "FPGA registers / ADC calibration" tab) follows
+  `beta/fpga/rtl/radar_control_regs.v`. No firmware implements the commands yet, and the
+  top-level RTL ties the register write port off. See CHANGELOG "Discrepancies".
 * The STM32 USB CDC path (settings upload, status/GPS reception) is implemented from
   the firmware sources but is **unverified on a board**; the firmware RX path itself is
   reported dead in `docs/STM32/`.
@@ -38,14 +43,18 @@ python3 -m venv .venv
 .venv/bin/python -m aeris10_gui                   # hardware mode: pick the STM32 CDC port, press Start
 .venv/bin/python -m aeris10_gui --selftest        # hidden window, 3 simulated frames, exit 0 on success
 .venv/bin/python -m aeris10_gui --port /dev/cu.usbmodemXXXX
+.venv/bin/python -m aeris10_gui --demo --raw-ft601   # option A: raw RTL packets instead of bridge frames
 ```
+
+In demo mode the simulator also answers `REG` commands from an in-memory model of
+`radar_control_regs.v`, so the register panel works without hardware.
 
 After `pip install -e .` the same is available as `aeris10-gui [--demo]`.
 
-In demo mode the simulator emits, per frame, 2048 packets in the **RTL wire format**
-plus a status string in the **firmware format**; the GUI consumes them through the same
-parsers it would use for hardware. In hardware mode the FPGA link reports
-"FT601 not wired" (see `aeris10_gui/io/ftdi_ft601.py`) and only the CDC link is used.
+Per frame the simulator emits one **bridge frame** (`build_frame`, packed exactly like
+`rd_map_packer.v`) plus a status string in the **firmware format**, all in one CDC byte
+stream. With `--raw-ft601` it emits 2048 packets in the **RTL wire format** instead. The
+GUI decodes both through the same parsers it would use for hardware.
 
 ## Test
 
@@ -53,7 +62,9 @@ parsers it would use for hardware. In hardware mode the FPGA link reports
 .venv/bin/python -m pytest -q
 ```
 
-46 tests: settings packet (byte-exact firmware vector, round trip, a model of the
+72 tests: bridge frames (RTL testbench vector, a hardware source fed a synthetic
+CDC stream that interleaves frames, status strings, GPS and REG replies), register commands
+(codec, RTL register semantics, client <-> demo register file round trip), settings packet (byte-exact firmware vector, round trip, a model of the
 firmware receiver proving unpadded framing is accepted and GUI_V5's 64-byte zero
 padding is rejected), FPGA packet (word-level and byte-level vectors from the Verilog,
 corruption of footer/redundant copies/detection byte, truncation, stream
@@ -94,6 +105,7 @@ pointed at `pyinstaller_launcher.py` instead.
 | `test_radar_data.csv` | -- | used by `tests/test_sim_pipeline.py` | read only |
 | -- (none existed) | -- | `dsp/cfar.py` | new CA-CFAR 1-D/2-D |
 | -- | -- | `processing.py` | frame assembly + pipeline (new) |
+| -- | -- | `protocol/bridge_frame.py`, `protocol/register_cmd.py`, `protocol/register_map.py`, `sim/register_file.py`, `ui/register_panel.py` | host link option B + register access (new) |
 
 ## Protocol facts the beta relies on (with sources)
 
@@ -133,5 +145,10 @@ pointed at `pyinstaller_launcher.py` instead.
    `ChirpCount:<n>|` field as end marker.
 9. Google Maps export (placeholder API key in V4-V6) was dropped.
 10. `filterpy` 1.4.5 (2018) runs on numpy 2.5.3 here; long-term maintenance risk.
-11. Only CPython 3.14.7/Tk 9.0 on macOS was exercised; Windows/Linux and older Pythons
+11. Only CPython 3.14.7 (Tk 9.0, then 9.1) on macOS was exercised; Windows/Linux and older Pythons
     are unverified.
+12. **Register map mismatch**: HOST_LINK_DESIGN.md section 7 and `radar_control_regs.v`
+    disagree. The GUI follows the RTL; run, mixers, NCO and blind calibration are not
+    available.
+13. **REG text protocol** (line format, error cases) is a GUI-side proposal; there is no
+    firmware implementation and no request ID (replies are matched in order).
